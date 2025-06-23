@@ -3770,26 +3770,18 @@ elif st.session_state.paso == 33:
 
     # Filtrar subdimensiones que sí existen en el session_state
     resumen = []
-
     for sub, variables in dimensiones.items():
         if sub in nombres_subdimensiones and variables:
             codificacion = sub
             nombre = nombres_subdimensiones[sub]
-
-            # Valoración
-            val_key = variables[4]  # por estructura, siempre en la posición 4
-            valor = st.session_state.respuestas.get(val_key, ("Seleccione...", 0))[1]
-
-            # Observación
-            obs_key = variables[5] if len(variables) > 5 else ""
-            observacion = st.session_state.respuestas.get(obs_key, "")
-
+            valor = st.session_state.respuestas.get(variables[4], ("Seleccione...", 0))[1]  # índice 4 → "Dx_y"
             resumen.append({
                 "Código": codificacion,
                 "Condición": nombre,
-                "Valoración": valor,
-                "Observaciones": observacion
+                "Valoración": valor
             })
+
+    df_resumen = pd.DataFrame(resumen)
 
 
     st.subheader("📊 Resumen de valoración por subdimensión")
