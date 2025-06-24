@@ -3758,7 +3758,7 @@ elif st.session_state.paso == 33:
         ax.text(valor, 0, f'{valor}', ha='center', va='center', fontsize=10, weight='bold')
 
         ax.set_xlim(0, 100)
-        ax.set_ylim(-2.5, 5.5)
+        ax.set_ylim(-0.5, 3.5)
         ax.axis('off')
 
         st.pyplot(fig)
