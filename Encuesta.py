@@ -1704,13 +1704,13 @@ elif st.session_state.paso == 3:
             guardar_respuesta(f"pD1_1_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_1")
             guardar_respuesta("D1_1", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_1")
+            obs = st.text_area("Hallazgos", key="obsD1_1")
             guardar_respuesta("obsD1_1", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
@@ -1781,13 +1781,13 @@ elif st.session_state.paso == 4:
             guardar_respuesta(f"pD1_2_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_2")
             guardar_respuesta("D1_2", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_2")
+            obs = st.text_area("Hallazgos", key="obsD1_2")
             guardar_respuesta("obsD1_2", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
@@ -1855,13 +1855,13 @@ elif st.session_state.paso == 5:
             guardar_respuesta(f"pD1_3_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_3")
             guardar_respuesta("D1_3", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_3")
+            obs = st.text_area("Hallazgos", key="obsD1_3")
             guardar_respuesta("obsD1_3", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
@@ -1934,13 +1934,13 @@ elif st.session_state.paso == 6:
             guardar_respuesta(f"pD1_4_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.4:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_4")
             guardar_respuesta("D1_4", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_4")
+            obs = st.text_area("Hallazgos", key="obsD1_4")
             guardar_respuesta("obsD1_4", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2007,13 +2007,13 @@ if st.session_state.paso == 7:
             guardar_respuesta(f"pD1_5_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.5:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_5")
             guardar_respuesta("D1_5", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_5")
+            obs = st.text_area("Hallazgos", key="obsD1_5")
             guardar_respuesta("obsD1_5", obs)
 
     col1, col2= st.columns([5, 1])
@@ -2076,13 +2076,13 @@ elif st.session_state.paso == 8:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_6_{i+1}")
             guardar_respuesta(f"pD1_6_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.6:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_6")
             guardar_respuesta("D1_6", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_6")
+            obs = st.text_area("Hallazgos", key="obsD1_6")
             guardar_respuesta("obsD1_6", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2146,13 +2146,13 @@ elif st.session_state.paso == 9:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_7_{i+1}")
             guardar_respuesta(f"pD1_7_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.7:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_7")
             guardar_respuesta("D1_7", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_7")
+            obs = st.text_area("Hallazgos", key="obsD1_7")
             guardar_respuesta("obsD1_7", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2212,13 +2212,13 @@ elif st.session_state.paso == 10:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_8_{i+1}")
             guardar_respuesta(f"pD1_8_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.8:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_8")
             guardar_respuesta("D1_8", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_8")
+            obs = st.text_area("Hallazgos", key="obsD1_8")
             guardar_respuesta("obsD1_8", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2276,13 +2276,13 @@ elif st.session_state.paso == 11:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_9_{i+1}")
             guardar_respuesta(f"pD1_9_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D1.9:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_9")
             guardar_respuesta("D1_9", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD1_9")
+            obs = st.text_area("Hallazgos", key="obsD1_9")
             guardar_respuesta("obsD1_9", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2345,13 +2345,13 @@ elif st.session_state.paso == 12:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_1_{i+1}")
             guardar_respuesta(f"pD2_1_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_1")
             guardar_respuesta("D2_1", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_1")
+            obs = st.text_area("Hallazgos", key="obsD2_1")
             guardar_respuesta("obsD2_1", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2412,13 +2412,13 @@ elif st.session_state.paso == 13:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_2_{i+1}")
             guardar_respuesta(f"pD2_2_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_2")
             guardar_respuesta("D2_2", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_2")
+            obs = st.text_area("Hallazgos", key="obsD2_2")
             guardar_respuesta("obsD2_2", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2479,13 +2479,13 @@ elif st.session_state.paso == 14:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_3_{i+1}")
             guardar_respuesta(f"pD2_3_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_3")
             guardar_respuesta("D2_3", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_3")
+            obs = st.text_area("Hallazgos", key="obsD2_3")
             guardar_respuesta("obsD2_3", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2544,13 +2544,13 @@ elif st.session_state.paso == 15:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_4_{i+1}")
             guardar_respuesta(f"pD2_4_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.4:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_4")
             guardar_respuesta("D2_4", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_4")
+            obs = st.text_area("Hallazgos", key="obsD2_4")
             guardar_respuesta("obsD2_4", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2622,13 +2622,13 @@ elif st.session_state.paso == 16:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_5_{i+1}")
             guardar_respuesta(f"pD2_5_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.5:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_5")
             guardar_respuesta("D2_5", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_5")
+            obs = st.text_area("Hallazgos", key="obsD2_5")
             guardar_respuesta("obsD2_5", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2689,13 +2689,13 @@ elif st.session_state.paso == 17:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_6_{i+1}")
             guardar_respuesta(f"pD2_6_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.6:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_6")
             guardar_respuesta("D2_6", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_6")
+            obs = st.text_area("Hallazgos", key="obsD2_6")
             guardar_respuesta("obsD2_6", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2755,13 +2755,13 @@ elif st.session_state.paso == 18:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_7_{i+1}")
             guardar_respuesta(f"pD2_7_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.7:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_7")
             guardar_respuesta("D2_7", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_7")
+            obs = st.text_area("Hallazgos", key="obsD2_7")
             guardar_respuesta("obsD2_7", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2821,13 +2821,13 @@ elif st.session_state.paso == 19:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_8_{i+1}")
             guardar_respuesta(f"pD2_8_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.8:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_8")
             guardar_respuesta("D2_8", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_8")
+            obs = st.text_area("Hallazgos", key="obsD2_8")
             guardar_respuesta("obsD2_8", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2888,13 +2888,13 @@ elif st.session_state.paso == 20:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_9_{i+1}")
             guardar_respuesta(f"pD2_9_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.9:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_9")
             guardar_respuesta("D2_9", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_9")
+            obs = st.text_area("Hallazgos", key="obsD2_9")
             guardar_respuesta("obsD2_9", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2954,13 +2954,13 @@ elif st.session_state.paso == 21:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_10_{i+1}")
             guardar_respuesta(f"pD2_10_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.10:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_10")
             guardar_respuesta("D2_10", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_10")
+            obs = st.text_area("Hallazgos", key="obsD2_10")
             guardar_respuesta("obsD2_10", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -3032,13 +3032,13 @@ elif st.session_state.paso == 22:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_11_{i+1}")
             guardar_respuesta(f"pD2_11_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.11:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_11")
             guardar_respuesta("D2_11", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_11")
+            obs = st.text_area("Hallazgos", key="obsD2_11")
             guardar_respuesta("obsD2_11", obs)
     col1, col2= st.columns([5, 1])
     with col1:
@@ -3099,13 +3099,13 @@ elif st.session_state.paso == 23:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_12_{i+1}")
             guardar_respuesta(f"pD2_12_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.12:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_12")
             guardar_respuesta("D2_12", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_12")
+            obs = st.text_area("Hallazgos", key="obsD2_12")
             guardar_respuesta("obsD2_12", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3165,13 +3165,13 @@ elif st.session_state.paso == 24:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_13_{i+1}")
             guardar_respuesta(f"pD2_13_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.13:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_13")
             guardar_respuesta("D2_13", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_13")
+            obs = st.text_area("Hallazgos", key="obsD2_13")
             guardar_respuesta("obsD2_13", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3234,13 +3234,13 @@ elif st.session_state.paso == 25:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_14_{i+1}")
             guardar_respuesta(f"pD2_14_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.14:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_14")
             guardar_respuesta("D2_14", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_14")
+            obs = st.text_area("Hallazgos", key="obsD2_14")
             guardar_respuesta("obsD2_14", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3299,13 +3299,13 @@ elif st.session_state.paso == 26:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_15_{i+1}")
             guardar_respuesta(f"pD2_15_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.15:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_15")
             guardar_respuesta("D2_15", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_15")
+            obs = st.text_area("Hallazgos", key="obsD2_15")
             guardar_respuesta("obsD2_15", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3365,13 +3365,13 @@ elif st.session_state.paso == 27:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_16_{i+1}")
             guardar_respuesta(f"pD2_16_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.16:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_16")
             guardar_respuesta("D2_16", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_16")
+            obs = st.text_area("Hallazgos", key="obsD2_16")
             guardar_respuesta("obsD2_16", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3430,13 +3430,13 @@ elif st.session_state.paso == 28:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_17_{i+1}")
             guardar_respuesta(f"pD2_17_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.17:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_17")
             guardar_respuesta("D2_17", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_17")
+            obs = st.text_area("Hallazgos", key="obsD2_17")
             guardar_respuesta("obsD2_17", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3495,13 +3495,13 @@ elif st.session_state.paso == 29:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_18_{i+1}")
             guardar_respuesta(f"pD2_18_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D2.18:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_18")
             guardar_respuesta("D2_18", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD2_18")
+            obs = st.text_area("Hallazgos", key="obsD2_18")
             guardar_respuesta("obsD2_18", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3562,13 +3562,13 @@ elif st.session_state.paso == 30:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_1_{i+1}")
             guardar_respuesta(f"pD3_1_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D3.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_1")
             guardar_respuesta("D3_1", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD3_1")
+            obs = st.text_area("Hallazgos", key="obsD3_1")
             guardar_respuesta("obsD3_1", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3628,13 +3628,13 @@ elif st.session_state.paso == 31:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_2_{i+1}")
             guardar_respuesta(f"pD3_2_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D3.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_2")
             guardar_respuesta("D3_2", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD3_2")
+            obs = st.text_area("Hallazgos", key="obsD3_2")
             guardar_respuesta("obsD3_2", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3691,13 +3691,13 @@ elif st.session_state.paso == 32:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_3_{i+1}")
             guardar_respuesta(f"pD3_3_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 3])
         with col1:
             st.markdown("**Calificación D3.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_3")
             guardar_respuesta("D3_3", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD3_3")
+            obs = st.text_area("Hallazgos", key="obsD3_3")
             guardar_respuesta("obsD3_3", obs)
     col1, col2 = st.columns([5, 1])
     with col1:
@@ -3790,7 +3790,7 @@ elif st.session_state.paso == 33:
                 #"Código": codificacion,
                 "Condición": nombre,
                 "Valoración": valor,
-                "Observaciones": observacion
+                "Hallazgos": observacion
             })
 
     df_resumen = pd.DataFrame(resumen)
