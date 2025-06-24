@@ -7,41 +7,45 @@ from datetime import date
 import json
 import re
 from collections import defaultdict
-
+import os
+#Grafico
+os.system("pip install matplotlib")
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 
 nombres_subdimensiones = {
-    "D1.1": "La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.",
-    "D1.2": "El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.",
-    "D1.3": "La prestación de los servicios de rehabilitación se realiza en diferentes modalidades: intramural, extramural y/o telemedicina.",
-    "D1.4": "La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.",
-    "D1.5": "La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.",
-    "D1.6": "El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.",
-    "D1.7": "En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.",
-    "D1.8": "La institución estructura e implementa un plan de capacitación en atención o rehabilitación con enfoque biopsicosocial.",
-    "D1.9": "La institución cuenta con áreas de atención, dotación y tecnología para la implementación de intervenciones orientadas a optimizar el proceso de rehabilitación.",
-    "D2.1": "Se realiza o se cuenta con valoración médica integral de la condición de salud de los usuarios de rehabilitación.",
-    "D2.2": "Se usan pruebas estandarizadas y/o instrumentos para la evaluación de los usuarios de rehabilitación.",
-    "D2.3": "En la evaluación se valora el estado funcional del usuario.",
-    "D2.4": "La evaluación considera el desempeño y los roles del usuario en diferentes entornos.",
-    "D2.5": "En la evaluación se identifican facilitadores y barreras del entorno que influyen en el proceso de rehabilitación del usuario.",
-    "D2.6": "En la evaluación se registran las expectativas del usuario, la familia o cuidador respecto al proceso de rehabilitación.",
-    "D2.7": "El plan de atención del usuario de rehabilitación se estructura de acuerdo al modelo de atención y se centra en la persona.",
-    "D2.8": "El plan de atención integra el manejo médico de la condición de salud y las intervenciones para el logro de los objetivos y/o metas de rehabilitación.",
-    "D2.9": "Los profesionales definen con el usuario, la familia y/o cuidador, objetivos y/o metas de rehabilitación que se orientan a optimizar el funcionamiento.",
-    "D2.10": "Se establecen objetivos y/o metas de rehabilitación medibles y alcanzables en un tiempo determinado.",
-    "D2.11": "La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.",
-    "D2.12": "Durante la intervención del usuario los profesionales de rehabilitación realizan acciones conjuntas, coordinadas e interdependientes.",
-    "D2.13": "En el proceso de rehabilitación se implementan acciones con enfoque diferencial.",
-    "D2.14": "Durante el proceso de atención, se realizan acciones para involucrar activamente al usuario, su familia y/o cuidador en el cumplimiento de los objetivos de rehabilitación.",
-    "D2.15": "En la etapa o fase de intervención se realiza reevaluación del usuario para identificar los logros y de ser necesario, realizar ajustes al plan de atención.",
-    "D2.16": "El proceso de rehabilitación incluye acciones planificadas de orientación y canalización del usuario y su familia a otras instituciones o sectores que pueden contribuir a su participación.",
-    "D2.17": "Se realiza evaluación final del usuario para determinar los logros, y definir el egreso o la pertinencia de continuar con el proceso de rehabilitación.",
-    "D2.18": "Se implementan acciones específicas para la atención y el egreso de usuarios de rehabilitación de larga permanencia con pobre pronóstico funcional.",
-    "D3.1": "Se utilizan instrumentos adaptados y validados en el contexto nacional para evaluar los resultados del proceso de rehabilitación.",
-    "D3.2": "Se miden y analizan los resultados del estado funcional de los usuarios posterior al proceso de rehabilitación.",
-    "D3.3": "Se mide la satisfacción de los usuarios con la atención recibida en los servicios de rehabilitación."
+    "D1.1": "D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.",
+    "D1.2": "D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.",
+    "D1.3": "D1.3 La prestación de los servicios de rehabilitación se realiza en diferentes modalidades: intramural, extramural y/o telemedicina.",
+    "D1.4": "D1.4 La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.",
+    "D1.5": "D1.5 La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.",
+    "D1.6": "D1.6 El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.",
+    "D1.7": "D1.7 En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.",
+    "D1.8": "D1.8 La institución estructura e implementa un plan de capacitación en atención o rehabilitación con enfoque biopsicosocial.",
+    "D1.9": "D1.9 La institución cuenta con áreas de atención, dotación y tecnología para la implementación de intervenciones orientadas a optimizar el proceso de rehabilitación.",
+    "D2.1": "D2.1 Se realiza o se cuenta con valoración médica integral de la condición de salud de los usuarios de rehabilitación.",
+    "D2.2": "D2.2 Se usan pruebas estandarizadas y/o instrumentos para la evaluación de los usuarios de rehabilitación.",
+    "D2.3": "D2.3 En la evaluación se valora el estado funcional del usuario.",
+    "D2.4": "D2.4 La evaluación considera el desempeño y los roles del usuario en diferentes entornos.",
+    "D2.5": "D2.5 En la evaluación se identifican facilitadores y barreras del entorno que influyen en el proceso de rehabilitación del usuario.",
+    "D2.6": "D2.6 En la evaluación se registran las expectativas del usuario, la familia o cuidador respecto al proceso de rehabilitación.",
+    "D2.7": "D2.7 El plan de atención del usuario de rehabilitación se estructura de acuerdo al modelo de atención y se centra en la persona.",
+    "D2.8": "D2.8 El plan de atención integra el manejo médico de la condición de salud y las intervenciones para el logro de los objetivos y/o metas de rehabilitación.",
+    "D2.9": "D2.9 Los profesionales definen con el usuario, la familia y/o cuidador, objetivos y/o metas de rehabilitación que se orientan a optimizar el funcionamiento.",
+    "D2.10": "D2.10 Se establecen objetivos y/o metas de rehabilitación medibles y alcanzables en un tiempo determinado.",
+    "D2.11": "D2.11 La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.",
+    "D2.12": "D2.12 Durante la intervención del usuario los profesionales de rehabilitación realizan acciones conjuntas, coordinadas e interdependientes.",
+    "D2.13": "D2.13 En el proceso de rehabilitación se implementan acciones con enfoque diferencial.",
+    "D2.14": "D2.14 Durante el proceso de atención, se realizan acciones para involucrar activamente al usuario, su familia y/o cuidador en el cumplimiento de los objetivos de rehabilitación.",
+    "D2.15": "D2.15 En la etapa o fase de intervención se realiza reevaluación del usuario para identificar los logros y de ser necesario, realizar ajustes al plan de atención.",
+    "D2.16": "D2.16 El proceso de rehabilitación incluye acciones planificadas de orientación y canalización del usuario y su familia a otras instituciones o sectores que pueden contribuir a su participación.",
+    "D2.17": "D2.17 Se realiza evaluación final del usuario para determinar los logros, y definir el egreso o la pertinencia de continuar con el proceso de rehabilitación.",
+    "D2.18": "D2.18 Se implementan acciones específicas para la atención y el egreso de usuarios de rehabilitación de larga permanencia con pobre pronóstico funcional.",
+    "D3.1": "D3.1 Se utilizan instrumentos adaptados y validados en el contexto nacional para evaluar los resultados del proceso de rehabilitación.",
+    "D3.2": "D3.2 Se miden y analizan los resultados del estado funcional de los usuarios posterior al proceso de rehabilitación.",
+    "D3.3": "D3.3 Se mide la satisfacción de los usuarios con la atención recibida en los servicios de rehabilitación."
 }
 
 
@@ -80,34 +84,26 @@ subdimension_a_paso = {
 def obtener_paso_por_subdimension(sub):
     return subdimension_a_paso.get(sub, -1)  # devuelve -1 si no encuentra el paso
 
-def calcular_puntaje_por_dimensiones(todas_dimensiones, alcance_actual):
-    puntajes = {}
-    maximos = {}
+def calcular_puntaje_por_dimensiones(dimensiones_dict):
+    puntajes = {"D1": 0, "D2": 0, "D3": 0}
+    maximos = {"D1": 0, "D2": 0, "D3": 0}
 
-    for dimension, subdimensiones in todas_dimensiones.items():
-        total = 0
-        total_max = 0
+    for subdim, vars_sub in dimensiones_dict.items():
+        # Detectar a qué dimensión pertenece (D1, D2, D3)
+        dimension = subdim.split(".")[0]
 
-        for sub in subdimensiones:
-            paso = obtener_paso_por_subdimension(sub)
-            if alcance_actual == "Basico" and paso not in pasos_basico:
-                continue  # Omitir esta subdimensión
-
-            claves = dimensiones.get(sub, [])
-            if not claves:
+        # Filtrar por alcance
+        if st.session_state.alcance == "Básico":
+            if obtener_paso_por_subdimension(subdim) not in pasos_basico:
                 continue
 
-            clave_puntaje = [k for k in claves if re.match(rf"^{dimension}_?\d+$", k)]
-            if clave_puntaje:
-                val = st.session_state.respuestas.get(clave_puntaje[0], (None, 0))
-                if isinstance(val, tuple):
-                    total += val[1]
-                    total_max += 5  # Asumimos escala de 1–5
-                elif isinstance(val, int):
-                    total += val
-                    total_max += 5
-        puntajes[dimension] = total
-        maximos[dimension] = total_max
+        # Obtener el valor de la valoración (posición 4 del arreglo)
+        val_key = vars_sub[4]
+        respuesta = st.session_state.respuestas.get(val_key, 0)
+        val = respuesta[1] if isinstance(respuesta, tuple) else respuesta
+        puntajes[dimension] += val
+        maximos[dimension] += 5  # Asumiendo máximo por subdimensión = 5
+
     return puntajes, maximos
 
 
@@ -116,39 +112,39 @@ def calcular_puntaje_por_dimensiones(todas_dimensiones, alcance_actual):
 ########## Definiendo dimensiones
 
 dimensiones = {
-    "D1.1": ["pD11_1", "pD11_2", "pD11_3", "pD11_4", "D1_1", "obsD11"],
-    "D1.2": ["pD12_1", "pD12_2", "pD12_3", "pD12_4", "D1_2", "obsD12"],
-    "D1.3": ["pD13_1", "pD13_2", "pD13_3", "pD13_4", "D1_3", "obsD13"],
-    "D2.1": ["pD21_1", "pD21_2", "pD21_3", "pD21_4", "D2_1", "obsD2_1"],
-    "D2.2": ["pD22_1", "pD22_2", "pD22_3", "pD22_4", "D2_2", "obsD2_2"],
-    "D2.3": ["pD23_1", "pD23_2", "pD23_3", "pD23_4", "D2_3", "obsD2_3"],
-    "D2.4": ["pD24_1", "pD24_2", "pD24_3", "pD24_4", "D2_4", "obsD2_4"],
-    "D2.5": ["pD25_1", "pD25_2", "pD25_3", "pD25_4", "D2_5", "obsD2_5"],
-    "D2.6": ["pD26_1", "pD26_2", "pD26_3", "pD26_4", "D2_6", "obsD2_6"],
-    "D2.7": ["pD27_1", "pD27_2", "pD27_3", "pD27_4", "D2_7", "obsD2_7"],
-    "D2.8": ["pD28_1", "pD28_2", "pD28_3", "pD28_4", "D2_8", "obsD2_8"],
-    "D2.9": ["pD29_1", "pD29_2", "pD29_3", "pD29_4", "D2_9", "obsD2_9"],
-    "D2.1": ["pD21_1", "pD21_2", "pD21_3", "pD21_4", "D2_1", "obsD2_1"],
-    "D2.2": ["pD22_1", "pD22_2", "pD22_3", "pD22_4", "D2_2", "obsD2_2"],
-    "D2.3": ["pD23_1", "pD23_2", "pD23_3", "pD23_4", "D2_3", "obsD2_3"],
-    "D2.4": ["pD24_1", "pD24_2", "pD24_3", "pD24_4", "D2_4", "obsD2_4"],
-    "D2.5": ["pD25_1", "pD25_2", "pD25_3", "pD25_4", "D2_5", "obsD2_5"],
-    "D2.6": ["pD26_1", "pD26_2", "pD26_3", "pD26_4", "D2_6", "obsD2_6"],
-    "D2.7": ["pD27_1", "pD27_2", "pD27_3", "pD27_4", "D2_7", "obsD2_7"],
-    "D2.8": ["pD28_1", "pD28_2", "pD28_3", "pD28_4", "D2_8", "obsD2_8"],
-    "D2.9": ["pD29_1", "pD29_2", "pD29_3", "pD29_4", "D2_9", "obsD2_9"],
-    "D2.10": ["pD210_1", "pD210_2", "pD210_3", "pD210_4", "D2_10", "obsD2_10"],
-    "D2.11": ["pD211_1", "pD211_2", "pD211_3", "pD211_4", "D2_11", "obsD2_11"],
-    "D2.12": ["pD212_1", "pD212_2", "pD212_3", "pD212_4", "D2_12", "obsD2_12"],
-    "D2.13": ["pD213_1", "pD213_2", "pD213_3", "pD213_4", "D2_13", "obsD2_13"],
-    "D2.14": ["pD214_1", "pD214_2", "pD214_3", "pD214_4", "D2_14", "obsD2_14"],
-    "D2.15": ["pD215_1", "pD215_2", "pD215_3", "pD215_4", "D2_15", "obsD2_15"],
-    "D2.16": ["pD216_1", "pD216_2", "pD216_3", "pD216_4", "D2_16", "obsD2_16"],
-    "D2.17": ["pD217_1", "pD217_2", "pD217_3", "pD217_4", "D2_17", "obsD2_17"],
-    "D2.18": ["pD218_1", "pD218_2", "pD218_3", "pD218_4", "D2_18", "obsD2_18"],
-    "D3.1": ["pD31_1", "pD31_2", "pD31_3", "pD31_4", "D3_1", "obsD3_1"],
-    "D3.2": ["pD32_1", "pD32_2", "pD32_3", "pD32_4", "D3_2", "obsD3_2"],
-    "D3.3": ["pD33_1", "pD33_2", "pD33_3", "pD33_4", "D3_3", "obsD3_3"]  
+    #--------------------DIMENSIÓN 1
+    "D1.1": ["pD1_1_1", "pD1_1_2", "pD1_1_3", "pD1_1_4", "D1_1", "obsD1_1"],
+    "D1.2": ["pD1_2_1", "pD1_2_2", "pD1_2_3", "pD1_2_4", "D1_2", "obsD1_2"],
+    "D1.3": ["pD1_3_1", "pD1_3_2", "pD1_3_3", "pD1_3_4", "D1_3", "obsD1_3"],
+    "D1.4": ["pD1_4_1", "pD1_4_2", "pD1_4_3", "pD1_4_4", "D1_4", "obsD1_4"],
+    "D1.5": ["pD1_5_1", "pD1_5_2", "pD1_5_3", "pD1_5_4", "D1_5", "obsD1_5"],
+    "D1.6": ["pD1_6_1", "pD1_6_2", "pD1_6_3", "pD1_6_4", "D1_6", "obsD1_6"],
+    "D1.7": ["pD1_7_1", "pD1_7_2", "pD1_7_3", "pD1_7_4", "D1_7", "obsD1_7"],
+    "D1.8": ["pD1_8_1", "pD1_8_2", "pD1_8_3", "pD1_8_4", "D1_8", "obsD1_8"],
+    "D1.9": ["pD1_9_1", "pD1_9_2", "pD1_9_3", "pD1_9_4", "D1_9", "obsD1_9"],
+    #---------------------DIMENSIÓN 2
+    "D2.1": ["pD2_1_1", "pD2_1_2", "pD2_1_3", "pD2_1_4", "D2_1", "obsD2_1"],
+    "D2.2": ["pD2_2_1", "pD2_2_2", "pD2_2_3", "pD2_2_4", "D2_2", "obsD2_2"],
+    "D2.3": ["pD2_3_1", "pD2_3_2", "pD2_3_3", "pD2_3_4", "D2_3", "obsD2_3"],
+    "D2.4": ["pD2_4_1", "pD2_4_2", "pD2_4_3", "pD2_4_4", "D2_4", "obsD2_4"],
+    "D2.5": ["pD2_5_1", "pD2_5_2", "pD2_5_3", "pD2_5_4", "D2_5", "obsD2_5"],
+    "D2.6": ["pD2_6_1", "pD2_6_2", "pD2_6_3", "pD2_6_4", "D2_6", "obsD2_6"],
+    "D2.7": ["pD2_7_1", "pD2_7_2", "pD2_7_3", "pD2_7_4", "D2_7", "obsD2_7"],
+    "D2.8": ["pD2_8_1", "pD2_8_2", "pD2_8_3", "pD2_8_4", "D2_8", "obsD2_8"],
+    "D2.9": ["pD2_9_1", "pD2_9_2", "pD2_9_3", "pD2_9_4", "D2_9", "obsD2_9"],
+    "D2.10": ["pD2_10_1", "pD2_10_2", "pD2_10_3", "pD2_10_4", "D2_10", "obsD2_10"],
+    "D2.11": ["pD2_11_1", "pD2_11_2", "pD2_11_3", "pD2_11_4", "D2_11", "obsD2_11"],
+    "D2.12": ["pD2_12_1", "pD2_12_2", "pD2_12_3", "pD2_12_4", "D2_12", "obsD2_12"],
+    "D2.13": ["pD2_13_1", "pD2_13_2", "pD2_13_3", "pD2_13_4", "D2_13", "obsD2_13"],
+    "D2.14": ["pD2_14_1", "pD2_14_2", "pD2_14_3", "pD2_14_4", "D2_14", "obsD2_14"],
+    "D2.15": ["pD2_15_1", "pD2_15_2", "pD2_15_3", "pD2_15_4", "D2_15", "obsD2_15"],
+    "D2.16": ["pD2_16_1", "pD2_16_2", "pD2_16_3", "pD2_16_4", "D2_16", "obsD2_16"],
+    "D2.17": ["pD2_17_1", "pD2_17_2", "pD2_17_3", "pD2_17_4", "D2_17", "obsD2_17"],
+    "D2.18": ["pD2_18_1", "pD2_18_2", "pD2_18_3", "pD2_18_4", "D2_18", "obsD2_18"],
+    #-----------------------DIMENSIÓN 3
+    "D3.1": ["pD3_1_1", "pD3_1_2", "pD3_1_3", "pD3_1_4", "D3_1", "obsD3_1"],
+    "D3.2": ["pD3_2_1", "pD3_2_2", "pD3_2_3", "pD3_2_4", "D3_2", "obsD3_2"],
+    "D3.3": ["pD3_3_1", "pD3_3_2", "pD3_3_3", "pD3_3_4", "D3_3", "obsD3_3"]  
 }
 
 # Agrupar automáticamente por prefijo (D1, D2, D3)
@@ -396,6 +392,14 @@ opciones2 = [
 
 unique_id = str(uuid.uuid4())  # genera un ID único aleatorio
 guardar_respuesta("unique_id", unique_id)  # Guarda el ID único en el estado de la sesión
+
+
+if "uuid_respuesta" not in st.session_state:
+    st.session_state.uuid_respuesta = str(uuid.uuid4())
+
+
+st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
+
 
 ####################### título y encabezado #######################
 
@@ -1684,11 +1688,15 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
     </div>
     """, unsafe_allow_html=True)
 
-    alcance = st.selectbox(
-        "**Alcance de la evaluación**",
-        options=["Seleccione", "Básico", "Completo"],
-        key="alcance")
+    alcance=st.selectbox(
+        "Seleccione el alcance del formulario",
+        options=["Seleccione...", "Básico", "Completo"],
+        key="alcance"
+        )
     guardar_respuesta("alcance", alcance)
+
+    if st.session_state.alcance != "Seleccione":
+        st.markdown(f"**🧭 Alcance seleccionado: _{st.session_state.alcance}_**")
 
     col1, col2= st.columns([5, 1])
     with col1:
@@ -1766,18 +1774,18 @@ elif st.session_state.paso == 3:
             st.markdown("------------------------------")
     
         with col2:
-            val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD11_{i+1}")
-            guardar_respuesta(f"pD11_{i+1}", val)
+            val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
+            guardar_respuesta(f"pD1_1_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_1")
-            guardar_respuesta("D1_1", val)
+            guardar_respuesta("D1_1", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD11")
-            guardar_respuesta("obsD11", obs)
+            obs = st.text_area("Observaciones", key="obsD1_1")
+            guardar_respuesta("obsD1_1", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
@@ -1843,18 +1851,18 @@ elif st.session_state.paso == 4:
             st.markdown(texto)
             st.markdown("------------------------------")
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD12_{i+1}")
-            guardar_respuesta(f"pD12_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_2_{i+1}")
+            guardar_respuesta(f"pD1_2_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_2")
-            guardar_respuesta("D1_2", val)
+            guardar_respuesta("D1_2", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD12")
-            guardar_respuesta("obsD12", obs)
+            obs = st.text_area("Observaciones", key="obsD1_2")
+            guardar_respuesta("obsD1_2", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
@@ -1865,6 +1873,8 @@ elif st.session_state.paso == 4:
             st.button("Siguiente ▶️", on_click=siguiente_basico)
         else:
             st.button("Siguiente ▶️", on_click=siguiente)
+
+
 #-------------------------------------------------------------------------------------
 # Paso 3 - D1.3
 elif st.session_state.paso == 5:
@@ -1915,24 +1925,29 @@ elif st.session_state.paso == 5:
             st.markdown(texto)
             st.markdown("------------------------------")
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD13_{i+1}")
-            guardar_respuesta(f"pD13_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_3_{i+1}")
+            guardar_respuesta(f"pD1_3_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_3")
-            guardar_respuesta("D1_3", val)
+            guardar_respuesta("D1_3", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD13")
-            guardar_respuesta("obsD13", obs)
+            obs = st.text_area("Observaciones", key="obsD1_3")
+            guardar_respuesta("obsD1_3", obs)
 
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if alcance == "Basico":
+            st.button("Siguiente ▶️", on_click=siguiente_basico)
+        else:
+            st.button("Siguiente ▶️", on_click=siguiente)
+
 
 
 #-------------------------------------------------------------------------------------
@@ -1989,22 +2004,25 @@ elif st.session_state.paso == 6:
             st.markdown(texto)
             st.markdown("------------------------------")
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD14_{i+1}")
-            guardar_respuesta(f"pD14_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_4_{i+1}")
+            guardar_respuesta(f"pD1_4_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.4:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_4")
-            guardar_respuesta("D1_4", val)
+            guardar_respuesta("D1_4", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD14")
-            guardar_respuesta("obsD14", obs)
+            obs = st.text_area("Observaciones", key="obsD1_4")
+            guardar_respuesta("obsD1_4", obs)
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
+        #if alcance == "Basico":
+        #    st.button("Siguiente ▶️", on_click=siguiente_basico)
+        #else:
         st.button("Siguiente ▶️", on_click=siguiente)
 
 
@@ -2059,18 +2077,18 @@ if st.session_state.paso == 7:
             st.markdown(texto)
             st.markdown("------------------------------")
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD15_{i+1}")
-            guardar_respuesta(f"pD15_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_5_{i+1}")
+            guardar_respuesta(f"pD1_5_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.5:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_5")
-            guardar_respuesta("D1_5", val)
+            guardar_respuesta("D1_5", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD15")
-            guardar_respuesta("obsD15", obs)
+            obs = st.text_area("Observaciones", key="obsD1_5")
+            guardar_respuesta("obsD1_5", obs)
 
     col1, col2= st.columns([5, 1])
     with col1:
@@ -2129,17 +2147,17 @@ elif st.session_state.paso == 8:
             st.markdown(texto)
             st.markdown("------------------------------")
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD16_{i+1}")
-            guardar_respuesta(f"pD16_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_6_{i+1}")
+            guardar_respuesta(f"pD1_6_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.6:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_6")
-            guardar_respuesta("D1_6", val)
+            guardar_respuesta("D1_6", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD16")
-            guardar_respuesta("obsD16", obs)
+            obs = st.text_area("Observaciones", key="obsD1_6")
+            guardar_respuesta("obsD1_6", obs)
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
@@ -2199,17 +2217,17 @@ elif st.session_state.paso == 9:
             st.markdown(texto)
             st.markdown("-----------------------")
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD17_{i+1}")
-            guardar_respuesta(f"pD17_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_7_{i+1}")
+            guardar_respuesta(f"pD1_7_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.7:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_7")
-            guardar_respuesta("D1_7", val)
+            guardar_respuesta("D1_7", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD17")
-            guardar_respuesta("obsD17", obs)
+            obs = st.text_area("Observaciones", key="obsD1_7")
+            guardar_respuesta("obsD1_7", obs)
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
@@ -2265,17 +2283,17 @@ elif st.session_state.paso == 10:
             st.markdown(texto)
             st.markdown("-----------------------")
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD18_{i+1}")
-            guardar_respuesta(f"pD18_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_8_{i+1}")
+            guardar_respuesta(f"pD1_8_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.8:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_8")
-            guardar_respuesta("D1_8", val)
+            guardar_respuesta("D1_8", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD18")
-            guardar_respuesta("obsD18", obs)
+            obs = st.text_area("Observaciones", key="obsD1_8")
+            guardar_respuesta("obsD1_8", obs)
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
@@ -2329,17 +2347,17 @@ elif st.session_state.paso == 11:
         with col1:
             st.markdown(texto)
         with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD19_{i+1}")
-            guardar_respuesta(f"pD19_{i+1}", val)
+            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_9_{i+1}")
+            guardar_respuesta(f"pD1_9_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.9:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_9")
-            guardar_respuesta("D1_9", val)
+            guardar_respuesta("D1_9", val[1])
         with col2:
-            obs = st.text_area("Observaciones", key="obsD19")
-            guardar_respuesta("obsD19", obs)
+            obs = st.text_area("Observaciones", key="obsD1_9")
+            guardar_respuesta("obsD1_9", obs)
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
@@ -2399,13 +2417,13 @@ elif st.session_state.paso == 12:
             st.markdown(texto)
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_1_{i+1}")
-            guardar_respuesta(f"pD2_1_{i+1}", val)
+            guardar_respuesta(f"pD2_1_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_1")
-            guardar_respuesta("D2_1", val)
+            guardar_respuesta("D2_1", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_1")
             guardar_respuesta("obsD2_1", obs)
@@ -2466,13 +2484,13 @@ elif st.session_state.paso == 13:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_2_{i+1}")
-            guardar_respuesta(f"pD2_2_{i+1}", val)
+            guardar_respuesta(f"pD2_2_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_2")
-            guardar_respuesta("D2_2", val)
+            guardar_respuesta("D2_2", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_2")
             guardar_respuesta("obsD2_2", obs)
@@ -2533,13 +2551,13 @@ elif st.session_state.paso == 14:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_3_{i+1}")
-            guardar_respuesta(f"pD2_3_{i+1}", val)
+            guardar_respuesta(f"pD2_3_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_3")
-            guardar_respuesta("D2_3", val)
+            guardar_respuesta("D2_3", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_3")
             guardar_respuesta("obsD2_3", obs)
@@ -2598,13 +2616,13 @@ elif st.session_state.paso == 15:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_4_{i+1}")
-            guardar_respuesta(f"pD2_4_{i+1}", val)
+            guardar_respuesta(f"pD2_4_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.4:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_4")
-            guardar_respuesta("D2_4", val)
+            guardar_respuesta("D2_4", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_4")
             guardar_respuesta("obsD2_4", obs)
@@ -2676,13 +2694,13 @@ elif st.session_state.paso == 16:
             st.markdown("------------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_5_{i+1}")
-            guardar_respuesta(f"pD2_5_{i+1}", val)
+            guardar_respuesta(f"pD2_5_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.5:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_5")
-            guardar_respuesta("D2_5", val)
+            guardar_respuesta("D2_5", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_5")
             guardar_respuesta("obsD2_5", obs)
@@ -2743,13 +2761,13 @@ elif st.session_state.paso == 17:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_6_{i+1}")
-            guardar_respuesta(f"pD2_6_{i+1}", val)
+            guardar_respuesta(f"pD2_6_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.6:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_6")
-            guardar_respuesta("D2_6", val)
+            guardar_respuesta("D2_6", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_6")
             guardar_respuesta("obsD2_6", obs)
@@ -2809,13 +2827,13 @@ elif st.session_state.paso == 18:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_7_{i+1}")
-            guardar_respuesta(f"pD2_7_{i+1}", val)
+            guardar_respuesta(f"pD2_7_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.7:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_7")
-            guardar_respuesta("D2_7", val)
+            guardar_respuesta("D2_7", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_7")
             guardar_respuesta("obsD2_7", obs)
@@ -2875,13 +2893,13 @@ elif st.session_state.paso == 19:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_8_{i+1}")
-            guardar_respuesta(f"pD2_8_{i+1}", val)
+            guardar_respuesta(f"pD2_8_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.8:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_8")
-            guardar_respuesta("D2_8", val)
+            guardar_respuesta("D2_8", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_8")
             guardar_respuesta("obsD2_8", obs)
@@ -2942,13 +2960,13 @@ elif st.session_state.paso == 20:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_9_{i+1}")
-            guardar_respuesta(f"pD2_9_{i+1}", val)
+            guardar_respuesta(f"pD2_9_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.9:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_9")
-            guardar_respuesta("D2_9", val)
+            guardar_respuesta("D2_9", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_9")
             guardar_respuesta("obsD2_9", obs)
@@ -3008,13 +3026,13 @@ elif st.session_state.paso == 21:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_10_{i+1}")
-            guardar_respuesta(f"pD2_10_{i+1}", val)
+            guardar_respuesta(f"pD2_10_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.10:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_10")
-            guardar_respuesta("D2_10", val)
+            guardar_respuesta("D2_10", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_10")
             guardar_respuesta("obsD2_10", obs)
@@ -3086,13 +3104,13 @@ elif st.session_state.paso == 22:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_11_{i+1}")
-            guardar_respuesta(f"pD2_11_{i+1}", val)
+            guardar_respuesta(f"pD2_11_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.11:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_11")
-            guardar_respuesta("D2_11", val)
+            guardar_respuesta("D2_11", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_11")
             guardar_respuesta("obsD2_11", obs)
@@ -3153,13 +3171,13 @@ elif st.session_state.paso == 23:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_12_{i+1}")
-            guardar_respuesta(f"pD2_12_{i+1}", val)
+            guardar_respuesta(f"pD2_12_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.12:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_12")
-            guardar_respuesta("D2_12", val)
+            guardar_respuesta("D2_12", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_12")
             guardar_respuesta("obsD2_12", obs)
@@ -3219,13 +3237,13 @@ elif st.session_state.paso == 24:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_13_{i+1}")
-            guardar_respuesta(f"pD2_13_{i+1}", val)
+            guardar_respuesta(f"pD2_13_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.13:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_13")
-            guardar_respuesta("D2_13", val)
+            guardar_respuesta("D2_13", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_13")
             guardar_respuesta("obsD2_13", obs)
@@ -3288,13 +3306,13 @@ elif st.session_state.paso == 25:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_14_{i+1}")
-            guardar_respuesta(f"pD2_14_{i+1}", val)
+            guardar_respuesta(f"pD2_14_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.14:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_14")
-            guardar_respuesta("D2_14", val)
+            guardar_respuesta("D2_14", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_14")
             guardar_respuesta("obsD2_14", obs)
@@ -3353,13 +3371,13 @@ elif st.session_state.paso == 26:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_15_{i+1}")
-            guardar_respuesta(f"pD2_15_{i+1}", val)
+            guardar_respuesta(f"pD2_15_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.15:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_15")
-            guardar_respuesta("D2_15", val)
+            guardar_respuesta("D2_15", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_15")
             guardar_respuesta("obsD2_15", obs)
@@ -3419,13 +3437,13 @@ elif st.session_state.paso == 27:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_16_{i+1}")
-            guardar_respuesta(f"pD2_16_{i+1}", val)
+            guardar_respuesta(f"pD2_16_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.16:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_16")
-            guardar_respuesta("D2_16", val)
+            guardar_respuesta("D2_16", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_16")
             guardar_respuesta("obsD2_16", obs)
@@ -3484,13 +3502,13 @@ elif st.session_state.paso == 28:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_17_{i+1}")
-            guardar_respuesta(f"pD2_17_{i+1}", val)
+            guardar_respuesta(f"pD2_17_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.17:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_17")
-            guardar_respuesta("D2_17", val)
+            guardar_respuesta("D2_17", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_17")
             guardar_respuesta("obsD2_17", obs)
@@ -3549,13 +3567,13 @@ elif st.session_state.paso == 29:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_18_{i+1}")
-            guardar_respuesta(f"pD2_18_{i+1}", val)
+            guardar_respuesta(f"pD2_18_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.18:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_18")
-            guardar_respuesta("D2_18", val)
+            guardar_respuesta("D2_18", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD2_18")
             guardar_respuesta("obsD2_18", obs)
@@ -3616,13 +3634,13 @@ elif st.session_state.paso == 30:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_1_{i+1}")
-            guardar_respuesta(f"pD3_1_{i+1}", val)
+            guardar_respuesta(f"pD3_1_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D3.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_1")
-            guardar_respuesta("D3_1", val)
+            guardar_respuesta("D3_1", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD3_1")
             guardar_respuesta("obsD3_1", obs)
@@ -3682,13 +3700,13 @@ elif st.session_state.paso == 31:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_2_{i+1}")
-            guardar_respuesta(f"pD3_2_{i+1}", val)
+            guardar_respuesta(f"pD3_2_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D3.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_2")
-            guardar_respuesta("D3_2", val)
+            guardar_respuesta("D3_2", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD3_2")
             guardar_respuesta("obsD3_2", obs)
@@ -3745,13 +3763,13 @@ elif st.session_state.paso == 32:
             st.markdown("-----------------------")
         with col2:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_3_{i+1}")
-            guardar_respuesta(f"pD3_3_{i+1}", val)
+            guardar_respuesta(f"pD3_3_{i+1}", val[1])
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D3.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_3")
-            guardar_respuesta("D3_3", val)
+            guardar_respuesta("D3_3", val[1])
         with col2:
             obs = st.text_area("Observaciones", key="obsD3_3")
             guardar_respuesta("obsD3_3", obs)
@@ -3765,35 +3783,64 @@ elif st.session_state.paso == 32:
 #### Final #####################
 elif st.session_state.paso == 33:
 
+#### PUNTAJES 
     col1, col2 = st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
         st.button("Siguiente ▶️", on_click=siguiente)
-    
+
     alcance = st.session_state.get("alcance", "Completo")
-    puntajes, maximos = calcular_puntaje_por_dimensiones(todas_dimensiones, alcance)
+    #puntajes, maximos = calcular_puntaje_por_dimensiones(todas_dimensiones, alcance)
 
-    # Filtrar subdimensiones que sí existen en el session_state
-    resumen = []
-    for sub, variables in dimensiones.items():
-        if sub in nombres_subdimensiones and variables:
-            codificacion = sub
-            nombre = nombres_subdimensiones[sub]
-            valor = st.session_state.respuestas.get(variables[4], ("Seleccione...", 0))[1]  # índice 4 → "Dx_y"
-            resumen.append({
-                "Código": codificacion,
-                "Condición": nombre,
-                "Valoración": valor
-            })
+    st.success("¡Formulario completado! ✅")
 
-    df_resumen = pd.DataFrame(resumen)
+    st.subheader("📈 Resultados por dimensión")
+    puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones)
+
+    for dim in ["D1", "D2", "D3"]:
+        st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
+    
+    st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
 
-    st.subheader("📊 Resumen de valoración por subdimensión")
-    st.dataframe(df_resumen, hide_index=True)
 
-        # Selector de separador
+    #total_max_global = 0
+    total_global = sum(puntajes.values())
+    total_max_global = sum(maximos.values())
+    global_pct = round((total_global / total_max_global) * 100, 1)
+    #global_pct = round((total_global / total_max_global) * 100, 1) if total_max_global > 0 else 0
+  
+    def graficar_nivel_implementacion(valor):
+        rangos = list(range(0, 101, 10))  # 0, 10, 20, ..., 100
+        colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822', 
+               '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
+
+        fig, ax = plt.subplots(figsize=(10, 2))
+
+        for i in range(len(colores)):
+            left = rangos[i]
+            width = 10
+            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white')
+
+        # Etiquetas encima de cada recuadro
+            label = f"{left+1}-{left+10}" if left != 0 else "1-10"
+            ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
+
+    # Marcar el valor con un círculo
+        ax.plot(valor, 0, 'o', markersize=50, markeredgecolor='black', markerfacecolor='none')
+        ax.text(valor, 0, f'{valor}', ha='center', va='center', fontsize=10, weight='bold')
+
+        ax.set_xlim(0, 100)
+        ax.set_ylim(-0.5, 1.2)
+        ax.axis('off')
+
+        st.pyplot(fig)
+
+    # Llamar esta función al final con el puntaje global como porcentaje
+    graficar_nivel_implementacion(global_pct)
+
+    
     separador = st.radio(
         "Separador del archivo CSV:",
         options=[",", ";"],
@@ -3801,42 +3848,51 @@ elif st.session_state.paso == 33:
         horizontal=True
     )
 
-    # Convertir respuestas en DataFrame y exportar
-    df_resumen = pd.DataFrame([st.session_state.resumen])
-    csv_res = df_respuestas.to_csv(index=False, sep=separador).encode("utf-8")
+
+    # Filtrar subdimensiones que sí existen en el session_state
+    resumen = []
+    for sub, variables in dimensiones.items():
+        if sub in nombres_subdimensiones and variables:
+            #codificacion = sub
+            nombre = nombres_subdimensiones[sub]
+            valor_raw = st.session_state.respuestas.get(variables[4], 0)
+            valor = valor_raw[1] if isinstance(valor_raw, tuple) else valor_raw 
+            obs_key = variables[5] if len(variables) > 5 else None
+            observacion = st.session_state.respuestas.get(obs_key, "Sin observaciones") if obs_key else "No aplica"
+        
+            resumen.append({
+                #"Código": codificacion,
+                "Condición": nombre,
+                "Valoración": valor,
+                "Observaciones": observacion
+            })
+
+    df_resumen = pd.DataFrame(resumen)
+    csv_resumen = df_resumen.to_csv(index=False, sep=separador).encode("utf-8")
+    st.download_button(
+            label="📥 Descargar resumen por subdimensión (CSV)",
+            data=csv_resumen,
+            file_name="valoracion_por_subdimension.csv",
+            mime="text/csv"
+            )
+
+
+    #st.subheader("📊 Resumen de valoración por subdimensión")
+    #st.dataframe(df_resumen, hide_index=True)
 
 # Botón de descarga
-    csv = df_resumen.to_csv(index=False).encode("utf-8")
+    csv = df_resumen.to_csv(index=False,sep=separador).encode("utf-8")
     st.download_button(
         label="📥 Descargar resumen (CSV)",
-        data=csv_res,
+        data=csv,
         file_name="valoracion_por_subdimension.csv",
         mime="text/csv"
     )
 
-    st.markdown("## 📊 Resumen de Puntajes por Dimensión")
-    total_global = 0
-    total_max_global = 0
-
-    for dim in puntajes:
-        total = puntajes[dim]
-        maximo = maximos[dim]
-        porcentaje = round((total / maximo) * 100, 1) if maximo > 0 else 0
-        total_global += total
-        total_max_global += maximo
-
-    st.markdown(f"""
-        <div style="background-color: #f8f9fa; padding: 6px 12px; border-radius: 6px; margin-bottom: 5px;">
-            <strong>{dim}</strong>: {total} / {maximo} puntos ({porcentaje}%)
-        </div>
-        """, unsafe_allow_html=True)
-
-    st.markdown("---")
-    global_pct = round((total_global / total_max_global) * 100, 1) if total_max_global > 0 else 0
-    st.markdown(f"### 🧮 <strong>Puntaje Global:</strong> {total_global} / {total_max_global} puntos ({global_pct}%)", unsafe_allow_html=True)
 
 
-    st.success("¡Formulario completado! ✅")
+
+
 
     # --- Mostrar respuestas en formato JSON ---
     #st.subheader("Resumen de respuestas:")
@@ -3852,12 +3908,6 @@ elif st.session_state.paso == 33:
     import pandas as pd
 
     # Selector de separador
-    separador = st.radio(
-        "Separador del archivo CSV:",
-        options=[",", ";"],
-        format_func=lambda x: "Coma (,)" if x == "," else "Punto y coma (;)",
-        horizontal=True
-    )
 
     # Convertir respuestas en DataFrame y exportar
     df_respuestas = pd.DataFrame([st.session_state.respuestas])
@@ -3869,3 +3919,33 @@ elif st.session_state.paso == 33:
         file_name="respuestas_formulario.csv",
         mime="text/csv"
     )
+    
+    
+    ruta_base = "respuestas_consolidadas.csv"
+
+    # Convertir la respuesta actual a DataFrame
+    df_actual = pd.DataFrame([st.session_state.respuestas])
+
+    # Cargar archivo si ya existe
+    if os.path.exists(ruta_base):
+        df_existente = pd.read_csv(ruta_base)
+
+        # Verificar si el UUID ya está presente
+        if st.session_state.uuid_respuesta not in df_existente["uuid"].values:
+            df_total = pd.concat([df_existente, df_actual], ignore_index=True)
+            df_total.to_csv(ruta_base, index=False, sep=separador)
+        else:
+            df_total = df_existente  # Ya estaba guardado, no agregamos
+    else:
+        df_total = df_actual
+        df_total.to_csv(ruta_base, index=False, sep=separador)
+
+    st.download_button(
+    label="📥 Descargar base acumulada (CSV)",
+    data=df_total.to_csv(index=False, sep=separador).encode("utf-8"),
+    file_name="respuestas_consolidadas.csv",
+    mime="text/csv"
+    )
+
+
+
