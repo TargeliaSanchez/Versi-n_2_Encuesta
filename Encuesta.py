@@ -1704,7 +1704,7 @@ elif st.session_state.paso == 3:
             guardar_respuesta(f"pD1_1_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_1")
@@ -1781,7 +1781,7 @@ elif st.session_state.paso == 4:
             guardar_respuesta(f"pD1_2_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_2")
@@ -1855,7 +1855,7 @@ elif st.session_state.paso == 5:
             guardar_respuesta(f"pD1_3_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_3")
@@ -1934,7 +1934,7 @@ elif st.session_state.paso == 6:
             guardar_respuesta(f"pD1_4_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.4:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_4")
@@ -2007,7 +2007,7 @@ if st.session_state.paso == 7:
             guardar_respuesta(f"pD1_5_{i+1}", val[1])
 
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.5:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_5")
@@ -2076,7 +2076,7 @@ elif st.session_state.paso == 8:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_6_{i+1}")
             guardar_respuesta(f"pD1_6_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.6:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_6")
@@ -2146,7 +2146,7 @@ elif st.session_state.paso == 9:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_7_{i+1}")
             guardar_respuesta(f"pD1_7_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.7:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_7")
@@ -2212,7 +2212,7 @@ elif st.session_state.paso == 10:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_8_{i+1}")
             guardar_respuesta(f"pD1_8_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.8:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_8")
@@ -2276,7 +2276,7 @@ elif st.session_state.paso == 11:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD1_9_{i+1}")
             guardar_respuesta(f"pD1_9_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.9:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_9")
@@ -2345,7 +2345,7 @@ elif st.session_state.paso == 12:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_1_{i+1}")
             guardar_respuesta(f"pD2_1_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_1")
@@ -2412,7 +2412,7 @@ elif st.session_state.paso == 13:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_2_{i+1}")
             guardar_respuesta(f"pD2_2_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_2")
@@ -2479,7 +2479,7 @@ elif st.session_state.paso == 14:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_3_{i+1}")
             guardar_respuesta(f"pD2_3_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_3")
@@ -2544,7 +2544,7 @@ elif st.session_state.paso == 15:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_4_{i+1}")
             guardar_respuesta(f"pD2_4_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.4:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_4")
@@ -2622,7 +2622,7 @@ elif st.session_state.paso == 16:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_5_{i+1}")
             guardar_respuesta(f"pD2_5_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.5:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_5")
@@ -2689,7 +2689,7 @@ elif st.session_state.paso == 17:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_6_{i+1}")
             guardar_respuesta(f"pD2_6_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.6:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_6")
@@ -2755,7 +2755,7 @@ elif st.session_state.paso == 18:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_7_{i+1}")
             guardar_respuesta(f"pD2_7_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.7:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_7")
@@ -2821,7 +2821,7 @@ elif st.session_state.paso == 19:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_8_{i+1}")
             guardar_respuesta(f"pD2_8_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.8:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_8")
@@ -2888,7 +2888,7 @@ elif st.session_state.paso == 20:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_9_{i+1}")
             guardar_respuesta(f"pD2_9_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.9:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_9")
@@ -2954,7 +2954,7 @@ elif st.session_state.paso == 21:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_10_{i+1}")
             guardar_respuesta(f"pD2_10_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.10:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_10")
@@ -3032,7 +3032,7 @@ elif st.session_state.paso == 22:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_11_{i+1}")
             guardar_respuesta(f"pD2_11_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.11:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_11")
@@ -3099,7 +3099,7 @@ elif st.session_state.paso == 23:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_12_{i+1}")
             guardar_respuesta(f"pD2_12_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.12:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_12")
@@ -3165,7 +3165,7 @@ elif st.session_state.paso == 24:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_13_{i+1}")
             guardar_respuesta(f"pD2_13_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.13:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_13")
@@ -3234,7 +3234,7 @@ elif st.session_state.paso == 25:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_14_{i+1}")
             guardar_respuesta(f"pD2_14_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.14:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_14")
@@ -3299,7 +3299,7 @@ elif st.session_state.paso == 26:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_15_{i+1}")
             guardar_respuesta(f"pD2_15_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.15:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_15")
@@ -3365,7 +3365,7 @@ elif st.session_state.paso == 27:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_16_{i+1}")
             guardar_respuesta(f"pD2_16_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.16:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_16")
@@ -3430,7 +3430,7 @@ elif st.session_state.paso == 28:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_17_{i+1}")
             guardar_respuesta(f"pD2_17_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.17:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_17")
@@ -3495,7 +3495,7 @@ elif st.session_state.paso == 29:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_18_{i+1}")
             guardar_respuesta(f"pD2_18_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D2.18:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_18")
@@ -3562,7 +3562,7 @@ elif st.session_state.paso == 30:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_1_{i+1}")
             guardar_respuesta(f"pD3_1_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D3.1:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_1")
@@ -3628,7 +3628,7 @@ elif st.session_state.paso == 31:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_2_{i+1}")
             guardar_respuesta(f"pD3_2_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D3.2:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_2")
@@ -3691,7 +3691,7 @@ elif st.session_state.paso == 32:
             val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_3_{i+1}")
             guardar_respuesta(f"pD3_3_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D3.3:**")
             val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_3")
