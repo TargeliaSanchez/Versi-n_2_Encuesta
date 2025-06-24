@@ -7,7 +7,7 @@ from datetime import date
 import json
 import re
 from collections import defaultdict
-import os
+import os 
 #Grafico
 os.system("pip install matplotlib")
 import matplotlib.pyplot as plt
