@@ -168,7 +168,7 @@ todas_dimensiones = dict(todas_dimensiones)
 
 st.markdown("""
     <style>
-        .css-18e3th9 { padding: 2rem 4rem 2rem 4rem; }  /* más margen lateral interno */
+        .css-18e3th9 { padding: 0rem 4rem 2rem 4rem; }  /* más margen lateral interno */
         .block-container { max-width: 85%; padding-left: 2rem; padding-right: 2rem; }
         label { font-weight: 600; font-size: 1.1rem; }
     </style>
