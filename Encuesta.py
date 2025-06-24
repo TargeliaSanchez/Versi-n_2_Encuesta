@@ -3754,7 +3754,7 @@ elif st.session_state.paso == 33:
             ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
 
     # Marcar el valor con un círculo
-        ax.plot(valor, 0, 'o', markersize=40, markeredgecolor='black', markerfacecolor='none')
+        ax.plot(valor, 0, 'o', markersize=30, markeredgecolor='black', markerfacecolor='none')
         ax.text(valor, 0, f'{valor}', ha='center', va='center', fontsize=10, weight='bold')
 
         ax.set_xlim(0, 100)
