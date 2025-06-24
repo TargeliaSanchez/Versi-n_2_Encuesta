@@ -167,80 +167,13 @@ todas_dimensiones = dict(todas_dimensiones)
 # df_actual = pd.DataFrame([extraer_variables_con_key_ordenado()], columns=orden_columnas)
 
 st.markdown("""
-<style>
-.vertical-divider {
-    border-left: 1px solid #ccc;
-    padding-left: 14px;
-    }
+    <style>
+        .css-18e3th9 { padding: 2rem 4rem 2rem 4rem; }  /* más margen lateral interno */
+        .block-container { max-width: 85%; padding-left: 2rem; padding-right: 2rem; }
+        label { font-weight: 600; font-size: 1.1rem; }
+    </style>
+    """, unsafe_allow_html=True)
 
-        .main .block-container {
-            max-width: 100%;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-    .question {
-        padding: 0.2rem 0;
-        border-bottom: 1px solid #eee; 
-    }
-    .question-number {
-        font-weight: bold;
-        color: #2a9d8f;
-    }
-    .section {
-        background-color: #f8f9fa;
-        padding: 1rem;
-        border-radius: 10px;
-        margin-bottom: 0.5rem;
-    }
-    .section-title {
-        color: #264653;
-        font-weight: 500;
-        font-size: 0.1rem;
-        margin: 0.1rem 0 0.25rem 0 !important;
-    }
-    .subsection-title {
-        color: #2a9d8f;
-        font-weight: 500;
-        margin: 0.5rem 0 0.5rem 0;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem !important;
-    }
-    .rating-tag {
-        display: inline-block;
-        padding: 0.2rem 0.5rem;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        margin-left: 0.5rem;
-        vertical-align: middle;
-        font-weight: bold;
-    }
-    .nav-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 0.1rem;
-    }
-    .progress-container {
-        margin: 0.1rem 0;
-    }
-    .block-container {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        max-width: 700px;
-    }
-    .stTextArea textarea {
-        min-height: 100px;
-    }
-    html, body, [class*="css"]  {
-        font-size: 9px !important;
-    }
-    .section-title, .subsection-title, .question, .dimension-rating {
-        font-size: 2rem !important;
-    }
-    .stSelectbox label, .stTextArea label {
-        font-size: 1rem !important;
-    }
-</style>
-""", unsafe_allow_html=True)
 
 
 if "alcance" not in st.session_state:
