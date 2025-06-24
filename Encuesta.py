@@ -598,8 +598,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("mod_TE_1", mod_TE_1)
             mod_TMO_1 = st.checkbox("TMO", key="TMO_1")
             guardar_respuesta("mod_TMO_1", mod_TMO_1)
-        with sep3:
-            st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
     # Columna 5: Prestador
         with col_prestador:
             st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
@@ -730,8 +729,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("mod_TE_2", mod_TE_2)
             mod_TMO_2 = st.checkbox("TMO", key="TMO_2")
             guardar_respuesta("mod_TMO_2", mod_TMO_2)
-    with sep3:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
     # Columna 5: Prestador
     with col_prestador:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
@@ -849,8 +847,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("mod_TE_3", mod_TE_3)
             mod_TMO_3 = st.checkbox("TMO", key="TMO_3")
             guardar_respuesta("mod_TMO_3", mod_TMO_3)
-    with sep3:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
     with col_prestador:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X el tipo de prestador")
@@ -974,8 +971,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("mod_TE_4", mod_TE_4)
             mod_TMO_4 = st.checkbox("TMO", key="TMO_4")
             guardar_respuesta("mod_TMO_4", mod_TMO_4)
-    with sep3:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
     with col_prestador:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X el tipo de prestador")
@@ -1093,8 +1089,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("mod_TE_5", mod_TE_5)
             mod_TMO_5 = st.checkbox("TMO", key="TMO_5")
             guardar_respuesta("mod_TMO_5", mod_TMO_5)
-    with sep3:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
     with col_prestador:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X el tipo de prestador")
@@ -1219,8 +1214,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("mod_TE_6", mod_TE_6)
             mod_TMO_6 = st.checkbox("TMO", key="TMO_6")
             guardar_respuesta("mod_TMO_6", mod_TMO_6)
-    with sep3:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
     with col_prestador:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X el tipo de prestador")
@@ -1339,8 +1333,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("mod_TE_7", mod_TE_7)
             mod_TMO_7 = st.checkbox("TMO", key="TMO_7")
             guardar_respuesta("mod_TMO_7", mod_TMO_7)
-    with sep3:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
     with col_prestador:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X el tipo de prestador")
