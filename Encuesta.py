@@ -305,7 +305,7 @@ if "servicio_2" not in st.session_state:
 
 
 opciones = [
-    ("Seleccione...", 0),
+    ("Seleccione", 0),
     ("1 - No cumple", 1),
     ("2 - Incipiente", 2),
     ("3 - Aceptable", 3),
@@ -315,7 +315,7 @@ opciones = [
 
 
 opciones2 = [
-    ("Seleccione...", 0),
+    ("Seleccione", 0),
     ("1. No cumple no implementada", 1),
     ("2. La condición cumple de forma incipiente uno o dos críterios", 2),
     ("3. Cumple de forma aceptable mínimo tres criterios", 3),
@@ -1616,7 +1616,7 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
 
     alcance=st.selectbox(
         "Seleccione el alcance del formulario",
-        options=["Seleccione...", "Básico", "Completo"],
+        options=["Seleccione", "Básico", "Completo"],
         key="alcance"
         )
     guardar_respuesta("alcance", alcance)
