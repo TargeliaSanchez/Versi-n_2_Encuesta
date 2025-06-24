@@ -3764,6 +3764,12 @@ elif st.session_state.paso == 32:
 
 #### Final #####################
 elif st.session_state.paso == 33:
+
+    col1, col2 = st.columns([5, 1])
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
+    with col2:
+        st.button("Siguiente ▶️", on_click=siguiente)
     
     alcance = st.session_state.get("alcance", "Completo")
     puntajes, maximos = calcular_puntaje_por_dimensiones(todas_dimensiones, alcance)
@@ -3787,11 +3793,23 @@ elif st.session_state.paso == 33:
     st.subheader("📊 Resumen de valoración por subdimensión")
     st.dataframe(df_resumen, hide_index=True)
 
+        # Selector de separador
+    separador = st.radio(
+        "Separador del archivo CSV:",
+        options=[",", ";"],
+        format_func=lambda x: "Coma (,)" if x == "," else "Punto y coma (;)",
+        horizontal=True
+    )
+
+    # Convertir respuestas en DataFrame y exportar
+    df_resumen = pd.DataFrame([st.session_state.resumen])
+    csv_res = df_respuestas.to_csv(index=False, sep=separador).encode("utf-8")
+
 # Botón de descarga
     csv = df_resumen.to_csv(index=False).encode("utf-8")
     st.download_button(
         label="📥 Descargar resumen (CSV)",
-        data=csv,
+        data=csv_res,
         file_name="valoracion_por_subdimension.csv",
         mime="text/csv"
     )
