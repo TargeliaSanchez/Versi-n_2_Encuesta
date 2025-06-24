@@ -500,7 +500,7 @@ if st.session_state.paso == 1:
         key="servicio_1"
     )   
     guardar_respuesta("servicio_1", servicio_1)
-    col_dias,sep1,col_areas, sep2,col_modalidades,sep3, col_prestador = st.columns([1,0.1,1.1,0.1,1.5,0.1,1.5])
+    col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.1,0.1,1.8,1])
 # Columna 2: Días de atención
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
@@ -634,7 +634,7 @@ if st.session_state.paso == 1:
         key="servicio_2"
     )   
     guardar_respuesta("servicio_2", servicio_2)
-    col_dias,sep1,col_areas, sep2,col_modalidades,sep3, col_prestador = st.columns([1,0.1,1.1,0.1,1.5,0.1,1.5])
+    col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.1,0.1,1.8,1])
     # Columna 2: Días de atención
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
@@ -756,7 +756,7 @@ if st.session_state.paso == 1:
         key="servicio_3"
     )   
     guardar_respuesta("servicio_3", servicio_3)
-    col_dias,sep1,col_areas, sep2,col_modalidades,sep3, col_prestador = st.columns([1,0.1,1.1,0.1,1.5,0.1,1.5])
+    col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.1,0.1,1.8,1])
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X los días de atención")
@@ -881,7 +881,7 @@ if st.session_state.paso == 1:
         key="servicio_4"
     )   
     guardar_respuesta("servicio_4", servicio_4)
-    col_dias,sep1,col_areas, sep2,col_modalidades,sep3, col_prestador = st.columns([1,0.1,1.1,0.1,1.5,0.1,1.5])
+    col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.1,0.1,1.8,1])
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X los días de atención")
@@ -1000,7 +1000,7 @@ if st.session_state.paso == 1:
         key="servicio_5"
     )   
     guardar_respuesta("servicio_5", servicio_5)
-    col_dias,sep1,col_areas, sep2,col_modalidades,sep3, col_prestador = st.columns([1,0.1,1.1,0.1,1.5,0.1,1.5])
+    col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.1,0.1,1.8,1])
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X los días de atención")
@@ -1126,7 +1126,7 @@ if st.session_state.paso == 1:
         key="servicio_6"
     )   
     guardar_respuesta("servicio_6", servicio_6)
-    col_dias,sep1,col_areas, sep2,col_modalidades,sep3, col_prestador = st.columns([1,0.1,1.1,0.1,1.5,0.1,1.5])
+    col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.1,0.1,1.8,1])
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X los días de atención")
@@ -1246,7 +1246,7 @@ if st.session_state.paso == 1:
         key="servicio_7"
     )   
     guardar_respuesta("servicio_7", servicio_7)
-    col_dias,sep1,col_areas, sep2,col_modalidades,sep3, col_prestador = st.columns([1,0.1,1.1,0.1,1.5,0.1,1.5])
+    col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.1,0.1,1.8,1])
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X los días de atención")
@@ -1388,7 +1388,7 @@ if st.session_state.paso == 1:
     }
     input[type="number"], input[type="text"] {
         height: 30px !important;
-        font-size: 10px;
+        font-size: 14px;
     }
     /* Reduce el margen superior e inferior del selectbox */
     .stSelectbox {
