@@ -9,7 +9,7 @@ import re
 from collections import defaultdict
 import os 
 #Grafico
-os.system("pip install matplotlib")
+#os.system("pip install matplotlib")
 import matplotlib.pyplot as plt
 import numpy as np
 
