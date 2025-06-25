@@ -1,3 +1,5 @@
+from docx import Document
+from docx.shared import Inches
 import streamlit as st
 import pandas as pd
 from datetime import datetime
@@ -3872,6 +3874,60 @@ elif st.session_state.paso == 33:
     file_name="respuestas_consolidadas.csv",
     mime="text/csv"
     )
+
+
+    # Crear documento Word
+    doc = Document()
+    doc.add_heading("📊 Resumen de Valoración por Subdimensión", level=1)
+
+# Insertar tabla estilo: Condición | Valoración, luego Hallazgos debajo
+    table = doc.add_table(rows=0, cols=2)
+    table.style = 'Light Grid Accent 1'
+
+    for _, row in df_resumen.iterrows():
+        row1 = table.add_row().cells
+        row1[0].text = row["Condición"]
+        row1[1].text = f"Valoración: {row['Valoración']}"
+
+        row2 = table.add_row().cells
+        row2[0].text = "Hallazgos:"
+        row2[1].text = str(row["Hallazgos"])
+
+# Agregar salto de página y el gráfico
+    doc.add_page_break()
+    doc.add_heading("📈 Nivel de Implementación Global", level=2)
+
+# Crear gráfico
+    fig, ax = plt.subplots(figsize=(6, 1))
+    colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
+               '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
+    rangos = list(range(0, 101, 10))
+    for i in range(len(colores)):
+        ax.barh(0, 10, left=rangos[i], color=colores[i], edgecolor='white')
+    ax.plot(global_pct, 0, 'o', markersize=20, markeredgecolor='black', markerfacecolor='none')
+    ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
+    ax.axis('off')
+
+    img_buffer = io.BytesIO()
+    plt.savefig(img_buffer, format='png', bbox_inches='tight')
+    plt.close()
+    img_buffer.seek(0)
+
+    doc.add_picture(img_buffer, width=Inches(5.5))
+
+    # Guardar Word en buffer
+    word_buffer = io.BytesIO()
+    doc.save(word_buffer)
+    word_buffer.seek(0)
+
+    # Botón de descarga
+    st.download_button(
+        label="📥 Descargar resumen (Word)",
+        data=word_buffer,
+        file_name="resumen_valoracion.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
+
 
 
 
