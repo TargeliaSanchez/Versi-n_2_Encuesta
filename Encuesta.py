@@ -3938,7 +3938,7 @@ elif st.session_state.paso == 33:
 
 
 
-    df_resumen = pd.DataFrame(df_resumen)
+    #df_resumen = pd.DataFrame(df_resumen)
 
 # Crear documento Word
     doc = Document()
