@@ -4011,7 +4011,8 @@ elif st.session_state.paso == 33:
         label="📥 Descargar resumen (Word)",
         data=word_buffer,
         file_name="resumen_valoracion.docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        key="descargar_word"
     )
 
 
