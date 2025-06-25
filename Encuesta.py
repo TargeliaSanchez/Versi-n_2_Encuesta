@@ -51,6 +51,39 @@ nombres_subdimensiones = {
 }
 
 
+nombres_subdimensiones2 = {
+    "Dimensión": "D1", "Condición": "D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.",
+    "Dimensión": "D1", "Condición": "D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.",
+    "Dimensión": "D1", "Condición": "D1.3 La prestación de los servicios de rehabilitación se realiza en diferentes modalidades: intramural, extramural y/o telemedicina.",
+    "Dimensión": "D1", "Condición": "D1.4 La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.",
+    "Dimensión": "D1", "Condición": "D1.5 La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.",
+    "Dimensión": "D1", "Condición": "D1.6 El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.",
+    "Dimensión": "D1", "Condición": "D1.7 En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.",
+    "Dimensión": "D1", "Condición": "D1.8 La institución estructura e implementa un plan de capacitación en atención o rehabilitación con enfoque biopsicosocial.",
+    "Dimensión": "D1", "Condición": "D1.9 La institución cuenta con áreas de atención, dotación y tecnología para la implementación de intervenciones orientadas a optimizar el proceso de rehabilitación.",
+    "Dimensión": "D2", "Condición": "D2.1 Se realiza o se cuenta con valoración médica integral de la condición de salud de los usuarios de rehabilitación.",
+    "Dimensión": "D2", "Condición": "D2.2 Se usan pruebas estandarizadas y/o instrumentos para la evaluación de los usuarios de rehabilitación.",
+    "Dimensión": "D2", "Condición": "D2.3 En la evaluación se valora el estado funcional del usuario.",
+    "Dimensión": "D2", "Condición": "D2.4 La evaluación considera el desempeño y los roles del usuario en diferentes entornos.",
+    "Dimensión": "D2", "Condición": "D2.5 En la evaluación se identifican facilitadores y barreras del entorno que influyen en el proceso de rehabilitación del usuario.",
+    "Dimensión": "D2", "Condición": "D2.6 En la evaluación se registran las expectativas del usuario, la familia o cuidador respecto al proceso de rehabilitación.",
+    "Dimensión": "D2", "Condición": "D2.7 El plan de atención del usuario de rehabilitación se estructura de acuerdo al modelo de atención y se centra en la persona.",
+    "Dimensión": "D2", "Condición": "D2.8 El plan de atención integra el manejo médico de la condición de salud y las intervenciones para el logro de los objetivos y/o metas de rehabilitación.",
+    "Dimensión": "D2", "Condición": "D2.9 Los profesionales definen con el usuario, la familia y/o cuidador, objetivos y/o metas de rehabilitación que se orientan a optimizar el funcionamiento.",
+    "Dimensión": "D2", "Condición": "D2.10 Se establecen objetivos y/o metas de rehabilitación medibles y alcanzables en un tiempo determinado.",
+    "Dimensión": "D2", "Condición": "D2.11 La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.",
+    "Dimensión": "D2", "Condición": "D2.12 Durante la intervención del usuario los profesionales de rehabilitación realizan acciones conjuntas, coordinadas e interdependientes.",
+    "Dimensión": "D2", "Condición": "D2.13 En el proceso de rehabilitación se implementan acciones con enfoque diferencial.",
+    "Dimensión": "D2", "Condición": "D2.14 Durante el proceso de atención, se realizan acciones para involucrar activamente al usuario, su familia y/o cuidador en el cumplimiento de los objetivos de rehabilitación.",
+    "Dimensión": "D2", "Condición": "D2.15 En la etapa o fase de intervención se realiza reevaluación del usuario para identificar los logros y de ser necesario, realizar ajustes al plan de atención.",
+    "Dimensión": "D2", "Condición": "D2.16 El proceso de rehabilitación incluye acciones planificadas de orientación y canalización del usuario y su familia a otras instituciones o sectores que pueden contribuir a su participación.",
+    "Dimensión": "D2", "Condición": "D2.17 Se realiza evaluación final del usuario para determinar los logros, y definir el egreso o la pertinencia de continuar con el proceso de rehabilitación.",
+    "Dimensión": "D2", "Condición": "D2.18 Se implementan acciones específicas para la atención y el egreso de usuarios de rehabilitación de larga permanencia con pobre pronóstico funcional.",
+    "Dimensión": "D3", "Condición": "D3.1 Se utilizan instrumentos adaptados y validados en el contexto nacional para evaluar los resultados del proceso de rehabilitación.",
+    "Dimensión": "D3", "Condición": "D3.2 Se miden y analizan los resultados del estado funcional de los usuarios posterior al proceso de rehabilitación.",
+    "Dimensión": "D3", "Condición": "D3.3 Se mide la satisfacción de los usuarios con la atención recibida en los servicios de rehabilitación."
+}
+
 
 # Lista de nombres de variables en el orden deseado
 orden_columnas = [
