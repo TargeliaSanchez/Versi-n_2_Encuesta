@@ -3,6 +3,7 @@ from docx import Document
 from docx.shared import Inches
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import io  # ← aquí
 import streamlit as st
 import pandas as pd
