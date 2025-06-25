@@ -3936,10 +3936,31 @@ elif st.session_state.paso == 33:
 
 # Versión con tablas separadas por dimensión y evaluación global al final
 
+# Simulación de session_state.respuestas para probar con tus datos reales
+
+# Construcción del resumen como lo haces tú, con la columna Dimensión añadida
+    resumen = []
+    for sub, variables in dimensiones.items():
+        if sub in nombres_subdimensiones and variables:
+            nombre = nombres_subdimensiones[sub]
+            valor_raw = respuestas.get(variables[4], 0)
+            valor = valor_raw[1] if isinstance(valor_raw, tuple) else valor_raw 
+            obs_key = variables[5] if len(variables) > 5 else None
+            observacion = respuestas.get(obs_key, "Sin observaciones") if obs_key else "No aplica"
+
+            resumen.append({
+                "Dimensión": sub[:2],  # D1, D2, D3
+                "Condición": nombre,
+                "Valoración": valor,
+                "Hallazgos": observacion
+            })
+
+    df_resumen = pd.DataFrame(resumen)
+    df_resumen
 
 
     #df_resumen = pd.DataFrame(df_resumen)
-
+    
 # Crear documento Word
     doc = Document()
     doc.add_heading("📊 Resumen de Valoración por Subdimensión", level=1)
