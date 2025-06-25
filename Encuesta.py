@@ -3826,11 +3826,7 @@ elif st.session_state.paso == 33:
     #st.subheader("Resumen de respuestas:")
     #st.json(st.session_state.respuestas)
 
-    # --- Opción: Volver al inicio ---
-    if st.button("🏠 Volver al inicio", type="primary"):
-        st.session_state.paso = 1
-        # st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
-        st.rerun()
+
 
     # --- Exportar respuestas con separador personalizado ---
     import pandas as pd
@@ -3927,6 +3923,13 @@ elif st.session_state.paso == 33:
         file_name="resumen_valoracion.docx",
         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     )
+
+
+    # --- Opción: Volver al inicio ---
+    if st.button("🏠 Volver al inicio", type="primary"):
+        st.session_state.paso = 1
+        # st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
+        st.rerun()
 
 
 
