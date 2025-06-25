@@ -3885,8 +3885,8 @@ elif st.session_state.paso == 33:
         row1[1].text = f"Valoración: {row['Valoración']}"
 
         row2 = table.add_row().cells
-        row2[0].text = "Hallazgos:"
-        row2[1].text = str(row["Hallazgos"])
+        merged = row2[0].merge(row2[1])
+        merged.text = f"Hallazgos: {row['Hallazgos']}"
 
 # Agregar salto de página y el gráfico
     doc.add_page_break()
@@ -3924,14 +3924,14 @@ elif st.session_state.paso == 33:
     )
 
     
-
+###########---------------------------------------------###################
     # --- Opción: Volver al inicio ---
     if st.button("🏠 Volver al inicio", type="primary"):
         st.session_state.paso = 1
         # st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
         st.rerun()
-
-##############################
+##########---------------------------------------------#####################
+############################################################################
 
 # Versión con tablas separadas por dimensión y evaluación global al final
 
@@ -3950,7 +3950,7 @@ elif st.session_state.paso == 33:
     doc.add_heading("📊 Resumen de Valoración por Subdimensión", level=1)
 
     suma_global = 0
-    max_por_pregunta = 4  # supongamos escala 0 a 4
+    max_por_pregunta = 5  # supongamos escala 0 a 4
     conteo_total_preguntas = 0
 
 # Agrupar por dimensión
