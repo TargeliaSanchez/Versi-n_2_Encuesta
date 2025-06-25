@@ -1,6 +1,9 @@
 
 from docx import Document
 from docx.shared import Inches
+import matplotlib.pyplot as plt
+import numpy as np
+import io  # ← aquí
 import streamlit as st
 import pandas as pd
 from datetime import datetime
@@ -10,11 +13,7 @@ from datetime import date
 import json
 import re
 from collections import defaultdict
-#Grafico
-#os.system("pip install matplotlib")
-import matplotlib.pyplot as plt
-import numpy as np
-import os 
+
 
 
 nombres_subdimensiones = {
