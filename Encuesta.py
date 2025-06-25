@@ -3955,7 +3955,7 @@ elif st.session_state.paso == 33:
 
 # Agrupar por dimensión
     for dim, grupo in df_resumen.groupby("Dimensión"):
-        doc.add_heading(f"🧩 Dimensión {dim}", level=2)
+        doc.add_heading(f"🧩 Dimensión {dim}", level=3)#CAMBIE DE 2 A 3
         table = doc.add_table(rows=1, cols=2)
         table.style = 'Light Grid Accent 1'
     
