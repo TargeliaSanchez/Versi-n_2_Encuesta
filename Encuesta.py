@@ -3970,7 +3970,7 @@ elif st.session_state.paso == 33:
 
 
 
-    df_resumen = pd.DataFrame(nombres_subdimensiones)
+    df_resumen = pd.DataFrame(nombres_subdimensiones2)
 
 # Crear documento Word
     doc = Document()
