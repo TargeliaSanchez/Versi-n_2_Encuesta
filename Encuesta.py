@@ -3935,15 +3935,9 @@ elif st.session_state.paso == 33:
 
 # Versión con tablas separadas por dimensión y evaluación global al final
 
-# Simulación de DataFrame con múltiples dimensiones
-    resumen = [
-        {"Dimensión": "D1", "Condición": "D1.1 Oferta de servicios", "Valoración": 3, "Hallazgos": "Se evidencia implementación parcial"},
-        {"Dimensión": "D1", "Condición": "D1.2 Talento humano", "Valoración": 4, "Hallazgos": "Cumple criterios establecidos"},
-        {"Dimensión": "D2", "Condición": "D2.1 Articulación territorial", "Valoración": 2, "Hallazgos": "Falta soporte en modalidad extramural"},
-        {"Dimensión": "D2", "Condición": "D2.2 Acceso a servicios", "Valoración": 3, "Hallazgos": "Implementación en curso"},
-    ]
 
-    df_resumen = pd.DataFrame(resumen)
+
+    df_resumen = pd.DataFrame(nombres_subdimensiones)
 
 # Crear documento Word
     doc = Document()
