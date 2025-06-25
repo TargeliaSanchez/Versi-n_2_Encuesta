@@ -3721,18 +3721,17 @@ elif st.session_state.paso == 33:
     alcance = st.session_state.get("alcance", "Completo")
     #puntajes, maximos = calcular_puntaje_por_dimensiones(todas_dimensiones, alcance)
 
-    st.success("¡Formulario completado! ✅")
+    st.success("¡Formulario completado! ✅") #Finalización del formulario
 
     st.subheader("📈 Resultados por dimensión")
-    puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones)
+    puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones) #Retroalimentación visual
 
     for dim in ["D1", "D2", "D3"]:
         st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
     
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
-
-
+########## Obtención del gráfico de retroalimentación.
     #total_max_global = 0
     total_global = sum(puntajes.values())
     total_max_global = sum(maximos.values())
@@ -3924,6 +3923,7 @@ elif st.session_state.paso == 33:
         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     )
 
+    
 
     # --- Opción: Volver al inicio ---
     if st.button("🏠 Volver al inicio", type="primary"):
@@ -3931,6 +3931,89 @@ elif st.session_state.paso == 33:
         # st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
         st.rerun()
 
+##############################
+
+# Versión con tablas separadas por dimensión y evaluación global al final
+
+# Simulación de DataFrame con múltiples dimensiones
+    resumen = [
+        {"Dimensión": "D1", "Condición": "D1.1 Oferta de servicios", "Valoración": 3, "Hallazgos": "Se evidencia implementación parcial"},
+        {"Dimensión": "D1", "Condición": "D1.2 Talento humano", "Valoración": 4, "Hallazgos": "Cumple criterios establecidos"},
+        {"Dimensión": "D2", "Condición": "D2.1 Articulación territorial", "Valoración": 2, "Hallazgos": "Falta soporte en modalidad extramural"},
+        {"Dimensión": "D2", "Condición": "D2.2 Acceso a servicios", "Valoración": 3, "Hallazgos": "Implementación en curso"},
+    ]
+
+    df_resumen = pd.DataFrame(resumen)
+
+# Crear documento Word
+    doc = Document()
+    doc.add_heading("📊 Resumen de Valoración por Subdimensión", level=1)
+
+    suma_global = 0
+    max_por_pregunta = 4  # supongamos escala 0 a 4
+    conteo_total_preguntas = 0
+
+# Agrupar por dimensión
+    for dim, grupo in df_resumen.groupby("Dimensión"):
+        doc.add_heading(f"🧩 Dimensión {dim}", level=2)
+        table = doc.add_table(rows=1, cols=2)
+        table.style = 'Light Grid Accent 1'
+    
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = "Condición"
+        hdr_cells[1].text = "Valoración"
+
+        suma_dimension = 0
+
+        for _, row in grupo.iterrows():
+            suma_dimension += row["Valoración"]
+            suma_global += row["Valoración"]
+            conteo_total_preguntas += 1
+
+            row1 = table.add_row().cells
+            row1[0].text = row["Condición"]
+            row1[1].text = str(row["Valoración"])
+
+            row2 = table.add_row().cells
+            merged = row2[0].merge(row2[1])
+            merged.text = f"Hallazgos: {row['Hallazgos']}"
+
+    # Fila de total
+        total_row = table.add_row().cells
+        total_row[0].text = "Total Dimensión"
+        total_row[1].text = str(suma_dimension)
+
+# Evaluación global
+    doc.add_page_break()
+    doc.add_heading("🌐 Evaluación Global", level=1)
+
+    total_max_global = conteo_total_preguntas * max_por_pregunta
+    global_pct = round((suma_global / total_max_global) * 100, 1) if total_max_global else 0
+
+    doc.add_paragraph(f"**Puntaje total global:** {suma_global} / {total_max_global} puntos ({global_pct}%).")
+
+# Insertar gráfico
+    fig, ax = plt.subplots(figsize=(6, 1))
+    colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
+               '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
+    rangos = list(range(0, 101, 10))
+    for i in range(len(colores)):
+        ax.barh(0, 10, left=rangos[i], color=colores[i], edgecolor='white')
+    ax.plot(global_pct, 0, 'o', markersize=20, markeredgecolor='black', markerfacecolor='none')
+    ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
+    ax.axis('off')
+
+    img_buffer = io.BytesIO()
+    plt.savefig(img_buffer, format='png', bbox_inches='tight')
+    plt.close()
+    img_buffer.seek(0)
+
+    doc.add_picture(img_buffer, width=Inches(5.5))
+
+# Guardar documento final
+    doc_path = "/mnt/data/resumen_valoracion_separado_y_global.docx"
+    doc.save(doc_path)
+    doc_path
 
 
 
