@@ -4002,18 +4002,18 @@ elif st.session_state.paso == 33:
     ax.plot(global_pct, 0, 'o', markersize=20, markeredgecolor='black', markerfacecolor='none')
     ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
     ax.axis('off')
+    
+    word_buffer = io.BytesIO()
+    doc.save(word_buffer)
+    word_buffer.seek(0)
 
-    img_buffer = io.BytesIO()
-    plt.savefig(img_buffer, format='png', bbox_inches='tight')
-    plt.close()
-    img_buffer.seek(0)
+    st.download_button(
+        label="📥 Descargar resumen (Word)",
+        data=word_buffer,
+        file_name="resumen_valoracion.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
 
-    doc.add_picture(img_buffer, width=Inches(5.5))
-
-# Guardar documento final
-    doc_path = "/mnt/data/resumen_valoracion_separado_y_global.docx"
-    doc.save(doc_path)
-    doc_path
 
 
 
