@@ -3878,7 +3878,7 @@ elif st.session_state.paso == 33:
     for _, row in df_resumen.iterrows():
         row1 = table.add_row().cells
         row1[0].text = row["Condición"]
-        row1[1].text = f"{row['Valoración']}"
+        row1[1].text = row['Valoración']
 
         row2 = table.add_row().cells
         merged = row2[0].merge(row2[1])
