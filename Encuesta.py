@@ -3730,39 +3730,44 @@ elif st.session_state.paso == 33:
     global_pct = round((total_global / total_max_global) * 100, 1)
     #global_pct = round((total_global / total_max_global) * 100, 1) if total_max_global > 0 else 0
   
-    def graficar_nivel_implementacion(valor, show=True):
+    def graficar_nivel_implementacion(valor, show=True, figsize=(10,2)):
+        import matplotlib.pyplot as plt
+        import io
         rangos = list(range(0, 101, 10))
         colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
                    '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
 
-        fig, ax = plt.subplots(figsize=(10, 2))
-
+        fig, ax = plt.subplots(figsize=figsize, dpi=100)
         for i in range(len(colores)):
             left = rangos[i]
             width = 10
+        # Dibuja barra
             ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white')
+        # Etiqueta
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
-            ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
+            ax.text(left + width/2, 0.4, label, ha='center', va='bottom', fontsize=14)
 
+    # Círculo y número grande
         ax.plot(valor, 0, 'o', markersize=30, markeredgecolor='black', markerfacecolor='none')
-        ax.text(valor, 0, f'{valor}', ha='center', va='center', fontsize=10, weight='bold')
+        ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=16, weight='bold')
 
         ax.set_xlim(0, 100)
-        ax.set_ylim(-0.5, 3.5)
+        ax.set_ylim(-0.5, 1)
         ax.axis('off')
 
         img_buffer = io.BytesIO()
-        plt.savefig(img_buffer, format='png', bbox_inches='tight')
-        plt.close()
-        img_buffer.seek(0)
+        plt.savefig(img_buffer, format='png', bbox_inches='tight', dpi=100)
         if show:
+            import streamlit as st
             st.pyplot(fig)
+        plt.close(fig)
+        img_buffer.seek(0)
         return img_buffer
 #-------------------------------------------------------------------------------------------------------------------------------#    
 #-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
     #graficar_nivel_implementacion(global_pct)
     # En la pestaña final (paso 33)
-        img_buffer = graficar_nivel_implementacion(global_pct, show=True)
+    img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(10,2))
 
 
 #----------------------------------- DEFINIR SEPARADOR PARA LOS ARCHIVOS EN EXCEL----------------------------------------------# 
