@@ -3753,6 +3753,14 @@ elif st.session_state.paso == 33:
         ax.axis('off')
 
         st.pyplot(fig)
+        ####### lo añadí
+            # Guardar en buffer para insertar en Word
+        img_buffer = io.BytesIO()
+        plt.savefig(img_buffer, format='png', bbox_inches='tight')
+        plt.close()
+        img_buffer.seek(0)
+        return img_buffer
+        ########################
 
     # Llamar esta función al final con el puntaje global como porcentaje
     graficar_nivel_implementacion(global_pct)
@@ -3890,16 +3898,21 @@ elif st.session_state.paso == 33:
     doc.add_heading("📈 Nivel de Implementación Global", level=2)
 
 # Crear gráfico
-    fig, ax = plt.subplots(figsize=(6, 1))
-    colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
-               '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
-    rangos = list(range(0, 101, 10))
+
+    # Usar gráfico de retroalimentación adaptado
+    img_buffer = generar_grafico_nivel_implementacion(global_pct)
+    doc.add_picture(img_buffer, width=Inches(6.5))
+
+    #fig, ax = plt.subplots(figsize=(6, 1))
+    #colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
+    #           '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
+    #rangos = list(range(0, 101, 10))
     
-    for i in range(len(colores)):
-        ax.barh(0, 10, left=rangos[i], color=colores[i], edgecolor='white')
-    ax.plot(global_pct, 0, 'o', markersize=20, markeredgecolor='black', markerfacecolor='none')
-    ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
-    ax.axis('off')
+    #for i in range(len(colores)):
+    #    ax.barh(0, 10, left=rangos[i], color=colores[i], edgecolor='white')
+    #ax.plot(global_pct, 0, 'o', markersize=20, markeredgecolor='black', markerfacecolor='none')
+    #ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
+    #ax.axis('off')
 
     img_buffer = io.BytesIO()
     plt.savefig(img_buffer, format='png', bbox_inches='tight')
