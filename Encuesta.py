@@ -3940,60 +3940,6 @@ elif st.session_state.paso == 33:
 
 #from docx.shared import RGBColor
 
-def agregar_tabla_dimension(...):
-        filas = len(lista_condiciones) + 3
-        tabla = doc.add_table(rows=filas, cols=2)
-        tabla.style = 'Light Grid Accent 1'
-
-    # Fila de título
-        titulo_row = tabla.rows[0]
-        titulo_cell = titulo_row.cells[0]
-        titulo_cell.merge(titulo_row.cells[1])
-        p = titulo_cell.paragraphs[0]
-        run = p.add_run(nombre_dim)
-        run.bold = True
-        run.font.size = Pt(11)
-        run.font.color.rgb = RGBColor(255,255,255)
-    set_cell_background(titulo_cell, '4F4F4F')
-
-
-    # 3. Encabezados
-        tabla.rows[1].cells[0].text = "CONDICIONES"
-        tabla.rows[1].cells[1].text = "CALIFICACIÓN"
-
-    # 4. Rellenar condiciones y calificaciones
-      #  for i, (cond, calif) in enumerate(zip(lista_condiciones, lista_calificaciones)):
-    #        tabla.rows[i+2].cells[0].text = cond
-     #       celda_calif = tabla.rows[i+2].cells[1]
-     #       celda_calif.text = str(calif)
-   #         if int(calif) == 5:  # verde fuerte para 5
-  #              shading_elm = celda_calif._tc.get_or_add_tcPr().add_new_shd()
- #               shading_elm.val = "clear"
-#                shading_elm.color = "auto"
-#                shading_elm.fill = "92D050"  # Verde
-
-    # 5. Fila de total (última fila)
-        tabla.rows[-1].cells[0].text = "T O T A L"
-        tabla.rows[-1].cells[1].text = str(puntaje_total)
-
-    # Opcional: Negrita en encabezados y total
-        for idx in [1, filas-1]:
-            for cell in tabla.rows[idx].cells:
-                for p in cell.paragraphs:
-                    for run in p.runs:
-                        run.bold = True
-
-# ------ USO ---------
-# Ejemplo de datos:
-    nombre_dim = "1. ORGANIZACIÓN Y GESTIÓN DE LOS SERVICIOS DE REHABILITACIÓN"
-    condiciones = [
-        "D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.",
-        "D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.",
-        # ...
-    ]
-    calificaciones = [5, 5]  # Ejemplo
-    puntaje = sum(calificaciones)
-    maximo = 10  # Máximo posible
 
 # En tu flujo:
     from docx import Document
