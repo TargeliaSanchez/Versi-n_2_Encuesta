@@ -3909,7 +3909,7 @@ elif st.session_state.paso == 33:
 
 
     
-
+'''
     for dim in ["D1", "D2", "D3"]:
         suma_dim = 0
         max_dim = len(subdims_por_dim[dim]) * 5  # O usa tu estructura de máximos si es distinta
@@ -3937,7 +3937,7 @@ elif st.session_state.paso == 33:
         para_puntaje = cell_puntaje.paragraphs[0]
         run_puntaje = para_puntaje.add_run(f"{suma_dim} / {max_dim}")
         run_puntaje.bold = True
-        
+   '''     
     run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]} / {maximos[dim]} ({100*puntajes[dim]/maximos[dim]:.1f}%)")
 
 # Agregar salto de página y el gráfico
