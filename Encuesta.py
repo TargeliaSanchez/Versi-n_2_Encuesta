@@ -3896,19 +3896,29 @@ elif st.session_state.paso == 33:
         subdims_por_dim[dim].append(sub)
 
     for dim in ["D1", "D2", "D3"]:
-        nombre_largo = nombres_dimensiones[dim] #adicional
-        doc.add_heading(nombre_largo, level=2) #Se adicionó nombre largo
-        table = doc.add_table(rows=2, cols=2)#se añadió fila extra
+        nombre_largo = nombres_dimensiones[dim]
+        table = doc.add_table(rows=2, cols=2)
         table.style = 'Light Grid Accent 1'
-        # Combina la primera fila para el nombre largo de la dimensión
-        row = table.rows[0]
-        cell = row.cells[0]
-        cell.merge(row.cells[1])
-        cell.text = nombre_largo
-        #Luego la segunda fila para encabezados
+
+    # Fila 0: nombre largo en celda combinada y fondo gris oscuro
+        titulo_row = table.rows[0]
+        titulo_cell = titulo_row.cells[0]
+        titulo_cell.merge(titulo_row.cells[1])
+        p = titulo_cell.paragraphs[0]
+        run = p.add_run(nombre_largo)
+        run.bold = True
+        run.font.size = Pt(11)
+        run.font.color.rgb = RGBColor(255,255,255)
+        set_cell_background(titulo_cell, '4F4F4F')  # Gris oscuro
+
+    # Fila 1: encabezados
         hdr_cells = table.rows[1].cells
         hdr_cells[0].text = 'CONDICIONES'
         hdr_cells[1].text = 'CALIFICACIÓN'
+        for cell in hdr_cells:
+            for para in cell.paragraphs:
+                for run in para.runs:
+                    run.bold = True
 
     # Agrega cada subdimensión de la dimensión
         for sub in subdims_por_dim[dim]:
@@ -3916,10 +3926,13 @@ elif st.session_state.paso == 33:
             if not mask.any():
                 continue  # Salta si no la encuentra
             row = df_resumen[mask].iloc[0]
-            val = row["Valoración"]
+            val = int(row["Valoración"])
+        # Fila condición y calificación
             row1 = table.add_row().cells
             row1[0].text = row["Condición"]
             row1[1].text = str(val)
+            set_cell_background(row1[1], color_puntaje.get(val, 'FFFFFF'))  # color segun puntaje
+        # Fila hallazgos
             row2 = table.add_row().cells
             merged = row2[0].merge(row2[1])
             merged.text = f"Hallazgos: {row['Hallazgos']}"
@@ -3928,13 +3941,12 @@ elif st.session_state.paso == 33:
         row_total = table.add_row().cells
         cell_dim = row_total[0]
         cell_puntaje = row_total[1]
-        run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
+        run_dim = cell_dim.paragraphs[0].add_run(f"T O T A L")
         run_dim.bold = True
         run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
-        run_puntaje.bold = False
+        run_puntaje.bold = True
 
-    # Salto de línea entre tablas
-        doc.add_paragraph("")  
+        doc.add_paragraph("")  # Salto de línea entre tablas
 
 #### aquí iba lo que borré
     
