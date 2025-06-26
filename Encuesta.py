@@ -1662,10 +1662,10 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        if alcance == "Basico":
-            st.button("Siguiente ▶️", on_click=siguiente_basico)
-        else:
-            st.button("Siguiente ▶️", on_click=siguiente)
+        #if alcance_selecc == "Basico":
+         #   st.button("Siguiente ▶️", on_click=siguiente_basico)
+        #else:
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 elif st.session_state.paso == 3:
@@ -1752,10 +1752,7 @@ elif st.session_state.paso == 3:
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        if alcance == "Basico":
-            st.button("Siguiente ▶️", on_click=siguiente_basico)
-        else:
-            st.button("Siguiente ▶️", on_click=siguiente)
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 #-------------------------------------------------------------------------------------
@@ -1829,10 +1826,7 @@ elif st.session_state.paso == 4:
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        if alcance == "Basico":
-            st.button("Siguiente ▶️", on_click=siguiente_basico)
-        else:
-            st.button("Siguiente ▶️", on_click=siguiente)
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 #-------------------------------------------------------------------------------------
@@ -1903,10 +1897,7 @@ elif st.session_state.paso == 5:
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        if alcance == "Basico":
-            st.button("Siguiente ▶️", on_click=siguiente_basico)
-        else:
-            st.button("Siguiente ▶️", on_click=siguiente)
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 
