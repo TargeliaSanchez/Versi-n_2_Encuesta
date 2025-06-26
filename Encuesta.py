@@ -3795,7 +3795,7 @@ elif st.session_state.paso == 33:
             })
 
     df_resumen = pd.DataFrame(resumen)
-    csv_resumen = df_resumen.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8")
+    csv_resumen = df_resumen.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
     st.download_button(
             label="📥 Descargar resumen (CSV)",
             data=csv_resumen,
@@ -3810,7 +3810,7 @@ elif st.session_state.paso == 33:
     import pandas as pd
     # Convertir respuestas en DataFrame y exportar
     df_respuestas = pd.DataFrame([st.session_state.respuestas])
-    csv = df_respuestas.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8")
+    csv = df_respuestas.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
 
     st.download_button(
         label="📥 Descargar respuestas (CSV)",
@@ -3841,7 +3841,7 @@ elif st.session_state.paso == 33:
 
     st.download_button(
     label="📥 Descargar base acumulada (CSV)",
-    data=df_total.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8"),
+    data=df_total.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig"),
     file_name="respuestas_consolidadas.csv",
     mime="text/csv"
     )
