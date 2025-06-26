@@ -1,7 +1,9 @@
 
 from docx import Document
 from docx.shared import Inches
-from docx.shared import RGBColor
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import RGBColor, Pt
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -3939,24 +3941,21 @@ elif st.session_state.paso == 33:
 #from docx.shared import RGBColor
 
     def agregar_tabla_dimension(doc, nombre_dim, lista_condiciones, lista_calificaciones, puntaje_total, maximo):
-        # 1. Crear tabla con filas = condiciones + encabezado + una para el título + total
         filas = len(lista_condiciones) + 3
         tabla = doc.add_table(rows=filas, cols=2)
         tabla.style = 'Light Grid Accent 1'
 
-    # 2. Fila superior: nombre de la dimensión (celda combinada)
+    # Fila de título
         titulo_row = tabla.rows[0]
         titulo_cell = titulo_row.cells[0]
-        titulo_cell.merge(titulo_row.cells[1])  # Combina ambas celdas
+        titulo_cell.merge(titulo_row.cells[1])
         p = titulo_cell.paragraphs[0]
         run = p.add_run(nombre_dim)
         run.bold = True
-        run.font.size = p.style.font.size  # Hereda tamaño del estilo
-        shading_elm = titulo_cell._tc.get_or_add_tcPr().add_new_shd()
-        shading_elm.val = "clear"
-        shading_elm.color = "auto"
-        shading_elm.fill = "4F4F4F"  # Gris oscuro
-        run.font.color.rgb = RGBColor(255,255,255)  # Blanco
+        run.font.size = Pt(11)
+        run.font.color.rgb = RGBColor(255,255,255)
+    set_cell_background(titulo_cell, '4F4F4F')
+
 
     # 3. Encabezados
         tabla.rows[1].cells[0].text = "CONDICIONES"
