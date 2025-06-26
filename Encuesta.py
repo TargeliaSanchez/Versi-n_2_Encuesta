@@ -206,32 +206,6 @@ def guardar_respuesta(key, value):
 
 
 
-# En tu session_state inicial
-if 'alcance_seleccionado' not in st.session_state:
-    st.session_state.alcance_seleccionado = False
-
-# Selector de alcance (solo si no se ha seleccionado)
-if not st.session_state.alcance_seleccionado:
-    alcance = st.radio(
-        "Alcance de la evaluación:",
-        options=["Básico", "Completo"],
-        horizontal=True
-    )
-    if st.button("Confirmar alcance"):
-        st.session_state.alcance_evaluacion = alcance
-        st.session_state.alcance_seleccionado = True
-        st.rerun()
-else:
-    st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
-
-# Función para filtrar subdimensiones
-def mostrar_subdimension(subdim_title):
-    if st.session_state.alcance_evaluacion == "Completo":
-        return True
-    return "►" in subdim_title  # Solo mostrar subdimensiones con ► en básico
-
-################################################
-
 # ----------------------------
 # FUNCIONES DE NAVEGACIÓN
 # ----------------------------
@@ -1640,11 +1614,45 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
     </div>
     """, unsafe_allow_html=True)
 
-    alcance=st.selectbox(
-        "Seleccione el alcance del formulario",
-        options=["Seleccione", "Básico", "Completo"],
-        key="alcance"
+    ############33
+    # En tu session_state inicial
+    if 'alcance_seleccionado' not in st.session_state:
+        st.session_state.alcance_seleccionado = False
+
+# Selector de alcance (solo si no se ha seleccionado)
+    if not st.session_state.alcance_seleccionado:
+        alcance = st.radio(
+            "Alcance de la evaluación:",
+            options=["Básico", "Completo"],
+            horizontal=True
         )
+        if st.button("Confirmar alcance"):
+            st.session_state.alcance_evaluacion = alcance
+            st.session_state.alcance_seleccionado = True
+            st.rerun()
+    else:
+        st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
+
+# Función para filtrar subdimensiones
+    def mostrar_subdimension(subdim_title):
+        if st.session_state.alcance_evaluacion == "Completo":
+            return True
+        return "►" in subdim_title  # Solo mostrar subdimensiones con ► en básico
+
+################################################
+
+
+
+
+
+
+
+    
+    #alcance=st.selectbox(
+    #    "Seleccione el alcance del formulario",
+    #    options=["Seleccione", "Básico", "Completo"],
+    #    key="alcance"
+    #    )
     guardar_respuesta("alcance", alcance)
 
     if st.session_state.alcance != "Seleccione":
