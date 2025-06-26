@@ -3883,7 +3883,7 @@ elif st.session_state.paso == 33:
 
     for dim in ["D1", "D2", "D3"]:
         nombre_largo = nombres_dimensiones[dim] #adicional
-        #doc.add_heading(nombre_largo, level=2) #Se adicionó nombre largo
+        doc.add_heading(nombre_largo, level=2) #Se adicionó nombre largo
         table = doc.add_table(rows=2, cols=2)#se añadió fila extra
         table.style = 'Light Grid Accent 1'
         # Combina la primera fila para el nombre largo de la dimensión
@@ -3892,7 +3892,7 @@ elif st.session_state.paso == 33:
         cell.merge(row.cells[1])
         cell.text = nombre_largo
         #Luego la segunda fila para encabezados
-        hdr_cells = table.rows[0].cells
+        hdr_cells = table.rows[1].cells
         hdr_cells[0].text = 'CONDICIONES'
         hdr_cells[1].text = 'CALIFICACIÓN'
 
