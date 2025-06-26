@@ -3729,14 +3729,14 @@ elif st.session_state.paso == 33:
     total_max_global = sum(maximos.values())
     global_pct = round((total_global / total_max_global) * 100, 1)
   
-    def graficar_nivel_implementacion(valor, show=True, figsize=(4,2)):
+    def graficar_nivel_implementacion(valor, show=True, figsize=(4,1)):
         import matplotlib.pyplot as plt
         import io
         rangos = list(range(0, 101, 10))
         colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
                    '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
 
-        fig, ax = plt.subplots(figsize=figsize, dpi=80)
+        fig, ax = plt.subplots(figsize=figsize, dpi=100)
         for i in range(len(colores)):
             left = rangos[i]
             width = 10
@@ -3744,14 +3744,15 @@ elif st.session_state.paso == 33:
         # 👇 BAJA la etiqueta lo más posible sin que se solape con la barra (ej. 0.15)
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
             ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
-        ax.plot(valor, 0, 'o', markersize=30, markeredgecolor='black', markerfacecolor='none')
+        ax.plot(valor, 0, 'o', markersize=25, markeredgecolor='black', markerfacecolor='none')
         ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=10, weight='bold')
 
         ax.set_xlim(0, 100)
-        ax.set_ylim(-0.7, 3.5)  # 👈 Ajusta aquí para recortar el espacio arriba
+        ax.set_ylim(-1.2, 1.2)  # 👈 Ajusta aquí para recortar el espacio arriba
         ax.axis('off')
 
         img_buffer = io.BytesIO()
+        fig.tight_layout(pad=0.2)  # 👈 Mejora aún más el recorte
         plt.savefig(img_buffer, format='png', bbox_inches='tight', dpi=100)
         if show:
             import streamlit as st
