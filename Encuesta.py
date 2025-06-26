@@ -3899,7 +3899,7 @@ elif st.session_state.paso == 33:
         row_total = table.add_row().cells
         cell_dim = row_total[0]
         cell_puntaje = row_total[1]
-        run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL Dimensión {dim}")
+        run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
         run_dim.bold = True
         run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
         run_puntaje.bold = True
