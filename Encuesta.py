@@ -1695,15 +1695,14 @@ elif st.session_state.paso == 3:
             
 
     for i, texto in enumerate(preguntas_d11):
-        with st.container():    
-            col1, col2= st.columns([4, 1])
-            with col1:
-                st.markdown(texto)
+        col1, col2= st.columns([4, 1])
+        with col1:
+            st.markdown(texto)
             #st.markdown("------------------------------")
     
-            with col2:
-                val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
-                guardar_respuesta(f"pD1_1_{i+1}", val[1])
+        with col2:
+            val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
+            guardar_respuesta(f"pD1_1_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
