@@ -3942,10 +3942,10 @@ elif st.session_state.paso == 33:
 
 
 # En tu flujo:
-    from docx import Document
-    doc = Document()
-    agregar_tabla_dimension(doc, nombre_dim, condiciones, calificaciones, puntaje, maximo)
-    doc.save("ejemplo_dimension.docx")
+ #   from docx import Document
+ #   doc = Document()
+ #   agregar_tabla_dimension(doc, nombre_dim, condiciones, calificaciones, puntaje, maximo)
+ #   doc.save("ejemplo_dimension.docx")
 
     
 ###########---------------------------------------------###################
