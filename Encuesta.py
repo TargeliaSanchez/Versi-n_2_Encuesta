@@ -3745,7 +3745,7 @@ elif st.session_state.paso == 33:
             ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white')
         # Etiqueta
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
-            ax.text(left + width/2, 0.4, label, ha='center', va='bottom', fontsize=14)
+            ax.text(left + width/2, 0.4, label, ha='center', va='bottom', fontsize=9)
 
     # Círculo y número grande
         ax.plot(valor, 0, 'o', markersize=30, markeredgecolor='black', markerfacecolor='none')
@@ -3767,7 +3767,7 @@ elif st.session_state.paso == 33:
 #-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
     #graficar_nivel_implementacion(global_pct)
     # En la pestaña final (paso 33)
-    img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(10,2))
+    img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
 
 
 #----------------------------------- DEFINIR SEPARADOR PARA LOS ARCHIVOS EN EXCEL----------------------------------------------# 
@@ -3890,7 +3890,7 @@ elif st.session_state.paso == 33:
 
     # En la pestaña final (paso 33)
 
-    doc.add_picture(img_buffer, width=Inches(10)) 
+    doc.add_picture(img_buffer, width=Inches(7)) 
 
     # Guardar Word en buffer
     word_buffer = io.BytesIO()
