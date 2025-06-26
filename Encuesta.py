@@ -3878,8 +3878,8 @@ elif st.session_state.paso == 33:
         table = doc.add_table(rows=1, cols=2)
         table.style = 'Light Grid Accent 1'
         hdr_cells = table.rows[0].cells
-        hdr_cells[0].text = 'Condición'
-        hdr_cells[1].text = 'Valoración'
+        hdr_cells[0].text = 'CONDICIONES'
+        hdr_cells[1].text = 'CALIFICACIÓN'
 
     # Agrega cada subdimensión de la dimensión
         for sub in subdims_por_dim[dim]:
@@ -3900,9 +3900,9 @@ elif st.session_state.paso == 33:
         cell_dim = row_total[0]
         cell_puntaje = row_total[1]
         run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
-        run_dim.bold = True
+        run_dim.bold = False
         run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
-        run_puntaje.bold = True
+        run_puntaje.bold = False
 
     # Salto de línea entre tablas
         doc.add_paragraph("")  
