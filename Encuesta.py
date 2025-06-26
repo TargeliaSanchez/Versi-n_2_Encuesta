@@ -3729,7 +3729,7 @@ elif st.session_state.paso == 33:
     total_max_global = sum(maximos.values())
     global_pct = round((total_global / total_max_global) * 100, 1)
   
-    def graficar_nivel_implementacion(valor, show=True, figsize=(10,2)):
+    def graficar_nivel_implementacion(valor, show=True, figsize=(4,2)):
         import matplotlib.pyplot as plt
         import io
         rangos = list(range(0, 101, 10))
