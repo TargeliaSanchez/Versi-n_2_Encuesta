@@ -206,12 +206,6 @@ def guardar_respuesta(key, value):
 
 
 
-# --- Inicializar session_state ---
-for main_dim in dimensiones.values():
-    for sub_dim, preguntas in main_dim.items():
-        for pregunta in preguntas:
-            if pregunta["key"] not in st.session_state:
-                st.session_state[pregunta["key"]] = opciones[0]
 
 main_dim_keys = list(dimensiones.keys())
 current_main_dim = main_dim_keys[st.session_state.current_main_dim]
