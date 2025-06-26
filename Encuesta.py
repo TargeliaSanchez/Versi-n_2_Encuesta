@@ -206,8 +206,64 @@ def guardar_respuesta(key, value):
 
 
 
+# --- Inicializar session_state ---
+for main_dim in dimensiones.values():
+    for sub_dim, preguntas in main_dim.items():
+        for pregunta in preguntas:
+            if pregunta["key"] not in st.session_state:
+                st.session_state[pregunta["key"]] = opciones[0]
+
+main_dim_keys = list(dimensiones.keys())
+current_main_dim = main_dim_keys[st.session_state.current_main_dim]
+sub_dim_keys = list(dimensiones[current_main_dim].keys())
+current_sub_dim = sub_dim_keys[st.session_state.current_sub_dim]
+
+#--- Selector de alcance ---
+# se reemplaza 27-5-25
+#st.session_state.alcance_evaluacion = st.radio(
+#    "Alcance de la evaluación:",
+#    options=["Básico", "Completo"],
+#    horizontal=True,
+#    key="alcance_selector"
+#)
 
 
+# En tu session_state inicial
+if 'alcance_seleccionado' not in st.session_state:
+    st.session_state.alcance_seleccionado = False
+
+# Selector de alcance (solo si no se ha seleccionado)
+if not st.session_state.alcance_seleccionado:
+    alcance = st.radio(
+        "Alcance de la evaluación:",
+        options=["Básico", "Completo"],
+        horizontal=True
+    )
+    if st.button("Confirmar alcance"):
+        st.session_state.alcance_evaluacion = alcance
+        st.session_state.alcance_seleccionado = True
+        st.rerun()
+else:
+    st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
+
+# Función para filtrar subdimensiones
+def mostrar_subdimension(subdim_title):
+    if st.session_state.alcance_evaluacion == "Completo":
+        return True
+    return "►" in subdim_title  # Solo mostrar subdimensiones con ► en básico
+
+# --- Navegación ---
+main_dim_keys = list(dimensiones.keys())
+current_main_dim = main_dim_keys[st.session_state.current_main_dim]
+
+# Filtrar subdimensiones según alcance
+sub_dim_keys = [k for k in dimensiones[current_main_dim].keys()
+               if mostrar_subdimension(k)]
+## Cuando es alcance básico
+if not sub_dim_keys:
+    st.warning("Finalizar el cuestionario")
+
+################################################
 
 # ----------------------------
 # FUNCIONES DE NAVEGACIÓN
