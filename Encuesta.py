@@ -3898,13 +3898,13 @@ elif st.session_state.paso == 33:
 
     # Agrega cada subdimensión de la dimensión
         for sub in subdims_por_dim[dim]:
-            mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
+            mask = df_resumen["CONDICIONES"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
             if not mask.any():
                 continue  # Salta si no la encuentra
             row = df_resumen[mask].iloc[0]
-            val = row["Valoración"]
+            val = row["CALIFICACIÓN"]
             row1 = table.add_row().cells
-            row1[0].text = row["Condición"]
+            row1[0].text = row["CONDICIONES"]
             row1[1].text = str(val)
             row2 = table.add_row().cells
             merged = row2[0].merge(row2[1])
