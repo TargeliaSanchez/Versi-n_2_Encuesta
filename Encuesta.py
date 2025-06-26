@@ -3900,7 +3900,7 @@ elif st.session_state.paso == 33:
 # Crear gráfico
 
     # Usar gráfico de retroalimentación adaptado
-    img_buffer = generar_grafico_nivel_implementacion(global_pct)
+    img_buffer = graficar_nivel_implementacion(global_pct)
     doc.add_picture(img_buffer, width=Inches(6.5))
 
     #fig, ax = plt.subplots(figsize=(6, 1))
