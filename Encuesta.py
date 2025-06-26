@@ -3898,7 +3898,7 @@ elif st.session_state.paso == 33:
     for dim in ["D1", "D2", "D3"]:
         nombre_largo = nombres_dimensiones[dim]
         table = doc.add_table(rows=2, cols=2)
-        table.style = 'Light Grid Accent 1'
+        table.style = 'Table Grid'
 
     # Fila 0: nombre largo en celda combinada y fondo gris oscuro
         titulo_row = table.rows[0]
@@ -3941,7 +3941,7 @@ elif st.session_state.paso == 33:
         row_total = table.add_row().cells
         cell_dim = row_total[0]
         cell_puntaje = row_total[1]
-        run_dim = cell_dim.paragraphs[0].add_run(f"T O T A L")
+        run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
         run_dim.bold = True
         run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
         run_puntaje.bold = True
