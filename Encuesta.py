@@ -3940,7 +3940,7 @@ elif st.session_state.paso == 33:
 
 #from docx.shared import RGBColor
 
-    def agregar_tabla_dimension(doc, nombre_dim, lista_condiciones, lista_calificaciones, puntaje_total, maximo):
+def agregar_tabla_dimension(...):
         filas = len(lista_condiciones) + 3
         tabla = doc.add_table(rows=filas, cols=2)
         tabla.style = 'Light Grid Accent 1'
