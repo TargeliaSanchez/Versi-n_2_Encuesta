@@ -3728,7 +3728,6 @@ elif st.session_state.paso == 33:
     total_global = sum(puntajes.values())
     total_max_global = sum(maximos.values())
     global_pct = round((total_global / total_max_global) * 100, 1)
-    #global_pct = round((total_global / total_max_global) * 100, 1) if total_max_global > 0 else 0
   
     def graficar_nivel_implementacion(valor, show=True, figsize=(10,2)):
         import matplotlib.pyplot as plt
@@ -3737,7 +3736,7 @@ elif st.session_state.paso == 33:
         colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
                    '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
 
-        fig, ax = plt.subplots(figsize=figsize, dpi=100)
+        fig, ax = plt.subplots(figsize=figsize, dpi=80)
         for i in range(len(colores)):
             left = rangos[i]
             width = 10
