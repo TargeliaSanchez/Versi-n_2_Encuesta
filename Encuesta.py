@@ -3902,7 +3902,7 @@ elif st.session_state.paso == 33:
     img_buffer = graficar_nivel_implementacion(global_pct, show=False)  # solo buffer
     st.pyplot(plt.imread(img_buffer))  # mostrar en pantalla, si lo necesitas con el buffer
 
-    doc.add_picture(img_buffer, width=Inches(5.5))
+    #doc.add_picture(img_buffer, width=Inches(5.5))
 
     # Guardar Word en buffer
     word_buffer = io.BytesIO()
