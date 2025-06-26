@@ -1692,9 +1692,10 @@ elif st.session_state.paso == 3:
     if notas_d11[0]:
         with st.expander("Nota"):
             st.markdown(notas_d11[0])
-    #Toby
-    with st.container():    
-        for i, texto in enumerate(preguntas_d11):
+            
+
+    for i, texto in enumerate(preguntas_d11):
+        with st.container():    
             col1, col2= st.columns([4, 1])
             with col1:
                 st.markdown(texto)
