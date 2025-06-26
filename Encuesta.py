@@ -3869,10 +3869,10 @@ elif st.session_state.paso == 33:
     table = doc.add_table(rows=0, cols=2)
     table.style = 'Light Grid Accent 1'
 
-    # Agregar nombres de columnas
-    hdr_cells = table.rows[0].cells
-    hdr_cells[0].text = 'Condición'
-    hdr_cells[1].text = 'Valoración'
+        # Agregar nombres de columnas
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = 'Condición'
+        hdr_cells[1].text = 'Valoración'
 
 
     for _, row in df_resumen.iterrows():
