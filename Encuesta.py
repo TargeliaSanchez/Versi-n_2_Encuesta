@@ -3752,7 +3752,7 @@ elif st.session_state.paso == 33:
         ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=16, weight='bold')
 
         ax.set_xlim(0, 100)
-        ax.set_ylim(-0.5, 1)
+        ax.set_ylim(-0.5, 3.5)
         ax.axis('off')
 
         img_buffer = io.BytesIO()
@@ -3890,7 +3890,7 @@ elif st.session_state.paso == 33:
 
     # En la pestaña final (paso 33)
 
-    doc.add_picture(img_buffer, width=Inches(7)) 
+    doc.add_picture(img_buffer, width=Inches(6.5)) 
 
     # Guardar Word en buffer
     word_buffer = io.BytesIO()
