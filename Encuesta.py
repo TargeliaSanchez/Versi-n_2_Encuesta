@@ -3962,15 +3962,15 @@ def agregar_tabla_dimension(...):
         tabla.rows[1].cells[1].text = "CALIFICACIÓN"
 
     # 4. Rellenar condiciones y calificaciones
-        for i, (cond, calif) in enumerate(zip(lista_condiciones, lista_calificaciones)):
-            tabla.rows[i+2].cells[0].text = cond
-            celda_calif = tabla.rows[i+2].cells[1]
-            celda_calif.text = str(calif)
-            if int(calif) == 5:  # verde fuerte para 5
-                shading_elm = celda_calif._tc.get_or_add_tcPr().add_new_shd()
-                shading_elm.val = "clear"
-                shading_elm.color = "auto"
-                shading_elm.fill = "92D050"  # Verde
+      #  for i, (cond, calif) in enumerate(zip(lista_condiciones, lista_calificaciones)):
+    #        tabla.rows[i+2].cells[0].text = cond
+     #       celda_calif = tabla.rows[i+2].cells[1]
+     #       celda_calif.text = str(calif)
+   #         if int(calif) == 5:  # verde fuerte para 5
+  #              shading_elm = celda_calif._tc.get_or_add_tcPr().add_new_shd()
+ #               shading_elm.val = "clear"
+#                shading_elm.color = "auto"
+#                shading_elm.fill = "92D050"  # Verde
 
     # 5. Fila de total (última fila)
         tabla.rows[-1].cells[0].text = "T O T A L"
