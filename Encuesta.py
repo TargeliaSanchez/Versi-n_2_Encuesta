@@ -3863,6 +3863,51 @@ elif st.session_state.paso == 33:
         dim = sub.split(".")[0]  # "D1", "D2", etc.
         subdims_por_dim[dim].append(sub)
 
+    from collections import defaultdict
+
+# Agrupa subdimensiones por dimensión (D1, D2, D3)
+    subdims_por_dim = defaultdict(list)
+    for sub in dimensiones.keys():
+        dim = sub.split(".")[0]
+        subdims_por_dim[dim].append(sub)
+
+    for dim in ["D1", "D2", "D3"]:
+        doc.add_heading(f"Dimensión {dim}", level=2)
+        table = doc.add_table(rows=1, cols=2)
+        table.style = 'Light Grid Accent 1'
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = 'Condición'
+        hdr_cells[1].text = 'Valoración'
+
+    # Agrega cada subdimensión de la dimensión
+        for sub in subdims_por_dim[dim]:
+            mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
+            if not mask.any():
+                continue  # Salta si no la encuentra
+            row = df_resumen[mask].iloc[0]
+            val = row["Valoración"]
+            row1 = table.add_row().cells
+            row1[0].text = row["Condición"]
+            row1[1].text = str(val)
+            row2 = table.add_row().cells
+            merged = row2[0].merge(row2[1])
+            merged.text = f"Hallazgos: {row['Hallazgos']}"
+
+    # Fila de puntaje global de la dimensión
+        row_total = table.add_row().cells
+        cell_dim = row_total[0]
+        cell_puntaje = row_total[1]
+        run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL Dimensión {dim}")
+        run_dim.bold = True
+        run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]} / {maximos[dim]}")
+        run_puntaje.bold = True
+
+    # Salto de línea entre tablas
+        doc.add_paragraph("")  
+
+
+    
+
     for dim in ["D1", "D2", "D3"]:
         suma_dim = 0
         max_dim = len(subdims_por_dim[dim]) * 5  # O usa tu estructura de máximos si es distinta
@@ -3890,6 +3935,8 @@ elif st.session_state.paso == 33:
         para_puntaje = cell_puntaje.paragraphs[0]
         run_puntaje = para_puntaje.add_run(f"{suma_dim} / {max_dim}")
         run_puntaje.bold = True
+        
+    run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]} / {maximos[dim]} ({100*puntajes[dim]/maximos[dim]:.1f}%)")
 
 # Agregar salto de página y el gráfico
     doc.add_page_break()
