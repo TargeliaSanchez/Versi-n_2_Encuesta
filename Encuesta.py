@@ -3741,19 +3741,15 @@ elif st.session_state.paso == 33:
         for i in range(len(colores)):
             left = rangos[i]
             width = 10
-        # Dibuja barra
             ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white')
-        # Etiqueta
+        # 👇 BAJA la etiqueta lo más posible sin que se solape con la barra (ej. 0.15)
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
-            #ax.text(left + width/2, 0.4, label, ha='center', va='bottom', fontsize=9)
-            ax.set_ylim(-0.7, 0.95)
-
-    # Círculo y número grande
+            ax.text(left + width/2, 0.15, label, ha='center', va='bottom', fontsize=14)
         ax.plot(valor, 0, 'o', markersize=30, markeredgecolor='black', markerfacecolor='none')
-        ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=14, weight='bold')
+        ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=16, weight='bold')
 
         ax.set_xlim(0, 100)
-        ax.set_ylim(-0.5, 3.5)
+        ax.set_ylim(-0.7, 0.95)  # 👈 Ajusta aquí para recortar el espacio arriba
         ax.axis('off')
 
         img_buffer = io.BytesIO()
