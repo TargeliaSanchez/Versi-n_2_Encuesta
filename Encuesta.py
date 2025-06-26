@@ -15,6 +15,8 @@ import json
 import re
 from collections import defaultdict
 
+doc=Document()
+
 
 
 nombres_subdimensiones = {
