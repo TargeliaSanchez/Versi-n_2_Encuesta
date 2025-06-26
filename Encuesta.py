@@ -19,6 +19,23 @@ import re
 from collections import defaultdict
 
 
+def set_cell_background(cell, rgb_color):
+    tc = cell._tc
+    tcPr = tc.get_or_add_tcPr()
+    shd = OxmlElement('w:shd')
+    shd.set(qn('w:fill'), rgb_color)
+    tcPr.append(shd)
+
+# Diccionario de colores para cada puntaje:
+color_puntaje = {
+    5: '92D050',  # Verde fuerte
+    4: 'C6E0B4',  # Verde medio
+    3: 'FFEB9C',  # Amarillo claro
+    2: 'FCE4D6',  # Naranja pálido
+    1: 'F8CBAD',  # Rojo claro
+}
+
+
 doc=Document()
 
 nombres_dimensiones = {
@@ -3858,13 +3875,10 @@ elif st.session_state.paso == 33:
 
 
 # Insertar tabla estilo: Condición | Valoración, luego Hallazgos debajo
-    table = doc.add_table(rows=1, cols=2)
-    table.style = 'Light Grid Accent 1'
+    #table = doc.add_table(rows=1, cols=2)
+    #table.style = 'Light Grid Accent 1'
 
-# Agregar nombres de columnas
- #   hdr_cells = table.rows[0].cells
- #   hdr_cells[0].text = 'Condición'
- #   hdr_cells[1].text = 'Valoración'
+
 
 # Agrupa por dimensión
     from collections import defaultdict
