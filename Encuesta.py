@@ -3708,8 +3708,9 @@ elif st.session_state.paso == 33:
     with col2:
         st.button("Siguiente ▶️", on_click=siguiente)
 
-    alcance = st.session_state.get("alcance", "Completo")
-    #puntajes, maximos = calcular_puntaje_por_dimensiones(todas_dimensiones, alcance)
+
+###########---------------------------------FINLIZACIÓN DE FORMUARIO-----------------------------------------------------############
+
 
     st.success("¡Formulario completado! ✅") #Finalización del formulario
 
@@ -3722,7 +3723,7 @@ elif st.session_state.paso == 33:
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
     
-########## Obtención del gráfico de retroalimentación.
+##########-----------------------------------Obtención del gráfico de retroalimentación-----------------------------------############
     #total_max_global = 0
     total_global = sum(puntajes.values())
     total_max_global = sum(maximos.values())
@@ -3757,13 +3758,14 @@ elif st.session_state.paso == 33:
         if show:
             st.pyplot(fig)
         return img_buffer
-    
-    # Llamar esta función al final con el puntaje global como porcentaje
+#-------------------------------------------------------------------------------------------------------------------------------#    
+#-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
     #graficar_nivel_implementacion(global_pct)
     # En la pestaña final (paso 33)
         img_buffer = graficar_nivel_implementacion(global_pct, show=True)
 
-    
+
+#----------------------------------- DEFINIR SEPARADOR PARA LOS ARCHIVOS EN EXCEL----------------------------------------------# 
     separador = st.radio(
         "Separador del archivo CSV:",
         options=[",", ";"],
@@ -3793,41 +3795,25 @@ elif st.session_state.paso == 33:
     df_resumen = pd.DataFrame(resumen)
     csv_resumen = df_resumen.to_csv(index=False, sep=separador).encode("utf-8")
     st.download_button(
-            label="📥 Descargar resumen por subdimensión (CSV)",
+            label="📥 Descargar resumen (CSV)",
             data=csv_resumen,
             file_name="valoracion_por_subdimension.csv",
             mime="text/csv"
             )
 
 
-    #st.subheader("📊 Resumen de valoración por subdimensión")
-    #st.dataframe(df_resumen, hide_index=True)
-
 # Botón de descarga
-    csv = df_resumen.to_csv(index=False,sep=separador).encode("utf-8")
-    st.download_button(
-        label="📥 Descargar resumen (CSV)",
-        data=csv,
-        file_name="valoracion_por_subdimension.csv",
-        mime="text/csv"
-    )
+#    csv = df_resumen.to_csv(index=False,sep=separador).encode("utf-8")
+#    st.download_button(
+#        label="📥 Descargar resumen (CSV)",
+#        data=csv,
+#        file_name="valoracion_por_subdimension.csv",
+#        mime="text/csv"
+#    )
 
 
-
-
-
-
-    # --- Mostrar respuestas en formato JSON ---
-    #st.subheader("Resumen de respuestas:")
-    #st.json(st.session_state.respuestas)
-
-
-
-    # --- Exportar respuestas con separador personalizado ---
+    # ---------------------------------------- Exportar respuestas -------------------------------------------------
     import pandas as pd
-
-    # Selector de separador
-
     # Convertir respuestas en DataFrame y exportar
     df_respuestas = pd.DataFrame([st.session_state.respuestas])
     csv = df_respuestas.to_csv(index=False, sep=separador).encode("utf-8")
@@ -3867,7 +3853,7 @@ elif st.session_state.paso == 33:
     )
 
 
-    # Crear documento Word
+    #------------------------------------------ Crear documento Word---------------------------------------------#
     doc = Document()
     doc.add_heading("📊 Resumen de Valoración por Subdimensión", level=1)
 
@@ -3899,10 +3885,7 @@ elif st.session_state.paso == 33:
 
     # En la pestaña final (paso 33)
 
-    img_buffer = graficar_nivel_implementacion(global_pct, show=False)  # solo buffer
-    st.pyplot(plt.imread(img_buffer))  # mostrar en pantalla, si lo necesitas con el buffer
-
-    #doc.add_picture(img_buffer, width=Inches(5.5))
+    doc.add_picture(img_buffer, width=Inches(10)) 
 
     # Guardar Word en buffer
     word_buffer = io.BytesIO()
