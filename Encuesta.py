@@ -3914,12 +3914,12 @@ elif st.session_state.paso == 33:
     #ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
     #ax.axis('off')
 
-    img_buffer = io.BytesIO()
-    plt.savefig(img_buffer, format='png', bbox_inches='tight')
-    plt.close()
-    img_buffer.seek(0)
+    #img_buffer = io.BytesIO()
+    #plt.savefig(img_buffer, format='png', bbox_inches='tight')
+    #plt.close()
+    #img_buffer.seek(0)
 
-    doc.add_picture(img_buffer, width=Inches(5.5))
+    #doc.add_picture(img_buffer, width=Inches(5.5))
 
     # Guardar Word en buffer
     word_buffer = io.BytesIO()
