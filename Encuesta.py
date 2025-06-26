@@ -206,22 +206,6 @@ def guardar_respuesta(key, value):
 
 
 
-
-main_dim_keys = list(dimensiones.keys())
-current_main_dim = main_dim_keys[st.session_state.current_main_dim]
-sub_dim_keys = list(dimensiones[current_main_dim].keys())
-current_sub_dim = sub_dim_keys[st.session_state.current_sub_dim]
-
-#--- Selector de alcance ---
-# se reemplaza 27-5-25
-#st.session_state.alcance_evaluacion = st.radio(
-#    "Alcance de la evaluación:",
-#    options=["Básico", "Completo"],
-#    horizontal=True,
-#    key="alcance_selector"
-#)
-
-
 # En tu session_state inicial
 if 'alcance_seleccionado' not in st.session_state:
     st.session_state.alcance_seleccionado = False
