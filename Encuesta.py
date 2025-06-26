@@ -3907,38 +3907,9 @@ elif st.session_state.paso == 33:
     # Salto de línea entre tablas
         doc.add_paragraph("")  
 
-
+#### aquí iba lo que borré
     
-'''
-    for dim in ["D1", "D2", "D3"]:
-        suma_dim = 0
-        max_dim = len(subdims_por_dim[dim]) * 5  # O usa tu estructura de máximos si es distinta
-        for sub in subdims_por_dim[dim]:
-        # Busca el registro de la subdimensión en df_resumen
-        # Mejor usar el nombre completo o un identificador único
-            row = df_resumen[df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)].iloc[0]
-            valor = row["Valoración"]
-            suma_dim += int(valor)
-            row1 = table.add_row().cells
-            row1[0].text = row["Condición"]
-            row1[1].text = str(valor)
-        # Hallazgos
-            row2 = table.add_row().cells
-            merged = row2[0].merge(row2[1])
-            merged.text = f"Hallazgos: {row['Hallazgos']}"
-    # Al terminar la dimensión, añade el total (en negrita)
-        row_total = table.add_row().cells
-        cell_dim = row_total[0]
-        cell_puntaje = row_total[1]
-    # Poner en negrita usando run
-        para_dim = cell_dim.paragraphs[0]
-        run_dim = para_dim.add_run(f"Total Dimensión {dim}")
-        run_dim.bold = True
-        para_puntaje = cell_puntaje.paragraphs[0]
-        run_puntaje = para_puntaje.add_run(f"{suma_dim} / {max_dim}")
-        run_puntaje.bold = True
-   '''     
-    run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]} / {maximos[dim]} ({100*puntajes[dim]/maximos[dim]:.1f}%)")
+
 
 # Agregar salto de página y el gráfico
     doc.add_page_break()
