@@ -3854,9 +3854,9 @@ elif st.session_state.paso == 33:
     table.style = 'Light Grid Accent 1'
 
 # Agregar nombres de columnas
-    hdr_cells = table.rows[0].cells
-    hdr_cells[0].text = 'Condición'
-    hdr_cells[1].text = 'Valoración'
+ #   hdr_cells = table.rows[0].cells
+ #   hdr_cells[0].text = 'Condición'
+ #   hdr_cells[1].text = 'Valoración'
 
 # Agrupa por dimensión
     from collections import defaultdict
@@ -3900,7 +3900,7 @@ elif st.session_state.paso == 33:
         cell_dim = row_total[0]
         cell_puntaje = row_total[1]
         run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
-        run_dim.bold = False
+        run_dim.bold = True
         run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
         run_puntaje.bold = False
 
