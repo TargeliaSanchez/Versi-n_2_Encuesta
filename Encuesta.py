@@ -3893,32 +3893,12 @@ elif st.session_state.paso == 33:
     colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
                '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
     rangos = list(range(0, 101, 10))
-
-########################
-
-        for i in range(len(colores)):
-            left = rangos[i]
-            width = 10
-            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white')
-
-        # Etiquetas encima de cada recuadro
-            label = f"{left+1}-{left+10}" if left != 0 else "1-10"
-            ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
-
-    # Marcar el valor con un círculo
-        ax.plot(valor, 0, 'o', markersize=30, markeredgecolor='black', markerfacecolor='none')
-        ax.text(valor, 0, f'{valor}', ha='center', va='center', fontsize=10, weight='bold')
-
-        ax.set_xlim(0, 100)
-        ax.set_ylim(-0.5, 3.5)
-        ax.axis('off')
-#########################
     
-    #for i in range(len(colores)):
-    #    ax.barh(0, 10, left=rangos[i], color=colores[i], edgecolor='white')
-    #ax.plot(global_pct, 0, 'o', markersize=20, markeredgecolor='black', markerfacecolor='none')
-    #ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
-    #ax.axis('off')
+    for i in range(len(colores)):
+        ax.barh(0, 10, left=rangos[i], color=colores[i], edgecolor='white')
+    ax.plot(global_pct, 0, 'o', markersize=20, markeredgecolor='black', markerfacecolor='none')
+    ax.text(global_pct, 0.3, f'{global_pct}%', ha='center', fontsize=10, weight='bold')
+    ax.axis('off')
 
     img_buffer = io.BytesIO()
     plt.savefig(img_buffer, format='png', bbox_inches='tight')
