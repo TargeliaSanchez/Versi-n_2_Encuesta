@@ -3901,7 +3901,7 @@ elif st.session_state.paso == 33:
         cell_puntaje = row_total[1]
         run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL Dimensión {dim}")
         run_dim.bold = True
-        run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]} / {maximos[dim]}")
+        run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
         run_puntaje.bold = True
 
     # Salto de línea entre tablas
