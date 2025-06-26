@@ -21,7 +21,11 @@ from collections import defaultdict
 
 doc=Document()
 
-
+nombres_dimensiones = {
+    "D1": "1. ORGANIZACIÓN Y GESTIÓN DE LOS SERVICIOS DE REHABILITACIÓN",
+    "D2": "2. GESTIÓN DEL TALENTO HUMANO EN REHABILITACIÓN",
+    "D3": "3. PROCESOS DE CALIDAD EN LA REHABILITACIÓN"
+}
 
 nombres_subdimensiones = {
     "D1.1": "D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.",
@@ -3878,9 +3882,16 @@ elif st.session_state.paso == 33:
         subdims_por_dim[dim].append(sub)
 
     for dim in ["D1", "D2", "D3"]:
-        doc.add_heading(f"Dimensión {dim}", level=2)
-        table = doc.add_table(rows=1, cols=2)
+        nombre_largo = nombres_dimensiones[dim] #adicional
+        doc.add_heading(nombre_largo, level=2) #Se adicionó nombre largo
+        table = doc.add_table(rows=2, cols=2)#se añadió fila extra
         table.style = 'Light Grid Accent 1'
+        # Combina la primera fila para el nombre largo de la dimensión
+        row = table.rows[0]
+        cell = row.cells[0]
+        cell.merge(row.cells[1])
+        cell.text = nombre_largo
+        #Luego la segunda fila para encabezados
         hdr_cells = table.rows[0].cells
         hdr_cells[0].text = 'CONDICIONES'
         hdr_cells[1].text = 'CALIFICACIÓN'
