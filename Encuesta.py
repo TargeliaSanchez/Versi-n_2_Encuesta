@@ -3860,16 +3860,58 @@ elif st.session_state.paso == 33:
     hdr_cells[0].text = 'Condición'
     hdr_cells[1].text = 'Valoración'
 
+    # Agrupa por dimensión
+    from collections import defaultdict
+    subdims_por_dim = defaultdict(list)
+    for sub in dimensiones.keys():
+        dim = sub.split(".")[0]  # "D1", "D2", etc.
+        subdims_por_dim[dim].append(sub)
 
-    for _, row in df_resumen.iterrows():
-        row1 = table.add_row().cells
-        row1[0].text = row["Condición"]
-        valoracion = str(row['Valoración']) if pd.notnull(row['Valoración']) else ""
-        row1[1].text = valoracion
+# Recorre dimensiones y subdimensiones
+    for dim in ["D1", "D2", "D3"]:
+        suma_dim = 0
+        max_dim = len(subdims_por_dim[dim]) * 5  # o usa tu estructura de máximos si es distinta
+        for sub in subdims_por_dim[dim]:
+        # Busca en df_resumen el registro de la subdimensión
+            row = df_resumen[df_resumen["Condición"].str.startswith(nombres_subdimensiones[sub][:5])].iloc[0]
+            valor = row["Valoración"]
+            suma_dim += int(valor)
+            row1 = table.add_row().cells
+            row1[0].text = row["Condición"]
+            row1[1].text = str(valor)
+        # Hallazgos abajo si lo deseas
+            row2 = table.add_row().cells
+            merged = row2[0].merge(row2[1])
+            merged.text = f"Hallazgos: {row['Hallazgos']}"
+    # Al terminar la dimensión, añade el total
+        row_total = table.add_row().cells
+        row_total[0].text = f"**Total Dimensión {dim}**"
+        row_total[1].text = f"**{suma_dim} / {max_dim}**"
 
-        row2 = table.add_row().cells
-        merged = row2[0].merge(row2[1])
-        merged.text = f"Hallazgos: {row['Hallazgos']}"
+    #for _, row in df_resumen.iterrows():
+    #    row1 = table.add_row().cells
+    #    row1[0].text = row["Condición"]
+    #    valoracion = str(row['Valoración']) if pd.notnull(row['Valoración']) else ""
+    #    row1[1].text = valoracion
+
+    #    row2 = table.add_row().cells
+    #    merged = row2[0].merge(row2[1])
+    #    merged.text = f"Hallazgos: {row['Hallazgos']}"
+
+    # Añadir sección de sumas por dimensión
+    doc.add_heading("Suma por Dimensión", level=2)    
+    table_dim = doc.add_table(rows=1, cols=3)
+    table_dim.style = 'Light Grid Accent 1'
+    hdr_cells_dim = table_dim.rows[0].cells
+    hdr_cells_dim[0].text = 'Dimensión'
+    hdr_cells_dim[1].text = 'Puntaje'
+    hdr_cells_dim[2].text = 'Puntaje Máximo'
+
+    for dim in ["D1", "D2", "D3"]:
+        row = table_dim.add_row().cells
+        row[0].text = dim
+        row[1].text = str(puntajes[dim])
+        row[2].text = str(maximos[dim])
 
 # Agregar salto de página y el gráfico
     doc.add_page_break()
