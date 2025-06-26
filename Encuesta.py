@@ -1653,10 +1653,10 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
     #    options=["Seleccione", "Básico", "Completo"],
     #    key="alcance"
     #    )
-    guardar_respuesta("alcance", alcance)
+    #guardar_respuesta("alcance", alcance)
 
-    if st.session_state.alcance != "Seleccione":
-        st.markdown(f"**🧭 Alcance seleccionado: _{st.session_state.alcance}_**")
+    #if st.session_state.alcance != "Seleccione":
+    #    st.markdown(f"**🧭 Alcance seleccionado: _{st.session_state.alcance}_**")
 
     col1, col2= st.columns([5, 1])
     with col1:
