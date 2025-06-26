@@ -230,17 +230,6 @@ def mostrar_subdimension(subdim_title):
         return True
     return "►" in subdim_title  # Solo mostrar subdimensiones con ► en básico
 
-# --- Navegación ---
-main_dim_keys = list(dimensiones.keys())
-current_main_dim = main_dim_keys[st.session_state.current_main_dim]
-
-# Filtrar subdimensiones según alcance
-sub_dim_keys = [k for k in dimensiones[current_main_dim].keys()
-               if mostrar_subdimension(k)]
-## Cuando es alcance básico
-if not sub_dim_keys:
-    st.warning("Finalizar el cuestionario")
-
 ################################################
 
 # ----------------------------
