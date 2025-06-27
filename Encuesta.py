@@ -483,15 +483,7 @@ if st.session_state.paso == 1:
     st.markdown('</div>', unsafe_allow_html=True)
     
 
-#    col1, col2= st.columns([5, 1])
 
-#    with col2:
-#        st.button("Siguiente ▶️", on_click=siguiente)
-
-
-#--------------------------------11111111111
-
-#elif st.session_state.paso == 2:
 
 #Información de la institución
     st.markdown("""
@@ -650,14 +642,7 @@ if st.session_state.paso == 1:
             guardar_respuesta("prestador_1", prestador_1)
 
 
-#    col1, col2= st.columns([5, 1])
-#    with col1:
-#        st.button("◀️ Anterior", on_click=anterior)
-#    with col2:
-#        st.button("Siguiente ▶️", on_click=siguiente)
 
-#elif st.session_state.paso == 3:
-    # --------------------- 222222
     st.markdown("""
                 <div style="
                 background-color: #e8f0fe ;
@@ -897,11 +882,7 @@ if st.session_state.paso == 1:
         prestador_3 = st.radio("Tipo", ["P.REM", "P.REF"], key="prestador_3")
         guardar_respuesta("prestador_3", prestador_3)
 
-#    col1, col2= st.columns([5, 1])
-#    with col1:
-#        st.button("◀️ Anterior", on_click=anterior)
-#    with col2:
-#        st.button("Siguiente ▶️", on_click=siguiente)
+
 
 #elif st.session_state.paso == 4:
     # --------------------- 444444
@@ -1139,11 +1120,7 @@ if st.session_state.paso == 1:
         prestador_5 = st.radio("Tipo", ["P.REM", "P.REF"], key="prestador_5")
         guardar_respuesta("prestador_5", prestador_5)
 
-#    col1, col2= st.columns([5, 1])
-#    with col1:
-#        st.button("◀️ Anterior", on_click=anterior)
-#    with col2:
-#        st.button("Siguiente ▶️", on_click=siguiente)
+
     
 
 #elif st.session_state.paso == 5:
@@ -1383,11 +1360,7 @@ if st.session_state.paso == 1:
         prestador_7 = st.radio("Tipo", ["P.REM", "P.REF"], key="prestador_7")
         guardar_respuesta("prestador_7", prestador_7)
 
-    #col1, col2= st.columns([5, 1])
-    #with col1:
-    #    st.button("◀️ Anterior", on_click=anterior)
-    #with col2:
-    #    st.button("Siguiente ▶️", on_click=siguiente)
+
 
 
 #elif  st.session_state.paso == 6:#Bloque  recursos humanos 1
@@ -1537,11 +1510,7 @@ if st.session_state.paso == 1:
 
     #st.markdown("<hr class='linea'>", unsafe_allow_html=True)
 
-    #col1, col2= st.columns([5, 1])
-    #with col1:
-    #    st.button("◀️ Anterior", on_click=anterior)
-    #with col2:
-    #    st.button("Siguiente ▶️", on_click=siguiente)
+
 
 ######################## PÁGINA 7 ########################
 #elif st.session_state.paso == 7:
@@ -1622,9 +1591,12 @@ if st.session_state.paso == 1:
         
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 
 
@@ -1670,12 +1642,12 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
 
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        #if alcance_selecc == "Basico":
-         #   st.button("Siguiente ▶️", on_click=siguiente_basico)
-        #else:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 
 elif st.session_state.paso == 3:
@@ -1760,10 +1732,12 @@ elif st.session_state.paso == 3:
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
 
+    with col2:
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 #-------------------------------------------------------------------------------------
 # Paso 2 - D1.2
@@ -1832,11 +1806,20 @@ elif st.session_state.paso == 4:
             guardar_respuesta("obsD1_2", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
+    #col1, col2= st.columns([5, 1])
+    #with col1:
+    #    st.button("◀️ Anterior", on_click=anterior)
+    #with col2:
+    #    st.button("Siguiente ▶️", on_click=siguiente)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 
 #-------------------------------------------------------------------------------------
@@ -1905,9 +1888,12 @@ elif st.session_state.paso == 5:
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 
 
@@ -1977,14 +1963,16 @@ elif st.session_state.paso == 6:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_4")
             guardar_respuesta("obsD1_4", obs)
+            
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        #if alcance == "Basico":
-        #    st.button("Siguiente ▶️", on_click=siguiente_basico)
-        #else:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 
 ################ Paso 5 - D1.5
@@ -2053,9 +2041,13 @@ if st.session_state.paso == 7:
 
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 ################## Paso 6 - D1.6
 elif st.session_state.paso == 8:
@@ -2121,9 +2113,12 @@ elif st.session_state.paso == 8:
             guardar_respuesta("obsD1_6", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 
 
@@ -2191,9 +2186,13 @@ elif st.session_state.paso == 9:
             guardar_respuesta("obsD1_7", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
-    with col2:      
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
+    with col2:
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 ################## Paso 8 - D1.8
 elif st.session_state.paso == 10:
@@ -2257,9 +2256,12 @@ elif st.session_state.paso == 10:
             guardar_respuesta("obsD1_8", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 #################### Paso 9 - D1.9
 elif st.session_state.paso == 11:
@@ -2321,9 +2323,13 @@ elif st.session_state.paso == 11:
             guardar_respuesta("obsD1_9", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 
 
@@ -2390,9 +2396,13 @@ elif st.session_state.paso == 12:
             guardar_respuesta("obsD2_1", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 11 - D2.2
 elif st.session_state.paso == 13:
@@ -2457,9 +2467,13 @@ elif st.session_state.paso == 13:
             guardar_respuesta("obsD2_2", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 12 - D2.3
 elif st.session_state.paso == 14:
@@ -2524,9 +2538,13 @@ elif st.session_state.paso == 14:
             guardar_respuesta("obsD2_3", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 13 - D2.4
 elif st.session_state.paso == 15:
@@ -2589,9 +2607,13 @@ elif st.session_state.paso == 15:
             guardar_respuesta("obsD2_4", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 14 - D2.5
 elif st.session_state.paso == 16:
@@ -2667,9 +2689,13 @@ elif st.session_state.paso == 16:
             guardar_respuesta("obsD2_5", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 15 - D2.6
 elif st.session_state.paso == 17:
@@ -2734,9 +2760,13 @@ elif st.session_state.paso == 17:
             guardar_respuesta("obsD2_6", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 16 - D2.7
 elif st.session_state.paso == 18:
@@ -2800,9 +2830,13 @@ elif st.session_state.paso == 18:
             guardar_respuesta("obsD2_7", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 17 - D2.8
 elif st.session_state.paso == 19:
@@ -2866,9 +2900,13 @@ elif st.session_state.paso == 19:
             guardar_respuesta("obsD2_8", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 18 - D2.9
 elif st.session_state.paso == 20:
@@ -2933,9 +2971,13 @@ elif st.session_state.paso == 20:
             guardar_respuesta("obsD2_9", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 19 - D2.10
 elif st.session_state.paso == 21:
@@ -2999,9 +3041,12 @@ elif st.session_state.paso == 21:
             guardar_respuesta("obsD2_10", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 #################### Paso 20 - D2.11
 elif st.session_state.paso == 22:
@@ -3077,9 +3122,13 @@ elif st.session_state.paso == 22:
             guardar_respuesta("obsD2_11", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
         #################### Paso 21 - D2.12
 
@@ -3142,11 +3191,15 @@ elif st.session_state.paso == 23:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_12")
             guardar_respuesta("obsD2_12", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 22 - D2.13
 elif st.session_state.paso == 24:
@@ -3208,11 +3261,15 @@ elif st.session_state.paso == 24:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_13")
             guardar_respuesta("obsD2_13", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 23 - D2.14
 elif st.session_state.paso == 25:
@@ -3277,11 +3334,15 @@ elif st.session_state.paso == 25:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_14")
             guardar_respuesta("obsD2_14", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 24 - D2.15
 elif st.session_state.paso == 26:
@@ -3342,11 +3403,15 @@ elif st.session_state.paso == 26:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_15")
             guardar_respuesta("obsD2_15", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 25 - D2.16
 elif st.session_state.paso == 27:
@@ -3408,11 +3473,15 @@ elif st.session_state.paso == 27:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_16")
             guardar_respuesta("obsD2_16", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 26 - D2.17
 elif st.session_state.paso == 28:
@@ -3473,11 +3542,15 @@ elif st.session_state.paso == 28:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_17")
             guardar_respuesta("obsD2_17", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 27 - D2.18
 elif st.session_state.paso == 29:
@@ -3538,11 +3611,15 @@ elif st.session_state.paso == 29:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_18")
             guardar_respuesta("obsD2_18", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 #################### Paso 28 - D3.1
 elif st.session_state.paso == 30:
@@ -3605,11 +3682,15 @@ elif st.session_state.paso == 30:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD3_1")
             guardar_respuesta("obsD3_1", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 
 #################### Paso 29 - D3.2
@@ -3671,11 +3752,15 @@ elif st.session_state.paso == 31:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD3_2")
             guardar_respuesta("obsD3_2", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 elif st.session_state.paso == 32:
     st.markdown("""
@@ -3734,22 +3819,30 @@ elif st.session_state.paso == 32:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD3_3")
             guardar_respuesta("obsD3_3", obs)
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 
 #################### Final #####################
 elif st.session_state.paso == 33:
 
 #### PUNTAJES 
-    col1, col2 = st.columns([5, 1])
+    col1, col2= st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Siguiente"):
+            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Anterior"):
+            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+
 
 
 ###########---------------------------------FINLIZACIÓN DE FORMUARIO-----------------------------------------------------############
