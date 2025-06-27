@@ -238,50 +238,66 @@ def guardar_respuesta(key, value):
 # ----------------------------
 
 
-def siguiente_basico():
-    actual = st.session_state.paso
-    if actual in pasos_basico:
-        idx = pasos_basico.index(actual)
-        if idx < len(pasos_basico) - 1:
-            st.session_state.paso = pasos_basico[idx + 1]
-        else:
-            st.session_state.paso = 33
 
-def siguiente():
-    actual = st.session_state.paso
-    if actual in pasos_completo:
-        idx = pasos_completo.index(actual)
-        if idx < len(pasos_completo) - 1:
-            st.session_state.paso = pasos_completo[idx + 1]
-        else:
-            st.session_state.paso = 33
+
+#def siguiente():
+#    actual = st.session_state.paso
+#    if actual in pasos_completo:
+#        idx = pasos_completo.index(actual)
+#        if idx < len(pasos_completo) - 1:
+#            st.session_state.paso = pasos_completo[idx + 1]
+#        else:
+#            st.session_state.paso = 33
 
 
 
 
 
-def anterior():
-    actual = st.session_state.paso
-    alcance = st.session_state.get("alcance", "Completo")
+#def anterior():
+#    actual = st.session_state.paso
+#    alcance = st.session_state.get("alcance", "Completo")
 
     # Para los pasos 1 al 8, retrocede normalmente
-    if actual <= 8:
-        if actual > 1:
-            st.session_state.paso -= 1
-        return
+#    if actual <= 8:
+#        if actual > 1:
+#            st.session_state.paso -= 1
+#        return
 
     # Para pasos después del 8
-    pasos = pasos_basico if alcance == "Básico" else pasos_completo
+#    pasos = pasos_basico if alcance == "Básico" else pasos_completo
 
     # Si estamos en el paso 39 y es básico, volvemos al último paso válido (ej. 34)
-    if actual == 39 and alcance == "Básico":
-        st.session_state.paso = pasos[-1]
-        return
+#    if actual == 39 and alcance == "Básico":
+#        st.session_state.paso = pasos[-1]
+#        return
 
-    if actual in pasos:
-        idx = pasos.index(actual)
-        if idx > 0:
-            st.session_state.paso = pasos[idx - 1]
+#    if actual in pasos:
+#        idx = pasos.index(actual)
+#        if idx > 0:
+#            st.session_state.paso = pasos[idx - 1]
+
+
+# Suponiendo que ya tienes subdimension_a_paso y pasos_basico definidos
+
+# 1. Lista ORDENADA de pasos permitidos:
+pasos_permitidos = sorted(pasos_basico)  # Si quieres solo los básicos
+# O usa todos los pasos posibles:
+# pasos_permitidos = sorted(subdimension_a_paso.values())
+
+# 2. Función para encontrar el siguiente/anterior paso
+def siguiente(paso_actual, pasos_permitidos):
+    idx = pasos_permitidos.index(paso_actual)
+    if idx < len(pasos_permitidos) - 1:
+        return pasos_permitidos[idx + 1]
+    else:
+        return paso_actual  # O None si no quieres avanzar más
+
+def anterior(paso_actual, pasos_permitidos):
+    idx = pasos_permitidos.index(paso_actual)
+    if idx > 0:
+        return pasos_permitidos[idx - 1]
+    else:
+        return paso_actual  # O None si no quieres retroceder más
 
 
 
