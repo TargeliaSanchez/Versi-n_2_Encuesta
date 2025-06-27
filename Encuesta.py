@@ -223,17 +223,17 @@ if 'paso' not in st.session_state:
     st.session_state.paso = 1
 
 # Define los pasos para cada alcance
-pasos_completo = list(range(1, 34)) 
+pasos_completo = list(range(1, 33)) 
 pasos_basico = [3,4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
-if 'respuestas' not in st.session_state:
-    st.session_state.respuestas = {}
+#if 'respuestas' not in st.session_state:
+#   st.session_state.respuestas = {}
 
 def guardar_respuesta(key, value):
     st.session_state.respuestas[key] = value
 
 
 # Determina los pasos permitidos según el alcance
-if "alcance" in st.session_state and st.session_state.alcance == "Básico":
+if "alcance" in st.session_state.alcance == "Básico":
     pasos_permitidos = sorted(pasos_basico)
 else:
     pasos_permitidos = sorted(pasos_completo)
