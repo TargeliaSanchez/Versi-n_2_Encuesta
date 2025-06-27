@@ -276,6 +276,30 @@ def guardar_respuesta(key, value):
 #        if idx > 0:
 #            st.session_state.paso = pasos[idx - 1]
 
+if "pagina_actual" not in st.session_state:
+    st.session_state["pagina_actual"] = 1
+
+def siguiente():
+    st.session_state["pagina_actual"] += 1
+
+def anterior():
+    if st.session_state["pagina_actual"] > 1:
+        st.session_state["pagina_actual"] -= 1
+
+#st.button("Anterior", on_click=anterior)
+
+
+# Mostrar contenido según la página:
+if st.session_state["pagina_actual"] == 1:
+    # Página 1: sin alcance
+    st.write("Contenido de la página 1")
+elif st.session_state["pagina_actual"] == 2:
+    # Página 2: aquí sí va alcance
+    if "alcance" not in st.session_state:
+        st.session_state["alcance"] = None
+    st.write("Contenido de la página 2")
+    # aquí usas alcance
+
 
 # Suponiendo que ya tienes subdimension_a_paso y pasos_basico definidos
 
@@ -1592,7 +1616,7 @@ if st.session_state.paso == 1:
     col1, col2= st.columns([5, 1])
     with col2:
         if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
+            st.button("Siguiente", on_click=siguiente)
 
 
 
