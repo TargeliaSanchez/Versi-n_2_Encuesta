@@ -232,73 +232,25 @@ def guardar_respuesta(key, value):
     st.session_state.respuestas[key] = value
 
 
-
-# ----------------------------
-# FUNCIONES DE NAVEGACIÓN
-# ----------------------------
-
-
-
-
-#def siguiente():
-#    actual = st.session_state.paso
-#    if actual in pasos_completo:
-#        idx = pasos_completo.index(actual)
-#        if idx < len(pasos_completo) - 1:
-#            st.session_state.paso = pasos_completo[idx + 1]
-#        else:
-#            st.session_state.paso = 33
-
-
-
-
-
-#def anterior():
-#    actual = st.session_state.paso
-#    alcance = st.session_state.get("alcance", "Completo")
-
-    # Para los pasos 1 al 8, retrocede normalmente
-#    if actual <= 8:
-#        if actual > 1:
-#            st.session_state.paso -= 1
-#        return
-
-    # Para pasos después del 8
-#    pasos = pasos_basico if alcance == "Básico" else pasos_completo
-
-    # Si estamos en el paso 39 y es básico, volvemos al último paso válido (ej. 34)
-#    if actual == 39 and alcance == "Básico":
-#        st.session_state.paso = pasos[-1]
-#        return
-
-#    if actual in pasos:
-#        idx = pasos.index(actual)
-#        if idx > 0:
-#            st.session_state.paso = pasos[idx - 1]
-
-if "pagina_actual" not in st.session_state:
-    st.session_state.paso = 1
+# Determina los pasos permitidos según el alcance
+if "alcance" in st.session_state and st.session_state.alcance == "Básico":
+    pasos_permitidos = sorted(pasos_basico)
+else:
+    pasos_permitidos = sorted(pasos_completo)
 
 def siguiente():
-    st.session_state.paso += 1
+    actual = st.session_state.paso
+    if actual in pasos_permitidos:
+        idx = pasos_permitidos.index(actual)
+        if idx < len(pasos_permitidos) - 1:
+            st.session_state.paso = pasos_permitidos[idx + 1]
 
 def anterior():
-    if st.session_state.paso > 1:
-        st.session_state.paso -= 1
-
-#st.button("Anterior", on_click=anterior)
-
-
-# Mostrar contenido según la página:
-if st.session_state.paso == 1:
-    # Página 1: sin alcance
-    st.write("Contenido de la página 1")
-elif st.session_state.paso == 2:
-    # Página 2: aquí sí va alcance
-    if "alcance" not in st.session_state:
-        st.session_state["alcance"] = None
-    st.write("Contenido de la página 2")
-    # aquí usas alcance
+    actual = st.session_state.paso
+    if actual in pasos_permitidos:
+        idx = pasos_permitidos.index(actual)
+        if idx > 0:
+            st.session_state.paso = pasos_permitidos[idx - 1]
 
 
 # Suponiendo que ya tienes subdimension_a_paso y pasos_basico definidos
