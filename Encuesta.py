@@ -1590,13 +1590,9 @@ if st.session_state.paso == 1:
         guardar_respuesta(f"prof_verif_{i}", prof)
         
     col1, col2= st.columns([5, 1])
-    with col1:
+    with col2:
         if st.button("Siguiente"):
             paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
-    with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 
 
