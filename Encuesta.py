@@ -285,14 +285,14 @@ pasos_permitidos = sorted(pasos_basico)  # Si quieres solo los básicos
 # pasos_permitidos = sorted(subdimension_a_paso.values())
 
 # 2. Función para encontrar el siguiente/anterior paso
-def siguiente(paso_actual, pasos_permitidos):
+def obtener_paso_siguiente(paso_actual, pasos_permitidos):
     idx = pasos_permitidos.index(paso_actual)
     if idx < len(pasos_permitidos) - 1:
         return pasos_permitidos[idx + 1]
     else:
         return paso_actual  # O None si no quieres avanzar más
 
-def anterior(paso_actual, pasos_permitidos):
+def obtener_paso_anterior(paso_actual, pasos_permitidos):
     idx = pasos_permitidos.index(paso_actual)
     if idx > 0:
         return pasos_permitidos[idx - 1]
