@@ -1661,12 +1661,11 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
 
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
+
+
 
 
 elif st.session_state.paso == 3:
@@ -1751,12 +1750,9 @@ elif st.session_state.paso == 3:
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 #-------------------------------------------------------------------------------------
 # Paso 2 - D1.2
@@ -1832,12 +1828,9 @@ elif st.session_state.paso == 4:
     #    st.button("Siguiente ▶️", on_click=siguiente)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 
@@ -1907,12 +1900,9 @@ elif st.session_state.paso == 5:
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 
@@ -1985,12 +1975,9 @@ elif st.session_state.paso == 6:
             
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 
@@ -2060,12 +2047,9 @@ if st.session_state.paso == 7:
 
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 ################## Paso 6 - D1.6
@@ -2132,12 +2116,9 @@ elif st.session_state.paso == 8:
             guardar_respuesta("obsD1_6", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 
@@ -2205,12 +2186,9 @@ elif st.session_state.paso == 9:
             guardar_respuesta("obsD1_7", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 ################## Paso 8 - D1.8
@@ -2275,13 +2253,9 @@ elif st.session_state.paso == 10:
             guardar_respuesta("obsD1_8", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
-
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 #################### Paso 9 - D1.9
 elif st.session_state.paso == 11:
     st.markdown("""
@@ -2342,12 +2316,9 @@ elif st.session_state.paso == 11:
             guardar_respuesta("obsD1_9", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 
@@ -2415,12 +2386,9 @@ elif st.session_state.paso == 12:
             guardar_respuesta("obsD2_1", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 11 - D2.2
@@ -2486,12 +2454,9 @@ elif st.session_state.paso == 13:
             guardar_respuesta("obsD2_2", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 12 - D2.3
@@ -2557,12 +2522,9 @@ elif st.session_state.paso == 14:
             guardar_respuesta("obsD2_3", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 13 - D2.4
@@ -2626,12 +2588,9 @@ elif st.session_state.paso == 15:
             guardar_respuesta("obsD2_4", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 14 - D2.5
@@ -2708,12 +2667,9 @@ elif st.session_state.paso == 16:
             guardar_respuesta("obsD2_5", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 15 - D2.6
@@ -2779,12 +2735,9 @@ elif st.session_state.paso == 17:
             guardar_respuesta("obsD2_6", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 16 - D2.7
@@ -2849,12 +2802,9 @@ elif st.session_state.paso == 18:
             guardar_respuesta("obsD2_7", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 17 - D2.8
@@ -2919,12 +2869,9 @@ elif st.session_state.paso == 19:
             guardar_respuesta("obsD2_8", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 18 - D2.9
@@ -2990,12 +2937,9 @@ elif st.session_state.paso == 20:
             guardar_respuesta("obsD2_9", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 19 - D2.10
@@ -3060,12 +3004,9 @@ elif st.session_state.paso == 21:
             guardar_respuesta("obsD2_10", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 #################### Paso 20 - D2.11
 elif st.session_state.paso == 22:
@@ -3141,11 +3082,9 @@ elif st.session_state.paso == 22:
             guardar_respuesta("obsD2_11", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
             paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 
@@ -3212,13 +3151,9 @@ elif st.session_state.paso == 23:
             guardar_respuesta("obsD2_12", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
-
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 #################### Paso 22 - D2.13
 elif st.session_state.paso == 24:
@@ -3282,12 +3217,9 @@ elif st.session_state.paso == 24:
             guardar_respuesta("obsD2_13", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 23 - D2.14
@@ -3355,12 +3287,9 @@ elif st.session_state.paso == 25:
             guardar_respuesta("obsD2_14", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 24 - D2.15
@@ -3424,12 +3353,9 @@ elif st.session_state.paso == 26:
             guardar_respuesta("obsD2_15", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 25 - D2.16
@@ -3494,13 +3420,9 @@ elif st.session_state.paso == 27:
             guardar_respuesta("obsD2_16", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
-
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 #################### Paso 26 - D2.17
 elif st.session_state.paso == 28:
@@ -3563,12 +3485,9 @@ elif st.session_state.paso == 28:
             guardar_respuesta("obsD2_17", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 27 - D2.18
@@ -3632,12 +3551,9 @@ elif st.session_state.paso == 29:
             guardar_respuesta("obsD2_18", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 28 - D3.1
@@ -3703,13 +3619,9 @@ elif st.session_state.paso == 30:
             guardar_respuesta("obsD3_1", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
-
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 #################### Paso 29 - D3.2
@@ -3773,12 +3685,9 @@ elif st.session_state.paso == 31:
             guardar_respuesta("obsD3_2", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 elif st.session_state.paso == 32:
@@ -3840,12 +3749,9 @@ elif st.session_state.paso == 32:
             guardar_respuesta("obsD3_3", obs)
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 
@@ -3855,12 +3761,9 @@ elif st.session_state.paso == 33:
 #### PUNTAJES 
     col1, col2= st.columns([5, 1])
     with col1:
-        if st.button("Siguiente"):
-            paso_actual = obtener_paso_siguiente(paso_actual, pasos_permitidos)
-
+        st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
-        if st.button("Anterior"):
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
+        st.button("Siguiente", on_click=ir_siguiente_pagina)
 
 
 
