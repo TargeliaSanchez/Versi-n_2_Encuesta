@@ -1616,6 +1616,10 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
             st.session_state.paso = pasos_completo[0]
         st.rerun()
 
+    col1, col2= st.columns([5, 1])
+
+    with col2:
+        st.button("Siguiente", on_click=siguiente)
 
 
 
