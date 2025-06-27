@@ -3085,7 +3085,6 @@ elif st.session_state.paso == 22:
         st.button("Anterior", on_click=ir_anterior_pagina)
     with col2:
         st.button("Siguiente", on_click=ir_siguiente_pagina)
-            paso_actual = obtener_paso_anterior(paso_actual, pasos_permitidos)
 
 
         #################### Paso 21 - D2.12
