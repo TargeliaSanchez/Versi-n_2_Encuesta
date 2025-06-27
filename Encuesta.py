@@ -1609,13 +1609,12 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
     guardar_respuesta("alcance", alcance)
     
     if st.session_state.alcance != "Seleccione":
-        st.markdown(f"**🧭 Alcance seleccionado: _{st.session_state.alcance}_**")
-
-    col1, col2= st.columns([5, 1])
-    with col1:
-        st.button("Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente", on_click=siguiente)
+        # Inicializa el paso al primer paso válido según el alcance
+        if st.session_state.alcance == "Básico":
+            st.session_state.paso = pasos_basico[0]
+        else:
+            st.session_state.paso = pasos_completo[0]
+        st.rerun()
 
 
 
