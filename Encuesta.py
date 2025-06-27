@@ -209,9 +209,6 @@ st.markdown("""
 if "alcance" not in st.session_state:
     st.session_state.alcance = "Seleccione"
 
-
-
-
 if 'historico' not in st.session_state:
     st.session_state.historico = []
 
@@ -231,26 +228,38 @@ pasos_basico = [3,4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 def guardar_respuesta(key, value):
     st.session_state.respuestas[key] = value
 
+# Asegúrate de inicializar alcance
+if "alcance" not in st.session_state:
+    st.session_state.alcance = "Seleccione"
 
-# Determina los pasos permitidos según el alcance
-if "alcance" in st.session_state.alcance == "Básico":
-    pasos_permitidos = sorted(pasos_basico)
+# Define pasos permitidos solo cuando el alcance es válido
+if st.session_state.alcance == "Básico":
+    pasos_permitidos = pasos_basico
+elif st.session_state.alcance == "Completo":
+    pasos_permitidos = pasos_completo
 else:
-    pasos_permitidos = sorted(pasos_completo)
+    pasos_permitidos = []
 
-def siguiente():
-    actual = st.session_state.paso
-    if actual in pasos_permitidos:
-        idx = pasos_permitidos.index(actual)
-        if idx < len(pasos_permitidos) - 1:
-            st.session_state.paso = pasos_permitidos[idx + 1]
+# Solo define los botones si hay pasos permitidos
+if pasos_permitidos:
+    def siguiente():
+        actual = st.session_state.paso
+        if actual in pasos_permitidos:
+            idx = pasos_permitidos.index(actual)
+            if idx < len(pasos_permitidos) - 1:
+                st.session_state.paso = pasos_permitidos[idx + 1]
 
-def anterior():
-    actual = st.session_state.paso
-    if actual in pasos_permitidos:
-        idx = pasos_permitidos.index(actual)
-        if idx > 0:
-            st.session_state.paso = pasos_permitidos[idx - 1]
+    def anterior():
+        actual = st.session_state.paso
+        if actual in pasos_permitidos:
+            idx = pasos_permitidos.index(actual)
+            if idx > 0:
+                st.session_state.paso = pasos_permitidos[idx - 1]
+else:
+    def siguiente():
+        pass
+    def anterior():
+        pass
 
 
 # Suponiendo que ya tienes subdimension_a_paso y pasos_basico definidos
