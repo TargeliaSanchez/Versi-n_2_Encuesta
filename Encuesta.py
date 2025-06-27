@@ -1615,8 +1615,7 @@ if st.session_state.paso == 1:
         
     col1, col2= st.columns([5, 1])
     with col2:
-        if st.button("Siguiente"):
-            st.button("Siguiente", on_click=siguiente)
+        st.button("Siguiente", on_click=siguiente)
 
 
 
