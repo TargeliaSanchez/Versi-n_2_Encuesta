@@ -1608,13 +1608,12 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
         )
     guardar_respuesta("alcance", alcance)
     
-    if st.session_state.alcance != "Seleccione":
-        # Inicializa el paso al primer paso válido según el alcance
-        if st.session_state.alcance == "Básico":
+    if st.session_state.alcance == "Básico":
+        if st.session_state.paso not in pasos_basico:
             st.session_state.paso = pasos_basico[0]
-        else:
-            st.session_state.paso = pasos_completo[0]
-        st.rerun()
+    else:
+        if st.session_state.paso not in subdimension_a_paso.values():
+            st.session_state.paso = min(subdimension_a_paso.values())
 
     col1, col2= st.columns([5, 1])
 
