@@ -268,6 +268,8 @@ else:
 
 # 1. Lista ORDENADA de pasos permitidos:
 pasos_permitidos = sorted(pasos_basico)  # Si quieres solo los básicos
+if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
+    st.session_state.paso = pasos_permitidos[0]
 # O usa todos los pasos posibles:
 # pasos_permitidos = sorted(subdimension_a_paso.values())
 
@@ -1801,6 +1803,7 @@ elif st.session_state.paso == 4:
     
     if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
         st.session_state.paso = pasos_permitidos[0]
+    
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
