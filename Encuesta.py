@@ -1584,7 +1584,7 @@ if st.session_state.paso == 1:
     with col2:
         if st.button("Ingresar a la evaluación"):
             st.session_state.paso = 2
-            st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
+            #st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
 
 
 
