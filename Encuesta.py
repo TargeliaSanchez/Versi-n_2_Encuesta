@@ -989,7 +989,6 @@ if st.session_state.paso == 1:
         prestador_4 = st.radio("Tipo", ["P.REM", "P.REF"], key="prestador_4")
         guardar_respuesta("prestador_4", prestador_4)
 
-#if st.session_state.paso == 5:
     # --------------------- 555555
     st.markdown("""
                 <div style="
@@ -1110,7 +1109,7 @@ if st.session_state.paso == 1:
 
     
 
-#elif st.session_state.paso == 5:
+
     # --------------------- 666666
     st.markdown("""
                 <div style="
@@ -1799,7 +1798,9 @@ elif st.session_state.paso == 4:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_2")
             guardar_respuesta("obsD1_2", obs)
-
+    
+    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
+        st.session_state.paso = pasos_permitidos[0]
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
@@ -1872,6 +1873,8 @@ elif st.session_state.paso == 5:
             obs = st.text_area("Hallazgos", key="obsD1_3")
             guardar_respuesta("obsD1_3", obs)
 
+    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
+        st.session_state.paso = pasos_permitidos[0]
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
