@@ -1576,17 +1576,17 @@ if st.session_state.paso == 1:
         )
         guardar_respuesta(f"prof_verif_{i}", prof)
         
-    #col1, col2= st.columns([5, 1])
-    #with col1:
-    #    if st.button("Guardar información"):
+    col1, col2= st.columns([5, 1])
+    with col1:
+        if st.button("Guardar información"):
     # Aquí guardas los datos del formulario, por ejemplo en session_state o DataFrame
-    #        st.success("Información guardada correctamente.")
+            st.success("Información guardada correctamente.")
     
     # Botón para ingresar a la evaluación
-    #with col2:
-     #   if st.button("Ingresar a la evaluación"):
-      #      st.session_state.paso = 2
-            #st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
+    with col2:
+        if st.button("Ingresar a la evaluación"):
+            st.session_state.paso = 2
+            st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
 
 
 
