@@ -136,7 +136,19 @@ def calcular_puntaje_por_dimensiones(dimensiones_dict):
 
     return puntajes, maximos
 
+def ingresar_evaluacion():
+    st.session_state.paso = 2
+    # No necesitas st.experimental_rerun() aquí
 
+# Botón que usa función
+if st.button("Ingresar a la evaluación", on_click=ingresar_evaluacion):
+    pass  # Nada aquí
+
+# O con el cambio directo y rerun SOLO si no lo usas en callback:
+if st.button("Ingresar a la evaluación"):
+    st.session_state.paso = 2
+    st.experimental_rerun()
+    
 
 
 ########## Definiendo dimensiones
@@ -1586,7 +1598,7 @@ if st.session_state.paso == 1:
     with col2:
         if st.button("Ingresar a la evaluación"):
             st.session_state.paso = 2
-            st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
+            #st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
 
 
 
