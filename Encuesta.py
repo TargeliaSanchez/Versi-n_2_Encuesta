@@ -1950,7 +1950,11 @@ elif st.session_state.paso == 6:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_4")
             guardar_respuesta("obsD1_4", obs)
-            
+
+    
+    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
+        st.session_state.paso = pasos_permitidos[0]
+    alcance = st.session_state.get("alcance", "Seleccione")      
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2022,6 +2026,10 @@ if st.session_state.paso == 7:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_5")
             guardar_respuesta("obsD1_5", obs)
+
+    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
+        st.session_state.paso = pasos_permitidos[0]
+    alcance = st.session_state.get("alcance", "Seleccione")
 
     col1, col2= st.columns([5, 1])
     with col1:
