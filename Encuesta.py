@@ -1801,11 +1801,6 @@ elif st.session_state.paso == 4:
             guardar_respuesta("obsD1_2", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
-    #col1, col2= st.columns([5, 1])
-    #with col1:
-    #    st.button("◀️ Anterior", on_click=anterior)
-    #with col2:
-    #    st.button("Siguiente ▶️", on_click=siguiente)
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
