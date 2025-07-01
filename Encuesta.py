@@ -144,10 +144,7 @@ def ingresar_evaluacion():
 if st.button("Ingresar a la evaluación", on_click=ingresar_evaluacion):
     pass  # Nada aquí
 
-# O con el cambio directo y rerun SOLO si no lo usas en callback:
-if st.button("Ingresar a la evaluación"):
-    st.session_state.paso = 2
-    st.experimental_rerun()
+
     
 
 
