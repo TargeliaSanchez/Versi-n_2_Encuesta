@@ -1591,8 +1591,8 @@ if st.session_state.paso == 1:
         if st.button("Ingresar a la evaluación", on_click=ingresar_evaluacion):
             pass  # Nada aquí
 
-        if st.button("Ingresar a la evaluación",on_click=ingreso_u):
-            st.session_state.paso = 2
+        #if st.button("Ingresar a la evaluación",on_click=ingreso_u):
+         #   st.session_state.paso = 2
             #st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
 
 
