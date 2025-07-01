@@ -226,6 +226,8 @@ pasos_basico = [3,4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 #   st.session_state.respuestas = {}
 
 def guardar_respuesta(key, value):
+    if "respuestas" not in st.session_state:
+        st.session_state.respuestas = {}
     st.session_state.respuestas[key] = value
 
 # Asegúrate de inicializar alcance
@@ -351,7 +353,7 @@ opciones2 = [
     ("5. Cumple de forma óptima todos los críterios", 5)
 ]
 
-unique_id = str(uuid.uuid4())  # genera un ID único aleatorio
+unique_id = str(uuid.uuid4()) 
 guardar_respuesta("unique_id", unique_id)  # Guarda el ID único en el estado de la sesión
 
 
