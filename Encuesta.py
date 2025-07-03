@@ -1502,10 +1502,14 @@ if st.session_state.paso == 1:
         )
         guardar_respuesta(f"prof_verif_{i}", prof)
         
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
-#### botones página 1
+
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        st.button("Siguiente", on_click=siguiente)
+        st.button("Siguiente ▶️", on_click=siguiente)
+
 
 
 
@@ -1545,12 +1549,12 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
         )
     guardar_respuesta("alcance", alcance)
     
-    if st.session_state.alcance == "Básico":
-        if st.session_state.paso not in pasos_basico:
-            st.session_state.paso = pasos_basico[0]
-    else:
-        if st.session_state.paso not in subdimension_a_paso.values():
-            st.session_state.paso = min(subdimension_a_paso.values())
+#    if st.session_state.alcance == "Básico":
+#        if st.session_state.paso not in pasos_basico:
+#            st.session_state.paso = pasos_basico[0]
+#    else:
+#        if st.session_state.paso not in subdimension_a_paso.values():
+#            st.session_state.paso = min(subdimension_a_paso.values())
 
     #### botones página 2
     col1, col2= st.columns([5, 1])
