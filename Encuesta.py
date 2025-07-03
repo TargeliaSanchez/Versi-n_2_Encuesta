@@ -118,11 +118,11 @@ subdimension_a_paso = {
 
 
 st.session_state.pagina = "info"
-paginas_completo = ["info","s_alcance","D1_1", "D1_2","D1_3","D1_4","D1_5","D1_6","D1_7","D1_8","D1_9","D2_1","D2_2","D2_3","D2_4","D2_5","D2_6","D2_7","D2_8","D2_9",   
-    "D2_10","D2_11","D2_12","D2_13","D2_14","D2_15", "D2_16","D2_17","D2_18","D3_1","D3_2","D3_3","final"]
+#paginas_completo = ["info","s_alcance","D1_1", "D1_2","D1_3","D1_4","D1_5","D1_6","D1_7","D1_8","D1_9","D2_1","D2_2","D2_3","D2_4","D2_5","D2_6","D2_7","D2_8","D2_9",   
+#    "D2_10","D2_11","D2_12","D2_13","D2_14","D2_15", "D2_16","D2_17","D2_18","D3_1","D3_2","D3_3","final"]
 
-paginas_basico = ["D1_1", "D1_2","D1_4","D1_5","D1_6","D1_7","D2_2","D2_3","D2_6","D2_7","D2_9",   
-    "D2_10","D2_11","D2_15", "D2_17","final"]
+#paginas_basico = ["D1_1", "D1_2","D1_4","D1_5","D1_6","D1_7","D2_2","D2_3","D2_6","D2_7","D2_9",   
+#    "D2_10","D2_11","D2_15", "D2_17","final"]
 
 
 # --- Inicializar session_state ---
@@ -133,23 +133,9 @@ if "pagina" not in st.session_state:
 if "respuestas" not in st.session_state:
     st.session_state.respuestas = {}
 
-# --- Escoger flujo actual según alcance ---
-if st.session_state.alcance == "Básico":
-    flujo = paginas_basico
-else:
-    flujo = paginas_completo
 
-# --- Funciones para navegación ---
-def avanzar():
-    idx = flujo.index(st.session_state.pagina)
-    if idx < len(flujo) - 1:
-        st.session_state.pagina = flujo[idx + 1]
-
-def retroceder():
-    idx = flujo.index(st.session_state.pagina)
-    if idx > 0:
-        st.session_state.pagina = flujo[idx - 1]
-
+if 'paso' not in st.session_state:
+    st.session_state.paso = 1
 
 
 def calcular_puntaje_por_dimensiones(dimensiones_dict):
@@ -299,15 +285,14 @@ if "servicio_1" not in st.session_state:
 if "servicio_2" not in st.session_state:
     st.session_state.servicio_2 = "Seleccione"
 
-
-#def siguiente():
-#    st.session_state.paso += 1
+def siguiente():
+    st.session_state.paso += 1
 
                 
 
 
-#def anterior():
-#    st.session_state.paso -= 1
+def anterior():
+    st.session_state.paso -= 1
 
 
 opciones = [
@@ -1539,30 +1524,19 @@ if st.session_state.pagina == "info":
         )
         guardar_respuesta(f"prof_verif_{i}", prof)
         
-# --- Selecciona el flujo según el alcance ---
-    if st.session_state.alcance == "Básico":
-        flujo = paginas_basico
-    else:
-        flujo = paginas_completo
+    #### botones página 1
+    col1, col2= st.columns([5, 1])
 
-# --- Control de navegación robusto ---
-    idx_actual = flujo.index(st.session_state.pagina)
-
-    col1, col2 = st.columns([5, 1])
     with col1:
-        if idx_actual > 0:  # No mostrar "Anterior" en la primera página
-            if st.button("Anterior"):
-                st.session_state.pagina = flujo[idx_actual - 1]
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        if idx_actual < len(flujo) - 1:  # No mostrar "Siguiente" en la última página
-            if st.button("Siguiente"):
-                st.session_state.pagina = flujo[idx_actual + 1]
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
 ############ PÁGINA 8 #####################
-elif st.session_state.pagina == "s_alcance": # Evaluación de la institución.
+elif st.session_state.pagina == 2: # Evaluación de la institución.
 
     st.markdown("""
     <div style="background-color:#FFD966; padding: 2px 8px; font-weight:bold; border: 0px solid #b7b7b7;">
@@ -1607,7 +1581,7 @@ elif st.session_state.pagina == "s_alcance": # Evaluación de la institución.
 
 
 
-elif st.session_state.pagina == "D1_1":
+elif st.session_state.pagina == 3:
 # Encabezado principal
     #st.markdown("### D1. ORGANIZACIÓN Y GESTIÓN DE LOS SERVICIOS DE REHABILITACIÓN")
 
@@ -1697,7 +1671,7 @@ elif st.session_state.pagina == "D1_1":
 
 #-------------------------------------------------------------------------------------
 # Paso 2 - D1.2
-elif st.session_state.pagina == "D1_2":
+elif st.session_state.pagina == 4:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -1776,7 +1750,7 @@ elif st.session_state.pagina == "D1_2":
 
 #-------------------------------------------------------------------------------------
 # Paso 3 - D1.3
-elif st.session_state.pagina == "D1_3":
+elif st.session_state.pagina == 5:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -1848,7 +1822,7 @@ elif st.session_state.pagina == "D1_3":
 
 #-------------------------------------------------------------------------------------
 # Paso 4 - D1.4
-elif st.session_state.pagina == "D1_4":
+elif st.session_state.pagina == 6:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -1926,7 +1900,7 @@ elif st.session_state.pagina == "D1_4":
 
 
 ################ Paso 5 - D1.5
-if st.session_state.pagina == "D1_5":
+if st.session_state.pagina == 7:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2000,7 +1974,7 @@ if st.session_state.pagina == "D1_5":
 
 
 ################## Paso 6 - D1.6
-elif st.session_state.pagina == "D1_6":
+elif st.session_state.pagina == 8:
 
     st.markdown("""
                 <div style="
@@ -2070,7 +2044,7 @@ elif st.session_state.pagina == "D1_6":
 
 
 ################## Paso 7 - D1.7
-elif st.session_state.pagina == "D1_7":
+elif st.session_state.pagina == 9:
 
     st.markdown("""
                 <div style="
@@ -2139,7 +2113,7 @@ elif st.session_state.pagina == "D1_7":
 
 
 ################## Paso 8 - D1.8
-elif st.session_state.pagina == "D1_8":
+elif st.session_state.pagina == 10:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2206,7 +2180,7 @@ elif st.session_state.pagina == "D1_8":
 
 
 #################### Paso 9 - D1.9
-elif st.session_state.pagina == "D1_9":
+elif st.session_state.pagina == 11:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2273,7 +2247,7 @@ elif st.session_state.pagina == "D1_9":
 
 
 #################### Paso 10 - D2.1
-elif st.session_state.pagina == "D2_1":
+elif st.session_state.pagina == 12:
 
 
 
@@ -2341,7 +2315,7 @@ elif st.session_state.pagina == "D2_1":
 
 
 #################### Paso 11 - D2.2
-elif st.session_state.pagina == "D2_2":
+elif st.session_state.pagina == 13:
 
     st.markdown("""
                 <div style="
@@ -2409,7 +2383,7 @@ elif st.session_state.pagina == "D2_2":
 
 
 #################### Paso 12 - D2.3
-elif st.session_state.pagina == "D2_3":
+elif st.session_state.pagina == 14:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2477,7 +2451,7 @@ elif st.session_state.pagina == "D2_3":
 
 
 #################### Paso 13 - D2.4
-elif st.session_state.pagina == "D2_4":
+elif st.session_state.pagina == 15:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2543,7 +2517,7 @@ elif st.session_state.pagina == "D2_4":
 
 
 #################### Paso 14 - D2.5
-elif st.session_state.pagina == "D2_5":
+elif st.session_state.pagina == 16:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2622,7 +2596,7 @@ elif st.session_state.pagina == "D2_5":
 
 
 #################### Paso 15 - D2.6
-elif st.session_state.pagina == "D2_6":
+elif st.session_state.pagina == 17:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2690,7 +2664,7 @@ elif st.session_state.pagina == "D2_6":
 
 
 #################### Paso 16 - D2.7
-elif st.session_state.pagina == "D2_7":
+elif st.session_state.pagina == 18:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2757,7 +2731,7 @@ elif st.session_state.pagina == "D2_7":
 
 
 #################### Paso 17 - D2.8
-elif st.session_state.pagina == "D2_8":
+elif st.session_state.pagina == 19:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2824,7 +2798,7 @@ elif st.session_state.pagina == "D2_8":
 
 
 #################### Paso 18 - D2.9
-elif st.session_state.pagina == "D2_9":
+elif st.session_state.pagina == 20:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2892,7 +2866,7 @@ elif st.session_state.pagina == "D2_9":
 
 
 #################### Paso 19 - D2.10
-elif st.session_state.pagina == "D2_10":
+elif st.session_state.pagina == 21:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2958,7 +2932,7 @@ elif st.session_state.pagina == "D2_10":
         st.button("Siguiente", on_click=siguiente)
 
 #################### Paso 20 - D2.11
-elif st.session_state.pagina == "D2_11":
+elif st.session_state.pagina == 22:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3038,7 +3012,7 @@ elif st.session_state.pagina == "D2_11":
 
         #################### Paso 21 - D2.12
 
-elif st.session_state.pagina == "D2_12":
+elif st.session_state.pagina == 23:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3104,7 +3078,7 @@ elif st.session_state.pagina == "D2_12":
         st.button("Siguiente", on_click=siguiente)
 
 #################### Paso 22 - D2.13
-elif st.session_state.pagina == "D2_13":
+elif st.session_state.pagina == 24:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3171,7 +3145,7 @@ elif st.session_state.pagina == "D2_13":
 
 
 #################### Paso 23 - D2.14
-elif st.session_state.pagina == "D2_14":
+elif st.session_state.pagina == 25:
 
     st.markdown("""
                 <div style="
@@ -3241,7 +3215,7 @@ elif st.session_state.pagina == "D2_14":
 
 
 #################### Paso 24 - D2.15
-elif st.session_state.pagina == "D2_15":
+elif st.session_state.pagina == 26:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3307,7 +3281,7 @@ elif st.session_state.pagina == "D2_15":
 
 
 #################### Paso 25 - D2.16
-elif st.session_state.pagina == "D2_16":
+elif st.session_state.pagina == 27:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3373,7 +3347,7 @@ elif st.session_state.pagina == "D2_16":
         st.button("Siguiente", on_click=siguiente)
 
 #################### Paso 26 - D2.17
-elif st.session_state.pagina == "D2_17":
+elif st.session_state.pagina == 28:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3439,7 +3413,7 @@ elif st.session_state.pagina == "D2_17":
 
 
 #################### Paso 27 - D2.18
-elif st.session_state.pagina == "D2_18":
+elif st.session_state.pagina == 29:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3505,7 +3479,7 @@ elif st.session_state.pagina == "D2_18":
 
 
 #################### Paso 28 - D3.1
-elif st.session_state.pagina == "D3_1":
+elif st.session_state.pagina == 30:
 
     st.markdown("""
                 <div style="
@@ -3573,7 +3547,7 @@ elif st.session_state.pagina == "D3_1":
 
 
 #################### Paso 29 - D3.2
-elif st.session_state.pagina == "D3_2":
+elif st.session_state.pagina == 31:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3638,7 +3612,7 @@ elif st.session_state.pagina == "D3_2":
         st.button("Siguiente", on_click=siguiente)
 
 
-elif st.session_state.pagina == "D3_3":
+elif st.session_state.pagina == 32:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3704,7 +3678,7 @@ elif st.session_state.pagina == "D3_3":
 
 
 #################### Final #####################
-elif st.session_state.pagina == "final":
+elif st.session_state.pagina == 33:
 
 #### PUNTAJES 
     col1, col2= st.columns([5, 1])
