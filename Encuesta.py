@@ -212,18 +212,16 @@ if "alcance" not in st.session_state:
 if 'historico' not in st.session_state:
     st.session_state.historico = []
 
-# ----------------------------
-# INICIALIZAR
-# ----------------------------
 
-#if 'paso' not in st.session_state:
-#    st.session_state.paso = 1
+
+if 'paso' not in st.session_state:
+    st.session_state.paso = 1
 
 # Define los pasos para cada alcance
 pasos_completo = list(range(1, 33)) 
 pasos_basico = [3,4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
-#if 'respuestas' not in st.session_state:
-#   st.session_state.respuestas = {}
+if 'respuestas' not in st.session_state:
+   st.session_state.respuestas = {}
 
 def guardar_respuesta(key, value):
     if "respuestas" not in st.session_state:
