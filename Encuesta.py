@@ -247,17 +247,6 @@ def anterior():
         st.session_state.paso -= 1
 
 
-alcance = st.selectbox("Alcance", ["Básico", "Completo"], key="alcance")
-
-st.write(f"Página actual: {st.session_state.paso}")
-
-col1, col2 = st.columns(2)
-with col1:
-    st.button("Anterior", on_click=anterior)
-with col2:
-    st.button("Siguiente", on_click=siguiente)
-    
-
 
 
 if 'respuestas' not in st.session_state:
