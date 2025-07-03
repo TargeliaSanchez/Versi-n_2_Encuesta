@@ -1876,19 +1876,18 @@ elif st.session_state.paso == 6:
             guardar_respuesta("obsD1_4", obs)
 
     
-    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
-        st.session_state.paso = pasos_permitidos[0]
+
     alcance = st.session_state.get("alcance", "Seleccione")      
-col1, col2 = st.columns([5, 1])
+    col1, col2 = st.columns([5, 1])
 
-with col1:
+    with col1:
     # Anterior siempre va a 3, sin importar el alcance
-    if st.button("Anterior"):
-        st.session_state.paso = 5
+        if st.button("Anterior"):
+            st.session_state.paso = 5
 
-with col2:
+    with col2:
     # Siguiente: si es Básico, salta a 6; si es Completo, va a 5
-    if st.button("Siguiente"):
+        if st.button("Siguiente"):
             st.session_state.paso = 6
 
 
@@ -1957,8 +1956,7 @@ if st.session_state.paso == 7:
             obs = st.text_area("Hallazgos", key="obsD1_5")
             guardar_respuesta("obsD1_5", obs)
 
-    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
-        st.session_state.paso = pasos_permitidos[0]
+
     alcance = st.session_state.get("alcance", "Seleccione")
 
     col1, col2= st.columns([5, 1])
