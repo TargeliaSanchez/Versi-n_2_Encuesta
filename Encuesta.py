@@ -123,9 +123,9 @@ def calcular_puntaje_por_dimensiones(dimensiones_dict):
         dimension = subdim.split(".")[0]
 
         # Filtrar por alcance
-        if st.session_state.alcance == "Básico":
-            if obtener_paso_por_subdimension(subdim) not in pasos_basico:
-                continue
+        #if st.session_state.alcance == "Básico":
+        #    if obtener_paso_por_subdimension(subdim) not in pasos_basico:
+        #        continue
 
         # Obtener el valor de la valoración (posición 4 del arreglo)
         val_key = vars_sub[4]
@@ -231,8 +231,8 @@ def guardar_respuesta(key, value):
     st.session_state.respuestas[key] = value
 
 # Asegúrate de inicializar alcance
-if "alcance" not in st.session_state:
-    st.session_state.alcance = "Seleccione"
+#if "alcance" not in st.session_state:
+#    st.session_state.alcance = "Seleccione"
 
 # Define pasos permitidos solo cuando el alcance es válido
 if st.session_state.alcance == "Básico":
