@@ -246,6 +246,7 @@ def anterior():
     else:
         st.session_state.paso -= 1
 
+
 alcance = st.selectbox("Alcance", ["Básico", "Completo"], key="alcance")
 
 st.write(f"Página actual: {st.session_state.paso}")
@@ -302,14 +303,14 @@ if "servicio_2" not in st.session_state:
     st.session_state.servicio_2 = "Seleccione"
 
 
-def siguiente():
-    st.session_state.paso += 1
+#def siguiente():
+#    st.session_state.paso += 1
 
                 
 
 
-def anterior():
-    st.session_state.paso -= 1
+#def anterior():
+#    st.session_state.paso -= 1
 
 
 opciones = [
