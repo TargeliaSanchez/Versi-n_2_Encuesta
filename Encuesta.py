@@ -266,7 +266,6 @@ if "servicio_2" not in st.session_state:
 
 
 def siguiente():
-     Para pasos normales
     st.session_state.paso += 1
 
                 
