@@ -114,6 +114,18 @@ subdimension_a_paso = {
 #def obtener_paso_por_subdimension(sub):
 #    return subdimension_a_paso.get(sub, -1)  # devuelve -1 si no encuentra el paso
 
+[3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
+
+
+st.session_state.pagina = "info"
+paginas_completo = ["info","S_alcance","D1.1", "D1.2","D1.3","D1.4","D1.5","D1.6","D1.7","D1.8","D1.9","D2.1","D2.2","D2.3","D2.4","D2.5","D2.6","D2.7","D2.8","D2.9",   
+    "D2.10","D2.11","D2.12","D2.13","D2.14","D2.15", "D2.16","D2.17","D2.18","D3.1","D3.2","D3.3","final"]
+
+paginas_basico = ["D1.1", "D1.2","D1.4","D1.5","D1.6","D1.7","D2.2","D2.3","D2.6","D2.7","D2.9",   
+    "D2.10","D2.11","D2.15", "D2.17","final"]
+
+
+
 def calcular_puntaje_por_dimensiones(dimensiones_dict):
     puntajes = {"D1": 0, "D2": 0, "D3": 0}
     maximos = {"D1": 0, "D2": 0, "D3": 0}
@@ -216,9 +228,9 @@ if 'historico' not in st.session_state:
 
 
 # Define los pasos para cada alcance
-pasos_completo = list(range(1, 33)) 
+#pasos_completo = list(range(1, 33)) 
 
-pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
+#pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 
 
 
@@ -328,7 +340,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-if st.session_state.pagina == "Info":
+if st.session_state.pagina == "info":
 #Información de la institución
     st.markdown("""
                 <div style="
@@ -1553,12 +1565,6 @@ elif st.session_state.pagina == "S_alcance": # Evaluación de la institución.
         )
     guardar_respuesta("alcance", alcance)
     
-#    if st.session_state.alcance == "Básico":
-#        if st.session_state.pagina not in pasos_basico:
-#            st.session_state.paso = pasos_basico[0]
-#    else:
-#        if st.session_state.pagina not in subdimension_a_paso.values():
-#            st.session_state.paso = min(subdimension_a_paso.values())
 
     #### botones página 2
     col1, col2= st.columns([5, 1])
