@@ -1351,7 +1351,6 @@ if st.session_state.paso == 1:
 
 
 
-#elif  st.session_state.paso == 6:#Bloque  recursos humanos 1
     #Información de la institución
     st.markdown("""
                 <div style="
@@ -1501,7 +1500,6 @@ if st.session_state.paso == 1:
 
 
 ######################## PÁGINA 7 ########################
-#elif st.session_state.paso == 7:
         #Información de la institución
     st.markdown("""
                 <div style="
@@ -1587,7 +1585,7 @@ if st.session_state.paso == 1:
     
     with col2:
         def ingresar_evaluacion():
-            st.session_state.paso = 2
+            #st.session_state.paso = 2
             
         if st.button("Ingresar a la evaluación", on_click=ingresar_evaluacion):
             pass  # Nada aquí
@@ -1601,7 +1599,7 @@ if st.session_state.paso == 1:
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
 ############ PÁGINA 8 #####################
-elif st.session_state.paso == 2: # Evaluación de la institución.
+#elif st.session_state.paso == 2: # Evaluación de la institución.
 
     st.markdown("""
     <div style="background-color:#FFD966; padding: 2px 8px; font-weight:bold; border: 0px solid #b7b7b7;">
