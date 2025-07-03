@@ -219,7 +219,46 @@ if 'paso' not in st.session_state:
 
 # Define los pasos para cada alcance
 pasos_completo = list(range(1, 33)) 
-pasos_basico = [3,4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
+
+pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
+
+if 'paso' not in st.session_state:
+    st.session_state.paso = 3
+
+if 'alcance' not in st.session_state:
+    st.session_state.alcance = "Completo"
+
+def siguiente():
+    if st.session_state.alcance == "Básico":
+        pasos_permitidos = sorted(pasos_basico)
+        idx = pasos_permitidos.index(st.session_state.paso)
+        if idx < len(pasos_permitidos) - 1:
+            st.session_state.paso = pasos_permitidos[idx + 1]
+    else:
+        st.session_state.paso += 1
+
+def anterior():
+    if st.session_state.alcance == "Básico":
+        pasos_permitidos = sorted(pasos_basico)
+        idx = pasos_permitidos.index(st.session_state.paso)
+        if idx > 0:
+            st.session_state.paso = pasos_permitidos[idx - 1]
+    else:
+        st.session_state.paso -= 1
+
+alcance = st.selectbox("Alcance", ["Básico", "Completo"], key="alcance")
+
+st.write(f"Página actual: {st.session_state.paso}")
+
+col1, col2 = st.columns(2)
+with col1:
+    st.button("Anterior", on_click=anterior)
+with col2:
+    st.button("Siguiente", on_click=siguiente)
+    
+
+
+
 if 'respuestas' not in st.session_state:
    st.session_state.respuestas = {}
 
