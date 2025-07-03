@@ -1045,10 +1045,6 @@ if st.session_state.paso == 1:
         prestador_5 = st.radio("Tipo", ["P.REM", "P.REF"], key="prestador_5")
         guardar_respuesta("prestador_5", prestador_5)
 
-
-    
-
-
     # --------------------- 666666
     st.markdown("""
                 <div style="
@@ -1286,8 +1282,6 @@ if st.session_state.paso == 1:
         guardar_respuesta("prestador_7", prestador_7)
 
 
-
-
     #Información de la institución
     st.markdown("""
                 <div style="
@@ -1435,9 +1429,6 @@ if st.session_state.paso == 1:
     #st.markdown("<hr class='linea'>", unsafe_allow_html=True)
 
 
-
-######################## PÁGINA 7 ########################
-        #Información de la institución
     st.markdown("""
                 <div style="
                 background-color: #0b3c70;
@@ -1512,25 +1503,10 @@ if st.session_state.paso == 1:
         )
         guardar_respuesta(f"prof_verif_{i}", prof)
         
-    #col1, col2= st.columns([5, 1])
-    #with col1:
-    #    if st.button("Guardar información"):
-    # Aquí guardas los datos del formulario, por ejemplo en session_state o DataFrame
-    #        st.success("Información guardada correctamente.")
-    
-    # Botón para ingresar a la evaluación
-    
-    #with col2:
-        #def ingresar_evaluacion():
-            #st.session_state.paso = 2
-            
-        #if st.button("Ingresar a la evaluación", on_click=ingresar_evaluacion):
-        #    pass  # Nada aquí
-
-        #if st.button("Ingresar a la evaluación",on_click=ingreso_u):
-         #   st.session_state.paso = 2
-            #st.experimental_rerun()  # Opcional, para refrescar la pantalla y mostrar la evaluación
-
+    col1, col2= st.columns([5, 1])
+#### botones página 1
+    with col2:
+        st.button("Siguiente", on_click=siguiente)
 
 
 
@@ -1579,8 +1555,10 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
 
     col1, col2= st.columns([5, 1])
 
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        st.button("Siguiente", on_click=siguiente)
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 
