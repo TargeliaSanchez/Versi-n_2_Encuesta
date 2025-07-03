@@ -117,7 +117,7 @@ subdimension_a_paso = {
 #[3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 
 
-st.session_state.pagina = "info"
+st.session_state.pagina = 1
 #paginas_completo = ["info","s_alcance","D1_1", "D1_2","D1_3","D1_4","D1_5","D1_6","D1_7","D1_8","D1_9","D2_1","D2_2","D2_3","D2_4","D2_5","D2_6","D2_7","D2_8","D2_9",   
 #    "D2_10","D2_11","D2_12","D2_13","D2_14","D2_15", "D2_16","D2_17","D2_18","D3_1","D3_2","D3_3","final"]
 
@@ -346,7 +346,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-if st.session_state.pagina == "info":
+if st.session_state.paso == 1:
 #Información de la institución
     st.markdown("""
                 <div style="
@@ -1536,7 +1536,7 @@ if st.session_state.pagina == "info":
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
 ############ PÁGINA 8 #####################
-elif st.session_state.pagina == 2: # Evaluación de la institución.
+elif st.session_state.paso == 2: # Evaluación de la institución.
 
     st.markdown("""
     <div style="background-color:#FFD966; padding: 2px 8px; font-weight:bold; border: 0px solid #b7b7b7;">
@@ -1581,7 +1581,7 @@ elif st.session_state.pagina == 2: # Evaluación de la institución.
 
 
 
-elif st.session_state.pagina == 3:
+elif st.session_state.paso == 3:
 # Encabezado principal
     #st.markdown("### D1. ORGANIZACIÓN Y GESTIÓN DE LOS SERVICIOS DE REHABILITACIÓN")
 
@@ -1671,7 +1671,7 @@ elif st.session_state.pagina == 3:
 
 #-------------------------------------------------------------------------------------
 # Paso 2 - D1.2
-elif st.session_state.pagina == 4:
+elif st.session_state.paso == 4:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -1750,7 +1750,7 @@ elif st.session_state.pagina == 4:
 
 #-------------------------------------------------------------------------------------
 # Paso 3 - D1.3
-elif st.session_state.pagina == 5:
+elif st.session_state.paso == 5:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -1822,7 +1822,7 @@ elif st.session_state.pagina == 5:
 
 #-------------------------------------------------------------------------------------
 # Paso 4 - D1.4
-elif st.session_state.pagina == 6:
+elif st.session_state.paso == 6:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -1900,7 +1900,7 @@ elif st.session_state.pagina == 6:
 
 
 ################ Paso 5 - D1.5
-if st.session_state.pagina == 7:
+if st.session_state.paso == 7:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -1974,7 +1974,7 @@ if st.session_state.pagina == 7:
 
 
 ################## Paso 6 - D1.6
-elif st.session_state.pagina == 8:
+elif st.session_state.paso == 8:
 
     st.markdown("""
                 <div style="
@@ -2044,7 +2044,7 @@ elif st.session_state.pagina == 8:
 
 
 ################## Paso 7 - D1.7
-elif st.session_state.pagina == 9:
+elif st.session_state.paso == 9:
 
     st.markdown("""
                 <div style="
@@ -2113,7 +2113,7 @@ elif st.session_state.pagina == 9:
 
 
 ################## Paso 8 - D1.8
-elif st.session_state.pagina == 10:
+elif st.session_state.paso == 10:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2180,7 +2180,7 @@ elif st.session_state.pagina == 10:
 
 
 #################### Paso 9 - D1.9
-elif st.session_state.pagina == 11:
+elif st.session_state.paso == 11:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2247,7 +2247,7 @@ elif st.session_state.pagina == 11:
 
 
 #################### Paso 10 - D2.1
-elif st.session_state.pagina == 12:
+elif st.session_state.paso == 12:
 
 
 
@@ -2315,7 +2315,7 @@ elif st.session_state.pagina == 12:
 
 
 #################### Paso 11 - D2.2
-elif st.session_state.pagina == 13:
+elif st.session_state.paso == 13:
 
     st.markdown("""
                 <div style="
@@ -2383,7 +2383,7 @@ elif st.session_state.pagina == 13:
 
 
 #################### Paso 12 - D2.3
-elif st.session_state.pagina == 14:
+elif st.session_state.paso == 14:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2451,7 +2451,7 @@ elif st.session_state.pagina == 14:
 
 
 #################### Paso 13 - D2.4
-elif st.session_state.pagina == 15:
+elif st.session_state.paso == 15:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2517,7 +2517,7 @@ elif st.session_state.pagina == 15:
 
 
 #################### Paso 14 - D2.5
-elif st.session_state.pagina == 16:
+elif st.session_state.paso == 16:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2596,7 +2596,7 @@ elif st.session_state.pagina == 16:
 
 
 #################### Paso 15 - D2.6
-elif st.session_state.pagina == 17:
+elif st.session_state.paso == 17:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2664,7 +2664,7 @@ elif st.session_state.pagina == 17:
 
 
 #################### Paso 16 - D2.7
-elif st.session_state.pagina == 18:
+elif st.session_state.paso == 18:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2731,7 +2731,7 @@ elif st.session_state.pagina == 18:
 
 
 #################### Paso 17 - D2.8
-elif st.session_state.pagina == 19:
+elif st.session_state.paso == 19:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2798,7 +2798,7 @@ elif st.session_state.pagina == 19:
 
 
 #################### Paso 18 - D2.9
-elif st.session_state.pagina == 20:
+elif st.session_state.paso == 20:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2866,7 +2866,7 @@ elif st.session_state.pagina == 20:
 
 
 #################### Paso 19 - D2.10
-elif st.session_state.pagina == 21:
+elif st.session_state.paso == 21:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -2932,7 +2932,7 @@ elif st.session_state.pagina == 21:
         st.button("Siguiente", on_click=siguiente)
 
 #################### Paso 20 - D2.11
-elif st.session_state.pagina == 22:
+elif st.session_state.paso == 22:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3012,7 +3012,7 @@ elif st.session_state.pagina == 22:
 
         #################### Paso 21 - D2.12
 
-elif st.session_state.pagina == 23:
+elif st.session_state.paso == 23:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3078,7 +3078,7 @@ elif st.session_state.pagina == 23:
         st.button("Siguiente", on_click=siguiente)
 
 #################### Paso 22 - D2.13
-elif st.session_state.pagina == 24:
+elif st.session_state.paso == 24:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3145,7 +3145,7 @@ elif st.session_state.pagina == 24:
 
 
 #################### Paso 23 - D2.14
-elif st.session_state.pagina == 25:
+elif st.session_state.paso == 25:
 
     st.markdown("""
                 <div style="
@@ -3215,7 +3215,7 @@ elif st.session_state.pagina == 25:
 
 
 #################### Paso 24 - D2.15
-elif st.session_state.pagina == 26:
+elif st.session_state.paso == 26:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3281,7 +3281,7 @@ elif st.session_state.pagina == 26:
 
 
 #################### Paso 25 - D2.16
-elif st.session_state.pagina == 27:
+elif st.session_state.paso == 27:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3347,7 +3347,7 @@ elif st.session_state.pagina == 27:
         st.button("Siguiente", on_click=siguiente)
 
 #################### Paso 26 - D2.17
-elif st.session_state.pagina == 28:
+elif st.session_state.paso == 28:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3413,7 +3413,7 @@ elif st.session_state.pagina == 28:
 
 
 #################### Paso 27 - D2.18
-elif st.session_state.pagina == 29:
+elif st.session_state.paso == 29:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3479,7 +3479,7 @@ elif st.session_state.pagina == 29:
 
 
 #################### Paso 28 - D3.1
-elif st.session_state.pagina == 30:
+elif st.session_state.paso == 30:
 
     st.markdown("""
                 <div style="
@@ -3547,7 +3547,7 @@ elif st.session_state.pagina == 30:
 
 
 #################### Paso 29 - D3.2
-elif st.session_state.pagina == 31:
+elif st.session_state.paso == 31:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3612,7 +3612,7 @@ elif st.session_state.pagina == 31:
         st.button("Siguiente", on_click=siguiente)
 
 
-elif st.session_state.pagina == 32:
+elif st.session_state.paso == 32:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
@@ -3678,7 +3678,7 @@ elif st.session_state.pagina == 32:
 
 
 #################### Final #####################
-elif st.session_state.pagina == 33:
+elif st.session_state.paso == 33:
 
 #### PUNTAJES 
     col1, col2= st.columns([5, 1])
