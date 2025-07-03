@@ -214,29 +214,15 @@ if 'historico' not in st.session_state:
 
 
 
-if 'paso' not in st.session_state:
-    st.session_state.paso = 1
-
-
-if "alcance" not in st.session_state:
-    st.session_state.alcance = "Seleccione"
-if "paso" not in st.session_state:
-    st.session_state.paso = 3
 
 # Define los pasos para cada alcance
 pasos_completo = list(range(1, 33)) 
 
 pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 
-if 'paso' not in st.session_state:
-    st.session_state.paso = 3
-
-if 'alcance' not in st.session_state:
-    st.session_state.alcance = "Completo"
-
 def siguiente():
     if st.session_state.alcance == "Básico":
-        pasos_permitidos = sorted(pasos_basico)
+        pasos_permitidos = pasos_basico
         idx = pasos_permitidos.index(st.session_state.paso)
         if idx < len(pasos_permitidos) - 1:
             st.session_state.paso = pasos_permitidos[idx + 1]
