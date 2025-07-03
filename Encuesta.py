@@ -1575,20 +1575,20 @@ if st.session_state.paso == 1:
         )
         guardar_respuesta(f"prof_verif_{i}", prof)
         
-    col1, col2= st.columns([5, 1])
-    with col1:
-        if st.button("Guardar información"):
+    #col1, col2= st.columns([5, 1])
+    #with col1:
+    #    if st.button("Guardar información"):
     # Aquí guardas los datos del formulario, por ejemplo en session_state o DataFrame
-            st.success("Información guardada correctamente.")
+    #        st.success("Información guardada correctamente.")
     
     # Botón para ingresar a la evaluación
     
-    with col2:
-        def ingresar_evaluacion():
+    #with col2:
+        #def ingresar_evaluacion():
             #st.session_state.paso = 2
             
-        if st.button("Ingresar a la evaluación", on_click=ingresar_evaluacion):
-            pass  # Nada aquí
+        #if st.button("Ingresar a la evaluación", on_click=ingresar_evaluacion):
+        #    pass  # Nada aquí
 
         #if st.button("Ingresar a la evaluación",on_click=ingreso_u):
          #   st.session_state.paso = 2
