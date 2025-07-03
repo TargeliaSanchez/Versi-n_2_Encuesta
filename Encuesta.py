@@ -217,6 +217,10 @@ if 'historico' not in st.session_state:
 if 'paso' not in st.session_state:
     st.session_state.paso = 1
 
+
+if "alcance" not in st.session_state:
+    st.session_state.alcance = "Seleccione"  # o el valor por defecto que prefieras
+
 # Define los pasos para cada alcance
 pasos_completo = list(range(1, 33)) 
 
