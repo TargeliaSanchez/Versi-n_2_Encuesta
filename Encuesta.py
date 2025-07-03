@@ -1539,21 +1539,24 @@ if st.session_state.pagina == "info":
         )
         guardar_respuesta(f"prof_verif_{i}", prof)
         
-    alcance = st.session_state.get("alcance", "Seleccione")
-    col1, col2= st.columns([5, 1])
+# --- Selecciona el flujo según el alcance ---
+    if st.session_state.alcance == "Básico":
+        flujo = paginas_basico
+    else:
+        flujo = paginas_completo
+
+# --- Control de navegación robusto ---
+    idx_actual = flujo.index(st.session_state.pagina)
+
+    col1, col2 = st.columns([5, 1])
     with col1:
-        if st.button("Anterior"):
-            retroceder()
+        if idx_actual > 0:  # No mostrar "Anterior" en la primera página
+            if st.button("Anterior"):
+                st.session_state.pagina = flujo[idx_actual - 1]
     with col2:
-        if st.button("Siguiente"):
-            avanzar()
-
-    #with col1:
-    #    st.button("◀️ Anterior", on_click=anterior)
-    #with col2:
-    #    st.button("Siguiente ▶️", on_click=siguiente)
-
-    #col1, col2 = st.columns([1, 1])
+        if idx_actual < len(flujo) - 1:  # No mostrar "Siguiente" en la última página
+            if st.button("Siguiente"):
+                st.session_state.pagina = flujo[idx_actual + 1]
 
 
 
