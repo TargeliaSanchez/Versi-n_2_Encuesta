@@ -216,8 +216,8 @@ if 'historico' not in st.session_state:
 # INICIALIZAR
 # ----------------------------
 
-if 'paso' not in st.session_state:
-    st.session_state.paso = 1
+#if 'paso' not in st.session_state:
+#    st.session_state.paso = 1
 
 # Define los pasos para cada alcance
 pasos_completo = list(range(1, 33)) 
@@ -1599,7 +1599,7 @@ if st.session_state.paso == 1:
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
 ############ PÁGINA 8 #####################
-#elif st.session_state.paso == 2: # Evaluación de la institución.
+elif st.session_state.paso == 2: # Evaluación de la institución.
 
     st.markdown("""
     <div style="background-color:#FFD966; padding: 2px 8px; font-weight:bold; border: 0px solid #b7b7b7;">
