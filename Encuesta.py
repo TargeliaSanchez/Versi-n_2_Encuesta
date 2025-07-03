@@ -1797,7 +1797,7 @@ elif st.session_state.paso == 5:
     with col1:
     # Anterior siempre va a 3, sin importar el alcance
         if st.button("Anterior"):
-            st.session_state.paso = 3
+            st.session_state.paso = 4
 
     with col2:
     # Siguiente: si es Básico, salta a 6; si es Completo, va a 5
@@ -1805,7 +1805,7 @@ elif st.session_state.paso == 5:
             if st.session_state.alcance == "Básico":
                 st.session_state.paso = 6
             else:
-                st.session_state.paso = 5
+                st.session_state.paso = 7
 
 
 #-------------------------------------------------------------------------------------
