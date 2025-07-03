@@ -111,8 +111,8 @@ subdimension_a_paso = {
     "D2.16": 27,    "D2.17": 28,    "D2.18": 29,    "D3.1": 30,    "D3.2": 31,    "D3.3": 32
 }
 
-def obtener_paso_por_subdimension(sub):
-    return subdimension_a_paso.get(sub, -1)  # devuelve -1 si no encuentra el paso
+#def obtener_paso_por_subdimension(sub):
+#    return subdimension_a_paso.get(sub, -1)  # devuelve -1 si no encuentra el paso
 
 def calcular_puntaje_por_dimensiones(dimensiones_dict):
     puntajes = {"D1": 0, "D2": 0, "D3": 0}
@@ -123,9 +123,9 @@ def calcular_puntaje_por_dimensiones(dimensiones_dict):
         dimension = subdim.split(".")[0]
 
         # Filtrar por alcance
-        #if st.session_state.alcance == "Básico":
-        #    if obtener_paso_por_subdimension(subdim) not in pasos_basico:
-        #        continue
+        if st.session_state.alcance == "Básico":
+            if obtener_paso_por_subdimension(subdim) not in pasos_basico:
+                continue
 
         # Obtener el valor de la valoración (posición 4 del arreglo)
         val_key = vars_sub[4]
@@ -230,66 +230,6 @@ def guardar_respuesta(key, value):
         st.session_state.respuestas = {}
     st.session_state.respuestas[key] = value
 
-# Asegúrate de inicializar alcance
-#if "alcance" not in st.session_state:
-#    st.session_state.alcance = "Seleccione"
-
-# Define pasos permitidos solo cuando el alcance es válido
-if st.session_state.alcance == "Básico":
-    pasos_permitidos = pasos_basico
-elif st.session_state.alcance == "Completo":
-    pasos_permitidos = pasos_completo
-else:
-    pasos_permitidos = []
-
-# Solo define los botones si hay pasos permitidos
-if pasos_permitidos:
-    def siguiente():
-        actual = st.session_state.paso
-        if actual in pasos_permitidos:
-            idx = pasos_permitidos.index(actual)
-            if idx < len(pasos_permitidos) - 1:
-                st.session_state.paso = pasos_permitidos[idx + 1]
-
-    def anterior():
-        actual = st.session_state.paso
-        if actual in pasos_permitidos:
-            idx = pasos_permitidos.index(actual)
-            if idx > 0:
-                st.session_state.paso = pasos_permitidos[idx - 1]
-else:
-    def siguiente():
-        pass
-    def anterior():
-        pass
-
-
-# Suponiendo que ya tienes subdimension_a_paso y pasos_basico definidos
-
-# 1. Lista ORDENADA de pasos permitidos:
-pasos_permitidos = sorted(pasos_basico)  # Si quieres solo los básicos
-if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
-    st.session_state.paso = pasos_permitidos[0]
-# O usa todos los pasos posibles:
-# pasos_permitidos = sorted(subdimension_a_paso.values())
-
-# 2. Función para encontrar el siguiente/anterior paso
-def obtener_paso_siguiente(paso_actual, pasos_permitidos):
-    idx = pasos_permitidos.index(paso_actual)
-    if idx < len(pasos_permitidos) - 1:
-        return pasos_permitidos[idx + 1]
-    else:
-        return paso_actual  # O None si no quieres avanzar más
-
-def obtener_paso_anterior(paso_actual, pasos_permitidos):
-    idx = pasos_permitidos.index(paso_actual)
-    if idx > 0:
-        return pasos_permitidos[idx - 1]
-    else:
-        return paso_actual  # O None si no quieres retroceder más
-
-
-
 
 if "departamento" not in st.session_state:
     st.session_state.departamento = ""
@@ -325,15 +265,15 @@ if "servicio_2" not in st.session_state:
     st.session_state.servicio_2 = "Seleccione"
 
 
-#def siguiente():
-    # Para pasos normales
-#    st.session_state.paso += 1
+def siguiente():
+     Para pasos normales
+    st.session_state.paso += 1
 
                 
 
 
-#def anterior():
-#    st.session_state.paso -= 1
+def anterior():
+    st.session_state.paso -= 1
 
 
 opciones = [
