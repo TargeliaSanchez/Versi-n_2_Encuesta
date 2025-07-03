@@ -220,23 +220,6 @@ pasos_completo = list(range(1, 33))
 
 pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 
-def siguiente():
-    if st.session_state.alcance == "Básico":
-        pasos_permitidos = pasos_basico
-        idx = pasos_permitidos.index(st.session_state.paso)
-        if idx < len(pasos_permitidos) - 1:
-            st.session_state.paso = pasos_permitidos[idx + 1]
-    else:
-        st.session_state.paso += 1
-
-def anterior():
-    if st.session_state.alcance == "Básico":
-        pasos_permitidos = sorted(pasos_basico)
-        idx = pasos_permitidos.index(st.session_state.paso)
-        if idx > 0:
-            st.session_state.paso = pasos_permitidos[idx - 1]
-    else:
-        st.session_state.paso -= 1
 
 
 
@@ -284,14 +267,14 @@ if "servicio_2" not in st.session_state:
     st.session_state.servicio_2 = "Seleccione"
 
 
-#def siguiente():
-#    st.session_state.paso += 1
+def siguiente():
+    st.session_state.paso += 1
 
                 
 
 
-#def anterior():
-#    st.session_state.paso -= 1
+def anterior():
+    st.session_state.paso -= 1
 
 
 opciones = [
