@@ -114,7 +114,7 @@ subdimension_a_paso = {
 #def obtener_paso_por_subdimension(sub):
 #    return subdimension_a_paso.get(sub, -1)  # devuelve -1 si no encuentra el paso
 
-[3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
+#[3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 
 
 st.session_state.pagina = "info"
@@ -123,6 +123,32 @@ paginas_completo = ["info","S_alcance","D1.1", "D1.2","D1.3","D1.4","D1.5","D1.6
 
 paginas_basico = ["D1.1", "D1.2","D1.4","D1.5","D1.6","D1.7","D2.2","D2.3","D2.6","D2.7","D2.9",   
     "D2.10","D2.11","D2.15", "D2.17","final"]
+
+
+# --- Inicializar session_state ---
+if "alcance" not in st.session_state:
+    st.session_state.alcance = "Seleccione"
+if "pagina" not in st.session_state:
+    st.session_state.pagina = "info"
+if "respuestas" not in st.session_state:
+    st.session_state.respuestas = {}
+
+# --- Escoger flujo actual según alcance ---
+if st.session_state.alcance == "Básico":
+    flujo = paginas_basico
+else:
+    flujo = paginas_completo
+
+# --- Funciones para navegación ---
+def avanzar():
+    idx = flujo.index(st.session_state.pagina)
+    if idx < len(flujo) - 1:
+        st.session_state.pagina = flujo[idx + 1]
+
+def retroceder():
+    idx = flujo.index(st.session_state.pagina)
+    if idx > 0:
+        st.session_state.pagina = flujo[idx - 1]
 
 
 
@@ -218,9 +244,6 @@ st.markdown("""
 
 
 
-if "alcance" not in st.session_state:
-    st.session_state.alcance = "Seleccione"
-
 if 'historico' not in st.session_state:
     st.session_state.historico = []
 
@@ -250,9 +273,7 @@ if "departamento" not in st.session_state:
 
 if "municipio" not in st.session_state:
     st.session_state.municipio = ""
-# Si no se ha inicializado el alcance, establecer un valor por defecto  
-if "alcance" not in st.session_state:
-    st.session_state.alcance = "Seleccione"
+
 # Si no se ha inicializado el nombre de la institución, establecer un valor por defecto
 if "nombre_institucion" not in st.session_state:
     st.session_state.nombre_institucion = ""
@@ -279,14 +300,14 @@ if "servicio_2" not in st.session_state:
     st.session_state.servicio_2 = "Seleccione"
 
 
-def siguiente():
-    st.session_state.paso += 1
+#def siguiente():
+#    st.session_state.paso += 1
 
                 
 
 
-def anterior():
-    st.session_state.paso -= 1
+#def anterior():
+#    st.session_state.paso -= 1
 
 
 opciones = [
@@ -1520,12 +1541,19 @@ if st.session_state.pagina == "info":
         
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
-
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+        if st.button("Anterior"):
+            retroceder()
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if st.button("Siguiente"):
+            avanzar()
 
+    #with col1:
+    #    st.button("◀️ Anterior", on_click=anterior)
+    #with col2:
+    #    st.button("Siguiente ▶️", on_click=siguiente)
+
+    #col1, col2 = st.columns([1, 1])
 
 
 
