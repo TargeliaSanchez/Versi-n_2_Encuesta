@@ -1640,7 +1640,7 @@ elif st.session_state.paso == 3:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_1")
             guardar_respuesta("obsD1_1", obs)
-
+### página 3
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
@@ -1714,10 +1714,11 @@ elif st.session_state.paso == 4:
             obs = st.text_area("Hallazgos", key="obsD1_2")
             guardar_respuesta("obsD1_2", obs)
     
-    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
-        st.session_state.paso = pasos_permitidos[0]
+    #if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
+     #   st.session_state.paso = pasos_permitidos[0]
     
     alcance = st.session_state.get("alcance", "Seleccione")
+    #### botones página 2
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -1789,15 +1790,21 @@ elif st.session_state.paso == 5:
             obs = st.text_area("Hallazgos", key="obsD1_3")
             guardar_respuesta("obsD1_3", obs)
 
-    if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
-        st.session_state.paso = pasos_permitidos[0]
     alcance = st.session_state.get("alcance", "Seleccione")
-    col1, col2= st.columns([5, 1])
+    col1, col2 = st.columns([5, 1])
+## Botones página 4
     with col1:
-        st.button("Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente", on_click=siguiente)
+    # Anterior siempre va a 3, sin importar el alcance
+        if st.button("Anterior"):
+            st.session_state.paso = 3
 
+    with col2:
+    # Siguiente: si es Básico, salta a 6; si es Completo, va a 5
+        if st.button("Siguiente"):
+            if st.session_state.alcance == "Básico":
+                st.session_state.paso = 6
+            else:
+                st.session_state.paso = 5
 
 
 #-------------------------------------------------------------------------------------
@@ -1871,11 +1878,17 @@ elif st.session_state.paso == 6:
     if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
         st.session_state.paso = pasos_permitidos[0]
     alcance = st.session_state.get("alcance", "Seleccione")      
-    col1, col2= st.columns([5, 1])
-    with col1:
-        st.button("Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente", on_click=siguiente)
+col1, col2 = st.columns([5, 1])
+
+with col1:
+    # Anterior siempre va a 3, sin importar el alcance
+    if st.button("Anterior"):
+        st.session_state.paso = 5
+
+with col2:
+    # Siguiente: si es Básico, salta a 6; si es Completo, va a 5
+    if st.button("Siguiente"):
+            st.session_state.paso = 6
 
 
 
