@@ -1718,20 +1718,13 @@ elif st.session_state.paso == 4:
     
     
     alcance = st.session_state.get("alcance", "Seleccione")
-    col1, col2 = st.columns([5, 1])
-## Botones página 4
-    with col1:
-    # Anterior siempre va a 3, sin importar el alcance
-        if st.button("Anterior"):
-            st.session_state.paso = 4
+    col1, col2= st.columns([5, 1])
 
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
-    # Siguiente: si es Básico, salta a 6; si es Completo, va a 5
-        if st.button("Siguiente"):
-            if st.session_state.alcance == "Básico":
-                st.session_state.paso = 6
-            else:
-                st.session_state.paso = 7
+        st.button("Siguiente ▶️", on_click=siguiente)
+
 
 
 
@@ -1800,13 +1793,12 @@ elif st.session_state.paso == 5:
             guardar_respuesta("obsD1_3", obs)
 
     alcance = st.session_state.get("alcance", "Seleccione")
-
-    #### botones página 2
     col1, col2= st.columns([5, 1])
+
     with col1:
-        st.button("Anterior", on_click=anterior)
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        st.button("Siguiente", on_click=siguiente)
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 #-------------------------------------------------------------------------------------
@@ -1878,18 +1870,13 @@ elif st.session_state.paso == 6:
 
     
 
-    alcance = st.session_state.get("alcance", "Seleccione")      
-    col1, col2 = st.columns([5, 1])
+    alcance = st.session_state.get("alcance", "Seleccione")
+    col1, col2= st.columns([5, 1])
 
     with col1:
-    # Anterior siempre va a 3, sin importar el alcance
-        if st.button("Anterior"):
-            st.session_state.paso = 5
-
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
-    # Siguiente: si es Básico, salta a 6; si es Completo, va a 5
-        if st.button("Siguiente"):
-            st.session_state.paso = 7
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 
