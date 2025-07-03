@@ -1888,7 +1888,7 @@ elif st.session_state.paso == 6:
     with col2:
     # Siguiente: si es Básico, salta a 6; si es Completo, va a 5
         if st.button("Siguiente"):
-            st.session_state.paso = 6
+            st.session_state.paso = 7
 
 
 
