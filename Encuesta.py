@@ -1553,6 +1553,7 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
         if st.session_state.paso not in subdimension_a_paso.values():
             st.session_state.paso = min(subdimension_a_paso.values())
 
+    #### botones página 2
     col1, col2= st.columns([5, 1])
 
     with col1:
@@ -1643,10 +1644,12 @@ elif st.session_state.paso == 3:
 ### página 3
     alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
+
     with col1:
-        st.button("Anterior", on_click=anterior)
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
-        st.button("Siguiente", on_click=siguiente)
+        st.button("Siguiente ▶️", on_click=siguiente)
+
 
 #-------------------------------------------------------------------------------------
 # Paso 2 - D1.2
@@ -1714,8 +1717,6 @@ elif st.session_state.paso == 4:
             obs = st.text_area("Hallazgos", key="obsD1_2")
             guardar_respuesta("obsD1_2", obs)
     
-    #if pasos_permitidos and st.session_state.paso not in pasos_permitidos:
-     #   st.session_state.paso = pasos_permitidos[0]
     
     alcance = st.session_state.get("alcance", "Seleccione")
     #### botones página 2
