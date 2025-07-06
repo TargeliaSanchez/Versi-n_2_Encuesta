@@ -280,7 +280,7 @@ dimensiones_basico = {
 # Define qué subdimensiones cuentan para Básico
 dimensiones_completo = {
     "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],  # Según lo que mencionas
-    "D2": ["D2.1", D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
+    "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
     "D3": ["D1.3", "D3.2", "D3.3"]
     # Si D3 no aplica en básico, puedes omitirla
 }
