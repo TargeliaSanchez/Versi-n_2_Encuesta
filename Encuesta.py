@@ -149,7 +149,35 @@ def calcular_puntaje_por_dimensiones2(dimensiones, respuestas, alcance):
 
 ####################################
 
+########### nueva versión
+def calcular_puntaje_por_dimensiones_v2(dimensiones, respuestas, alcance):
+    puntajes = {}
+    maximos = {}
+    puntaje_max = 5  # O el valor máximo de tu escala
 
+    # Escoge la estructura de dimensiones según el alcance
+    if alcance == "Básico":
+        dim_usar = dimensiones_basico
+    else:
+        dim_usar = dimensiones  # dimensiones_completo
+
+    for dim, subs in dim_usar.items():
+        puntajes[dim] = 0
+        maximos[dim] = 0
+        for sub in subs:
+            valor = respuestas.get(sub, 0)
+            if valor in ("Seleccione", "No aplica", None, ""):
+                valor_num = 0
+            else:
+                try:
+                    valor_num = int(valor)
+                except (TypeError, ValueError):
+                    valor_num = 0
+            puntajes[dim] += valor_num
+            maximos[dim] += puntaje_max
+
+    return puntajes, maximos
+    #----------------------------------------------
 
 
 # --- Inicializar session_state ---
@@ -244,7 +272,16 @@ todas_dimensiones = dict(todas_dimensiones)
 # Define qué subdimensiones cuentan para Básico
 dimensiones_basico = {
     "D1": ["D1.1", "D1.2", "D1.4", "D1.5", "D1.6", "D1.7"],  # Según lo que mencionas
-    "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.15", "D2.17"],
+    "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.15", "D2.17"]
+    # Si D3 no aplica en básico, puedes omitirla
+}
+
+
+# Define qué subdimensiones cuentan para Básico
+dimensiones_completo = {
+    "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],  # Según lo que mencionas
+    "D2": ["D2.1", D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
+    "D3": ["D1.3", "D3.2", "D3.3"]
     # Si D3 no aplica en básico, puedes omitirla
 }
 
@@ -3739,7 +3776,7 @@ elif st.session_state.paso == 33:
 #############---------------------------------------------------------------------------------------------##################
 
     alcance = st.session_state.get("alcance", "Seleccione")
-    puntajes, maximos = calcular_puntaje_por_dimensiones2(dimensiones, st.session_state.respuestas, alcance)
+    puntajes, maximos = calcular_puntaje_por_dimensiones_v2(dimensiones, respuestas, alcance)
 
     for dim in puntajes:
         st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
