@@ -121,6 +121,29 @@ st.session_state.pagina = 1
 #    "D2_10","D2_11","D2_12","D2_13","D2_14","D2_15", "D2_16","D2_17","D2_18","D3_1","D3_2","D3_3","final"]
 
 
+##########################################
+
+def calcular_puntaje_por_dimensiones2(dimensiones, respuestas, alcance): ############prueba
+    puntajes = {}
+    maximos = {}
+    # Define puntaje máximo por pregunta (ajusta según tu escala)
+    puntaje_max = 5
+
+    if alcance == "Básico":
+        dim_usar = dimensiones_basico
+    else:
+        dim_usar = dimensiones  # Asume que en completo tienes todas las subdimensiones
+
+    for dim, subs in dim_usar.items():
+        puntajes[dim] = 0
+        maximos[dim] = 0
+        for sub in subs:
+            valor = respuestas.get(sub, 0)
+            puntajes[dim] += valor
+            maximos[dim] += puntaje_max
+
+    return puntajes, maximos
+
 ####################################
 
 
@@ -3705,6 +3728,16 @@ elif st.session_state.paso == 33:
         st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
     
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
+
+#############---------------------------------------------------------------------------------------------##################
+
+    alcance = st.session_state.get("alcance", "Seleccione")
+puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones, st.session_state.respuestas, alcance)
+
+for dim in puntajes:
+    st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
+
+st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
     
 ##########-----------------------------------Obtención del gráfico de retroalimentación-----------------------------------############
