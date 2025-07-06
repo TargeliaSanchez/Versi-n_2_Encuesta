@@ -77,6 +77,28 @@ nombres_subdimensiones = {
     "D3.3": "D3.3 Se mide la satisfacción de los usuarios con la atención recibida en los servicios de rehabilitación."
 }
 
+alcance = st.session_state.get("alcance", "Seleccione")
+
+for paso in pasos_completo:
+    aplica = (alcance == "Completo") or (paso in pasos_basico)
+    st.markdown(f"### Pregunta {paso}")
+
+    if aplica:
+        # Mostrar pregunta normalmente (inputs habilitados)
+        respuesta = st.selectbox(
+            f"Selecciona tu respuesta para la pregunta {paso}",
+            ["Seleccione", "Sí", "No"],
+            key=f"respuesta_{paso}"
+        )
+    else:
+        # Mostrar como "No aplica" o input deshabilitado
+        st.selectbox(
+            f"Selecciona tu respuesta para la pregunta {paso} (No aplica en Básico)",
+            ["No aplica"],
+            key=f"respuesta_{paso}",
+            disabled=True
+        )
+
 
 
 
