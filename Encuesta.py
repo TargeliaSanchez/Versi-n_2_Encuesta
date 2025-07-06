@@ -3778,7 +3778,7 @@ elif st.session_state.paso == 33:
     alcance = st.session_state.get("alcance", "Seleccione")
     puntajes, maximos = calcular_puntaje_por_dimensiones_v2(dimensiones, st.session_state.respuestas, alcance)
 
-    for dim in puntajes:
+    for dim in ["D1", "D2", "D3"]:
         st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
 
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
