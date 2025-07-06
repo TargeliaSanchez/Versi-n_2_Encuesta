@@ -77,29 +77,6 @@ nombres_subdimensiones = {
     "D3.3": "D3.3 Se mide la satisfacción de los usuarios con la atención recibida en los servicios de rehabilitación."
 }
 
-alcance = st.session_state.get("alcance", "Seleccione")
-
-for paso in pasos_completo:
-    aplica = (alcance == "Completo") or (paso in pasos_basico)
-    st.markdown(f"### Pregunta {paso}")
-
-    if aplica:
-        # Mostrar pregunta normalmente (inputs habilitados)
-        respuesta = st.selectbox(
-            f"Selecciona tu respuesta para la pregunta {paso}",
-            ["Seleccione", "Sí", "No"],
-            key=f"respuesta_{paso}"
-        )
-    else:
-        # Mostrar como "No aplica" o input deshabilitado
-        st.selectbox(
-            f"Selecciona tu respuesta para la pregunta {paso} (No aplica en Básico)",
-            ["No aplica"],
-            key=f"respuesta_{paso}",
-            disabled=True
-        )
-
-
 
 
 # Lista de nombres de variables en el orden deseado
@@ -140,8 +117,36 @@ subdimension_a_paso = {
 
 
 st.session_state.pagina = 1
-#paginas_completo = ["info","s_alcance","D1_1", "D1_2","D1_3","D1_4","D1_5","D1_6","D1_7","D1_8","D1_9","D2_1","D2_2","D2_3","D2_4","D2_5","D2_6","D2_7","D2_8","D2_9",   
-#    "D2_10","D2_11","D2_12","D2_13","D2_14","D2_15", "D2_16","D2_17","D2_18","D3_1","D3_2","D3_3","final"]
+pasos_completo = ["info","s_alcance","D1_1", "D1_2","D1_3","D1_4","D1_5","D1_6","D1_7","D1_8","D1_9","D2_1","D2_2","D2_3","D2_4","D2_5","D2_6","D2_7","D2_8","D2_9",   
+    "D2_10","D2_11","D2_12","D2_13","D2_14","D2_15", "D2_16","D2_17","D2_18","D3_1","D3_2","D3_3","final"]
+
+
+############################################3
+alcance = st.session_state.get("alcance", "Seleccione")
+
+for paso in pasos_completo:
+    aplica = (alcance == "Completo") or (paso in pasos_basico)
+    st.markdown(f"### Pregunta {paso}")
+
+    if aplica:
+        # Mostrar pregunta normalmente (inputs habilitados)
+        respuesta = st.selectbox(
+            f"Selecciona tu respuesta para la pregunta {paso}",
+            ["Seleccione", "Sí", "No"],
+            key=f"respuesta_{paso}"
+        )
+    else:
+        # Mostrar como "No aplica" o input deshabilitado
+        st.selectbox(
+            f"Selecciona tu respuesta para la pregunta {paso} (No aplica en Básico)",
+            ["No aplica"],
+            key=f"respuesta_{paso}",
+            disabled=True
+        )
+
+####################################
+
+
 
 #paginas_basico = ["D1_1", "D1_2","D1_4","D1_5","D1_6","D1_7","D2_2","D2_3","D2_6","D2_7","D2_9",   
 #    "D2_10","D2_11","D2_15", "D2_17","final"]
