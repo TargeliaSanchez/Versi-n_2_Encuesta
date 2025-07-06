@@ -151,8 +151,8 @@ def calcular_puntaje_por_dimensiones2(dimensiones, respuestas, alcance):
 
 ########### nueva versión
 def calcular_puntaje_por_dimensiones_v2(dimensiones, respuestas, alcance):
-    puntajes = {}
-    maximos = {}
+    puntajes = {"D1": 0, "D2": 0, "D3": 0}
+    maximos = {"D1": 0, "D2": 0, "D3": 0}
     puntaje_max = 5  # O el valor máximo de tu escala
 
     # Escoge la estructura de dimensiones según el alcance
@@ -3778,7 +3778,7 @@ elif st.session_state.paso == 33:
     alcance = st.session_state.get("alcance", "Seleccione")
     puntajes, maximos = calcular_puntaje_por_dimensiones_v2(dimensiones, st.session_state.respuestas, alcance)
 
-    for dim in ["D1", "D2", "D3"]:
+    for dim in puntajes:
         st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
 
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
