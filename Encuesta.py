@@ -110,46 +110,46 @@ subdimension_a_paso = {
     "D2.16": 27,    "D2.17": 28,    "D2.18": 29,    "D3.1": 30,    "D3.2": 31,    "D3.3": 32
 }
 
-#def obtener_paso_por_subdimension(sub):
-#    return subdimension_a_paso.get(sub, -1)  # devuelve -1 si no encuentra el paso
 
-#[3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
 
 
 st.session_state.pagina = 1
-#pasos_completo = ["info","s_alcance","D1_1", "D1_2","D1_3","D1_4","D1_5","D1_6","D1_7","D1_8","D1_9","D2_1","D2_2","D2_3","D2_4","D2_5","D2_6","D2_7","D2_8","D2_9",   
-#    "D2_10","D2_11","D2_12","D2_13","D2_14","D2_15", "D2_16","D2_17","D2_18","D3_1","D3_2","D3_3","final"]
+
 
 
 ##########################################
 
-def calcular_puntaje_por_dimensiones2(dimensiones, respuestas, alcance): ############prueba
+def calcular_puntaje_por_dimensiones2(dimensiones, respuestas, alcance):
     puntajes = {}
     maximos = {}
-    # Define puntaje máximo por pregunta (ajusta según tu escala)
-    puntaje_max = 5
+    puntaje_max = 5  # pon aquí el valor máximo de tu escala
 
+    # Usa solo las dimensiones válidas para el alcance
     if alcance == "Básico":
+        # Asegúrate de definir 'dimensiones_basico' según tus reglas
         dim_usar = dimensiones_basico
     else:
-        dim_usar = dimensiones  # Asume que en completo tienes todas las subdimensiones
+        dim_usar = dimensiones
 
     for dim, subs in dim_usar.items():
         puntajes[dim] = 0
         maximos[dim] = 0
         for sub in subs:
             valor = respuestas.get(sub, 0)
-            puntajes[dim] += valor
+            if valor in ("Seleccione", "No aplica", None, ""):
+                valor_num = 0
+            else:
+                try:
+                    valor_num = int(valor)
+                except (TypeError, ValueError):
+                    valor_num = 0
+            puntajes[dim] += valor_num
             maximos[dim] += puntaje_max
-
     return puntajes, maximos
 
 ####################################
 
 
-
-#paginas_basico = ["D1_1", "D1_2","D1_4","D1_5","D1_6","D1_7","D2_2","D2_3","D2_6","D2_7","D2_9",   
-#    "D2_10","D2_11","D2_15", "D2_17","final"]
 
 
 # --- Inicializar session_state ---
