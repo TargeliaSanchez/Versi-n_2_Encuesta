@@ -215,6 +215,43 @@ def calcular_puntaje_por_dimensiones(dimensiones_dict):
 
     return puntajes, maximos
 
+#############--------------------------------------------------------
+def calcular_puntaje_por_dimensionesF(dimensiones_dict):
+    puntajes = {"D1": 0, "D2": 0, "D3": 0}
+    maximos = {"D1": 0, "D2": 0, "D3": 0}
+
+    for subdim, vars_sub in dimensiones_dict.items():
+        # Detectar a qué dimensión pertenece (D1, D2, D3)
+        dimension = subdim.split(".")[0]
+
+        # Filtrar por alcance básico
+        if st.session_state.alcance == "Básico":
+            if obtener_paso_por_subdimension(subdim) not in pasos_basico:
+                continue
+
+        # Obtener el valor guardado en session_state
+        val_key = vars_sub[4]
+        respuesta = st.session_state.respuestas.get(val_key, 0)
+        # Si la respuesta es una tupla (como (texto, valor)), toma el valor
+        if isinstance(respuesta, tuple):
+            val = respuesta[1]
+        else:
+            val = respuesta
+
+        # Si la respuesta es "Seleccione", "No aplica", None, '', pon 0
+        if val in ("Seleccione", "No aplica", None, ""):
+            val = 0
+        try:
+            val = int(val)
+        except (TypeError, ValueError):
+            val = 0
+
+        puntajes[dimension] += val
+        maximos[dimension] += 5  # O el máximo de tu escala
+
+    return puntajes, maximos
+#-------------------------------------------------------------
+
  
 
 
@@ -3766,7 +3803,7 @@ elif st.session_state.paso == 33:
     st.success("¡Formulario completado! ✅") #Finalización del formulario
 
     st.subheader("📈 Resultados por dimensión")
-    puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones) #Retroalimentación visual
+    puntajes, maximos = calcular_puntaje_por_dimensionesF(dimensiones) #Retroalimentación visual
 
     for dim in ["D1", "D2", "D3"]:
         st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
