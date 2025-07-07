@@ -317,7 +317,7 @@ if 'historico' not in st.session_state:
 pasos_completo = list(range(1, 33)) 
 
 pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
-alcance = st.session_state.alcance_evaluacion
+#alcance = st.session_state.alcance_evaluacion
 
 
 def pasos_validos(alcance):
