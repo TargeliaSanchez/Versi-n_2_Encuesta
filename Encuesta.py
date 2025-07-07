@@ -220,7 +220,7 @@ def calcular_puntaje_por_dimensiones_v3(respuestas, alcance):
     # Define tus diccionarios fuera de la función o pásalos como argumentos si prefieres
     dimensiones_basico = {
         "D1": ["D1.1", "D1.2", "D1.4", "D1.5", "D1.6", "D1.7"],
-        "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.15", "D2.17"]
+        "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.10", "D2.11", "D2.15", "D2.17"]
     }
     dimensiones_completo = {
         "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
