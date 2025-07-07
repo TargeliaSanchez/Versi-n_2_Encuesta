@@ -3984,8 +3984,14 @@ elif st.session_state.paso == 33:
         dim = sub.split(".")[0]
         subdims_por_dim[dim].append(sub)
 
-    for dim in ["D1", "D2", "D3"]:
-        nombre_largo = nombres_dimensiones[dim]
+    if alcance == "Básico":
+        dims = ["D1", "D2"]
+    else:
+        dims = ["D1", "D2", "D3"]
+    dims = list(puntajes.keys())
+
+    for dim in dims:
+        nombre_largo = nombres_dimensiones.get(dim, dim)
         table = doc.add_table(rows=2, cols=2)
         table.style = 'Table Grid'
 
