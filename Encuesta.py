@@ -3985,15 +3985,27 @@ elif st.session_state.paso == 33:
         subdims_por_dim[dim].append(sub)
 
     if alcance == "Básico":
-        dims = ["D1", "D2"]
+        dimensiones_actuales = {
+            "D1": ["D1.1", "D1.2", "D1.4", "D1.5", "D1.6", "D1.7"],
+            "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.15", "D2.17"]
+        }
     else:
-        dims = ["D1", "D2", "D3"]
-    dims = list(puntajes.keys())
+        dimensiones_actuales = {
+            "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
+            "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
+            "D3": ["D3.1", "D3.2", "D3.3"]
+        }
 
-    for dim in dims:
+    #for dim in dims:
+    #    nombre_largo = nombres_dimensiones.get(dim, dim)
+    #    table = doc.add_table(rows=2, cols=2)
+    #    table.style = 'Table Grid'
+
+    for dim, subdim_list in dimensiones_actuales.items():
         nombre_largo = nombres_dimensiones.get(dim, dim)
         table = doc.add_table(rows=2, cols=2)
         table.style = 'Table Grid'
+    
 
     # Fila 0: nombre largo en celda combinada y fondo gris oscuro
         titulo_row = table.rows[0]
@@ -4015,24 +4027,23 @@ elif st.session_state.paso == 33:
                 for run in para.runs:
                     run.bold = True
 
-    # Agrega cada subdimensión de la dimensión
-        for sub in subdims_por_dim[dim]:
+
+    
+        for sub in subdim_list:
             mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
             if not mask.any():
-                continue  # Salta si no la encuentra
+                continue
             row = df_resumen[mask].iloc[0]
             val = int(row["Valoración"])
-        # Fila condición y calificación
             row1 = table.add_row().cells
             row1[0].text = row["Condición"]
             row1[1].text = str(val)
-            set_cell_background(row1[1], color_puntaje.get(val, 'FFFFFF'))  # color segun puntaje
-        # Fila hallazgos
+            set_cell_background(row1[1], color_puntaje.get(val, 'FFFFFF'))
             row2 = table.add_row().cells
             merged = row2[0].merge(row2[1])
             merged.text = f"Hallazgos: {row['Hallazgos']}"
 
-    # Fila de puntaje global de la dimensión
+    # Total de la dimensión
         row_total = table.add_row().cells
         cell_dim = row_total[0]
         cell_puntaje = row_total[1]
@@ -4043,7 +4054,35 @@ elif st.session_state.paso == 33:
 
         doc.add_paragraph("")  # Salto de línea entre tablas
 
-#### aquí iba lo que borré
+
+    # Agrega cada subdimensión de la dimensión
+        #for sub in subdims_por_dim[dim]:
+         #   mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
+         #   if not mask.any():
+         #       continue  # Salta si no la encuentra
+         #   row = df_resumen[mask].iloc[0]
+         #   val = int(row["Valoración"])
+        # Fila condición y calificación
+            #row1 = table.add_row().cells
+            #row1[0].text = row["Condición"]
+            #row1[1].text = str(val)
+            #set_cell_background(row1[1], color_puntaje.get(val, 'FFFFFF'))  # color segun puntaje
+        # Fila hallazgos
+            #row2 = table.add_row().cells
+            #merged = row2[0].merge(row2[1])
+            #merged.text = f"Hallazgos: {row['Hallazgos']}"
+
+    # Fila de puntaje global de la dimensión
+        #row_total = table.add_row().cells
+        #cell_dim = row_total[0]
+        #cell_puntaje = row_total[1]
+        #run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
+        #run_dim.bold = True
+        #run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
+        #run_puntaje.bold = True
+
+        #doc.add_paragraph("")  # Salto de línea entre tablas
+
     
 
 
