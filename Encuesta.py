@@ -35,7 +35,29 @@ color_puntaje = {
     2: 'FCE4D6',  # Naranja pálido
     1: 'F8CBAD',  # Rojo claro
 }
+#####################################################
+if 'alcance_seleccionado' not in st.session_state:
+    st.session_state.alcance_seleccionado = False
 
+if not st.session_state.alcance_seleccionado:
+    alcance = st.radio(
+        "Alcance de la evaluación:",
+        options=["Básico", "Completo"],
+        horizontal=True
+    )
+    if st.button("Confirmar alcance"):
+        st.session_state.alcance_evaluacion = alcance
+        st.session_state.alcance_seleccionado = True
+        st.rerun()
+    # IMPORTANTE: Aquí puedes poner un 'return' para que el usuario no vea nada más
+    st.stop()
+else:
+    st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
+    alcance = st.session_state.alcance_evaluacion
+
+
+
+#######################################################
 
 doc=Document()
 
@@ -1694,7 +1716,7 @@ elif st.session_state.paso == 3:
                 </div>
                 """, unsafe_allow_html=True)    
     
-
+    alcance = st.session_state.get("alcance", "Seleccione")
 
     #st.markdown("**D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.**")
     preguntas_d11 = [
@@ -1739,7 +1761,7 @@ elif st.session_state.paso == 3:
             obs = st.text_area("Hallazgos", key="obsD1_1")
             guardar_respuesta("obsD1_1", obs)
 ### página 3
-    alcance = st.session_state.get("alcance", "Seleccione")
+
     col1, col2= st.columns([5, 1])
 
     with col1:
