@@ -1731,7 +1731,6 @@ elif st.session_state.paso == 3:
                 </div>
                 """, unsafe_allow_html=True)    
     
-    alcance = st.session_state.get("alcance", "Seleccione")
 
     #st.markdown("**D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.**")
     preguntas_d11 = [
@@ -1776,24 +1775,27 @@ elif st.session_state.paso == 3:
             obs = st.text_area("Hallazgos", key="obsD1_1")
             guardar_respuesta("obsD1_1", obs)
 ### página 3
-
+    alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
 # Obtener el índice del paso actual en la lista de pasos válidos
     indice = pasos.index(paso_actual)
 
+    col1, col2= st.columns([5, 1])
+    with col1:
 # Botón Anterior (solo si no es el primer paso válido)
-    if indice > 0:
-        if st.button("Anterior"):
-            st.session_state.paso = pasos[indice - 1]
-            st.rerun()
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
 
 # Botón Siguiente (solo si no es el último paso válido)
-    if indice < len(pasos) - 1:
-        if st.button("Siguiente"):
-            st.session_state.paso = pasos[indice + 1]
-            st.rerun()
+    with col2:
+        if indice < len(pasos) - 1:
+            if st.button("Siguiente"):
+                st.session_state.paso = pasos[indice + 1]
+                st.rerun()
 
     #col1, col2= st.columns([5, 1])
 
