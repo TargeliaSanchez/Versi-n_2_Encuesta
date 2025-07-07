@@ -35,26 +35,6 @@ color_puntaje = {
     2: 'FCE4D6',  # Naranja pálido
     1: 'F8CBAD',  # Rojo claro
 }
-#####################################################
-if 'alcance_seleccionado' not in st.session_state:
-    st.session_state.alcance_seleccionado = False
-
-if not st.session_state.alcance_seleccionado:
-    alcance = st.radio(
-        "Alcance de la evaluación:",
-        options=["Básico", "Completo"],
-        horizontal=True
-    )
-    if st.button("Confirmar alcance"):
-        st.session_state.alcance_evaluacion = alcance
-        st.session_state.alcance_seleccionado = True
-        st.rerun()
-    # IMPORTANTE: Aquí puedes poner un 'return' para que el usuario no vea nada más
-    st.stop()
-else:
-    st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
-    alcance = st.session_state.alcance_evaluacion
-
 
 
 #######################################################
@@ -1664,12 +1644,38 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
         st.session_state.alcance = "Básico" # o el valor por defecto que prefieras
     
     
-    alcance=st.selectbox(
-        "Seleccione el alcance del formulario",
-        options=["Seleccione", "Básico", "Completo"],
-        key="alcance"
+    #alcance=st.selectbox(
+    #    "Seleccione el alcance del formulario",
+    #    options=["Seleccione", "Básico", "Completo"],
+    #    key="alcance"
+    #    )
+    #guardar_respuesta("alcance", alcance)
+
+    #####################################################
+    if 'alcance_seleccionado' not in st.session_state:
+        st.session_state.alcance_seleccionado = False
+
+    if not st.session_state.alcance_seleccionado:
+        alcance = st.radio(
+            "Alcance de la evaluación:",
+            options=["Básico", "Completo"],
+            horizontal=True
         )
-    guardar_respuesta("alcance", alcance)
+        if st.button("Confirmar alcance"):
+            st.session_state.alcance_evaluacion = alcance
+            st.session_state.alcance_seleccionado = True
+            st.rerun()
+    # IMPORTANTE: Aquí puedes poner un 'return' para que el usuario no vea nada más
+        st.stop()
+    else:
+        st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
+        alcance = st.session_state.alcance_evaluacion
+
+
+
+
+
+
     
 
     #### botones página 2
