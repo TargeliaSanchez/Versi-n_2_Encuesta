@@ -1,4 +1,4 @@
-
+############ Instalación de paquetes
 from docx import Document
 from docx.shared import Inches
 from docx.oxml import OxmlElement
@@ -18,6 +18,7 @@ import json
 import re
 from collections import defaultdict
 
+####   Personalización para tabla de exportación
 
 def set_cell_background(cell, rgb_color):
     tc = cell._tc
@@ -1676,12 +1677,12 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
     """, unsafe_allow_html=True)
     
     
-    #alcance=st.selectbox(
-    #    "Seleccione el alcance del formulario",
-    #    options=["Seleccione", "Básico", "Completo"],
-    #    key="alcance"
-    #    )
-    #guardar_respuesta("alcance", alcance)
+    alcance=st.selectbox(
+        "Seleccione el alcance del formulario",
+        options=["Seleccione", "Básico", "Completo"],
+        key="alcance"
+        )
+    guardar_respuesta("alcance", alcance)
     
 
     #### botones página 2
@@ -3804,12 +3805,12 @@ elif st.session_state.paso == 33:
 
 ###########---------------------------------FINLIZACIÓN DE FORMUARIO-----------------------------------------------------############
 
-    alcance=st.selectbox(
-        "Seleccione el alcance del formulario",
-        options=["Seleccione", "Básico", "Completo"],
-        key="alcance"
-        )
-    guardar_respuesta("alcance", alcance)
+    #alcance=st.selectbox(
+    #    "Seleccione el alcance del formulario",
+    #    options=["Seleccione", "Básico", "Completo"],
+    #    key="alcance"
+    #    )
+    #guardar_respuesta("alcance", alcance)
         
 
 
