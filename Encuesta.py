@@ -219,13 +219,13 @@ def calcular_puntaje_por_dimensiones(dimensiones_dict):
 def calcular_puntaje_por_dimensiones_v3(respuestas, alcance):
     # Define tus diccionarios fuera de la función o pásalos como argumentos si prefieres
     dimensiones_basico = {
-        "D1": ["D1.1", "D1.2", "D1.4", "D1.5", "D1.6", "D1.7"],
-        "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.10", "D2.11", "D2.15", "D2.17"]
+        "D1": ["D1_1", "D1_2", "D1_4", "D1_5", "D1_6", "D1_7"],
+        "D2": ["D2_2", "D2_3", "D2_6", "D2_7", "D2_9", "D2_10", "D2_11", "D2_15", "D2_17"]
     }
     dimensiones_completo = {
-        "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
-        "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
-        "D3": ["D3.1", "D3.2", "D3.3"]
+        "D1": ["D1_1", "D1_2", "D1_3", "D1_4", "D1_5", "D1_6", "D1_7","D1_8","D1_9"],
+        "D2": ["D2_1", "D2_2", "D2_3","D2_4", "D2_5", "D2_6", "D2_7","D2_8", "D2_9","D2_10", "D2_11", "D2_12", "D2_13", "D2_14", "D2_15", "D2_16", "D2_17", "D2_18"],
+        "D3": ["D3_1", "D3_2", "D3_3"]
     }
     puntaje_max = 5
 
