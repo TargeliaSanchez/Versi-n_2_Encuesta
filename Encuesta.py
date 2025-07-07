@@ -309,17 +309,26 @@ st.markdown("""
 
 if 'historico' not in st.session_state:
     st.session_state.historico = []
-
+##################################################################3
 
 
 
 # Define los pasos para cada alcance
-#pasos_completo = list(range(1, 33)) 
+pasos_completo = list(range(1, 33)) 
 
-#pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
+pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28]
+alcance = st.session_state.alcance_evaluacion
+
+
+def pasos_validos(alcance):
+    if alcance == "Básico":
+        return pasos_basico
+    else:
+        return pasos_completo
 
 
 
+############################################################3
 
 
 if 'respuestas' not in st.session_state:
@@ -1768,12 +1777,30 @@ elif st.session_state.paso == 3:
             guardar_respuesta("obsD1_1", obs)
 ### página 3
 
-    col1, col2= st.columns([5, 1])
+    pasos = pasos_validos(alcance)
+    paso_actual = st.session_state.paso
 
-    with col1:
-        st.button("◀️ Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+# Obtener el índice del paso actual en la lista de pasos válidos
+    indice = pasos.index(paso_actual)
+
+# Botón Anterior (solo si no es el primer paso válido)
+    if indice > 0:
+        if st.button("Anterior"):
+            st.session_state.paso = pasos[indice - 1]
+            st.rerun()
+
+# Botón Siguiente (solo si no es el último paso válido)
+    if indice < len(pasos) - 1:
+        if st.button("Siguiente"):
+            st.session_state.paso = pasos[indice + 1]
+            st.rerun()
+
+    #col1, col2= st.columns([5, 1])
+
+    #with col1:
+    #    st.button("◀️ Anterior", on_click=anterior)
+    #with col2:
+    #    st.button("Siguiente ▶️", on_click=siguiente)
 
 
 #-------------------------------------------------------------------------------------
@@ -1843,15 +1870,23 @@ elif st.session_state.paso == 4:
             guardar_respuesta("obsD1_2", obs)
     
     
-    alcance = st.session_state.get("alcance", "Seleccione")
-    col1, col2= st.columns([5, 1])
+    pasos = pasos_validos(alcance)
+    paso_actual = st.session_state.paso
 
-    with col1:
-        st.button("◀️ Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+# Obtener el índice del paso actual en la lista de pasos válidos
+    indice = pasos.index(paso_actual)
 
+# Botón Anterior (solo si no es el primer paso válido)
+    if indice > 0:
+        if st.button("Anterior"):
+            st.session_state.paso = pasos[indice - 1]
+            st.rerun()
 
+# Botón Siguiente (solo si no es el último paso válido)
+    if indice < len(pasos) - 1:
+        if st.button("Siguiente"):
+            st.session_state.paso = pasos[indice + 1]
+            st.rerun()
 
 
 
@@ -1918,13 +1953,23 @@ elif st.session_state.paso == 5:
             obs = st.text_area("Hallazgos", key="obsD1_3")
             guardar_respuesta("obsD1_3", obs)
 
-    alcance = st.session_state.get("alcance", "Seleccione")
-    col1, col2= st.columns([5, 1])
+    pasos = pasos_validos(alcance)
+    paso_actual = st.session_state.paso
 
-    with col1:
-        st.button("◀️ Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+# Obtener el índice del paso actual en la lista de pasos válidos
+    indice = pasos.index(paso_actual)
+
+# Botón Anterior (solo si no es el primer paso válido)
+    if indice > 0:
+        if st.button("Anterior"):
+            st.session_state.paso = pasos[indice - 1]
+            st.rerun()
+
+# Botón Siguiente (solo si no es el último paso válido)
+    if indice < len(pasos) - 1:
+        if st.button("Siguiente"):
+            st.session_state.paso = pasos[indice + 1]
+            st.rerun()
 
 
 #-------------------------------------------------------------------------------------
@@ -1996,13 +2041,23 @@ elif st.session_state.paso == 6:
 
     
 
-    alcance = st.session_state.get("alcance", "Seleccione")
-    col1, col2= st.columns([5, 1])
+    pasos = pasos_validos(alcance)
+    paso_actual = st.session_state.paso
 
-    with col1:
-        st.button("◀️ Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+    # Obtener el índice del paso actual en la lista de pasos válidos
+    indice = pasos.index(paso_actual)
+
+    # Botón Anterior (solo si no es el primer paso válido)
+    if indice > 0:
+        if st.button("Anterior"):
+            st.session_state.paso = pasos[indice - 1]
+            st.rerun()
+
+    # Botón Siguiente (solo si no es el último paso válido)
+    if indice < len(pasos) - 1:
+        if st.button("Siguiente"):
+            st.session_state.paso = pasos[indice + 1]
+            st.rerun()
 
 
 
@@ -2071,14 +2126,23 @@ if st.session_state.paso == 7:
             guardar_respuesta("obsD1_5", obs)
 
 
-    alcance = st.session_state.get("alcance", "Seleccione")
+    pasos = pasos_validos(alcance)
+    paso_actual = st.session_state.paso
 
-    col1, col2= st.columns([5, 1])
-    with col1:
-        st.button("Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente", on_click=siguiente)
+    # Obtener el índice del paso actual en la lista de pasos válidos
+    indice = pasos.index(paso_actual)
 
+    # Botón Anterior (solo si no es el primer paso válido)
+    if indice > 0:
+        if st.button("Anterior"):
+            st.session_state.paso = pasos[indice - 1]
+            st.rerun()
+
+    # Botón Siguiente (solo si no es el último paso válido)
+    if indice < len(pasos) - 1:
+        if st.button("Siguiente"):
+            st.session_state.paso = pasos[indice + 1]
+            st.rerun()
 
 ################## Paso 6 - D1.6
 elif st.session_state.paso == 8:
