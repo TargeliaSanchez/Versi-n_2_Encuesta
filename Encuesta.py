@@ -1869,7 +1869,7 @@ elif st.session_state.paso == 4:
             obs = st.text_area("Hallazgos", key="obsD1_2")
             guardar_respuesta("obsD1_2", obs)
     
-    
+    alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
@@ -1953,6 +1953,7 @@ elif st.session_state.paso == 5:
             obs = st.text_area("Hallazgos", key="obsD1_3")
             guardar_respuesta("obsD1_3", obs)
 
+    alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
@@ -2040,7 +2041,7 @@ elif st.session_state.paso == 6:
             guardar_respuesta("obsD1_4", obs)
 
     
-
+    alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
@@ -2125,7 +2126,7 @@ if st.session_state.paso == 7:
             obs = st.text_area("Hallazgos", key="obsD1_5")
             guardar_respuesta("obsD1_5", obs)
 
-
+    alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
