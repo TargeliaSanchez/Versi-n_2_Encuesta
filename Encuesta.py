@@ -316,7 +316,7 @@ if 'historico' not in st.session_state:
 # Define los pasos para cada alcance
 pasos_completo = list(range(1, 33)) 
 
-pasos_basico = [3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28,33]
+pasos_basico = [2, 3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28,33]
 #alcance = st.session_state.alcance_evaluacion
 
 
@@ -4277,6 +4277,13 @@ elif st.session_state.paso == 32:
     # Obtener el índice del paso actual en la lista de pasos válidos
     indice = pasos.index(paso_actual)
 
+    alcance = st.session_state.alcance_evaluacion
+    pasos = pasos_validos(alcance)
+    paso_actual = st.session_state.paso
+
+    # Obtener el índice del paso actual en la lista de pasos válidos
+    indice = pasos.index(paso_actual)
+
     col1, col2= st.columns([5, 1])
     with col1:
     # Botón Anterior (solo si no es el primer paso válido)
@@ -4287,7 +4294,10 @@ elif st.session_state.paso == 32:
 
     # Botón Siguiente (solo si no es el último paso válido)
     with col2:
-        st.button("Siguiente ▶️", on_click=siguiente)
+        if indice < len(pasos) - 1:
+            if st.button("Siguiente"):
+                st.session_state.paso = pasos[indice + 1]
+                st.rerun()
 
 
 
@@ -4296,11 +4306,21 @@ elif st.session_state.paso == 33:
     alcance = st.session_state.get("alcance", "Seleccione")
 
 #### PUNTAJES 
+    alcance = st.session_state.alcance_evaluacion
+    pasos = pasos_validos(alcance)
+    paso_actual = st.session_state.paso
+
+    # Obtener el índice del paso actual en la lista de pasos válidos
+    indice = pasos.index(paso_actual)
+
     col1, col2= st.columns([5, 1])
     with col1:
-        st.button("Anterior", on_click=anterior)
-    with col2:
-        st.button("Siguiente", on_click=siguiente)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
 
 
 
