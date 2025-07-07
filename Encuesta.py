@@ -1649,7 +1649,7 @@ if st.session_state.paso == 1:
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
 ############ PÁGINA 8 #####################
-elif st.session_state.paso == 32: # Evaluación de la institución.
+elif st.session_state.paso == 2: # Evaluación de la institución.
 
     st.markdown("""
     <div style="background-color:#FFD966; padding: 2px 8px; font-weight:bold; border: 0px solid #b7b7b7;">
@@ -1676,12 +1676,12 @@ elif st.session_state.paso == 32: # Evaluación de la institución.
     """, unsafe_allow_html=True)
     
     
-    alcance=st.selectbox(
-        "Seleccione el alcance del formulario",
-        options=["Seleccione", "Básico", "Completo"],
-        key="alcance"
-        )
-    guardar_respuesta("alcance", alcance)
+    #alcance=st.selectbox(
+    #    "Seleccione el alcance del formulario",
+    #    options=["Seleccione", "Básico", "Completo"],
+    #    key="alcance"
+    #    )
+    #guardar_respuesta("alcance", alcance)
     
 
     #### botones página 2
@@ -3725,7 +3725,7 @@ elif st.session_state.paso == 31:
         st.button("Siguiente", on_click=siguiente)
 
 
-elif st.session_state.paso == 2:
+elif st.session_state.paso == 32:
     st.markdown("""
                 <div style="
                 background-color: #F1F3F5;
