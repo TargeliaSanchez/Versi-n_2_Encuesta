@@ -3830,16 +3830,6 @@ elif st.session_state.paso == 33:
 
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
-#############---------------------------------------------------------------------------------------------##################
-
-    alcance = st.session_state.get("alcance", "Seleccione")
-    puntajes, maximos = calcular_puntaje_por_dimensiones_v2(dimensiones, st.session_state.respuestas, alcance)
-
-    for dim in puntajes:
-        st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
-
-    st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
-
     
 ##########-----------------------------------Obtención del gráfico de retroalimentación-----------------------------------############
     #total_max_global = 0
