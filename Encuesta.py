@@ -216,43 +216,48 @@ def calcular_puntaje_por_dimensiones(dimensiones_dict):
     return puntajes, maximos
 
 #############--------------------------------------------------------
-def calcular_puntaje_por_dimensionesF(dimensiones_dict):
-    puntajes = {"D1": 0, "D2": 0, "D3": 0}
-    maximos = {"D1": 0, "D2": 0, "D3": 0}
+def calcular_puntaje_por_dimensiones_v3(respuestas, alcance):
+    # Define tus diccionarios fuera de la función o pásalos como argumentos si prefieres
+    dimensiones_basico = {
+        "D1": ["D1.1", "D1.2", "D1.4", "D1.5", "D1.6", "D1.7"],
+        "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.15", "D2.17"]
+    }
+    dimensiones_completo = {
+        "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
+        "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
+        "D3": ["D3.1", "D3.2", "D3.3"]
+    }
+    puntaje_max = 5
 
-    for subdim, vars_sub in dimensiones_dict.items():
-        # Detectar a qué dimensión pertenece (D1, D2, D3)
-        dimension = subdim.split(".")[0]
+    if alcance == "Básico":
+        dims = dimensiones_basico
+    else:
+        dims = dimensiones_completo
 
-        # Filtrar por alcance básico
-        if st.session_state.alcance == "Básico":
-            if obtener_paso_por_subdimension(subdim) not in pasos_basico:
-                continue
+    puntajes = {}
+    maximos = {}
 
-        # Obtener el valor guardado en session_state
-        val_key = vars_sub[4]
-        respuesta = st.session_state.respuestas.get(val_key, 0)
-        # Si la respuesta es una tupla (como (texto, valor)), toma el valor
-        if isinstance(respuesta, tuple):
-            val = respuesta[1]
-        else:
-            val = respuesta
-
-        # Si la respuesta es "Seleccione", "No aplica", None, '', pon 0
-        if val in ("Seleccione", "No aplica", None, ""):
-            val = 0
-        try:
-            val = int(val)
-        except (TypeError, ValueError):
-            val = 0
-
-        puntajes[dimension] += val
-        maximos[dimension] += 5  # O el máximo de tu escala
+    for dim, subdims in dims.items():
+        puntajes[dim] = 0
+        maximos[dim] = len(subdims) * puntaje_max
+        for sub in subdims:
+            valor = respuestas.get(sub, 0)
+            # Si la respuesta es una tupla (Texto, valor), toma el valor
+            if isinstance(valor, tuple):
+                val = valor[1]
+            else:
+                val = valor
+            # Si la respuesta es "Seleccione", "No aplica", None, '', pon 0
+            if val in ("Seleccione", "No aplica", None, ""):
+                val = 0
+            try:
+                val = int(val)
+            except (TypeError, ValueError):
+                val = 0
+            puntajes[dim] += val
 
     return puntajes, maximos
-#-------------------------------------------------------------
-
- 
+    #------------------------------------------------
 
 
 ########## Definiendo dimensiones
@@ -3810,14 +3815,17 @@ elif st.session_state.paso == 33:
     
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
+###################-------------------------------------
+    # Asumiendo que st.session_state['respuestas'] guarda {subdim: valor}
+    alcance = st.session_state.get("alcance", "Completo")
+    respuestas = st.session_state.get("respuestas", {})
 
-    ###################------------------------------
-    st.success("¡Formulario completado! ✅") #Finalización del formulario
-    alcance = st.session_state.get("alcance", "Seleccione")
+    puntajes, maximos = calcular_puntaje_por_dimensiones_v3(respuestas, alcance)
+
+    st.success("¡Formulario completado! ✅")
     st.subheader("📈 Resultados por dimensión")
-    puntajes, maximos = calcular_puntaje_por_dimensionesF(dimensiones) #Retroalimentación visual
 
-    for dim in ["D1", "D2", "D3"]:
+    for dim in puntajes:
         st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
 
     st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
