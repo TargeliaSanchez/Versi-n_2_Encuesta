@@ -3813,15 +3813,15 @@ elif st.session_state.paso == 33:
         
 
 
-    st.success("¡Formulario completado! ✅") #Finalización del formulario
+    #st.success("¡Formulario completado! ✅") #Finalización del formulario
 
-    st.subheader("📈 Resultados por dimensión")
-    puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones) #Retroalimentación visual
+    #st.subheader("📈 Resultados por dimensión")
+    #puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones) #Retroalimentación visual
 
-    for dim in ["D1", "D2", "D3"]:
-        st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
+    #for dim in ["D1", "D2", "D3"]:
+    #    st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
     
-    st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
+    #st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
 ###################-------------------------------------
     # Asumiendo que st.session_state['respuestas'] guarda {subdim: valor}
