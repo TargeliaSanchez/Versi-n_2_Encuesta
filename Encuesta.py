@@ -150,35 +150,7 @@ def calcular_puntaje_por_dimensiones2(dimensiones, respuestas, alcance):
 
 ####################################
 
-########### nueva versión
-def calcular_puntaje_por_dimensiones_v2(dimensiones, respuestas, alcance):
-    puntajes = {"D1": 0, "D2": 0, "D3": 0}
-    maximos = {"D1": 0, "D2": 0, "D3": 0}
-    puntaje_max = 5  # O el valor máximo de tu escala
 
-    # Escoge la estructura de dimensiones según el alcance
-    if alcance == "Básico":
-        dim_usar = dimensiones_basico
-    else:
-        dim_usar = dimensiones  # dimensiones_completo
-
-    for dim, subs in dim_usar.items():
-        puntajes[dim] = 0
-        maximos[dim] = 0
-        for sub in subs:
-            valor = respuestas.get(sub, 0)
-            if valor in ("Seleccione", "No aplica", None, ""):
-                valor_num = 0
-            else:
-                try:
-                    valor_num = int(valor)
-                except (TypeError, ValueError):
-                    valor_num = 0
-            puntajes[dim] += valor_num
-            maximos[dim] += puntaje_max
-
-    return puntajes, maximos
-    #----------------------------------------------
 
 
 # --- Inicializar session_state ---
@@ -192,29 +164,18 @@ if "respuestas" not in st.session_state:
 
 if 'paso' not in st.session_state:
     st.session_state.paso = 1
+##### para inhabilitar
+
+def subdimension_habilitada(subdim, alcance):
+    if alcance == "Completo":
+        return True
+    for subdim_list in dimensiones_basico.values():
+        if subdim in subdim_list:
+            return True
+    return False
 
 
-def calcular_puntaje_por_dimensiones(dimensiones_dict):
-    puntajes = {"D1": 0, "D2": 0, "D3": 0}
-    maximos = {"D1": 0, "D2": 0, "D3": 0}
 
-    for subdim, vars_sub in dimensiones_dict.items():
-        # Detectar a qué dimensión pertenece (D1, D2, D3)
-        dimension = subdim.split(".")[0]
-
-        # Filtrar por alcance
-        if st.session_state.alcance == "Básico":
-            if obtener_paso_por_subdimension(subdim) not in pasos_basico:
-                continue
-
-        # Obtener el valor de la valoración (posición 4 del arreglo)
-        val_key = vars_sub[4]
-        respuesta = st.session_state.respuestas.get(val_key, 0)
-        val = respuesta[1] if isinstance(respuesta, tuple) else respuesta
-        puntajes[dimension] += val
-        maximos[dimension] += 5  # Asumiendo máximo por subdimensión = 5
-
-    return puntajes, maximos
 
 #############--------------------------------------------------------
 def calcular_puntaje_por_dimensiones_v3(respuestas, alcance):
@@ -1675,6 +1636,10 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
         </ul>
     </div>
     """, unsafe_allow_html=True)
+
+    # Al inicio del flujo, solo si no está definido
+    if "alcance" not in st.session_state or st.session_state.alcance == "Seleccione":
+        st.session_state.alcance = "Básico" # o el valor por defecto que prefieras
     
     
     alcance=st.selectbox(
@@ -2149,6 +2114,8 @@ elif st.session_state.paso == 8:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_6")
             guardar_respuesta("obsD1_6", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2219,6 +2186,7 @@ elif st.session_state.paso == 9:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_7")
             guardar_respuesta("obsD1_7", obs)
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2286,6 +2254,8 @@ elif st.session_state.paso == 10:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_8")
             guardar_respuesta("obsD1_8", obs)
+    
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2351,6 +2321,8 @@ elif st.session_state.paso == 11:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD1_9")
             guardar_respuesta("obsD1_9", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2421,6 +2393,8 @@ elif st.session_state.paso == 12:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_1")
             guardar_respuesta("obsD2_1", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2489,6 +2463,8 @@ elif st.session_state.paso == 13:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_2")
             guardar_respuesta("obsD2_2", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2557,6 +2533,8 @@ elif st.session_state.paso == 14:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_3")
             guardar_respuesta("obsD2_3", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2623,6 +2601,8 @@ elif st.session_state.paso == 15:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_4")
             guardar_respuesta("obsD2_4", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2702,6 +2682,8 @@ elif st.session_state.paso == 16:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_5")
             guardar_respuesta("obsD2_5", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2770,6 +2752,8 @@ elif st.session_state.paso == 17:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_6")
             guardar_respuesta("obsD2_6", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2837,6 +2821,8 @@ elif st.session_state.paso == 18:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_7")
             guardar_respuesta("obsD2_7", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2904,6 +2890,8 @@ elif st.session_state.paso == 19:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_8")
             guardar_respuesta("obsD2_8", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -2972,6 +2960,8 @@ elif st.session_state.paso == 20:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_9")
             guardar_respuesta("obsD2_9", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3039,6 +3029,8 @@ elif st.session_state.paso == 21:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_10")
             guardar_respuesta("obsD2_10", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3117,6 +3109,8 @@ elif st.session_state.paso == 22:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_11")
             guardar_respuesta("obsD2_11", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3185,6 +3179,8 @@ elif st.session_state.paso == 23:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_12")
             guardar_respuesta("obsD2_12", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3251,6 +3247,8 @@ elif st.session_state.paso == 24:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_13")
             guardar_respuesta("obsD2_13", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3321,6 +3319,8 @@ elif st.session_state.paso == 25:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_14")
             guardar_respuesta("obsD2_14", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3387,6 +3387,8 @@ elif st.session_state.paso == 26:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_15")
             guardar_respuesta("obsD2_15", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3454,6 +3456,8 @@ elif st.session_state.paso == 27:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_16")
             guardar_respuesta("obsD2_16", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3519,6 +3523,8 @@ elif st.session_state.paso == 28:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_17")
             guardar_respuesta("obsD2_17", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3585,6 +3591,8 @@ elif st.session_state.paso == 29:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD2_18")
             guardar_respuesta("obsD2_18", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3653,6 +3661,8 @@ elif st.session_state.paso == 30:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD3_1")
             guardar_respuesta("obsD3_1", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3720,6 +3730,8 @@ elif st.session_state.paso == 31:
             obs = st.text_area("Hallazgos", key="obsD3_2")
             guardar_respuesta("obsD3_2", obs)
     col1, col2= st.columns([5, 1])
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     with col1:
         st.button("Anterior", on_click=anterior)
     with col2:
@@ -3783,6 +3795,8 @@ elif st.session_state.paso == 32:
         with col2:
             obs = st.text_area("Hallazgos", key="obsD3_3")
             guardar_respuesta("obsD3_3", obs)
+
+    alcance = st.session_state.get("alcance", "Seleccione")
     col1, col2= st.columns([5, 1])
     with col1:
         st.button("Anterior", on_click=anterior)
@@ -3793,6 +3807,7 @@ elif st.session_state.paso == 32:
 
 #################### Final #####################
 elif st.session_state.paso == 33:
+    alcance = st.session_state.get("alcance", "Seleccione")
 
 #### PUNTAJES 
     col1, col2= st.columns([5, 1])
@@ -3826,7 +3841,7 @@ elif st.session_state.paso == 33:
 
 ###################-------------------------------------
     # Asumiendo que st.session_state['respuestas'] guarda {subdim: valor}
-    alcance = st.session_state.get("alcance", "Completo")
+    alcance = st.session_state.get("alcance", "Básico")
     respuestas = st.session_state.get("respuestas", {})
 
     puntajes, maximos = calcular_puntaje_por_dimensiones_v3(respuestas, alcance)
