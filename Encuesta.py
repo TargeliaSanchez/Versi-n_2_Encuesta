@@ -1784,11 +1784,7 @@ elif st.session_state.paso == 3:
 
     col1, col2= st.columns([5, 1])
     with col1:
-# Botón Anterior (solo si no es el primer paso válido)
-        if indice > 0:
-            if st.button("Anterior"):
-                st.session_state.paso = pasos[indice - 1]
-                st.rerun()
+        st.button("◀️ Anterior", on_click=anterior)
 
 # Botón Siguiente (solo si no es el último paso válido)
     with col2:
@@ -4291,10 +4287,7 @@ elif st.session_state.paso == 32:
 
     # Botón Siguiente (solo si no es el último paso válido)
     with col2:
-        if indice < len(pasos) - 1:
-            if st.button("Siguiente"):
-                st.session_state.paso = pasos[indice + 1]
-                st.rerun()
+        st.button("Siguiente ▶️", on_click=siguiente)
 
 
 
