@@ -3804,6 +3804,14 @@ elif st.session_state.paso == 33:
 
 ###########---------------------------------FINLIZACIÓN DE FORMUARIO-----------------------------------------------------############
 
+    alcance=st.selectbox(
+        "Seleccione el alcance del formulario",
+        options=["Seleccione", "Básico", "Completo"],
+        key="alcance"
+        )
+    guardar_respuesta("alcance", alcance)
+        
+
 
     st.success("¡Formulario completado! ✅") #Finalización del formulario
 
