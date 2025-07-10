@@ -4647,6 +4647,33 @@ elif st.session_state.paso == 33:
 ##########---------------------------------------------#####################
 ############################################################################
 
+    import yagmail
+
+    def enviar_por_correo(destinatario, asunto, cuerpo, adjunto):
+    # Cambia por tus datos reales
+        usuario = "tu_email@gmail.com"
+        contraseña = "tu_contraseña_o_contraseña_de_aplicación"
+        yag = yagmail.SMTP(usuario, contraseña)
+        yag.send(
+            to=destinatario,
+            subject=asunto,
+            contents=cuerpo,
+            attachments=adjunto,
+        )
+        yag.close()
+
+# Ejemplo de uso en Streamlit
+    if st.button("Enviar resultados por correo"):
+        destinatario = st.text_input("Correo destinatario")
+        if destinatario:
+            enviar_por_correo(
+                destinatario,
+                "Resultados de la encuesta",
+                "Adjunto los resultados del formulario.",
+                "respuestas_consolidadas.csv"
+            )
+            st.success("¡Correo enviado!")
+
 
 
 
