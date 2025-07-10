@@ -4651,8 +4651,8 @@ elif st.session_state.paso == 33:
 
     def enviar_por_correo(destinatario, asunto, cuerpo, adjunto):
     # Cambia por tus datos reales
-        usuario = "tu_email@gmail.com"
-        contraseña = "tu_contraseña_o_contraseña_de_aplicación"
+        usuario = "tata.sanchez.10@gmail.com"
+        contraseña = "94080726273"
         yag = yagmail.SMTP(usuario, contraseña)
         yag.send(
             to=destinatario,
