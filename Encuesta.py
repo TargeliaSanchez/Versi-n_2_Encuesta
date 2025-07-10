@@ -1,5 +1,6 @@
 ############ Instalación de paquetes
 #pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+pip3 install yagmail
 from docx import Document
 from docx.shared import Inches
 from docx.oxml import OxmlElement
