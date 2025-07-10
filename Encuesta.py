@@ -1,5 +1,4 @@
 ############ Instalación de paquetes
-pip install -r requirements.txt
 from docx import Document
 from docx.shared import Inches
 from docx.oxml import OxmlElement
