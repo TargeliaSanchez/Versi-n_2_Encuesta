@@ -18,6 +18,7 @@ from datetime import date
 import json
 import re
 from collections import defaultdict
+import yagmail
 
 ####   Personalización para tabla de exportación
 
@@ -4647,7 +4648,7 @@ elif st.session_state.paso == 33:
 ##########---------------------------------------------#####################
 ############################################################################
 
-    import yagmail
+
 
     def enviar_por_correo(destinatario, asunto, cuerpo, adjunto):
     # Cambia por tus datos reales
