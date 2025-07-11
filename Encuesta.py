@@ -551,7 +551,7 @@ if 'historico' not in st.session_state:
 
 
 # Define los pasos para cada alcance
-pasos_completo = list(range(1, 33)) 
+pasos_completo = list(range(1, 34)) 
 
 pasos_basico = [2, 3, 4, 6, 7, 8, 9, 13, 14, 17, 18, 20, 21, 22, 26, 28,33]
 #alcance = st.session_state.alcance_evaluacion
