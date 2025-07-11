@@ -432,6 +432,8 @@ def calcular_puntaje_por_dimensiones_v3(respuestas, alcance):
 
     if alcance == "Básico":
         dims = dimensiones_basico
+    elif alcance == "Completo":
+        dims = dimensiones_completo
     else:
         dims = dimensiones_completo
 
