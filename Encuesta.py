@@ -20,24 +20,69 @@ from collections import defaultdict
 import yagmail
 
 
-def exportar_primera_pagina():
+def generar_documento_word(respuestas):
     doc = Document()
-    doc.add_heading('EVALUAR – BPS', level=1)
-    doc.add_paragraph('EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN')
-    doc.add_heading('I. INFORMACIÓN DE LA INSTITUCIÓN', level=2)
-    doc.add_paragraph(f"Fecha: {st.session_state.get('fecha', '')}")
-    doc.add_paragraph(f"Departamento: {st.session_state.get('departamento', '')}")
-    doc.add_paragraph(f"Municipio: {st.session_state.get('municipio', '')}")
-    doc.add_paragraph(f"Institución: {st.session_state.get('nombre_institucion', '')}")
-    doc.add_paragraph(f"NIT: {st.session_state.get('nit', '')}")
-    # ...continúa con los demás campos...
 
-    # Guardar en buffer para descarga
-    buffer = io.BytesIO()
+    # I. INFORMACIÓN DE LA INSTITUCIÓN
+    doc.add_heading("I. INFORMACIÓN DE LA INSTITUCIÓN", level=1)
+    campos_info = {
+        "Fecha": respuestas.get("fecha"),
+        "Departamento": respuestas.get("departamento"),
+        "Municipio": respuestas.get("municipio"),
+        "Nombre IPS": respuestas.get("nombre_institucion"),
+        "NIT": respuestas.get("nit"),
+        "Naturaleza jurídica": respuestas.get("naturaleza_juridica"),
+        "Empresa Social del Estado": respuestas.get("empresa_social_estado"),
+        "Nivel de atención": respuestas.get("nivel_atencion_prestador")
+    }
+    for k, v in campos_info.items():
+        doc.add_paragraph(f"{k}: {v}")
+
+    # II. SERVICIOS DE REHABILITACIÓN HABILITADOS
+    doc.add_heading("II. SERVICIOS DE REHABILITACIÓN HABILITADOS", level=1)
+    for i in range(1, 8):
+        servicio = respuestas.get(f"servicio_{i}")
+        if servicio:
+            doc.add_heading(f"Servicio {i}: {servicio}", level=2)
+            dias = [d for d in ["L", "M", "Mi", "J", "V", "S", "D"] if respuestas.get(f"{d}_{i}")]
+            areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if respuestas.get(f"area_{a}_{i}")]
+            mods = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if respuestas.get(f"mod_{m}_{i}")]
+            prestador = respuestas.get(f"prestador_{i}")
+            doc.add_paragraph(f"Días de atención: {', '.join(dias)}")
+            doc.add_paragraph(f"Áreas: {', '.join(areas)}")
+            doc.add_paragraph(f"Modalidades: {', '.join(mods)}")
+            doc.add_paragraph(f"Prestador de telemedicina: {prestador}")
+
+    # III. RECURSO HUMANO
+    doc.add_heading("III. RECURSO HUMANO", level=1)
+    for i in range(1, 9):
+        prof = respuestas.get(f"DesP_{i}")
+        cantidad = respuestas.get(f"numero_{i}")
+        if prof:
+            doc.add_paragraph(f"{prof}: {cantidad} profesionales")
+
+    aclaraciones = respuestas.get("aclaraciones", "")
+    if aclaraciones:
+        doc.add_paragraph("Aclaraciones:")
+        doc.add_paragraph(aclaraciones)
+
+    doc.add_heading("Representantes de la Institución", level=2)
+    for i in range(1, 7):
+        rep = respuestas.get(f"rep_inst_{i}")
+        if rep:
+            doc.add_paragraph(f"{i}. {rep}")
+
+    doc.add_heading("Profesionales responsables de verificación", level=2)
+    for i in range(1, 3):
+        verif = respuestas.get(f"prof_verif_{i}")
+        if verif:
+            doc.add_paragraph(f"{i}. {verif}")
+
+    buffer = BytesIO()
     doc.save(buffer)
     buffer.seek(0)
     return buffer
-
+#########################################################################
 
 
 ####   Personalización para tabla de exportación
@@ -1651,6 +1696,15 @@ if st.session_state.paso == 1:
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         )
 
+    if st.button("📥 Descargar Word"):
+        respuestas = st.session_state.respuestas
+        word_file = generar_documento_word(respuestas)
+        st.download_button(
+            label="Descargar archivo Word",
+            data=word_file,
+            file_name="formulario_bps.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
 
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
