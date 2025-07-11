@@ -172,19 +172,8 @@ def calcular_puntaje_por_dimensiones2(dimensiones, respuestas, alcance):
             maximos[dim] += puntaje_max
     return puntajes, maximos
 
-#################################### Toby
-respuestas = st.session_state.respuestas
+#################################### 
 
-info_institucion = {
-    "Fecha": respuestas.get("fecha"),
-    "Departamento": respuestas.get("departamento"),
-    "Municipio": respuestas.get("municipio"),
-    "Nombre IPS": respuestas.get("nombre_institucion"),
-    "NIT": respuestas.get("nit"),
-    "Naturaleza jurídica": respuestas.get("naturaleza_juridica"),
-    "Empresa Social del Estado": respuestas.get("empresa_social_estado"),
-    "Nivel de atención": respuestas.get("nivel_atencion_prestador"),
-}
 
 #-----------------------------------------------------------
 
