@@ -19,6 +19,22 @@ import json
 import re
 from collections import defaultdict
 import yagmail
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+import streamlit as st
+import io
+
+def exportar_pdf_primera_pagina():
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=letter)
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(50, 750, "EVALUAR – BPS")
+    c.setFont("Helvetica", 12)
+    c.drawString(50, 730, "EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN")
+    # ...agrega cada campo con drawString
+    c.save()
+    buffer.seek(0)
+    return buffer
 
 
 def generar_documento_word(respuestas):
