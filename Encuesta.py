@@ -25,7 +25,7 @@ from docx import Document
 import streamlit as st
 import io
 
-def exportar_formulario_completo():
+def exportar_primera_pagina():
     doc = Document()
 
     doc.add_heading('EVALUAR – BPS', level=1)
@@ -90,7 +90,7 @@ def exportar_formulario_completo():
     return buffer
 ############################################################
 
-def exportar_primera_pagina():
+def exportar_primera_pagina2():
     doc = Document()
     doc.add_heading('EVALUAR – BPS', level=1)
     doc.add_paragraph('EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN')
