@@ -1689,13 +1689,13 @@ if st.session_state.paso == 1:
         st.button("Siguiente ▶️", on_click=siguiente)
 
     if st.button("Descargar primera página (PDF)"):
-    pdf_file = exportar_pdf_primera_pagina()
-    st.download_button(
-        label="📥 Descargar primera página",
-        data=pdf_file,
-        file_name="primera_pagina_formulario.pdf",
-        mime="application/pdf"
-    )
+        pdf_file = exportar_pdf_primera_pagina()
+        st.download_button(
+            label="📥 Descargar primera página",
+            data=pdf_file,
+            file_name="primera_pagina_formulario.pdf",
+            mime="application/pdf"
+        )
 
     if st.button("📥 Descargar Word"):
         respuestas = st.session_state.respuestas
