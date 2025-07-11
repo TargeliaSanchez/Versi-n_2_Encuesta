@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import io  # ← aquí
+from io import BytesIO
 import streamlit as st
 import pandas as pd
 from datetime import datetime
