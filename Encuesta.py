@@ -1641,13 +1641,13 @@ if st.session_state.paso == 1:
         st.button("Siguiente ▶️", on_click=siguiente)
         
     if st.button("Descargar primera página (Word)"):
-    word_file = exportar_primera_pagina()
-    st.download_button(
-        label="📥 Descargar primera página",
-        data=word_file,
-        file_name="primera_pagina_formulario.docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    )
+        word_file = exportar_primera_pagina()
+        st.download_button(
+            label="📥 Descargar primera página",
+            data=word_file,
+            file_name="primera_pagina_formulario.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
 
 
 
