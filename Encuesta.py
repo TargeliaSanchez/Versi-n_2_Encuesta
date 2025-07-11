@@ -25,6 +25,71 @@ from docx import Document
 import streamlit as st
 import io
 
+def exportar_formulario_completo():
+    doc = Document()
+
+    doc.add_heading('EVALUAR – BPS', level=1)
+    doc.add_paragraph('EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN')
+
+    # I. INFORMACIÓN DE LA INSTITUCIÓN
+    doc.add_heading('I. INFORMACIÓN DE LA INSTITUCIÓN', level=2)
+    for campo in ["fecha", "departamento", "municipio", "nombre_institucion", "nit", "naturaleza_juridica", "empresa_social_estado", "nivel_atencion_prestador"]:
+        valor = st.session_state.get(campo, "")
+        doc.add_paragraph(f"{campo.replace('_', ' ').capitalize()}: {valor}")
+
+    # II. SERVICIOS DE REHABILITACIÓN HABILITADOS
+    doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
+    for i in range(1, 8):
+        servicio = st.session_state.get(f"servicio_{i}")
+        if servicio and servicio != "Seleccione":
+            doc.add_heading(f"Servicio {i}: {servicio}", level=3)
+
+            dias = [d for d in ["L", "M", "Mi", "J", "V", "S", "D"] if st.session_state.get(f"{d}_{i}")]
+            doc.add_paragraph("Días de atención: " + ", ".join(dias))
+
+            areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if st.session_state.get(f"area_{a}_{i}")]
+            doc.add_paragraph("Áreas asistenciales: " + ", ".join(areas))
+
+            modalidades = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if st.session_state.get(f"mod_{m}_{i}")]
+            doc.add_paragraph("Modalidades de prestación: " + ", ".join(modalidades))
+
+            prestador = st.session_state.get(f"prestador_{i}")
+            if prestador: doc.add_paragraph(f"Tipo de prestador: {prestador}")
+
+    # III. RECURSO HUMANO
+    doc.add_heading("III. RECURSO HUMANO", level=2)
+    for i in range(1, 9):
+        profesional = st.session_state.get(f"DesP_{i}")
+        cantidad = st.session_state.get(f"numero_{i}")
+        if profesional and profesional != "Seleccione":
+            doc.add_paragraph(f"{profesional}: {cantidad} profesionales")
+
+    aclaraciones = st.session_state.get("aclaraciones", "")
+    if aclaraciones:
+        doc.add_paragraph("Aclaraciones sobre oferta o recurso humano:")
+        doc.add_paragraph(aclaraciones)
+
+    # REPRESENTANTES DE LA INSTITUCIÓN
+    doc.add_heading("Representantes de la Institución", level=2)
+    for i in range(1, 7):
+        rep = st.session_state.get(f"rep_inst_{i}")
+        if rep:
+            doc.add_paragraph(f"{i}. {rep}")
+
+    # PROFESIONALES RESPONSABLES DE VERIFICACIÓN
+    doc.add_heading("Responsables de verificación", level=2)
+    for i in range(1, 3):
+        ver = st.session_state.get(f"prof_verif_{i}")
+        if ver:
+            doc.add_paragraph(f"{i}. {ver}")
+
+    # Exportar buffer
+    buffer = io.BytesIO()
+    doc.save(buffer)
+    buffer.seek(0)
+    return buffer
+############################################################
+
 def exportar_primera_pagina():
     doc = Document()
     doc.add_heading('EVALUAR – BPS', level=1)
