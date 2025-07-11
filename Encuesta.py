@@ -652,7 +652,7 @@ st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 st.markdown(
     """
     <div style="text-align: center;">
-        <img src="Logo_ideal.png" width="1800"/>
+        <img src="Logo_ideal.png" width="180"/>
     </div>
     """,
     unsafe_allow_html=True
