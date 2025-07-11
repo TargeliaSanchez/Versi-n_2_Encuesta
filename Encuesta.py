@@ -19,6 +19,27 @@ import re
 from collections import defaultdict
 import yagmail
 
+
+def exportar_primera_pagina():
+    doc = Document()
+    doc.add_heading('EVALUAR – BPS', level=1)
+    doc.add_paragraph('EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN')
+    doc.add_heading('I. INFORMACIÓN DE LA INSTITUCIÓN', level=2)
+    doc.add_paragraph(f"Fecha: {st.session_state.get('fecha', '')}")
+    doc.add_paragraph(f"Departamento: {st.session_state.get('departamento', '')}")
+    doc.add_paragraph(f"Municipio: {st.session_state.get('municipio', '')}")
+    doc.add_paragraph(f"Institución: {st.session_state.get('nombre_institucion', '')}")
+    doc.add_paragraph(f"NIT: {st.session_state.get('nit', '')}")
+    # ...continúa con los demás campos...
+
+    # Guardar en buffer para descarga
+    buffer = io.BytesIO()
+    doc.save(buffer)
+    buffer.seek(0)
+    return buffer
+
+
+
 ####   Personalización para tabla de exportación
 
 def set_cell_background(cell, rgb_color):
@@ -1618,6 +1639,15 @@ if st.session_state.paso == 1:
         st.button("◀️ Anterior", on_click=anterior)
     with col2:
         st.button("Siguiente ▶️", on_click=siguiente)
+        
+    if st.button("Descargar primera página (Word)"):
+    word_file = exportar_primera_pagina()
+    st.download_button(
+        label="📥 Descargar primera página",
+        data=word_file,
+        file_name="primera_pagina_formulario.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
 
 
 
