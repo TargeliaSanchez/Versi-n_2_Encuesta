@@ -4564,8 +4564,6 @@ elif st.session_state.paso == 32:
 
 #################### Final #####################
 elif st.session_state.paso == 33:
-    alcance = st.session_state.get("alcance", "Seleccione")
-
 #### PUNTAJES 
     alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
@@ -4587,24 +4585,6 @@ elif st.session_state.paso == 33:
 
 ###########---------------------------------FINLIZACIÓN DE FORMUARIO-----------------------------------------------------############
 
-    #alcance=st.selectbox(
-    #    "Seleccione el alcance del formulario",
-    #    options=["Seleccione", "Básico", "Completo"],
-    #    key="alcance"
-    #    )
-    #guardar_respuesta("alcance", alcance)
-        
-
-
-    #st.success("¡Formulario completado! ✅") #Finalización del formulario
-
-    #st.subheader("📈 Resultados por dimensión")
-    #puntajes, maximos = calcular_puntaje_por_dimensiones(dimensiones) #Retroalimentación visual
-
-    #for dim in ["D1", "D2", "D3"]:
-    #    st.write(f"**{dim}**: {puntajes[dim]} / {maximos[dim]}")
-    
-    #st.write(f"**Puntaje Total:** {sum(puntajes.values())} / {sum(maximos.values())}")
 
 ###################-------------------------------------
     # Asumiendo que st.session_state['respuestas'] guarda {subdim: valor}
@@ -4837,36 +4817,6 @@ elif st.session_state.paso == 33:
 
         doc.add_paragraph("")  # Salto de línea entre tablas
 
-
-    # Agrega cada subdimensión de la dimensión
-        #for sub in subdims_por_dim[dim]:
-         #   mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
-         #   if not mask.any():
-         #       continue  # Salta si no la encuentra
-         #   row = df_resumen[mask].iloc[0]
-         #   val = int(row["Valoración"])
-        # Fila condición y calificación
-            #row1 = table.add_row().cells
-            #row1[0].text = row["Condición"]
-            #row1[1].text = str(val)
-            #set_cell_background(row1[1], color_puntaje.get(val, 'FFFFFF'))  # color segun puntaje
-        # Fila hallazgos
-            #row2 = table.add_row().cells
-            #merged = row2[0].merge(row2[1])
-            #merged.text = f"Hallazgos: {row['Hallazgos']}"
-
-    # Fila de puntaje global de la dimensión
-        #row_total = table.add_row().cells
-        #cell_dim = row_total[0]
-        #cell_puntaje = row_total[1]
-        #run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
-        #run_dim.bold = True
-        #run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
-        #run_puntaje.bold = True
-
-        #doc.add_paragraph("")  # Salto de línea entre tablas
-
-    
 
 
 # Agregar salto de página y el gráfico
