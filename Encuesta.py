@@ -19,22 +19,41 @@ import json
 import re
 from collections import defaultdict
 import yagmail
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+
+##############################
+from docx import Document
 import streamlit as st
 import io
 
-def exportar_pdf_primera_pagina():
+def exportar_primera_pagina():
+    doc = Document()
+    doc.add_heading('EVALUAR – BPS', level=1)
+    doc.add_paragraph('EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN')
+    doc.add_heading('I. INFORMACIÓN DE LA INSTITUCIÓN', level=2)
+    doc.add_paragraph(f"Fecha: {st.session_state.get('fecha', '')}")
+    doc.add_paragraph(f"Departamento: {st.session_state.get('departamento', '')}")
+    doc.add_paragraph(f"Municipio: {st.session_state.get('municipio', '')}")
+    doc.add_paragraph(f"Institución: {st.session_state.get('nombre_institucion', '')}")
+    doc.add_paragraph(f"NIT: {st.session_state.get('nit', '')}")
+    # ...continúa con los demás campos...
+
+    # Guardar en buffer para descarga
     buffer = io.BytesIO()
-    c = canvas.Canvas(buffer, pagesize=letter)
-    c.setFont("Helvetica-Bold", 16)
-    c.drawString(50, 750, "EVALUAR – BPS")
-    c.setFont("Helvetica", 12)
-    c.drawString(50, 730, "EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN")
-    # ...agrega cada campo con drawString
-    c.save()
+    doc.save(buffer)
     buffer.seek(0)
     return buffer
+
+if st.button("Descargar primera página (Word)"):
+    word_file = exportar_primera_pagina()
+    st.download_button(
+        label="📥 Descargar primera página",
+        data=word_file,
+        file_name="primera_pagina_formulario.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
+    #################################################
+
+
 
 
 def generar_documento_word(respuestas):
