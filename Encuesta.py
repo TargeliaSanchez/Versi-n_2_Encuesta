@@ -42,16 +42,7 @@ def exportar_primera_pagina():
     doc.save(buffer)
     buffer.seek(0)
     return buffer
-
-if st.button("Descargar primera página (Word)"):
-    word_file = exportar_primera_pagina()
-    st.download_button(
-        label="📥 Descargar primera página",
-        data=word_file,
-        file_name="primera_pagina_formulario.docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    )
-    #################################################
+#####################################################################
 
 
 
@@ -567,6 +558,17 @@ if st.session_state.paso == 1:
                 </div>
                 """, unsafe_allow_html=True)
 
+    
+    if st.button("Descargar primera página (Word)"):
+        word_file = exportar_primera_pagina()
+        st.download_button(
+            label="📥 Descargar primera página",
+            data=word_file,
+            file_name="primera_pagina_formulario.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
+    #################################################
+    
         #st.markdown("Diligencias previo a la visita y validar posteriormente con los delegados de la institución.")
     with col2:
     # Alineación vertical + espaciado elegante
