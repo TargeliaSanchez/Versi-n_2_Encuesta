@@ -4581,16 +4581,12 @@ elif st.session_state.paso == 33:
             if st.button("Anterior"):
                 st.session_state.paso = pasos[indice - 1]
                 st.rerun()
-
-
-
-
 ###########---------------------------------FINLIZACIÓN DE FORMUARIO-----------------------------------------------------############
 
 
 ###################-------------------------------------
     # Asumiendo que st.session_state['respuestas'] guarda {subdim: valor}
-    alcance = st.session_state.get("alcance", "Básico")
+    #alcance = st.session_state.get("alcance", "Básico")
     respuestas = st.session_state.get("respuestas", {})
 
     puntajes, maximos = calcular_puntaje_por_dimensiones_v3(respuestas, alcance)
