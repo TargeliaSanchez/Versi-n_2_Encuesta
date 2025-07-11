@@ -24,6 +24,98 @@ import yagmail
 from docx import Document
 import streamlit as st
 import io
+##############################################
+def exportar_formulario_completo_con_tablas():
+    doc = Document()
+
+    doc.add_heading('EVALUAR – BPS', level=1)
+    doc.add_paragraph('EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN')
+
+    # I. INFORMACIÓN DE LA INSTITUCIÓN
+    doc.add_heading('I. INFORMACIÓN DE LA INSTITUCIÓN', level=2)
+    campos = [
+        ("Fecha", "fecha"),
+        ("Departamento", "departamento"),
+        ("Municipio", "municipio"),
+        ("Nombre de la IPS", "nombre_institucion"),
+        ("NIT", "nit"),
+        ("Naturaleza jurídica", "naturaleza_juridica"),
+        ("Empresa Social del Estado", "empresa_social_estado"),
+        ("Nivel de atención del prestador", "nivel_atencion_prestador")
+    ]
+    for label, key in campos:
+        doc.add_paragraph(f"{label}: {st.session_state.get(key, '')}")
+
+    # II. SERVICIOS DE REHABILITACIÓN HABILITADOS EN TABLA
+    doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
+    headers = ["Servicio", "L", "M", "Mi", "J", "V", "S", "D", "CE", "HO", "UR", "U", "UCI", "Otr",
+               "AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO", "PREM", "PREF"]
+    table = doc.add_table(rows=1, cols=len(headers))
+    table.style = 'Table Grid'
+    for i, h in enumerate(headers):
+        table.rows[0].cells[i].text = h
+
+    for i in range(1, 8):
+        servicio = st.session_state.get(f"servicio_{i}")
+        if servicio and servicio != "Seleccione":
+            row = table.add_row().cells
+            row[0].text = servicio
+
+            dias = ["L", "M", "Mi", "J", "V", "S", "D"]
+            for idx, d in enumerate(dias):
+                row[idx + 1].text = "X" if st.session_state.get(f"{d}_{i}") else ""
+
+            areas = ["CE", "HO", "UR", "U", "UCI", "Otr"]
+            for idx, a in enumerate(areas):
+                row[len(dias) + 1 + idx].text = "X" if st.session_state.get(f"area_{a}_{i}") else ""
+
+            mods = ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"]
+            for idx, m in enumerate(mods):
+                row[len(dias) + len(areas) + 1 + idx].text = "X" if st.session_state.get(f"mod_{m}_{i}") else ""
+
+            row[-2].text = "X" if st.session_state.get(f"prestador_{i}") == "PREM" else ""
+            row[-1].text = "X" if st.session_state.get(f"prestador_{i}") == "PREF" else ""
+
+    # III. RECURSO HUMANO EN TABLA
+    doc.add_heading("III. RECURSO HUMANO DE LOS SERVICIOS DE REHABILITACIÓN", level=2)
+    rh_table = doc.add_table(rows=1, cols=2)
+    rh_table.style = "Table Grid"
+    rh_table.rows[0].cells[0].text = "Profesional"
+    rh_table.rows[0].cells[1].text = "Cantidad"
+
+    for i in range(1, 9):
+        prof = st.session_state.get(f"DesP_{i}")
+        cantidad = st.session_state.get(f"numero_{i}")
+        if prof and prof != "Seleccione":
+            row = rh_table.add_row().cells
+            row[0].text = prof
+            row[1].text = str(cantidad or "")
+
+    # Aclaraciones
+    aclaraciones = st.session_state.get("aclaraciones", "")
+    if aclaraciones:
+        doc.add_paragraph("Aclaraciones sobre la oferta de servicios o recurso humano:")
+        doc.add_paragraph(aclaraciones)
+
+    # Representantes
+    doc.add_heading("Representantes de la Institución", level=2)
+    for i in range(1, 7):
+        rep = st.session_state.get(f"rep_inst_{i}")
+        if rep:
+            doc.add_paragraph(f"{i}. {rep}")
+
+    # Profesionales verificadores
+    doc.add_heading("Responsables de verificación", level=2)
+    for i in range(1, 3):
+        ver = st.session_state.get(f"prof_verif_{i}")
+        if ver:
+            doc.add_paragraph(f"{i}. {ver}")
+
+    buffer = io.BytesIO()
+    doc.save(buffer)
+    buffer.seek(0)
+    return buffer
+#######################################
 
 def exportar_primera_pagina():
     doc = Document()
@@ -90,23 +182,7 @@ def exportar_primera_pagina():
     return buffer
 ############################################################
 
-def exportar_primera_pagina2():
-    doc = Document()
-    doc.add_heading('EVALUAR – BPS', level=1)
-    doc.add_paragraph('EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN')
-    doc.add_heading('I. INFORMACIÓN DE LA INSTITUCIÓN', level=2)
-    doc.add_paragraph(f"Fecha: {st.session_state.get('fecha', '')}")
-    doc.add_paragraph(f"Departamento: {st.session_state.get('departamento', '')}")
-    doc.add_paragraph(f"Municipio: {st.session_state.get('municipio', '')}")
-    doc.add_paragraph(f"Institución: {st.session_state.get('nombre_institucion', '')}")
-    doc.add_paragraph(f"NIT: {st.session_state.get('nit', '')}")
-    # ...continúa con los demás campos...
 
-    # Guardar en buffer para descarga
-    buffer = io.BytesIO()
-    doc.save(buffer)
-    buffer.seek(0)
-    return buffer
 #####################################################################
 
 
@@ -622,17 +698,6 @@ if st.session_state.paso == 1:
                 Diligenciar previo a la visita y validar posteriormente con los delegados de la institución.
                 </div>
                 """, unsafe_allow_html=True)
-
-    
-    if st.button("Descargar primera página (Word)"):
-        word_file = exportar_primera_pagina()
-        st.download_button(
-            label="📥 Descargar primera página",
-            data=word_file,
-            file_name="primera_pagina_formulario.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        )
-    #################################################
     
         #st.markdown("Diligencias previo a la visita y validar posteriormente con los delegados de la institución.")
     with col2:
@@ -1798,17 +1863,25 @@ if st.session_state.paso == 1:
             file_name="primera_pagina_formulario.pdf",
             mime="application/pdf"
         )
-
-    if st.button("📥 Descargar Word"):
-        respuestas = st.session_state.respuestas
-        word_file = generar_documento_word(respuestas)
+    if st.button("📄 Descargar formulario con tablas (Word)"):
+        word_file = exportar_formulario_completo_con_tablas()
         st.download_button(
-            label="Descargar archivo Word",
+            label="📥 Descargar Word",
             data=word_file,
-            file_name="formulario_bps.docx",
+            file_name="formulario_bps_tablas.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         )
 
+
+    if st.button("Descargar primera página (Word)"):
+        word_file = exportar_primera_pagina()
+        st.download_button(
+            label="📥 Descargar primera página",
+            data=word_file,
+            file_name="primera_pagina_formulario.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
+#------------------------------------------------
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
 ############ PÁGINA 8 #####################
