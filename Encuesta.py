@@ -686,15 +686,16 @@ df = pd.DataFrame(diccionario_variables, columns=["Etiqueta", "Key"])
 df.to_csv("diccionario_variables.csv", index=False, encoding="utf-8-sig")
 
 
+# Llama la función SOLO al pulsar el botón
 if st.button("Descargar diccionario de variables"):
-    df_diccionario = exportar_diccionario_completo()
+    df_diccionario = exportar_diccionario_variables()
+    csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
     st.download_button(
         label="📥 Descargar diccionario (CSV)",
-        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig"),
+        data=csv_bytes,
         file_name="diccionario_variables.csv",
         mime="text/csv"
     )
-
 
 ####################### título y encabezado #######################
 
