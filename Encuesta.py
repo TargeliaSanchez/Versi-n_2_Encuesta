@@ -681,7 +681,7 @@ if st.session_state.paso == 1:
                 color: white;
                 padding: 2px 6px;
                 border-radius: 3px;
-                font-size: 18px;
+                font-size: 12px;
                 font-weight: bold;
                 ">
                 I. INFORMACIÓN DE LA INSTITUCIÓN
@@ -767,7 +767,7 @@ if st.session_state.paso == 1:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 18px;
+                font-size: 12px;
                 font-weight: bold;
                 ">
                 II. OFERTA DE SERVICIOS DE REHABILITACIÓN
@@ -1637,7 +1637,7 @@ if st.session_state.paso == 1:
                 color: white;
                 padding: 2px 5px;
                 border-radius: 3px;
-                font-size: 18px;
+                font-size: 12px;
                 font-weight: bold;
                 ">
                 III. RECURSO HUMANO DE LOS SERVICIOS DE REHABILITACIÓN
@@ -1783,7 +1783,7 @@ if st.session_state.paso == 1:
                 color: white;
                 padding: 2px 5px;
                 border-radius: 3px;
-                font-size: 18px;
+                font-size: 12px;
                 font-weight: bold;
                 ">
                 III. RECURSO HUMANO DE LOS SERVICIOS DE REHABILITACIÓN
@@ -1971,7 +1971,7 @@ elif st.session_state.paso == 3:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -1987,7 +1987,7 @@ elif st.session_state.paso == 3:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.
@@ -2067,7 +2067,7 @@ elif st.session_state.paso == 4:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2082,7 +2082,7 @@ elif st.session_state.paso == 4:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.
@@ -2157,7 +2157,7 @@ elif st.session_state.paso == 5:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2172,7 +2172,7 @@ elif st.session_state.paso == 5:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.3 La prestación de los servicios de rehabilitación se realiza en diferentes modalidades: intramural, extramural y/o telemedicina.
@@ -2243,7 +2243,7 @@ elif st.session_state.paso == 6:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2258,7 +2258,7 @@ elif st.session_state.paso == 6:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.4 La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.
@@ -2334,7 +2334,7 @@ if st.session_state.paso == 7:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2349,7 +2349,7 @@ if st.session_state.paso == 7:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.5  La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.
@@ -2421,7 +2421,7 @@ elif st.session_state.paso == 8:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2437,7 +2437,7 @@ elif st.session_state.paso == 8:
                 color: white;   
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.6 El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.
@@ -2508,7 +2508,7 @@ elif st.session_state.paso == 9:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2524,7 +2524,7 @@ elif st.session_state.paso == 9:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;    
+                font-size: 14px;    
                 font-weight: bold;
                 ">
                 D1.7 En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.
@@ -2593,7 +2593,7 @@ elif st.session_state.paso == 10:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2609,7 +2609,7 @@ elif st.session_state.paso == 10:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.8 La institución estructura e implementa un plan de capacitación en atención o rehabilitación con enfoque biopsicosocial. 
@@ -2678,7 +2678,7 @@ elif st.session_state.paso == 11:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2693,7 +2693,7 @@ elif st.session_state.paso == 11:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D1.9 La institución cuenta con áreas de atención, dotación y tecnología para la implementación de intervenciones orientadas a optimizar el proceso de rehabilitación. 
@@ -2765,7 +2765,7 @@ elif st.session_state.paso == 12:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2781,7 +2781,7 @@ elif st.session_state.paso == 12:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.1 Se realiza o se cuenta con valoración médica integral de la condición de salud de los usuarios de rehabilitación. 
@@ -2849,7 +2849,7 @@ elif st.session_state.paso == 13:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2865,7 +2865,7 @@ elif st.session_state.paso == 13:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.2 Se usan pruebas estandarizadas y/o instrumentos para la evaluación de los usuarios de rehabilitación. ►
@@ -2934,7 +2934,7 @@ elif st.session_state.paso == 14:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -2950,7 +2950,7 @@ elif st.session_state.paso == 14:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.3 En la evaluación se valora el estado funcional del usuario. ►
@@ -3021,7 +3021,7 @@ elif st.session_state.paso == 15:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3036,7 +3036,7 @@ elif st.session_state.paso == 15:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.4 La evaluación considera el desempeño y los roles del usuario en diferentes entornos. 
@@ -3105,7 +3105,7 @@ elif st.session_state.paso == 16:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3121,7 +3121,7 @@ elif st.session_state.paso == 16:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.5 En la evaluación se identifican facilitadores y barreras del entorno que influyen en el proceso de rehabilitación del usuario. 
@@ -3202,7 +3202,7 @@ elif st.session_state.paso == 17:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3218,7 +3218,7 @@ elif st.session_state.paso == 17:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.6 En la evaluación se registran las expectativas del usuario, la familia o cuidador respecto al proceso de rehabilitación. ►
@@ -3288,7 +3288,7 @@ elif st.session_state.paso == 18:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3304,7 +3304,7 @@ elif st.session_state.paso == 18:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.7 El plan de atención del usuario de rehabilitación se estructura de acuerdo al modelo de atención y se centra en la persona. ►
@@ -3373,7 +3373,7 @@ elif st.session_state.paso == 19:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3389,7 +3389,7 @@ elif st.session_state.paso == 19:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.8 El plan de atención integra el manejo médico de la condición de salud y las intervenciones para el logro de los objetivos y/o metas de rehabilitación. 
@@ -3458,7 +3458,7 @@ elif st.session_state.paso == 20:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3474,7 +3474,7 @@ elif st.session_state.paso == 20:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.9 Los profesionales definen con el usuario, la familia y/o cuidador, objetivos y/o metas de rehabilitación que se orientan a optimizar el funcionamiento. ►
@@ -3544,7 +3544,7 @@ elif st.session_state.paso == 21:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3560,7 +3560,7 @@ elif st.session_state.paso == 21:
                 color: white;
                 padding: 1px 3px;
                 border-radius: 3px;
-                font-size: 11px;
+                font-size: 14px;
                 font-weight: bold;
                 ">
                 D2.10 Se establecen objetivos y/o metas de rehabilitación medibles y alcanzables en un tiempo determinado. ►
@@ -3628,7 +3628,7 @@ elif st.session_state.paso == 22:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3645,7 +3645,7 @@ elif st.session_state.paso == 22:
                     color: white;
                     padding: 1px 3px;
                     border-radius: 3px;
-                    font-size: 11px;
+                    font-size: 14px;
                     font-weight: bold;
                     ">
                     D2.11 La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.  ►
@@ -3726,7 +3726,7 @@ elif st.session_state.paso == 23:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3742,7 +3742,7 @@ elif st.session_state.paso == 23:
             color: white;
             padding: 1px 3px;
             border-radius: 3px;
-            font-size: 11px;
+            font-size: 14px;
             font-weight: bold;
             ">
             D2.12 Durante la intervención del usuario los profesionales de rehabilitación realizan acciones conjuntas, coordinadas e interdependientes.
@@ -3810,7 +3810,7 @@ elif st.session_state.paso == 24:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3827,7 +3827,7 @@ elif st.session_state.paso == 24:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D2.13 En el proceso de rehabilitación se implementan acciones con enfoque diferencial. 
@@ -3895,7 +3895,7 @@ elif st.session_state.paso == 25:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3912,7 +3912,7 @@ elif st.session_state.paso == 25:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D2.14 Durante el proceso de atención, se realizan acciones para involucrar activamente al usuario, su familia y/o cuidador en el cumplimiento de los objetivos de rehabilitación.
@@ -3981,7 +3981,7 @@ elif st.session_state.paso == 26:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -3997,7 +3997,7 @@ elif st.session_state.paso == 26:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D2.15 En la etapa o fase de intervención se realiza reevaluación del usuario para identificar los logros y de ser necesario, realizar ajustes al plan de atención. ►
@@ -4064,7 +4064,7 @@ elif st.session_state.paso == 27:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -4080,7 +4080,7 @@ elif st.session_state.paso == 27:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D2.16 El proceso de rehabilitación incluye acciones planificadas de orientación y canalización del usuario y su familia a otras instituciones o sectores que pueden contribuir a su participación.
@@ -4147,7 +4147,7 @@ elif st.session_state.paso == 28:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -4163,7 +4163,7 @@ elif st.session_state.paso == 28:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D2.17 Se realiza evaluación final del usuario para determinar los logros, y definir el egreso o la pertinencia de continuar con el proceso de rehabilitación.►
@@ -4230,7 +4230,7 @@ elif st.session_state.paso == 29:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -4246,7 +4246,7 @@ elif st.session_state.paso == 29:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D2.18 Se implementan acciones específicas para la atención y el egreso de usuarios de rehabilitación de larga permanencia con pobre pronostico funcional.
@@ -4314,7 +4314,7 @@ elif st.session_state.paso == 30:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -4331,7 +4331,7 @@ elif st.session_state.paso == 30:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D3.1 Se utilizan instrumentos adaptados y validados en el contexto nacional para evaluar los resultados del proceso de rehabilitación.
@@ -4399,7 +4399,7 @@ elif st.session_state.paso == 31:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -4415,7 +4415,7 @@ elif st.session_state.paso == 31:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D3.2 Se miden y analizan los resultados del estado funcional de los usuarios posterior al proceso de rehabilitación.
@@ -4482,7 +4482,7 @@ elif st.session_state.paso == 32:
                 background-color: #F1F3F5;
                 padding: 2px 6px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #212529;
             margin-bottom: 0rem;
@@ -4497,7 +4497,7 @@ elif st.session_state.paso == 32:
         color: white;
         padding: 1px 3px;
         border-radius: 3px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
         ">
         D3.3 Se mide la satisfacción de los usuarios con la atención recibida en los servicios de rehabilitación.
