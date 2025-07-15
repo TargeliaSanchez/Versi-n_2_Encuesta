@@ -646,48 +646,6 @@ if "uuid_respuesta" not in st.session_state:
 
 st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 
-###########################################################
-import pandas as pd
-
-def exportar_diccionario_variables():
-    campos = [
-        ("Fecha", "fecha"),
-        ("Departamento", "departamento"),
-        ("Municipio", "municipio"),
-        ("Nombre de la IPS", "nombre_institucion"),
-        ("NIT", "nit"),
-        ("Naturaleza jurídica", "naturaleza_juridica"),
-        ("Empresa Social del Estado", "empresa_social_estado"),
-        ("Nivel de atención del prestador", "nivel_atencion_prestador")
-    ]
-    campos_extra = []
-    for i in range(1, 8):
-        campos_extra.append((f"Servicio {i}", f"servicio_{i}"))
-        for d in ["L", "M", "Mi", "J", "V", "S", "D"]:
-            campos_extra.append((f"Día {d} servicio {i}", f"{d}_{i}"))
-        for a in ["CE", "HO", "UR", "U", "UCI", "Otr"]:
-            campos_extra.append((f"Área {a} servicio {i}", f"area_{a}_{i}"))
-        for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"]:
-            campos_extra.append((f"Modalidad {m} servicio {i}", f"mod_{m}_{i}"))
-        campos_extra.append((f"Prestador servicio {i}", f"prestador_{i}"))
-    for i in range(1, 9):
-        campos_extra.append((f"Profesional {i}", f"DesP_{i}"))
-        campos_extra.append((f"Cantidad profesional {i}", f"numero_{i}"))
-    diccionario_variables = campos + campos_extra
-    df = pd.DataFrame(diccionario_variables, columns=["Etiqueta", "Key"])
-    return df
-
-st.header("Exportar diccionario de variables")
-
-if st.button("Descargar diccionario de variables"):
-    df_diccionario = exportar_diccionario_variables()
-    csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
-    st.download_button(
-        label="📥 Descargar diccionario (CSV)",
-        data=csv_bytes,
-        file_name="diccionario_variables.csv",
-        mime="text/csv"
-    )
 ####################### título y encabezado #######################
 
 st.image("Logo_ideal.png", use_container_width=True)
