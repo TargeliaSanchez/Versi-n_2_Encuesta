@@ -660,10 +660,6 @@ def exportar_diccionario_variables():
         ("Empresa Social del Estado", "empresa_social_estado"),
         ("Nivel de atención del prestador", "nivel_atencion_prestador")
     ]
-    # Puedes agregar aquí también los keys de servicios, recursos humanos, etc.
-    df = pd.DataFrame(campos, columns=["Etiqueta", "Key"])
-    df.to_csv("diccionario_variables.csv", index=False, encoding="utf-8-sig")
-
     campos_extra = []
     for i in range(1, 8):
         campos_extra.append((f"Servicio {i}", f"servicio_{i}"))
@@ -674,27 +670,24 @@ def exportar_diccionario_variables():
         for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"]:
             campos_extra.append((f"Modalidad {m} servicio {i}", f"mod_{m}_{i}"))
         campos_extra.append((f"Prestador servicio {i}", f"prestador_{i}"))
-
-# Profesionales
     for i in range(1, 9):
         campos_extra.append((f"Profesional {i}", f"DesP_{i}"))
         campos_extra.append((f"Cantidad profesional {i}", f"numero_{i}"))
+    diccionario_variables = campos + campos_extra
+    df = pd.DataFrame(diccionario_variables, columns=["Etiqueta", "Key"])
+    return df
 
-# Juntas ambas listas
-diccionario_variables = campos + campos_extra
-df = pd.DataFrame(diccionario_variables, columns=["Etiqueta", "Key"])
-df.to_csv("diccionario_variables.csv", index=False, encoding="utf-8-sig")
+st.header("Exportar diccionario de variables")
 
-
-# Llama la función SOLO al pulsar el botón
-df_diccionario = exportar_diccionario_completo()
-csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
-st.download_button(
-    label="📥 Descargar diccionario (CSV)",
-    data=csv_bytes,
-    file_name="diccionario_variables.csv",
-    mime="text/csv"
-)
+if st.button("Descargar diccionario de variables"):
+    df_diccionario = exportar_diccionario_variables()
+    csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
+    st.download_button(
+        label="📥 Descargar diccionario (CSV)",
+        data=csv_bytes,
+        file_name="diccionario_variables.csv",
+        mime="text/csv"
+    )
 ####################### título y encabezado #######################
 
 st.image("Logo_ideal.png", use_container_width=True)
