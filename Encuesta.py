@@ -664,26 +664,26 @@ def exportar_diccionario_variables():
     df = pd.DataFrame(campos, columns=["Etiqueta", "Key"])
     df.to_csv("diccionario_variables.csv", index=False, encoding="utf-8-sig")
 
-campos_extra = []
-for i in range(1, 8):
-    campos_extra.append((f"Servicio {i}", f"servicio_{i}"))
-    for d in ["L", "M", "Mi", "J", "V", "S", "D"]:
-        campos_extra.append((f"Día {d} servicio {i}", f"{d}_{i}"))
-    for a in ["CE", "HO", "UR", "U", "UCI", "Otr"]:
-        campos_extra.append((f"Área {a} servicio {i}", f"area_{a}_{i}"))
-    for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"]:
-        campos_extra.append((f"Modalidad {m} servicio {i}", f"mod_{m}_{i}"))
-    campos_extra.append((f"Prestador servicio {i}", f"prestador_{i}"))
+    campos_extra = []
+    for i in range(1, 8):
+        campos_extra.append((f"Servicio {i}", f"servicio_{i}"))
+        for d in ["L", "M", "Mi", "J", "V", "S", "D"]:
+            campos_extra.append((f"Día {d} servicio {i}", f"{d}_{i}"))
+        for a in ["CE", "HO", "UR", "U", "UCI", "Otr"]:
+            campos_extra.append((f"Área {a} servicio {i}", f"area_{a}_{i}"))
+        for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"]:
+            campos_extra.append((f"Modalidad {m} servicio {i}", f"mod_{m}_{i}"))
+        campos_extra.append((f"Prestador servicio {i}", f"prestador_{i}"))
 
 # Profesionales
-for i in range(1, 9):
-    campos_extra.append((f"Profesional {i}", f"DesP_{i}"))
-    campos_extra.append((f"Cantidad profesional {i}", f"numero_{i}"))
+    for i in range(1, 9):
+        campos_extra.append((f"Profesional {i}", f"DesP_{i}"))
+        campos_extra.append((f"Cantidad profesional {i}", f"numero_{i}"))
 
 # Juntas ambas listas
-diccionario_variables = campos + campos_extra
-df = pd.DataFrame(diccionario_variables, columns=["Etiqueta", "Key"])
-df.to_csv("diccionario_variables.csv", index=False, encoding="utf-8-sig")
+    diccionario_variables = campos + campos_extra
+    df = pd.DataFrame(diccionario_variables, columns=["Etiqueta", "Key"])
+    df.to_csv("diccionario_variables.csv", index=False, encoding="utf-8-sig")
 
 
 # Llama la función SOLO al pulsar el botón
