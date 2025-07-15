@@ -647,6 +647,7 @@ st.markdown("""
         .block-container { padding-top: 0.5rem !important; }
     </style>
 """, unsafe_allow_html=True)
+
 st.image("Logo_ideal.png", use_container_width=True)
 
 #st.title("EVALUAR – BPS \n  **EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN**")
