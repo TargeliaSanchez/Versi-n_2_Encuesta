@@ -689,7 +689,7 @@ def exportar_diccionario_variables():
 # Llama la función SOLO al pulsar el botón
 if st.button("Descargar diccionario de variables"):
     df_diccionario = exportar_diccionario_variables()
-    csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
+    csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig")
     st.download_button(
         label="📥 Descargar diccionario (CSV)",
         data=csv_bytes,
