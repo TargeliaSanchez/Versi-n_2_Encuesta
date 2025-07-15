@@ -649,65 +649,6 @@ if "uuid_respuesta" not in st.session_state:
 st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 
 
-#----------------------------------------------------------------------------
-import pandas as pd
-
-def exportar_diccionario_completo():
-    # 1. Variables de identificación y servicios
-    campos = [
-        ("fecha", "Fecha"),
-        ("departamento", "Departamento"),
-        ("municipio", "Municipio"),
-        ("nombre_institucion", "Nombre de la IPS"),
-        ("nit", "NIT"),
-        ("naturaleza_juridica", "Naturaleza jurídica"),
-        ("empresa_social_estado", "Empresa Social del Estado"),
-        ("nivel_atencion_prestador", "Nivel de atención del prestador"),
-        # Agrega aquí los servicios, días, áreas, modalidades, etc., como en el ejemplo anterior
-    ]
-
-    # 2. Variables de subdimensiones
-    filas = []
-    for subdim, variables in dimensiones.items():
-        nombre_subdim = nombres_subdimensiones.get(subdim, subdim)
-        for idx, key in enumerate(variables):
-            # Determinar tipo de variable
-            if key.startswith("p"):
-                tipo = "Pregunta"
-                # Aquí deberías obtener el texto de la pregunta. Si tienes un dict preguntas_por_key, lo usas.
-                texto = f"Pregunta asociada a {nombre_subdim}"
-            elif key.startswith("obs"):
-                tipo = "Observación"
-                texto = f"Observaciones para {nombre_subdim}"
-            elif key.startswith("D"):
-                tipo = "Calificación"
-                texto = f"Calificación total para {nombre_subdim}"
-            else:
-                tipo = "Otra"
-                texto = ""
-            filas.append((key, texto, subdim, nombre_subdim, tipo))
-
-    # 3. Unir todo y exportar
-    df1 = pd.DataFrame(campos, columns=["Key", "Etiqueta"])
-    df2 = pd.DataFrame(filas, columns=["Key", "Etiqueta", "Subdimensión", "Nombre Subdimensión", "Tipo"])
-    df = pd.concat([df1, df2], ignore_index=True)
-    df.to_csv("diccionario_variables_completo.csv", index=False,encoding="utf-8-sig").encode("utf-8-sig")
-
-# Llama a la función y descarga el archivo resultante
-df_diccionario = exportar_diccionario_completo()
-
-
-if st.button("Descargar diccionario de variables"):
-    df_diccionario = exportar_diccionario_completo()
-    st.download_button(
-        label="📥 Descargar diccionario (CSV)",
-        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig"),
-        file_name="diccionario_variables.csv",
-        mime="text/csv"
-    )
-
-#--------------------------
-
 
 ####################### título y encabezado #######################
 
