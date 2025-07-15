@@ -19,15 +19,10 @@ import json
 import re
 from collections import defaultdict
 import yagmail
-
 ##############################
 from docx import Document
 import streamlit as st
 import io
-
-
-
-
 ##############################################
 def exportar_formulario_completo_con_tablas():
     doc = Document()
@@ -647,7 +642,11 @@ if "uuid_respuesta" not in st.session_state:
 st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 
 ####################### título y encabezado #######################
-
+st.markdown("""
+    <style>
+        .block-container { padding-top: 0.5rem !important; }
+    </style>
+""", unsafe_allow_html=True)
 st.image("Logo_ideal.png", use_container_width=True)
 
 #st.title("EVALUAR – BPS \n  **EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN**")
