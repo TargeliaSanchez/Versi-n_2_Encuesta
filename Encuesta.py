@@ -1848,9 +1848,18 @@ if st.session_state.paso == 1:
         guardar_respuesta(f"prof_verif_{i}", prof)
 
     #---------------------------------------------------
-    col1, col2 = st.columns([5, 1])
+    #col1, col2 = st.columns([5, 1])
+
+    #------------------------------------------------
+
+
+
+    #### botones página 1
+    col1, col2, col3, col4 = st.columns([1,1,1,1])
 
     with col1:
+        st.button("◀️ Anterior", on_click=anterior)
+    with col2:
         if st.button("📄 Descargar formulario con tablas (Word)"):
             word_file = exportar_formulario_completo_con_tablas()
             st.download_button(
@@ -1860,7 +1869,7 @@ if st.session_state.paso == 1:
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             )
 
-    with col2:
+    with col3:
         if st.button("Descargar primera página (Word)"):
             word_file = exportar_primera_pagina()
             st.download_button(
@@ -1869,16 +1878,7 @@ if st.session_state.paso == 1:
                 file_name="primera_pagina_formulario.docx",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             )
-#------------------------------------------------
-
-
-
-    #### botones página 1
-    col1, col2= st.columns([5, 1])
-
-    with col1:
-        st.button("◀️ Anterior", on_click=anterior)
-    with col2:
+    with col4:
         st.button("Siguiente ▶️", on_click=siguiente)
 
 
