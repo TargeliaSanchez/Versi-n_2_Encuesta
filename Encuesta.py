@@ -3637,62 +3637,63 @@ elif st.session_state.paso == 22:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("""
-                <div style="
-                background-color:
-                #0b3c70;
-                color: white;
-                padding: 1px 3px;
-                border-radius: 3px;
-                font-size: 11px;
-                font-weight: bold;
-                ">
-                D2.11 La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.  ►
-                </div>
-                """, unsafe_allow_html=True)
-    notas_d211 = ["""Verificar:
-                  
-                  Historia clínica
-                  ** En prestadores de nivel 1: profesionales que intervienen en el proceso de rehabilitación. 
-    """]
-    if notas_d211[0]:
-        with st.expander("Nota"):
-            st.markdown(notas_d211[0])
-
-    st.markdown("""
-                <div style="
-                background-color: #f5f5f5 ;
-                color: black;
-                padding: 4px 10px;
-                font-weight: normal;
-                border-radius: 0.5px;
-                "><b> En la historia clínica de los usuarios: 
-                </div>
-                """, unsafe_allow_html=True)
-    
-    preguntas_d2_11 = [
-        "Se registran intervenciones de rehabilitación orientadas a mejorar la realización de actividades de la vida diaria y el desempeño del usuario en su entorno.",
-        "Las intervenciones de rehabilitación registradas son coherentes con los objetivos y/o metas de rehabilitación.",
-        "Se registra el uso de enfoques terapéuticos, intervenciones y/o técnicas con respaldo en la evidencia.",
-        "La intervención de los usuarios es realizada por el equipo multidisciplinario** e incorpora dispositivos de asistencia y tecnología.",
-    ]
-    for i, texto in enumerate(preguntas_d2_11):
-        col1, col2 = st.columns([4, 1])
-        with col1:
-            st.markdown(texto)
-            #st.markdown("-----------------------")
-        with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_11_{i+1}")
-            guardar_respuesta(f"pD2_11_{i+1}", val[1])
     with st.container():
-        col1, col2 = st.columns([1, 4])
-        with col1:
-            st.markdown("**Calificación D2.11:**")
-            val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_11")
-            guardar_respuesta("D2_11", val[1])
-        with col2:
-            obs = st.text_area("Hallazgos", key="obsD2_11")
-            guardar_respuesta("obsD2_11", obs)
+        st.markdown("""
+                    <div style="
+                    background-color:
+                    #0b3c70;
+                    color: white;
+                    padding: 1px 3px;
+                    border-radius: 3px;
+                    font-size: 11px;
+                    font-weight: bold;
+                    ">
+                    D2.11 La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.  ►
+                    </div>
+                    """, unsafe_allow_html=True)
+        notas_d211 = ["""Verificar:
+                  
+                      Historia clínica
+                      ** En prestadores de nivel 1: profesionales que intervienen en el proceso de rehabilitación. 
+        """]
+        if notas_d211[0]:
+            with st.expander("Nota"):
+                st.markdown(notas_d211[0])
+
+        st.markdown("""
+                    <div style="
+                    background-color: #f5f5f5 ;
+                    color: black;
+                    padding: 4px 10px;
+                    font-weight: normal;
+                    border-radius: 0.5px;
+                    "><b> En la historia clínica de los usuarios: 
+                    </div>
+                    """, unsafe_allow_html=True)
+    
+        preguntas_d2_11 = [
+            "Se registran intervenciones de rehabilitación orientadas a mejorar la realización de actividades de la vida diaria y el desempeño del usuario en su entorno.",
+            "Las intervenciones de rehabilitación registradas son coherentes con los objetivos y/o metas de rehabilitación.",
+            "Se registra el uso de enfoques terapéuticos, intervenciones y/o técnicas con respaldo en la evidencia.",
+            "La intervención de los usuarios es realizada por el equipo multidisciplinario** e incorpora dispositivos de asistencia y tecnología.",
+        ]
+        for i, texto in enumerate(preguntas_d2_11):
+            col1, col2 = st.columns([4, 1])
+            with col1:
+                st.markdown(texto)
+            #st.markdown("-----------------------")
+            with col2:
+                val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_11_{i+1}")
+                guardar_respuesta(f"pD2_11_{i+1}", val[1])
+        with st.container():
+            col1, col2 = st.columns([1, 4])
+            with col1:
+                st.markdown("**Calificación D2.11:**")
+                val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_11")
+                guardar_respuesta("D2_11", val[1])
+            with col2:
+                obs = st.text_area("Hallazgos", key="obsD2_11")
+                guardar_respuesta("obsD2_11", obs)
 
     alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
