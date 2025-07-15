@@ -73,14 +73,6 @@ def exportar_diccionario_completo():
 # Llama a la función y descarga el archivo resultante
 df_diccionario = exportar_diccionario_completo()
 
-if st.button("Descargar diccionario de variables"):
-    df_diccionario = exportar_diccionario_completo()
-    st.download_button(
-        label="📥 Descargar diccionario (CSV)",
-        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig"),
-        file_name="diccionario_variables.csv",
-        mime="text/csv"
-    )
 
 
 
@@ -711,6 +703,17 @@ if "uuid_respuesta" not in st.session_state:
 
 
 st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
+
+if st.button("Descargar diccionario de variables"):
+    df_diccionario = exportar_diccionario_completo()
+    st.download_button(
+        label="📥 Descargar diccionario (CSV)",
+        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig"),
+        file_name="diccionario_variables.csv",
+        mime="text/csv"
+    )
+
+
 
 
 ####################### título y encabezado #######################
