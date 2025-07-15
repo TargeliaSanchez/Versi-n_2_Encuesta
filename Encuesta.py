@@ -1888,7 +1888,33 @@ if st.session_state.paso == 1:
             key=f"prof_verif_{i}"
         )
         guardar_respuesta(f"prof_verif_{i}", prof)
-        
+
+    #---------------------------------------------------
+    col1, col2 = st.columns([5, 1])
+
+    with col1:
+        if st.button("📄 Descargar formulario con tablas (Word)"):
+            word_file = exportar_formulario_completo_con_tablas()
+            st.download_button(
+                label="📥 Descargar Word",
+                data=word_file,
+                file_name="formulario_bps_tablas.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
+
+    with col2:
+        if st.button("Descargar primera página (Word)"):
+            word_file = exportar_primera_pagina()
+            st.download_button(
+                label="📥 Descargar primera página",
+                data=word_file,
+                file_name="primera_pagina_formulario.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
+#------------------------------------------------
+
+
+
     #### botones página 1
     col1, col2= st.columns([5, 1])
 
@@ -1897,33 +1923,9 @@ if st.session_state.paso == 1:
     with col2:
         st.button("Siguiente ▶️", on_click=siguiente)
 
-    if st.button("Descargar primera página (PDF)"):
-        pdf_file = exportar_pdf_primera_pagina()
-        st.download_button(
-            label="📥 Descargar primera página",
-            data=pdf_file,
-            file_name="primera_pagina_formulario.pdf",
-            mime="application/pdf"
-        )
-    if st.button("📄 Descargar formulario con tablas (Word)"):
-        word_file = exportar_formulario_completo_con_tablas()
-        st.download_button(
-            label="📥 Descargar Word",
-            data=word_file,
-            file_name="formulario_bps_tablas.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        )
 
 
-    if st.button("Descargar primera página (Word)"):
-        word_file = exportar_primera_pagina()
-        st.download_button(
-            label="📥 Descargar primera página",
-            data=word_file,
-            file_name="primera_pagina_formulario.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        )
-#------------------------------------------------
+
 
 ##################### FORMULARIO DE EVALUACIÓN #####################
 ############ PÁGINA 8 #####################
