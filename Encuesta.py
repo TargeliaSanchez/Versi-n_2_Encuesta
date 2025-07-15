@@ -648,6 +648,123 @@ if "uuid_respuesta" not in st.session_state:
 
 st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 
+############## exportar diccionario
+
+import pandas as pd
+
+# 1. Mapea cada subdimensión a la lista de textos de preguntas
+# Debes definir todas tus listas de preguntas así:
+preguntas_map = {
+    "D1.1": preguntas_d11,    "D1.2": preguntas_d12,    "D1.3": preguntas_d13,   "D1.4": preguntas_d14,    "D1.5": preguntas_d15,
+    "D1.6": preguntas_d16,    "D1.7": preguntas_d17,    "D1.8": preguntas_d18,  "D1.9": preguntas_d19,
+    
+    #--------------------DIMENSIÓN 2
+    "D2.1": preguntas_d2_1,     "D2.2": preguntas_d2_2,    "D2.3": preguntas_d2_3,    "D2.4": preguntas_d2_4,    "D2.5": preguntas_d2_5,
+    "D2.6": preguntas_d2_6,    "D2.7": preguntas_d2_7,    "D2.8": preguntas_d2_8,    "D2.9": preguntas_d2_9,    "D2.10": preguntas_d2_10,
+    "D2.11": preguntas_d2_11,    "D2.12": preguntas_d2_12,    "D2.13": preguntas_d2_13,    "D2.14": preguntas_d2_14,    "D2.15": preguntas_d2_15,
+    "D2.16": preguntas_d2_16,    "D2.17": preguntas_d2_17,    "D2.18": preguntas_d2_18,
+    #--------------------DIMENSIÓN 3
+    "D3.1": preguntas_d3_1,    "D3.2": preguntas_d3_2,    "D3.3": preguntas_d3_3
+
+}
+
+# 2. Asocia cada key de pregunta con su label/texto
+preguntas_labels = {}
+for subdim, preguntas in preguntas_map.items():
+    for idx, texto in enumerate(preguntas):
+        # El key en dimensiones es pD1_1_1, pD1_1_2, etc.
+        key = f"p{subdim.replace('.', '_')}_{idx+1}"
+        preguntas_labels[key] = texto
+
+# 3. Exporta el diccionario de variables
+def exportar_diccionario_completo():
+    filas = []
+    for subdim, variables in dimensiones.items():
+        for idx, key in enumerate(variables):
+            if key.startswith("p"):
+                etiqueta = preguntas_labels.get(key, f"Pregunta de {subdim}")
+                tipo = "Pregunta"
+            elif key.startswith("obs"):
+                etiqueta = f"Observaciones para {subdim}"
+                tipo = "Observación"
+            elif key.startswith("D"):
+                etiqueta = f"Calificación total para {subdim}"
+                tipo = "Calificación"
+            else:
+                etiqueta = key
+                tipo = "Otro"
+            filas.append({
+                "key": key,
+                "etiqueta": etiqueta,
+                "subdimension": subdim,
+                "tipo": tipo
+            })
+    # Puedes agregar aquí también las variables de identificación, servicios, etc. si lo deseas
+
+    df = pd.DataFrame(filas)
+    return df
+
+# 4. Ejemplo de uso en Streamlit:
+if st.button("Descargar diccionario de variables"):
+    df_diccionario = exportar_diccionario_completo()
+    csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
+    st.download_button(
+        label="📥 Descargar diccionario (CSV)",
+        data=csv_bytes,
+        file_name="diccionario_variables.csv",
+        mime="text/csv"
+    )
+
+
+# 2. Asocia cada key de pregunta con su label/texto
+preguntas_labels = {}
+for subdim, preguntas in preguntas_map.items():
+    for idx, texto in enumerate(preguntas):
+        # El key en dimensiones es pD1_1_1, pD1_1_2, etc.
+        key = f"p{subdim.replace('.', '_')}_{idx+1}"
+        preguntas_labels[key] = texto
+
+# 3. Exporta el diccionario de variables
+def exportar_diccionario_completo():
+    filas = []
+    for subdim, variables in dimensiones.items():
+        for idx, key in enumerate(variables):
+            if key.startswith("p"):
+                etiqueta = preguntas_labels.get(key, f"Pregunta de {subdim}")
+                tipo = "Pregunta"
+            elif key.startswith("obs"):
+                etiqueta = f"Observaciones para {subdim}"
+                tipo = "Observación"
+            elif key.startswith("D"):
+                etiqueta = f"Calificación total para {subdim}"
+                tipo = "Calificación"
+            else:
+                etiqueta = key
+                tipo = "Otro"
+            filas.append({
+                "key": key,
+                "etiqueta": etiqueta,
+                "subdimension": subdim,
+                "tipo": tipo
+            })
+    # Puedes agregar aquí también las variables de identificación, servicios, etc. si lo deseas
+
+    df = pd.DataFrame(filas)
+    return df
+
+# 4. Ejemplo de uso en Streamlit:
+if st.button("Descargar diccionario de variables"):
+    df_diccionario = exportar_diccionario_completo()
+    csv_bytes = df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
+    st.download_button(
+        label="📥 Descargar diccionario (CSV)",
+        data=csv_bytes,
+        file_name="diccionario_variables.csv",
+        mime="text/csv"
+    )
+
+
+
 
 
 ####################### título y encabezado #######################
