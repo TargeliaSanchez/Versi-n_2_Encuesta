@@ -701,7 +701,7 @@ if st.button("Descargar diccionario de variables"):
     df_diccionario = exportar_diccionario_completo()
     st.download_button(
         label="📥 Descargar diccionario (CSV)",
-        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
+        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig"),
         file_name="diccionario_variables.csv",
         mime="text/csv"
     )
