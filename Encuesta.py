@@ -1994,39 +1994,39 @@ elif st.session_state.paso == 3:
                 </div>
                 """, unsafe_allow_html=True)    
     
-
+    with st.container():
     #st.markdown("**D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.**")
-    preguntas_d11 = [
-        "La institución presta servicio de psicología y/o trabajo social.",
-        "La institución presta servicios de fisioterapia, fonoaudiología y/o terapia ocupacional.",
-        "Los servicios de rehabilitación disponibles corresponden con el nivel de complejidad.\*",
-        "Los servicios de rehabilitación se organizan en un área específica de la institución.",
-    ]
+        preguntas_d11 = [
+            "La institución presta servicio de psicología y/o trabajo social.",
+            "La institución presta servicios de fisioterapia, fonoaudiología y/o terapia ocupacional.",
+            "Los servicios de rehabilitación disponibles corresponden con el nivel de complejidad.\*",
+            "Los servicios de rehabilitación se organizan en un área específica de la institución.",
+        ]
 
-    notas_d11 = [
-    """Servicios de rehabilitación según nivel de atención del prestador\*:
+        notas_d11 = [
+        """Servicios de rehabilitación según nivel de atención del prestador\*:
 
-    Nivel 3. Servicios de nivel II. Los servicios de rehabilitación se organizan en un área [Ej., unidad, departamento]. 
-    Nivel 2. Medicina general y especialidades. Servicio de medicina física y rehabilitación [interconsulta], fisioterapia, 
+        Nivel 3. Servicios de nivel II. Los servicios de rehabilitación se organizan en un área [Ej., unidad, departamento]. 
+        Nivel 2. Medicina general y especialidades. Servicio de medicina física y rehabilitación [interconsulta], fisioterapia, 
              terapia ocupacional y/o fonoaudiología + psicología. Otras terapias y especialidades.
-    Nivel 1. Medicina general o remisión de prestador externo. Servicios de fisioterapia, fonoaudiología y/o terapia ocupacional, 
+        Nivel 1. Medicina general o remisión de prestador externo. Servicios de fisioterapia, fonoaudiología y/o terapia ocupacional, 
              + psicología y/o trabajo social
-    """]
+        """]
 
-    if notas_d11[0]:
-        with st.expander("Nota"):
-            st.markdown(notas_d11[0])
+        if notas_d11[0]:
+            with st.expander("Nota"):
+                st.markdown(notas_d11[0])
             
 
-    for i, texto in enumerate(preguntas_d11):
-        col1, col2= st.columns([4, 1])
-        with col1:
-            st.markdown(texto)
+        for i, texto in enumerate(preguntas_d11):
+            col1, col2= st.columns([4, 1])
+            with col1:
+                st.markdown(texto)
             #st.markdown("------------------------------")
     
-        with col2:
-            val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
-            guardar_respuesta(f"pD1_1_{i+1}", val[1])
+            with col2:
+                val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
+                guardar_respuesta(f"pD1_1_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
