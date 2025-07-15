@@ -691,8 +691,7 @@ def exportar_diccionario_completo():
     df1 = pd.DataFrame(campos, columns=["Key", "Etiqueta"])
     df2 = pd.DataFrame(filas, columns=["Key", "Etiqueta", "Subdimensión", "Nombre Subdimensión", "Tipo"])
     df = pd.concat([df1, df2], ignore_index=True)
-    df.to_csv("diccionario_variables_completo.csv", index=False, encoding="utf-8-sig")
-    return df
+    df.to_csv("diccionario_variables_completo.csv", index=False,encoding="utf-8-sig").encode("utf-8-sig")
 
 # Llama a la función y descarga el archivo resultante
 df_diccionario = exportar_diccionario_completo()
@@ -702,7 +701,7 @@ if st.button("Descargar diccionario de variables"):
     df_diccionario = exportar_diccionario_completo()
     st.download_button(
         label="📥 Descargar diccionario (CSV)",
-        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig"),
+        data=df_diccionario.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
         file_name="diccionario_variables.csv",
         mime="text/csv"
     )
