@@ -4663,13 +4663,13 @@ elif st.session_state.paso == 33:
             valor_raw = st.session_state.respuestas.get(variables[4], 0)
             valor = valor_raw[1] if isinstance(valor_raw, tuple) else valor_raw 
             obs_key = variables[5] if len(variables) > 5 else None
-            observacion = st.session_state.respuestas.get(obs_key, "Sin observaciones") if obs_key else "No aplica"
+            hallazgos = st.session_state.respuestas.get(obs_key, "") if obs_key else "No aplica"
         
             resumen.append({
                 #"Código": codificacion,
                 "Condición": nombre,
                 "Valoración": valor,
-                "Hallazgos": observacion
+                "Hallazgos": hallazgos
             })
 
     df_resumen = pd.DataFrame(resumen)
