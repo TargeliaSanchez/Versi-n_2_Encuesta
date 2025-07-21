@@ -739,7 +739,7 @@ for idx, servicio in enumerate(st.session_state.servicios_habilitados):
         cols = st.columns(6)
         for i, a in enumerate(areas):
             with cols[i]: #a
-                st.markdown(f"<div style='text-align:center;font-weight:bold;'>{d}</div>", unsafe_allow_html=True) #b
+                st.markdown(f"<div style='text-align:center;font-weight:bold;'>{a}</div>", unsafe_allow_html=True) #b
             
         for i, a in enumerate(areas):
              with cols[i]:
