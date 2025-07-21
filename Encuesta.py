@@ -103,7 +103,7 @@ def exportar_formulario_completo_con_tablas():
 
         # Modalidad
             for m in bloques["Modalidad"]:
-                row[col].text = "X" if st.session_state.get(f"mod_{m}_{i}") else ""
+                row[col].text = "X" if st.session_state.get(f"{m}_{i}") else ""
                 col += 1
     
         # Tipo de prestador
@@ -177,7 +177,7 @@ def exportar_primera_pagina():
             areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if st.session_state.get(f"area_{a}_{i}")]
             doc.add_paragraph("Áreas asistenciales: " + ", ".join(areas))
 
-            modalidades = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if st.session_state.get(f"mod_{m}_{i}")]
+            modalidades = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if st.session_state.get(f"{m}_{i}")]
             doc.add_paragraph("Modalidades de prestación: " + ", ".join(modalidades))
 
             prestador = st.session_state.get(f"prestador_{i}")
@@ -248,7 +248,7 @@ def generar_documento_word(respuestas):
         if servicio:
             doc.add_heading(f"Servicio {i}: {servicio}", level=2)
             dias = [d for d in ["L", "M", "Mi", "J", "V", "S", "D"] if respuestas.get(f"{d}_{i}")]
-            areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if respuestas.get(f"area_{a}_{i}")]
+            areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if respuestas.get(f"{a}_{i}")]
             mods = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if respuestas.get(f"mod_{m}_{i}")]
             prestador = respuestas.get(f"prestador_{i}")
             doc.add_paragraph(f"Días de atención: {', '.join(dias)}")
