@@ -98,7 +98,7 @@ def exportar_formulario_completo_con_tablas():
 
         # Áreas
             for a in bloques["Áreas de atención"]:
-                row[col].text = "X" if st.session_state.get(f"area_{a}_{i}") else ""
+                row[col].text = "X" if st.session_state.get(f"{a}_{i}") else ""
                 col += 1
 
         # Modalidad
@@ -174,7 +174,7 @@ def exportar_primera_pagina():
             dias = [d for d in ["L", "M", "Mi", "J", "V", "S", "D"] if st.session_state.get(f"{d}_{i}")]
             doc.add_paragraph("Días de atención: " + ", ".join(dias))
 
-            areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if st.session_state.get(f"area_{a}_{i}")]
+            areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if st.session_state.get(f"{a}_{i}")]
             doc.add_paragraph("Áreas asistenciales: " + ", ".join(areas))
 
             modalidades = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if st.session_state.get(f"{m}_{i}")]
