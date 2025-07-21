@@ -791,6 +791,109 @@ if st.session_state.paso == 1:
                 </div>
                 """, unsafe_allow_html=True)
 
+#--------------------------------------------------------
+    #--------------------------------------------
+    # Suponiendo que ya tienes importar streamlit as st y definida guardar_respuesta
+
+# Inicializar lista dinámica
+    if "servicios_habilitados" not in st.session_state:
+        st.session_state.servicios_habilitados = [{}]  # Empieza con uno
+
+    def agregar_servicio():
+        if len(st.session_state.servicios_habilitados) < 7:
+            st.session_state.servicios_habilitados.append({})
+
+    def eliminar_servicio(idx):
+        st.session_state.servicios_habilitados.pop(idx)
+
+    st.markdown("## 1. SERVICIOS DE REHABILITACIÓN HABILITADOS")
+
+    MAX_SERVICIOS = 7
+
+    for idx in range(MAX_SERVICIOS):
+    # Si el servicio no existe aún, inicialízalo vacío
+        if idx >= len(st.session_state.servicios_habilitados):
+            st.session_state.servicios_habilitados.append({})
+        servicio = st.session_state.servicios_habilitados[idx]
+
+        st.markdown(f"""
+            <div style="
+                background-color: #e8f0fe ;
+                color: black;
+                padding: 4px 10px;
+                font-weight: normal;
+                border-radius: 0.5px;
+                margin-top:10px;
+                margin-bottom:10px;
+            "><b> {idx+1}. SERVICIO DE REHABILITACIÓN HABILITADO 
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Selección de servicio
+        servicio['nombre'] = st.selectbox(
+            "",
+            ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Rehabilitación", "Psicología", "Trabajo Social", "Nutrición"],
+            key=f"Servicio_{idx}"
+        )
+    # Guarda la respuesta con la clave deseada
+        guardar_respuesta(f"Servicio_{idx+1}", servicio['nombre'])
+
+        col_dias, sep1, col_areas, sep2, col_modalidades, col_prestador = st.columns([1,0.1,1.3,0.1,1.8,1])
+
+    # Días de atención
+        with col_dias:
+            st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
+            st.markdown("marque con una X los días de atención")
+            dias = ['L', 'M', 'Mi', 'J', 'V', 'S', 'D']
+            if 'dias' not in servicio:
+                servicio['dias'] = {}
+            cols = st.columns(7)
+            for i, d in enumerate(dias):
+                with cols[i]:
+                    st.markdown(f"<div style='text-align:center;font-weight:bold;'>{d}</div>", unsafe_allow_html=True)
+            for i, d in enumerate(dias):
+                with cols[i]:
+                    servicio['dias'][d] = st.checkbox("", key=f"{d}_{idx}")
+                    guardar_respuesta(f"dia_{d}_{idx+1}", servicio['dias'][d])
+
+        with sep1:
+            st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
+    # Áreas asistenciales
+        with col_areas:
+            st.markdown("<div style='text-align: center;'><b>Áreas asistenciales</b></div>", unsafe_allow_html=True)
+            st.markdown("Marque con X las áreas donde se prestan servicios de rehabilitación")
+            areas = ['CE', 'HO', 'UR', 'U', 'UCI', 'Otr']
+            if 'areas' not in servicio:
+                servicio['areas'] = {}
+            cols = st.columns(6)
+            for i, a in enumerate(areas):
+                with cols[i]:
+                    st.markdown(f"<div style='text-align:center;font-weight:bold;'>{a}</div>", unsafe_allow_html=True)
+            for i, a in enumerate(areas):
+                with cols[i]:
+                    servicio['areas'][a] = cols[i].checkbox("", key=f"{a}_{idx}")
+                    guardar_respuesta(f"area_{a}_{idx+1}", servicio['areas'][a])
+
+        with sep2:
+            st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+
+        if 'modalidades' not in servicio:
+            servicio['modalidades'] = {}
+
+    # Modalidades de prestación
+        with col_modalidades:
+            st.markdown("<div style='text-align: center;'><b>Modalidades de prestación</b></div>", unsafe_allow_html=True)
+            st.markdown("Marque con X las modalidades habilitadas")
+            col_intramural, col_extramural, col_telemedicina = st.columns(3)
+        # Intramural
+            with col_intramural:
+                st.markdown("**Intramural**")
+                servicio['modalidades']["AMB"] = st.checkbox("AMB", key=f"AMB_{idx}")
+                guardar_respuesta(f"mod_AMB_{idx+1}", servicio
+
+################## HASTA AQUÍ    
+
     #col_servicio, 
     st.markdown("""
                 <div style="
