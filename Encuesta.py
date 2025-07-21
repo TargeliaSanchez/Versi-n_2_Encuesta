@@ -671,54 +671,110 @@ st.markdown("""
 
 #------------------------------------------
 
-import streamlit as st
+#import streamlit as st
 
-# Inicializar lista
+# Inicializar lista dinámica
 if "servicios_habilitados" not in st.session_state:
     st.session_state.servicios_habilitados = [{}]  # Arranca con uno
 
 def agregar_servicio():
     st.session_state.servicios_habilitados.append({})
 
+def eliminar_servicio(idx):
+    st.session_state.servicios_habilitados.pop(idx)
+
 st.markdown("## 1. SERVICIOS DE REHABILITACIÓN HABILITADOS")
 
 for idx, servicio in enumerate(st.session_state.servicios_habilitados):
-    st.markdown(f"### Servicio {idx + 1}")
+    st.markdown(f"""
+        <div style="
+            background-color: #e8f0fe ;
+            color: black;
+            padding: 4px 10px;
+            font-weight: normal;
+            border-radius: 0.5px;
+            margin-top:10px;
+            margin-bottom:10px;
+        "><b> {idx+1}. SERVICIOS DE REHABILITACIÓN HABILITADOS 
+        </div>
+        """, unsafe_allow_html=True)
 
-    # Nombre del servicio
+    # Selección de servicio
     servicio['nombre'] = st.selectbox(
-        "Seleccione servicio",
-        ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", ...],
-        key=f"nombre_{idx}"
+        "",
+        ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Rehabilitación", "Psicología", "Trabajo Social", "Nutrición"],
+        key=f"nombre_servicio_{idx}"
     )
 
+    col_dias, sep1, col_areas, sep2, col_modalidades, col_prestador = st.columns([1,0.1,1.3,0.1,1.8,1])
+
     # Días de atención
-    dias = ['L', 'M', 'Mi', 'J', 'V', 'S', 'D']
-    servicio['dias'] = {}
-    st.markdown("**Días de atención**")
-    for d in dias:
-        servicio['dias'][d] = st.checkbox(d, key=f"{d}_{idx}")
+    with col_dias:
+        st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
+        st.markdown("marque con una X los días de atención")
+        dias = ['L', 'M', 'Mi', 'J', 'V', 'S', 'D']
+        if 'dias' not in servicio:
+            servicio['dias'] = {}
+        cols = st.columns(7)
+        for i, d in enumerate(dias):
+            servicio['dias'][d] = cols[i].checkbox(f"**{d}**", key=f"{d}_{idx}")
+
+    with sep1:
+        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
 
     # Áreas asistenciales
-    areas = ['CE', 'HO', 'UR', 'U', 'UCI', 'Otr']
-    servicio['areas'] = {}
-    st.markdown("**Áreas asistenciales**")
-    for a in areas:
-        servicio['areas'][a] = st.checkbox(a, key=f"{a}_{idx}")
+    with col_areas:
+        st.markdown("<div style='text-align: center;'><b>Áreas asistenciales</b></div>", unsafe_allow_html=True)
+        st.markdown("Marque con X las áreas donde se prestan servicios de rehabilitación")
+        areas = ['CE', 'HO', 'UR', 'U', 'UCI', 'Otr']
+        if 'areas' not in servicio:
+            servicio['areas'] = {}
+        cols = st.columns(6)
+        for i, a in enumerate(areas):
+            servicio['areas'][a] = cols[i].checkbox(f"**{a}**", key=f"{a}_{idx}")
+
+    with sep2:
+        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
 
     # Modalidades de prestación
-    modalidades = ['AMB', 'HOS', 'DOM', 'JORN', 'UNMOV', 'TMIA', 'TMNIA', 'TE', 'TMO']
-    servicio['modalidades'] = {}
-    st.markdown("**Modalidades de prestación**")
-    for m in modalidades:
-        servicio['modalidades'][m] = st.checkbox(m, key=f"{m}_{idx}")
+    with col_modalidades:
+        st.markdown("<div style='text-align: center;'><b>Modalidades de prestación</b></div>", unsafe_allow_html=True)
+        st.markdown("Marque con X las modalidades habilitadas")
+        modalidades = [
+            ("Intramural", ["AMB", "HOS"]),
+            ("Extramural", ["DOM", "JORN", "UNMOV"]),
+            ("Telemedicina", ["TMIA", "TMNIA", "TE", "TMO"]),
+        ]
+        if 'modalidades' not in servicio:
+            servicio['modalidades'] = {}
+        cols = st.columns(3)
+        for col, (label, mods) in zip(cols, modalidades):
+            st.markdown(f"**{label}**")
+            for m in mods:
+                servicio['modalidades'][m] = col.checkbox(m, key=f"{m}_{idx}")
 
     # Prestador telemedicina
-    servicio['prestador'] = st.radio("Tipo de prestador", ["P.REM", "P.REF"], key=f"prestador_{idx}")
+    with col_prestador:
+        st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
+        st.markdown("marque con una X el tipo de prestador")
+        servicio['prestador'] = st.radio("Tipo", ["P.REM", "P.REF"], key=f"prestador_{idx}")
 
-# Botón para agregar más
-if st.button("Agregar otro servicio habilitado"):
-    agregar_servicio()
+    # Botón para eliminar (salvo el primero)
+    if len(st.session_state.servicios_habilitados) > 1:
+        if st.button(f"Eliminar este servicio", key=f"eliminar_{idx}"):
+            eliminar_servicio(idx)
+            st.experimental_rerun()
+
+# Botón para agregar otro servicio
+if len(st.session_state.servicios_habilitados) < 7:
+    if st.button("Agregar otro servicio habilitado"):
+        agregar_servicio()
+
+
+
+
+
+
 
 #--------------------------------------------------
 
