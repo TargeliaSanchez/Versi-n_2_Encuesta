@@ -671,7 +671,9 @@ st.markdown("""
 
 #------------------------------------------
 
-# Inicializar la lista de servicios si no existe
+import streamlit as st
+
+# Inicializar lista
 if "servicios_habilitados" not in st.session_state:
     st.session_state.servicios_habilitados = [{}]  # Arranca con uno
 
@@ -679,18 +681,42 @@ def agregar_servicio():
     st.session_state.servicios_habilitados.append({})
 
 st.markdown("## 1. SERVICIOS DE REHABILITACIÓN HABILITADOS")
+
 for idx, servicio in enumerate(st.session_state.servicios_habilitados):
     st.markdown(f"### Servicio {idx + 1}")
-    col1, col2, col3, col4 = st.columns([2, 2, 2, 2])
-    with col1:
-        st.session_state.servicios_habilitados[idx]['nombre'] = st.selectbox(
-            "Seleccione servicio",
-            ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", ...],
-            key=f"nombre_{idx}"
-        )
-    # ...repite para días, áreas, modalidades, prestador, usando keys únicos por idx...
 
-# Botón para agregar otro servicio
+    # Nombre del servicio
+    servicio['nombre'] = st.selectbox(
+        "Seleccione servicio",
+        ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", ...],
+        key=f"nombre_{idx}"
+    )
+
+    # Días de atención
+    dias = ['L', 'M', 'Mi', 'J', 'V', 'S', 'D']
+    servicio['dias'] = {}
+    st.markdown("**Días de atención**")
+    for d in dias:
+        servicio['dias'][d] = st.checkbox(d, key=f"{d}_{idx}")
+
+    # Áreas asistenciales
+    areas = ['CE', 'HO', 'UR', 'U', 'UCI', 'Otr']
+    servicio['areas'] = {}
+    st.markdown("**Áreas asistenciales**")
+    for a in areas:
+        servicio['areas'][a] = st.checkbox(a, key=f"{a}_{idx}")
+
+    # Modalidades de prestación
+    modalidades = ['AMB', 'HOS', 'DOM', 'JORN', 'UNMOV', 'TMIA', 'TMNIA', 'TE', 'TMO']
+    servicio['modalidades'] = {}
+    st.markdown("**Modalidades de prestación**")
+    for m in modalidades:
+        servicio['modalidades'][m] = st.checkbox(m, key=f"{m}_{idx}")
+
+    # Prestador telemedicina
+    servicio['prestador'] = st.radio("Tipo de prestador", ["P.REM", "P.REF"], key=f"prestador_{idx}")
+
+# Botón para agregar más
 if st.button("Agregar otro servicio habilitado"):
     agregar_servicio()
 
