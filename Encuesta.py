@@ -4846,7 +4846,7 @@ elif st.session_state.paso == 33:
     # --- Opción: Volver al inicio ---
     if st.button("🏠 Volver al inicio", type="primary"):
         st.session_state.paso = 1
-        # st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
+        st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
         st.rerun()
 ##########---------------------------------------------#####################
 ############################################################################
