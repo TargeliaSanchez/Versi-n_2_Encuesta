@@ -43,7 +43,9 @@ def exportar_formulario_completo_con_tablas():
         ("Nivel de atención del prestador", "nivel_atencion_prestador")
     ]
     for label, key in campos:
-        doc.add_paragraph(f"{label}: {st.session_state.get(key, '')}")
+        valor = st.session_state.get(key, ("", ""))
+        doc.add_paragraph(f"{label}: {valor[1] if isinstance(valor, tuple) else valor}")
+
 
 # II. SERVICIOS DE REHABILITACIÓN HABILITADOS EN TABLA
     doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
@@ -218,75 +220,6 @@ def exportar_primera_pagina():
     buffer.seek(0)
     return buffer
 ############################################################
-
-
-#####################################################################
-
-
-
-
-def generar_documento_word(respuestas):
-    doc = Document()
-
-    # I. INFORMACIÓN DE LA INSTITUCIÓN
-    doc.add_heading("I. INFORMACIÓN DE LA INSTITUCIÓN", level=1)
-    campos_info = {
-        "Fecha": respuestas.get("fecha"),
-        "Departamento": respuestas.get("departamento"),
-        "Municipio": respuestas.get("municipio"),
-        "Nombre IPS": respuestas.get("nombre_institucion"),
-        "NIT": respuestas.get("nit"),
-        "Naturaleza jurídica": respuestas.get("naturaleza_juridica", ("", ""))[1],
-        "Empresa Social del Estado": respuestas.get("empresa_social_estado", ("", ""))[1],
-        "Nivel de atención": respuestas.get("nivel_atencion_prestador", ("", ""))[1]
-    }
-    for k, v in campos_info.items():
-        doc.add_paragraph(f"{k}: {v}")
-
-    # II. SERVICIOS DE REHABILITACIÓN HABILITADOS
-    doc.add_heading("II. SERVICIOS DE REHABILITACIÓN HABILITADOS", level=1)
-    for i in range(1, 8):
-        servicio = respuestas.get(f"servicio_{i}")
-        if servicio:
-            doc.add_heading(f"Servicio {i}: {servicio}", level=2)
-            dias = [d for d in ["L", "M", "Mi", "J", "V", "S", "D"] if respuestas.get(f"{d}_{i}")]
-            areas = [a for a in ["CE", "HO", "UR", "U", "UCI", "Otr"] if respuestas.get(f"{a}_{i}")]
-            mods = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if respuestas.get(f"mod_{m}_{i}")]
-            prestador = respuestas.get(f"prestador_{i}")
-            doc.add_paragraph(f"Días de atención: {', '.join(dias)}")
-            doc.add_paragraph(f"Áreas: {', '.join(areas)}")
-            doc.add_paragraph(f"Modalidades: {', '.join(mods)}")
-            doc.add_paragraph(f"Prestador de telemedicina: {prestador}")
-
-    # III. RECURSO HUMANO
-    doc.add_heading("III. RECURSO HUMANO", level=1)
-    for i in range(1, 9):
-        prof = respuestas.get(f"DesP_{i}")
-        cantidad = respuestas.get(f"numero_{i}")
-        if prof:
-            doc.add_paragraph(f"{prof}: {cantidad} profesionales")
-
-    aclaraciones = respuestas.get("aclaraciones", "")
-    if aclaraciones:
-        doc.add_paragraph("Aclaraciones:")
-        doc.add_paragraph(aclaraciones)
-
-    doc.add_heading("Representantes de la Institución", level=2)
-    for i in range(1, 7):
-        rep = respuestas.get(f"rep_inst_{i}")
-        if rep:
-            doc.add_paragraph(f"{i}. {rep}")
-
-    doc.add_heading("Profesionales responsables de verificación", level=2)
-    for i in range(1, 3):
-        verif = respuestas.get(f"prof_verif_{i}")
-        if verif:
-            doc.add_paragraph(f"{i}. {verif}")
-
-    buffer = BytesIO()
-    doc.save(buffer)
-    buffer.seek(0)
-    return buffer
 #########################################################################
 
 
