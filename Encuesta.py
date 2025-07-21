@@ -893,7 +893,7 @@ if st.session_state.paso == 1:
                 guardar_respuesta(f"mod_AMB_{idx+1}", servicio)
 
 ################## HASTA AQUÍ    
-
+'''
     #col_servicio, 
     st.markdown("""
                 <div style="
@@ -1729,7 +1729,7 @@ if st.session_state.paso == 1:
         st.markdown("marque con una X el tipo de prestador")
         prestador_7 = st.radio("Tipo", ["P.REM", "P.REF"], key="prestador_7")
         guardar_respuesta("prestador_7", prestador_7)
-
+'''
 
     #Información de la institución
     st.markdown("""
