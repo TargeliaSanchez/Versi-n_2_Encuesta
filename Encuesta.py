@@ -4850,7 +4850,7 @@ elif st.session_state.paso == 33:
 #        st.rerun()
     if st.button("🏠 Volver al inicio", type="primary"):
     # 1. Guardar los datos en la base "histórico"
-        guardar_en_bd(st.session_state.respuestas)  # Asegúrate de tener esta función
+        guardar_respuesta(st.session_state.respuestas)  # Asegúrate de tener esta función
 
     # 2. Borrar el estado para reiniciar
         for key in list(st.session_state.keys()):
