@@ -4843,11 +4843,22 @@ elif st.session_state.paso == 33:
 
     
 ###########---------------------------------------------###################
-    # --- Opción: Volver al inicio ---
+#    # --- Opción: Volver al inicio ---
+#    if st.button("🏠 Volver al inicio", type="primary"):
+#        st.session_state.paso = 1
+#        st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
+#        st.rerun()
     if st.button("🏠 Volver al inicio", type="primary"):
-        st.session_state.paso = 1
-        st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
+    # 1. Guardar los datos en la base "histórico"
+        guardar_en_bd(st.session_state.respuestas)  # Asegúrate de tener esta función
+
+    # 2. Borrar el estado para reiniciar
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
+    
+    # 3. Recargar desde el inicio
         st.rerun()
+
 ##########---------------------------------------------#####################
 ############################################################################
 
