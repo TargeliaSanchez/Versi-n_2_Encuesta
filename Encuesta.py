@@ -44,7 +44,7 @@ def exportar_formulario_completo_con_tablas():
     ]
     for label, key in campos:
         valor = st.session_state.get(key, ("", ""))
-        doc.add_paragraph(f"{label}: {valor[1] if isinstance(valor, tuple) else valor}")
+        doc.add_paragraph(f"{label}: {valor[0] if isinstance(valor, tuple) else valor}")###ajuste aquí
 
 
 # II. SERVICIOS DE REHABILITACIÓN HABILITADOS EN TABLA
