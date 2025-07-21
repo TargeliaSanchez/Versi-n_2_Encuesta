@@ -1901,10 +1901,9 @@ if st.session_state.paso == 1:
 
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
-    with col2:
+    with col4:
         if st.button("📄 Descargar formulario con tablas (Word)"):
             word_file = exportar_formulario_completo_con_tablas()
-     with col3:
             st.download_button(
                 label="📥 Descargar Word",
                 data=word_file,
@@ -1912,10 +1911,9 @@ if st.session_state.paso == 1:
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             )
 
-    with col4:
+    with col5:
         if st.button("Descargar primera página (Word)"):
             word_file = exportar_primera_pagina()
-     with col5:
             st.download_button(
                 label="📥 Descargar primera página",
                 data=word_file,
