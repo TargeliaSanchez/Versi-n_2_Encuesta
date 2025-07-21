@@ -236,9 +236,9 @@ def generar_documento_word(respuestas):
         "Municipio": respuestas.get("municipio"),
         "Nombre IPS": respuestas.get("nombre_institucion"),
         "NIT": respuestas.get("nit"),
-        "Naturaleza jurídica": respuestas.get("naturaleza_juridica"),
-        "Empresa Social del Estado": respuestas.get("empresa_social_estado"),
-        "Nivel de atención": respuestas.get("nivel_atencion_prestador")
+        "Naturaleza jurídica": respuestas.get("naturaleza_juridica", ("", ""))[1],
+        "Empresa Social del Estado": respuestas.get("empresa_social_estado", ("", ""))[1],
+        "Nivel de atención": respuestas.get("nivel_atencion_prestador", ("", ""))[1]
     }
     for k, v in campos_info.items():
         doc.add_paragraph(f"{k}: {v}")
