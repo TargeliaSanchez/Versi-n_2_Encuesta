@@ -749,7 +749,7 @@ for idx, servicio in enumerate(st.session_state.servicios_habilitados):
             servicio['modalidades'] = {}
         cols = st.columns(3)
         for col, (label, mods) in zip(cols, modalidades):
-            st.markdown(f"**{label}**")
+            #st.markdown(f"**{label}**")
             for m in mods:
                 servicio['modalidades'][m] = col.checkbox(m, key=f"{m}_{idx}")
 
