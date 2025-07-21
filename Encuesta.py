@@ -45,35 +45,71 @@ def exportar_formulario_completo_con_tablas():
     for label, key in campos:
         doc.add_paragraph(f"{label}: {st.session_state.get(key, '')}")
 
-    # II. SERVICIOS DE REHABILITACIÓN HABILITADOS EN TABLA
-    doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
-    headers = ["Servicio", "L", "M", "Mi", "J", "V", "S", "D", "CE", "HO", "UR", "U", "UCI", "Otr",
-               "AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO", "PREM", "PREF"]
-    table = doc.add_table(rows=1, cols=len(headers))
-    table.style = 'Table Grid'
-    for i, h in enumerate(headers):
-        table.rows[0].cells[i].text = h
+# II. SERVICIOS DE REHABILITACIÓN HABILITADOS EN TABLA
+doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
 
-    for i in range(1, 8):
-        servicio = st.session_state.get(f"servicio_{i}")
-        if servicio and servicio != "Seleccione":
-            row = table.add_row().cells
-            row[0].text = servicio
+# Crear la tabla con 2 filas de encabezado: títulos de bloque + subcampos
+bloques = {
+    "Servicio": [""],
+    "Días de atención": ["L", "M", "Mi", "J", "V", "S", "D"],
+    "Áreas de atención": ["CE", "HO", "UR", "U", "UCI", "Otr"],
+    "Modalidad": ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"],
+    "Tipo de prestador": ["PREM", "PREF"]
+}
 
-            dias = ["L", "M", "Mi", "J", "V", "S", "D"]
-            for idx, d in enumerate(dias):
-                row[idx + 1].text = "X" if st.session_state.get(f"{d}_{i}") else ""
+# Aplanar todos los encabezados finales
+headers = [h for grupo in bloques.values() for h in grupo]
+n_cols = len(headers)
 
-            areas = ["CE", "HO", "UR", "U", "UCI", "Otr"]
-            for idx, a in enumerate(areas):
-                row[len(dias) + 1 + idx].text = "X" if st.session_state.get(f"area_{a}_{i}") else ""
+# Crear tabla con 2 filas de encabezado
+table = doc.add_table(rows=2, cols=n_cols)
+table.style = 'Table Grid'
 
-            mods = ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"]
-            for idx, m in enumerate(mods):
-                row[len(dias) + len(areas) + 1 + idx].text = "X" if st.session_state.get(f"mod_{m}_{i}") else ""
+# Primera fila: títulos de bloque
+col_idx = 0
+for titulo, subcampos in bloques.items():
+    colspan = len(subcampos)
+    cell = table.rows[0].cells[col_idx]
+    cell.text = titulo
+    if colspan > 1:
+        for i in range(1, colspan):
+            table.rows[0].cells[col_idx + i].merge(table.rows[0].cells[col_idx])
+    col_idx += colspan
 
-            row[-2].text = "X" if st.session_state.get(f"prestador_{i}") == "PREM" else ""
-            row[-1].text = "X" if st.session_state.get(f"prestador_{i}") == "PREF" else ""
+# Segunda fila: subcampos
+for i, h in enumerate(headers):
+    table.rows[1].cells[i].text = h
+
+# Filas de datos (máximo 7 servicios)
+for i in range(1, 8):
+    servicio = st.session_state.get(f"servicio_{i}")
+    if servicio and servicio != "Seleccione":
+        row = table.add_row().cells
+        col = 0
+
+        # Servicio
+        row[col].text = servicio
+        col += 1
+
+        # Días
+        for d in bloques["Días de atención"]:
+            row[col].text = "X" if st.session_state.get(f"{d}_{i}") else ""
+            col += 1
+
+        # Áreas
+        for a in bloques["Áreas de atención"]:
+            row[col].text = "X" if st.session_state.get(f"area_{a}_{i}") else ""
+            col += 1
+
+        # Modalidad
+        for m in bloques["Modalidad"]:
+            row[col].text = "X" if st.session_state.get(f"mod_{m}_{i}") else ""
+            col += 1
+
+        # Tipo de prestador
+        row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREM" else ""
+        col += 1
+        row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREF" else ""
 
     # III. RECURSO HUMANO EN TABLA
     doc.add_heading("III. RECURSO HUMANO DE LOS SERVICIOS DE REHABILITACIÓN", level=2)
