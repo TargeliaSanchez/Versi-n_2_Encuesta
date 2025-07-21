@@ -46,70 +46,70 @@ def exportar_formulario_completo_con_tablas():
         doc.add_paragraph(f"{label}: {st.session_state.get(key, '')}")
 
 # II. SERVICIOS DE REHABILITACIÓN HABILITADOS EN TABLA
-doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
+    doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
 
 # Crear la tabla con 2 filas de encabezado: títulos de bloque + subcampos
-bloques = {
-    "Servicio": [""],
-    "Días de atención": ["L", "M", "Mi", "J", "V", "S", "D"],
-    "Áreas de atención": ["CE", "HO", "UR", "U", "UCI", "Otr"],
-    "Modalidad": ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"],
-    "Tipo de prestador": ["PREM", "PREF"]
-}
+    bloques = {
+        "Servicio": [""],
+        "Días de atención": ["L", "M", "Mi", "J", "V", "S", "D"],
+        "Áreas de atención": ["CE", "HO", "UR", "U", "UCI", "Otr"],
+        "Modalidad": ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"],
+        "Tipo de prestador": ["PREM", "PREF"]
+    }
 
 # Aplanar todos los encabezados finales
-headers = [h for grupo in bloques.values() for h in grupo]
-n_cols = len(headers)
+    headers = [h for grupo in bloques.values() for h in grupo]
+    n_cols = len(headers)
 
 # Crear tabla con 2 filas de encabezado
-table = doc.add_table(rows=2, cols=n_cols)
-table.style = 'Table Grid'
+    table = doc.add_table(rows=2, cols=n_cols)
+    table.style = 'Table Grid'
 
 # Primera fila: títulos de bloque
-col_idx = 0
-for titulo, subcampos in bloques.items():
-    colspan = len(subcampos)
-    cell = table.rows[0].cells[col_idx]
-    cell.text = titulo
-    if colspan > 1:
-        for i in range(1, colspan):
-            table.rows[0].cells[col_idx + i].merge(table.rows[0].cells[col_idx])
-    col_idx += colspan
+    col_idx = 0
+    for titulo, subcampos in bloques.items():
+        colspan = len(subcampos)
+        cell = table.rows[0].cells[col_idx]
+        cell.text = titulo
+        if colspan > 1:
+            for i in range(1, colspan):
+                table.rows[0].cells[col_idx + i].merge(table.rows[0].cells[col_idx])
+        col_idx += colspan
 
 # Segunda fila: subcampos
-for i, h in enumerate(headers):
-    table.rows[1].cells[i].text = h
+    for i, h in enumerate(headers):
+        table.rows[1].cells[i].text = h
 
 # Filas de datos (máximo 7 servicios)
-for i in range(1, 8):
-    servicio = st.session_state.get(f"servicio_{i}")
-    if servicio and servicio != "Seleccione":
-        row = table.add_row().cells
-        col = 0
+    for i in range(1, 8):
+        servicio = st.session_state.get(f"servicio_{i}")
+        if servicio and servicio != "Seleccione":
+            row = table.add_row().cells
+            col = 0
 
         # Servicio
-        row[col].text = servicio
-        col += 1
+            row[col].text = servicio
+            col += 1
 
         # Días
-        for d in bloques["Días de atención"]:
-            row[col].text = "X" if st.session_state.get(f"{d}_{i}") else ""
-            col += 1
+            for d in bloques["Días de atención"]:
+                row[col].text = "X" if st.session_state.get(f"{d}_{i}") else ""
+                col += 1
 
         # Áreas
-        for a in bloques["Áreas de atención"]:
-            row[col].text = "X" if st.session_state.get(f"area_{a}_{i}") else ""
-            col += 1
+            for a in bloques["Áreas de atención"]:
+                row[col].text = "X" if st.session_state.get(f"area_{a}_{i}") else ""
+                col += 1
 
         # Modalidad
-        for m in bloques["Modalidad"]:
-            row[col].text = "X" if st.session_state.get(f"mod_{m}_{i}") else ""
-            col += 1
-
+            for m in bloques["Modalidad"]:
+                row[col].text = "X" if st.session_state.get(f"mod_{m}_{i}") else ""
+                col += 1
+    
         # Tipo de prestador
-        row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREM" else ""
-        col += 1
-        row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREF" else ""
+            row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREM" else ""
+            col += 1
+            row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREF" else ""
 
     # III. RECURSO HUMANO EN TABLA
     doc.add_heading("III. RECURSO HUMANO DE LOS SERVICIOS DE REHABILITACIÓN", level=2)
