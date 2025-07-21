@@ -107,9 +107,11 @@ def exportar_formulario_completo_con_tablas():
                 col += 1
     
         # Tipo de prestador
-            row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREM" else ""
+            prestador = st.session_state.get(f"prestador_{i}")
+            row[col].text = "X" if prestador == "Propio" else ""
             col += 1
-            row[col].text = "X" if st.session_state.get(f"prestador_{i}") == "PREF" else ""
+            row[col].text = "X" if prestador == "Contratado" else ""
+
 
     # III. RECURSO HUMANO EN TABLA
     doc.add_heading("III. RECURSO HUMANO DE LOS SERVICIOS DE REHABILITACIÓN", level=2)
