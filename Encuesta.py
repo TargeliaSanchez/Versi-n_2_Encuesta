@@ -258,32 +258,32 @@ nombres_dimensiones = {
 }
 
 nombres_subdimensiones = {
-    "D1.1": "D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.",
-    "D1.2": "D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.",
+    "D1.1": "D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución. ►",
+    "D1.2": "D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.►",
     "D1.3": "D1.3 La prestación de los servicios de rehabilitación se realiza en diferentes modalidades: intramural, extramural y/o telemedicina.",
-    "D1.4": "D1.4 La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.",
-    "D1.5": "D1.5 La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.",
-    "D1.6": "D1.6 El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.",
-    "D1.7": "D1.7 En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.",
+    "D1.4": "D1.4 La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.►",
+    "D1.5": "D1.5 La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.►",
+    "D1.6": "D1.6 El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.►",
+    "D1.7": "D1.7 En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.►",
     "D1.8": "D1.8 La institución estructura e implementa un plan de capacitación en atención o rehabilitación con enfoque biopsicosocial.",
     "D1.9": "D1.9 La institución cuenta con áreas de atención, dotación y tecnología para la implementación de intervenciones orientadas a optimizar el proceso de rehabilitación.",
     "D2.1": "D2.1 Se realiza o se cuenta con valoración médica integral de la condición de salud de los usuarios de rehabilitación.",
-    "D2.2": "D2.2 Se usan pruebas estandarizadas y/o instrumentos para la evaluación de los usuarios de rehabilitación.",
-    "D2.3": "D2.3 En la evaluación se valora el estado funcional del usuario.",
+    "D2.2": "D2.2 Se usan pruebas estandarizadas y/o instrumentos para la evaluación de los usuarios de rehabilitación.►",
+    "D2.3": "D2.3 En la evaluación se valora el estado funcional del usuario.►",
     "D2.4": "D2.4 La evaluación considera el desempeño y los roles del usuario en diferentes entornos.",
     "D2.5": "D2.5 En la evaluación se identifican facilitadores y barreras del entorno que influyen en el proceso de rehabilitación del usuario.",
-    "D2.6": "D2.6 En la evaluación se registran las expectativas del usuario, la familia o cuidador respecto al proceso de rehabilitación.",
-    "D2.7": "D2.7 El plan de atención del usuario de rehabilitación se estructura de acuerdo al modelo de atención y se centra en la persona.",
+    "D2.6": "D2.6 En la evaluación se registran las expectativas del usuario, la familia o cuidador respecto al proceso de rehabilitación.►",
+    "D2.7": "D2.7 El plan de atención del usuario de rehabilitación se estructura de acuerdo al modelo de atención y se centra en la persona.►",
     "D2.8": "D2.8 El plan de atención integra el manejo médico de la condición de salud y las intervenciones para el logro de los objetivos y/o metas de rehabilitación.",
-    "D2.9": "D2.9 Los profesionales definen con el usuario, la familia y/o cuidador, objetivos y/o metas de rehabilitación que se orientan a optimizar el funcionamiento.",
-    "D2.10": "D2.10 Se establecen objetivos y/o metas de rehabilitación medibles y alcanzables en un tiempo determinado.",
-    "D2.11": "D2.11 La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.",
+    "D2.9": "D2.9 Los profesionales definen con el usuario, la familia y/o cuidador, objetivos y/o metas de rehabilitación que se orientan a optimizar el funcionamiento.►",
+    "D2.10": "D2.10 Se establecen objetivos y/o metas de rehabilitación medibles y alcanzables en un tiempo determinado.►",
+    "D2.11": "D2.11 La intervención en rehabilitación del usuario se orienta a mejorar su autonomía e independencia.►",
     "D2.12": "D2.12 Durante la intervención del usuario los profesionales de rehabilitación realizan acciones conjuntas, coordinadas e interdependientes.",
     "D2.13": "D2.13 En el proceso de rehabilitación se implementan acciones con enfoque diferencial.",
     "D2.14": "D2.14 Durante el proceso de atención, se realizan acciones para involucrar activamente al usuario, su familia y/o cuidador en el cumplimiento de los objetivos de rehabilitación.",
-    "D2.15": "D2.15 En la etapa o fase de intervención se realiza reevaluación del usuario para identificar los logros y de ser necesario, realizar ajustes al plan de atención.",
+    "D2.15": "D2.15 En la etapa o fase de intervención se realiza reevaluación del usuario para identificar los logros y de ser necesario, realizar ajustes al plan de atención.►",
     "D2.16": "D2.16 El proceso de rehabilitación incluye acciones planificadas de orientación y canalización del usuario y su familia a otras instituciones o sectores que pueden contribuir a su participación.",
-    "D2.17": "D2.17 Se realiza evaluación final del usuario para determinar los logros, y definir el egreso o la pertinencia de continuar con el proceso de rehabilitación.",
+    "D2.17": "D2.17 Se realiza evaluación final del usuario para determinar los logros, y definir el egreso o la pertinencia de continuar con el proceso de rehabilitación.►",
     "D2.18": "D2.18 Se implementan acciones específicas para la atención y el egreso de usuarios de rehabilitación de larga permanencia con pobre pronóstico funcional.",
     "D3.1": "D3.1 Se utilizan instrumentos adaptados y validados en el contexto nacional para evaluar los resultados del proceso de rehabilitación.",
     "D3.2": "D3.2 Se miden y analizan los resultados del estado funcional de los usuarios posterior al proceso de rehabilitación.",
@@ -1975,7 +1975,7 @@ elif st.session_state.paso == 3:
                 font-size: 14px;
                 font-weight: bold;
                 ">
-                D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.
+                D1.1 La oferta de servicios de rehabilitación corresponde con el nivel de complejidad de la institución.►
                 </div>
                 """, unsafe_allow_html=True)    
     
@@ -2070,7 +2070,7 @@ elif st.session_state.paso == 4:
                 font-size: 14px;
                 font-weight: bold;
                 ">
-                D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.
+                D1.2 El talento humano de rehabilitación vinculado a la institución es acorde a la capacidad instalada versus la demanda de los servicios.►
                 </div>
                 """, unsafe_allow_html=True)    
     
@@ -2246,7 +2246,7 @@ elif st.session_state.paso == 6:
                 font-size: 14px;
                 font-weight: bold;
                 ">
-                D1.4 La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.
+                D1.4 La institución cuenta con un sistema unificado de historia clínica disponible para los profesionales que intervienen en el proceso de rehabilitación.►
                 </div>
                 """, unsafe_allow_html=True)    
     
@@ -2337,7 +2337,7 @@ if st.session_state.paso == 7:
                 font-size: 14px;
                 font-weight: bold;
                 ">
-                D1.5  La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.
+                D1.5  La atención de los usuarios de rehabilitación o “proceso de rehabilitación” se encuentra documentado en la institución.►
                 </div>
                 """, unsafe_allow_html=True)    
     
@@ -2425,7 +2425,7 @@ elif st.session_state.paso == 8:
                 font-size: 14px;
                 font-weight: bold;
                 ">
-                D1.6 El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.
+                D1.6 El proceso de rehabilitación se estructura por etapas o fases que orientan la atención del usuario en la institución.►
                 </div>
                 """, unsafe_allow_html=True)
     notas_d16 = [
@@ -2512,7 +2512,7 @@ elif st.session_state.paso == 9:
                 font-size: 14px;    
                 font-weight: bold;
                 ">
-                D1.7 En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.
+                D1.7 En los servicios de rehabilitación se encuentran disponibles guías de práctica clínica, protocolos de atención y/o procedimientos para orientar la toma de decisiones.►
                 </div>
                 """, unsafe_allow_html=True)
     notas_d17 = [""" Verificar:
