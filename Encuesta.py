@@ -736,6 +736,9 @@ for idx, servicio in enumerate(st.session_state.servicios_habilitados):
     with sep2:
         st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
 
+    if 'modalidades' not in servicio:
+    servicio['modalidades'] = {}
+    
     # Modalidades de prestación
     with col_modalidades:
         st.markdown("<div style='text-align: center;'><b>Modalidades de prestación</b></div>", unsafe_allow_html=True)
