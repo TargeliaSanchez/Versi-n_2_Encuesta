@@ -1919,7 +1919,12 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
             st.stop()
     else:
         st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
+        if st.button("✏️ Modificar alcance"):
+            st.session_state.alcance_seleccionado = False
+            st.rerun()
+
         alcance = st.session_state.alcance_evaluacion
+        #alcance = st.session_state.alcance_evaluacion
 
 
 
