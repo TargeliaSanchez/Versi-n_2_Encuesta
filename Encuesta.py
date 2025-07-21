@@ -738,28 +738,28 @@ for idx, servicio in enumerate(st.session_state.servicios_habilitados):
 
     # Modalidades de prestación
     with col_modalidades:
-    st.markdown("<div style='text-align: center;'><b>Modalidades de prestación</b></div>", unsafe_allow_html=True)
-    st.markdown("Marque con X las modalidades habilitadas")
-    col_intramural, col_extramural, col_telemedicina = st.columns(3)
+        st.markdown("<div style='text-align: center;'><b>Modalidades de prestación</b></div>", unsafe_allow_html=True)
+        st.markdown("Marque con X las modalidades habilitadas")
+        col_intramural, col_extramural, col_telemedicina = st.columns(3)
 
     # Intramural
-    with col_intramural:
-        st.markdown("**Intramural**")
-        servicio['modalidades']["AMB"] = st.checkbox("AMB", key=f"AMB_{idx}")
-        servicio['modalidades']["HOS"] = st.checkbox("HOS", key=f"HOS_{idx}")
+        with col_intramural:
+            st.markdown("**Intramural**")
+            servicio['modalidades']["AMB"] = st.checkbox("AMB", key=f"AMB_{idx}")
+            servicio['modalidades']["HOS"] = st.checkbox("HOS", key=f"HOS_{idx}")
     # Extramural
-    with col_extramural:
-        st.markdown("**Extramural**")
-        servicio['modalidades']["DOM"] = st.checkbox("DOM", key=f"DOM_{idx}")
-        servicio['modalidades']["JORN"] = st.checkbox("JORN", key=f"JORN_{idx}")
-        servicio['modalidades']["UNMOV"] = st.checkbox("UN.MOV", key=f"UNMOV_{idx}")
+        with col_extramural:
+            st.markdown("**Extramural**")
+            servicio['modalidades']["DOM"] = st.checkbox("DOM", key=f"DOM_{idx}")
+            servicio['modalidades']["JORN"] = st.checkbox("JORN", key=f"JORN_{idx}")
+            servicio['modalidades']["UNMOV"] = st.checkbox("UN.MOV", key=f"UNMOV_{idx}")
     # Telemedicina
-    with col_telemedicina:
-        st.markdown("**Telemedicina**")
-        servicio['modalidades']["TMIA"] = st.checkbox("TM-IA", key=f"TMIA_{idx}")
-        servicio['modalidades']["TMNIA"] = st.checkbox("TM-NIA", key=f"TMNIA_{idx}")
-        servicio['modalidades']["TE"] = st.checkbox("TE", key=f"TE_{idx}")
-        servicio['modalidades']["TMO"] = st.checkbox("TMO", key=f"TMO_{idx}")
+        with col_telemedicina:
+            st.markdown("**Telemedicina**")
+            servicio['modalidades']["TMIA"] = st.checkbox("TM-IA", key=f"TMIA_{idx}")
+            servicio['modalidades']["TMNIA"] = st.checkbox("TM-NIA", key=f"TMNIA_{idx}")
+            servicio['modalidades']["TE"] = st.checkbox("TE", key=f"TE_{idx}")
+            servicio['modalidades']["TMO"] = st.checkbox("TMO", key=f"TMO_{idx}")
     # Prestador telemedicina
     with col_prestador:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
