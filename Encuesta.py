@@ -890,7 +890,7 @@ if st.session_state.paso == 1:
             with col_intramural:
                 st.markdown("**Intramural**")
                 servicio['modalidades']["AMB"] = st.checkbox("AMB", key=f"AMB_{idx}")
-                guardar_respuesta(f"mod_AMB_{idx+1}", servicio
+                guardar_respuesta(f"mod_AMB_{idx+1}", servicio)
 
 ################## HASTA AQUÍ    
 
