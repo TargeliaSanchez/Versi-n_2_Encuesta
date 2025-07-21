@@ -1903,7 +1903,7 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
         st.session_state.alcance_seleccionado = False
         
     if not st.session_state.alcance_seleccionado:
-        col1, col2 = st.columns([3, 1])
+        col1, col2 = st.columns([5, 1])
         with col1:
             alcance = st.radio(
                 "Alcance de la evaluación:",
@@ -1919,11 +1919,13 @@ elif st.session_state.paso == 2: # Evaluación de la institución.
             st.stop()
     else:
         st.markdown(f"**Alcance seleccionado:** {st.session_state.alcance_evaluacion}")
-        if st.button("✏️ Modificar alcance"):
-            st.session_state.alcance_seleccionado = False
-            st.rerun()
+        col1, col2 = st.columns([5,1])
+        with col2:
+            if st.button("✏️ Modificar alcance"):
+                st.session_state.alcance_seleccionado = False
+                st.rerun()
 
-        alcance = st.session_state.alcance_evaluacion
+            alcance = st.session_state.alcance_evaluacion
         #alcance = st.session_state.alcance_evaluacion
 
 
