@@ -717,7 +717,14 @@ for idx, servicio in enumerate(st.session_state.servicios_habilitados):
             servicio['dias'] = {}
         cols = st.columns(7)
         for i, d in enumerate(dias):
-            servicio['dias'][d] = cols[i].checkbox(f"**{d}**", key=f"{d}_{idx}")
+            with cols[i]:
+                st.markdown(f"<div style='text-align:center;font-weight:bold;'>{d}</div>", unsafe_allow_html=True)
+
+# Segunda fila: los checkboxes, SIN etiqueta
+        for i, d in enumerate(dias):
+            with cols[i]:
+                servicio['dias'][d] = st.checkbox("", key=f"{d}_{idx}")
+
 
     with sep1:
         st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
@@ -779,9 +786,6 @@ for idx, servicio in enumerate(st.session_state.servicios_habilitados):
 if len(st.session_state.servicios_habilitados) < 7:
     if st.button("Agregar otro servicio habilitado"):
         agregar_servicio()
-
-
-
 
 
 
