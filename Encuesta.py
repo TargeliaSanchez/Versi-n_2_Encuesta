@@ -1728,8 +1728,7 @@ if st.session_state.paso == 1:
         st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X el tipo de prestador")
         prestador_7 = st.radio("Tipo", ["P.REM", "P.REF"], key="prestador_7")
-        guardar_respuesta("prestador_7", prestador_7)
-'''
+        guardar_respuesta("prestador_7", prestador_7)'''
 
     #Información de la institución
     st.markdown("""
