@@ -24,6 +24,19 @@ from docx import Document
 import streamlit as st
 import io
 ##############################################
+
+def guardar_respuesta_actual():
+    if "historico_respuestas" not in st.session_state:
+        st.session_state.historico_respuestas = []
+
+    # Crea una copia de las respuestas actuales y agrega un timestamp único
+    copia_respuestas = st.session_state.get("respuestas", {}).copy()
+    copia_respuestas["timestamp"] = datetime.now().isoformat()
+
+    # Añade la respuesta al histórico
+    st.session_state.historico_respuestas.append(copia_respuestas)
+
+
 def exportar_formulario_completo_con_tablas():
     doc = Document()
 
@@ -4849,11 +4862,8 @@ elif st.session_state.paso == 33:
 #        st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
 #        st.rerun()
     if st.button("🏠 Volver al inicio", type="primary"):
-    # 1. Guardar lo que hay antes de borrar
-        if "respuestas" in st.session_state and st.session_state.respuestas:
-            guardar_respuesta(st.session_state.respuestas)  # <- Tu función de guardado
+        guardar_respuesta_actual()
 
-    # 2. Borrar TODA la sesión para iniciar desde cero
         for key in list(st.session_state.keys()):
             del st.session_state[key]
     
