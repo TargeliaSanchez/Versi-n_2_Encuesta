@@ -166,7 +166,13 @@ def exportar_primera_pagina():
     doc.add_heading('I. INFORMACIÓN DE LA INSTITUCIÓN', level=2)
     for campo in ["fecha", "departamento", "municipio", "nombre_institucion", "nit", "naturaleza_juridica", "empresa_social_estado", "nivel_atencion_prestador"]:
         valor = st.session_state.get(campo, "")
+        # Extrae solo la etiqueta si es una tupla
+        if isinstance(valor, tuple):
+            valor = valor[1]
         doc.add_paragraph(f"{campo.replace('_', ' ').capitalize()}: {valor}")
+        #doc.add_paragraph(f"{campo.replace('_', ' ').capitalize()}: {valor}")
+
+    
 
     # II. SERVICIOS DE REHABILITACIÓN HABILITADOS
     doc.add_heading('II. SERVICIOS DE REHABILITACIÓN HABILITADOS', level=2)
