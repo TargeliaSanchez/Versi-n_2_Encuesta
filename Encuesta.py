@@ -669,6 +669,33 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+#------------------------------------------
+
+# Inicializar la lista de servicios si no existe
+if "servicios_habilitados" not in st.session_state:
+    st.session_state.servicios_habilitados = [{}]  # Arranca con uno
+
+def agregar_servicio():
+    st.session_state.servicios_habilitados.append({})
+
+st.markdown("## 1. SERVICIOS DE REHABILITACIÓN HABILITADOS")
+for idx, servicio in enumerate(st.session_state.servicios_habilitados):
+    st.markdown(f"### Servicio {idx + 1}")
+    col1, col2, col3, col4 = st.columns([2, 2, 2, 2])
+    with col1:
+        st.session_state.servicios_habilitados[idx]['nombre'] = st.selectbox(
+            "Seleccione servicio",
+            ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", ...],
+            key=f"nombre_{idx}"
+        )
+    # ...repite para días, áreas, modalidades, prestador, usando keys únicos por idx...
+
+# Botón para agregar otro servicio
+if st.button("Agregar otro servicio habilitado"):
+    agregar_servicio()
+
+#--------------------------------------------------
+
 if st.session_state.paso == 1:
 #Información de la institución
     st.markdown("""
