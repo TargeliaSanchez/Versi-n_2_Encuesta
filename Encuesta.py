@@ -108,9 +108,9 @@ def exportar_formulario_completo_con_tablas():
     
         # Tipo de prestador
             prestador = st.session_state.get(f"prestador_{i}")
-            row[col].text = "X" if prestador == "Propio" else ""
+            row[col].text = "X" if prestador == "PREM" else ""
             col += 1
-            row[col].text = "X" if prestador == "Contratado" else ""
+            row[col].text = "X" if prestador == "PREF" else ""
 
 
     # III. RECURSO HUMANO EN TABLA
