@@ -743,7 +743,7 @@ for idx, servicio in enumerate(st.session_state.servicios_habilitados):
             
         for i, a in enumerate(areas):
              with cols[i]:
-                servicio['areas'][a] = cols[i].checkbox(f"**{a}**", key=f"{a}_{idx}")
+                servicio['areas'][a] = cols[i].checkbox("", key=f"{a}_{idx}")
 
     with sep2:
         st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
