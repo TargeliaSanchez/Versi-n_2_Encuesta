@@ -168,9 +168,8 @@ def exportar_primera_pagina():
         valor = st.session_state.get(campo, "")
         # Extrae solo la etiqueta si es una tupla
         if isinstance(valor, tuple):
-            valor = valor[1]
+            valor = valor[0]
         doc.add_paragraph(f"{campo.replace('_', ' ').capitalize()}: {valor}")
-        #doc.add_paragraph(f"{campo.replace('_', ' ').capitalize()}: {valor}")
 
     
 
