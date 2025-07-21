@@ -54,7 +54,7 @@ def exportar_formulario_completo_con_tablas():
         "Días de atención": ["L", "M", "Mi", "J", "V", "S", "D"],
         "Áreas de atención": ["CE", "HO", "UR", "U", "UCI", "Otr"],
         "Modalidad": ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"],
-        "Tipo de prestador": ["P.REM", "P.REF"]
+        "Tipo de prestador": ["PREM", "PREF"]
     }
 
 # Aplanar todos los encabezados finales
@@ -108,9 +108,9 @@ def exportar_formulario_completo_con_tablas():
     
         # Tipo de prestador
             prestador = st.session_state.get(f"prestador_{i}")
-            row[col].text = "X" if prestador == "PREM" else ""
+            row[col].text = "X" if prestador == "P.REM" else ""
             col += 1
-            row[col].text = "X" if prestador == "PREF" else ""
+            row[col].text = "X" if prestador == "P.REF" else ""
 
 
     # III. RECURSO HUMANO EN TABLA
