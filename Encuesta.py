@@ -54,7 +54,7 @@ def exportar_formulario_completo_con_tablas():
         "Días de atención": ["L", "M", "Mi", "J", "V", "S", "D"],
         "Áreas de atención": ["CE", "HO", "UR", "U", "UCI", "Otr"],
         "Modalidad": ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"],
-        "Tipo de prestador": ["PREM", "PREF"]
+        "Tipo de prestador": ["P.REM", "P.REF"]
     }
 
 # Aplanar todos los encabezados finales
