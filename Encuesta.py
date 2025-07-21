@@ -4849,15 +4849,16 @@ elif st.session_state.paso == 33:
 #        st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
 #        st.rerun()
     if st.button("🏠 Volver al inicio", type="primary"):
-    # 1. Guardar los datos en la base "histórico"
-        guardar_respuesta(st.session_state.respuestas)  # Asegúrate de tener esta función
+    # 1. Guardar lo que hay antes de borrar
+        if "respuestas" in st.session_state and st.session_state.respuestas:
+            guardar_respuesta(st.session_state.respuestas)  # <- Tu función de guardado
 
-    # 2. Borrar el estado para reiniciar
+    # 2. Borrar TODA la sesión para iniciar desde cero
         for key in list(st.session_state.keys()):
             del st.session_state[key]
     
-    # 3. Recargar desde el inicio
         st.rerun()
+
 
 ##########---------------------------------------------#####################
 ############################################################################
