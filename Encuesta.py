@@ -4647,7 +4647,44 @@ elif st.session_state.paso == 33:
     #graficar_nivel_implementacion(global_pct)
     # En la pestaña final (paso 33)
     img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
+#-------------------------------------------------------------------------------------------------------------------------------#
+#-------------------------------------------------------------------------------------------------------------------------------#
 
+    
+    def enviar_por_correo(destinatario, asunto, cuerpo, word_buffer):
+        usuario = "tata.sanchez.10@gmail.com"
+        contraseña = st.secrets["correo_gmail"]
+    # Guarda el archivo temporalmente
+        with open("resumen_valoracion.docx", "wb") as f:
+            f.write(word_buffer.getbuffer())
+        yag = yagmail.SMTP(usuario, contraseña)
+        yag.send(
+            to=destinatario,
+            subject=asunto,
+            contents=cuerpo,
+            attachments=["resumen_valoracion.docx"]
+        )
+        yag.close()
+        os.remove("resumen_valoracion.docx")
+
+# En Streamlit
+    st.subheader("📧 Enviar informe por correo")
+    destinatario = st.text_input("Correo destinatario")
+    if st.button("Enviar informe Word", key="btn_enviar_word"):
+        if destinatario:
+            try:
+                word_buffer.seek(0)
+                enviar_por_correo(
+                    destinatario,
+                    "Informe del piloto",
+                    "Adjunto el informe Word generado del formulario.",
+                    word_buffer
+                )
+                st.success("¡Correo enviado con éxito!")
+            except Exception as e:
+                st.error(f"Ocurrió un error al enviar el correo: {e}")
+        else:
+            st.warning("Por favor ingresa un correo válido.")
 
 #----------------------------------- DEFINIR SEPARADOR PARA LOS ARCHIVOS EN EXCEL----------------------------------------------# 
     separador = st.radio(
@@ -4862,11 +4899,7 @@ elif st.session_state.paso == 33:
 
     
 ###########---------------------------------------------###################
-#    # --- Opción: Volver al inicio ---
-#    if st.button("🏠 Volver al inicio", type="primary"):
-#        st.session_state.paso = 1
-#        st.session_state.respuestas = {}  # Solo si quieres reiniciar todo
-#        st.rerun()
+
     if st.button("🏠 Volver al inicio", type="primary"):
         guardar_respuesta_actual()
 
@@ -4880,40 +4913,6 @@ elif st.session_state.paso == 33:
 ############################################################################
 
 
-    def enviar_por_correo(destinatario, asunto, cuerpo, word_buffer):
-        usuario = "tata.sanchez.10@gmail.com"
-        contraseña = st.secrets["correo_gmail"]
-    # Guarda el archivo temporalmente
-        with open("resumen_valoracion.docx", "wb") as f:
-            f.write(word_buffer.getbuffer())
-        yag = yagmail.SMTP(usuario, contraseña)
-        yag.send(
-            to=destinatario,
-            subject=asunto,
-            contents=cuerpo,
-            attachments=["resumen_valoracion.docx"]
-        )
-        yag.close()
-        os.remove("resumen_valoracion.docx")
-
-# En Streamlit
-    st.subheader("📧 Enviar informe por correo")
-    destinatario = st.text_input("Correo destinatario")
-    if st.button("Enviar informe Word", key="btn_enviar_word"):
-        if destinatario:
-            try:
-                word_buffer.seek(0)
-                enviar_por_correo(
-                    destinatario,
-                    "Informe del piloto",
-                    "Adjunto el informe Word generado del formulario.",
-                    word_buffer
-                )
-                st.success("¡Correo enviado con éxito!")
-            except Exception as e:
-                st.error(f"Ocurrió un error al enviar el correo: {e}")
-        else:
-            st.warning("Por favor ingresa un correo válido.")
 
 
     import streamlit as st
