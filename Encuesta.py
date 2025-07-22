@@ -44,11 +44,11 @@ sheet = gc.open_by_key("1ROjz7LKyaZZ8rgfWgvfzJL9dXDKUcMCL5k_3aen7lGw").sheet1
 def subir_respuesta_a_drive(diccionario):
     try:
         # Leer los encabezados del archivo
-        columnas = pd.read_csv("guardar_respuestas.csv", nrows=0).columns.tolist()
+        #columnas = pd.read_csv("guardar_respuestas.csv", nrows=0).columns.tolist()
         
         # Opcional: Escribe encabezados en Google Sheets si está vacío
-        if len(sheet.get_all_values()) == 0:
-            sheet.append_row(columnas)
+        #if len(sheet.get_all_values()) == 0:
+            #sheet.append_row(columnas)
         
         fila = []
         for col in columnas:
