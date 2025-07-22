@@ -24,6 +24,11 @@ from docx import Document
 import streamlit as st
 import io
 
+
+
+
+
+
 ##############################################
 
 def guardar_respuesta_actual():
@@ -4909,5 +4914,29 @@ elif st.session_state.paso == 33:
                 st.error(f"Ocurrió un error al enviar el correo: {e}")
         else:
             st.warning("Por favor ingresa un correo válido.")
+
+
+import streamlit as st
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+    def guardar_en_gsheets(respuesta_larga):
+    # Define el alcance
+        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    # Carga las credenciales
+        creds = ServiceAccountCredentials.from_json_keyfile_name("ruta/credenciales.json", scope)
+        client = gspread.authorize(creds)
+    # Abre la hoja
+        sheet = client.open("NOMBRE DE TU HOJA").sheet1
+
+    # Agrega la respuesta (puedes agregar más campos si quieres)
+        sheet.append_row([respuesta_larga])
+
+# En tu formulario Streamlit:
+    respuesta = st.text_area("Respuesta larga:")
+
+    if st.button("Guardar en la nube"):
+        guardar_en_gsheets(respuesta)
+        st.success("¡Respuesta guardada en Google Sheets!")
 
 
