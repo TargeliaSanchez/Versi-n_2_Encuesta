@@ -4712,17 +4712,17 @@ elif st.session_state.paso == 33:
 
 
     # ---------------------------------------- Exportar respuestas -------------------------------------------------
-    import pandas as pd
-    # Convertir respuestas en DataFrame y exportar
-    df_respuestas = pd.DataFrame([st.session_state.respuestas])
-    csv = df_respuestas.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
+#    import pandas as pd
+#    # Convertir respuestas en DataFrame y exportar
+#    df_respuestas = pd.DataFrame([st.session_state.respuestas])
+#    csv = df_respuestas.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
 
-    st.download_button(
-        label="📥 Descargar respuestas (CSV)",
-        data=csv,
-        file_name="respuestas_formulario.csv",
-        mime="text/csv"
-    )
+#    st.download_button(
+#        label="📥 Descargar respuestas (CSV)",
+#        data=csv,
+#        file_name="respuestas_formulario.csv",
+#        mime="text/csv"
+#    )
     
     
     ruta_base = "respuestas_consolidadas.csv"
