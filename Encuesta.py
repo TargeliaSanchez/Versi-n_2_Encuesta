@@ -43,16 +43,22 @@ sheet = gc.open_by_key("1ROjz7LKyaZZ8rgfWgvfzJL9dXDKUcMCL5k_3aen7lGw").sheet1
 
 def subir_respuesta_a_drive(diccionario):
     try:
+        # Leer los encabezados del archivo
+        columnas = pd.read_csv("guardar_respuestas.csv", nrows=0).columns.tolist()
+        
+        # Opcional: Escribe encabezados en Google Sheets si está vacío
+        if len(sheet.get_all_values()) == 0:
+            sheet.append_row(columnas)
+        
         fila = []
-        for valor in diccionario.values():
-            # Si es tipo fecha o datetime, conviértelo a string ISO
+        for col in columnas:
+            valor = diccionario.get(col, "")
             if hasattr(valor, "isoformat"):
                 valor = valor.isoformat()
             fila.append(valor)
         sheet.append_row(fila)
     except Exception as e:
         st.error(f"❌ Error al subir a Google Sheets: {e}")
-
 
 
 
