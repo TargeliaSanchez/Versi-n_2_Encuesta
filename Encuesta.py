@@ -4906,7 +4906,7 @@ elif st.session_state.paso == 33:
 
 
 
-        if st.button("Enviar informe Word"):
+    if st.button("Enviar informe Word"):
         if destinatario:
             word_buffer.seek(0)
             with open("temp_informe.docx", "wb") as f:
