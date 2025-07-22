@@ -4874,46 +4874,6 @@ elif st.session_state.paso == 33:
 ############################################################################
 
 
-    import yagmail
-
-    def enviar_por_correo(destinatario, asunto, cuerpo, adjunto_buffer):
-        usuario = "tata.sanchez.10@gmail.com"
-        contraseña = st.secrets["correo_gmail"]
-        yag = yagmail.SMTP(usuario, contraseña)
-        # ENVÍA EL BUFFER COMO ADJUNTO, con nombre personalizado
-        yag.send(
-            to=destinatario,
-            subject=asunto,
-            contents=cuerpo,
-            attachments=[('resumen_valoracion.docx', adjunto_buffer)]
-        )
-        yag.close()
-
-    import streamlit as st
-
-    st.subheader("📧 Enviar informe por correo")
-    destinatario = st.text_input("Correo destinatario")
-
-    # Asegúrate de que el buffer esté al inicio antes de usarlo.
-    if st.button("Enviar informe Word", key="btn_enviar_word"):
-        if destinatario:
-            try:
-                word_buffer.seek(0)
-                enviar_por_correo(
-                    destinatario,
-                    "Informe del piloto",
-                    "Adjunto el informe Word generado del formulario.",
-                    word_buffer
-                )
-                st.success("¡Correo enviado con éxito!")
-            except Exception as e:
-                st.error(f"Ocurrió un error al enviar el correo: {e}")
-        else:
-            st.warning("Por favor ingresa un correo válido.")
-
-
-
-
     def enviar_por_correo(destinatario, asunto, cuerpo, word_buffer):
         usuario = "tata.sanchez.10@gmail.com"
         contraseña = st.secrets["correo_gmail"]
