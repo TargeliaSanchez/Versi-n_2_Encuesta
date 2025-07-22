@@ -4874,56 +4874,42 @@ elif st.session_state.paso == 33:
 ############################################################################
 
 
-
-
     import yagmail
-    import streamlit as st
 
-    def enviar_por_correo(destinatario, asunto, cuerpo, adjunto):
+    def enviar_por_correo(destinatario, asunto, cuerpo, adjunto_buffer):
         usuario = "tata.sanchez.10@gmail.com"
-        contraseña = st.secrets["correo_gmail"]      # Debe estar en secrets.toml
+        contraseña = st.secrets["correo_gmail"]
         yag = yagmail.SMTP(usuario, contraseña)
-        yag.send(to=destinatario, subject=asunto, contents=cuerpo, attachments=adjunto)
+        # ENVÍA EL BUFFER COMO ADJUNTO, con nombre personalizado
+        yag.send(
+            to=destinatario,
+            subject=asunto,
+            contents=cuerpo,
+            attachments=[('resumen_valoracion.docx', adjunto_buffer)]
+        )
         yag.close()
+
+    import streamlit as st
 
     st.subheader("📧 Enviar informe por correo")
     destinatario = st.text_input("Correo destinatario")
 
-    if st.button("Enviar informe Word"):
+    # Asegúrate de que el buffer esté al inicio antes de usarlo.
+    if st.button("Enviar informe Word", key="btn_enviar_word"):
         if destinatario:
             try:
+                word_buffer.seek(0)
                 enviar_por_correo(
                     destinatario,
                     "Informe del piloto",
                     "Adjunto el informe Word generado del formulario.",
-                    "resumen_valoracion.docx"   # <-- Cambia aquí el nombre de tu archivo Word
+                    word_buffer
                 )
                 st.success("¡Correo enviado con éxito!")
             except Exception as e:
                 st.error(f"Ocurrió un error al enviar el correo: {e}")
         else:
             st.warning("Por favor ingresa un correo válido.")
-
-
-
-    if st.button("Enviar informe Word"):
-        if destinatario:
-            word_buffer.seek(0)
-            with open("temp_informe.docx", "wb") as f:
-                    f.write(word_buffer.read())
-            enviar_por_correo(
-                destinatario,
-                "Informe del piloto",
-                "Adjunto el informe Word generado del formulario.",
-                "temp_informe.docx"
-            )
-            st.success("¡Correo enviado con éxito!")
-            # Opcional: eliminar el archivo temporal después de enviar
-            os.remove("temp_informe.docx")
-        else:
-            st.warning("Por favor ingresa un correo válido.")
-
-
 
 
 
