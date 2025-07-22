@@ -23,7 +23,7 @@ import yagmail
 from docx import Document
 import streamlit as st
 import io
-pip install gspread oauth2client
+
 ##############################################
 
 def guardar_respuesta_actual():
