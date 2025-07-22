@@ -4876,59 +4876,52 @@ elif st.session_state.paso == 33:
 
 
 
-    import yagmail
+     import yagmail
     import streamlit as st
 
     def enviar_por_correo(destinatario, asunto, cuerpo, adjunto):
         usuario = "tata.sanchez.10@gmail.com"
-        contraseña = st.secrets["correo_gmail"]  # Se guarda en secrets.toml
+        contraseña = st.secrets["correo_gmail"]      # Debe estar en secrets.toml
         yag = yagmail.SMTP(usuario, contraseña)
         yag.send(to=destinatario, subject=asunto, contents=cuerpo, attachments=adjunto)
         yag.close()
 
-# En Streamlit
-    st.subheader("📧 Enviar resultados por correo")
+    st.subheader("📧 Enviar informe por correo")
     destinatario = st.text_input("Correo destinatario")
 
-    if st.button("Enviar resultados"):
+    if st.button("Enviar informe Word"):
         if destinatario:
-            enviar_por_correo(
-                destinatario,
-                "Resultados de la encuesta",
-                "Adjunto los resultados del formulario.",
-                "respuestas_consolidadas.csv"
-            )
-            st.success("¡Correo enviado con éxito!")
+            try:
+                enviar_por_correo(
+                    destinatario,
+                    "Informe del piloto",
+                    "Adjunto el informe Word generado del formulario.",
+                    "resumen_valoracion.docx"   # <-- Cambia aquí el nombre de tu archivo Word
+                )
+                st.success("¡Correo enviado con éxito!")
+            except Exception as e:
+                st.error(f"Ocurrió un error al enviar el correo: {e}")
         else:
             st.warning("Por favor ingresa un correo válido.")
 
 
-    def enviar_por_correo(destinatario, asunto, cuerpo, adjunto):
-    # Cambia por tus datos reales
-        usuario = "tata.sanchez.10@gmail.com"
-        contraseña = st.secrets["correo_gmail"]
 
-        yag = yagmail.SMTP(usuario, contraseña)
-        yag.send(
-            to=destinatario,
-            subject=asunto,
-            contents=cuerpo,
-            attachments=adjunto,
-        )
-        yag.close()
-
-# Ejemplo de uso en Streamlit
-    if st.button("Enviar resultados por correo"):
-        destinatario = st.text_input("Correo destinatario")
+        if st.button("Enviar informe Word"):
         if destinatario:
+            word_buffer.seek(0)
+            with open("temp_informe.docx", "wb") as f:
+                    f.write(word_buffer.read())
             enviar_por_correo(
                 destinatario,
-                "Resultados de la encuesta",
-                "Adjunto los resultados del formulario.",
-                "respuestas_consolidadas.csv"
+                "Informe del piloto",
+                "Adjunto el informe Word generado del formulario.",
+                "temp_informe.docx"
             )
-            st.success("¡Correo enviado!")
-
+            st.success("¡Correo enviado con éxito!")
+            # Opcional: eliminar el archivo temporal después de enviar
+            os.remove("temp_informe.docx")
+        else:
+            st.warning("Por favor ingresa un correo válido.")
 
 
 
