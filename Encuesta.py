@@ -43,11 +43,15 @@ sheet = gc.open_by_key("1ROjz7LKyaZZ8rgfWgvfzJL9dXDKUcMCL5k_3aen7lGw").sheet1
 
 def subir_respuesta_a_drive(diccionario):
     try:
-        fila = list(diccionario.values())
+        fila = []
+        for valor in diccionario.values():
+            # Si es tipo fecha o datetime, conviértelo a string ISO
+            if hasattr(valor, "isoformat"):
+                valor = valor.isoformat()
+            fila.append(valor)
         sheet.append_row(fila)
     except Exception as e:
         st.error(f"❌ Error al subir a Google Sheets: {e}")
-
 
 
 
