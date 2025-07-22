@@ -4916,9 +4916,9 @@ elif st.session_state.paso == 33:
             st.warning("Por favor ingresa un correo válido.")
 
 
-import streamlit as st
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+    import streamlit as st
+    import gspread
+    from oauth2client.service_account import ServiceAccountCredentials
 
     def guardar_en_gsheets(respuesta_larga):
     # Define el alcance
