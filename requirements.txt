@@ -3,3 +3,5 @@ streamlit
 pandas
 python-docx
 yagmail
+gspread 
+oauth2client
