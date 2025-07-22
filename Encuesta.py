@@ -23,7 +23,30 @@ import yagmail
 from docx import Document
 import streamlit as st
 import io
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
+
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
+]
+
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(
+    st.secrets["gcp_service_account"], scope
+)
+
+gc = gspread.authorize(credentials)
+
+# Usa tu ID de hoja aquí
+sheet = gc.open_by_key("1ROjz7LKyaZZ8rgfWgvfzJL9dXDKUcMCL5k_3aen7lGw").sheet1
+
+def subir_respuesta_a_drive(diccionario):
+    try:
+        fila = list(diccionario.values())
+        sheet.append_row(fila)
+    except Exception as e:
+        st.error(f"❌ Error al subir a Google Sheets: {e}")
 
 
 
@@ -4644,8 +4667,7 @@ elif st.session_state.paso == 33:
         return img_buffer
 #-------------------------------------------------------------------------------------------------------------------------------#    
 #-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
-    #graficar_nivel_implementacion(global_pct)
-    # En la pestaña final (paso 33)
+
     img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
 
 #----------------------------------- DEFINIR SEPARADOR PARA LOS ARCHIVOS EN EXCEL----------------------------------------------# 
@@ -4726,11 +4748,9 @@ elif st.session_state.paso == 33:
     file_name="respuestas_consolidadas.csv",
     mime="text/csv"
     )
-
-
-# Insertar tabla estilo: Condición | Valoración, luego Hallazgos debajo
-    #table = doc.add_table(rows=1, cols=2)
-    #table.style = 'Light Grid Accent 1'
+    df_actual = pd.DataFrame([st.session_state.respuestas])
+    # Subir la respuesta actual a Google Sheets
+    subir_respuesta_a_drive(st.session_state.respuestas)
 
 
 
@@ -4895,15 +4915,8 @@ elif st.session_state.paso == 33:
     
         st.rerun()
 
-
-
-
-    
-
 ##########---------------------------------------------#####################
 ############################################################################
-
-
 
 
     import streamlit as st
