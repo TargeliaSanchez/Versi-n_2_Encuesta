@@ -664,11 +664,11 @@ st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 ####################### título y encabezado #######################
 st.markdown("""
     <style>
-        .block-container { padding-top: 0.5rem !important; }
+        .block-container { padding-top: 0.1rem !important; }
     </style>
 """, unsafe_allow_html=True)
 
-st.image("Logo_ideal.png",width=450)
+st.image("Logo_ideal.png")
 
 #st.title("EVALUAR – BPS \n  **EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN**")
 st.markdown("""
