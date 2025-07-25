@@ -27,47 +27,6 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-scope = [
-    "https://spreadsheets.google.com/feeds",
-    "https://www.googleapis.com/auth/drive"
-]
-
-credentials = ServiceAccountCredentials.from_json_keyfile_dict(
-    st.secrets["gcp_service_account"], scope
-)
-
-gc = gspread.authorize(credentials)
-
-# Usa tu ID de hoja aquí
-sheet = gc.open_by_key("1ROjz7LKyaZZ8rgfWgvfzJL9dXDKUcMCL5k_3aen7lGw").sheet1
-
-#def subir_respuesta_a_drive(diccionario):
-#    try:
-#        fila = []
-#        for valor in diccionario.values():
-            # Si es tipo fecha o datetime, conviértelo a string ISO
-#            if hasattr(valor, "isoformat"):
-#                valor = valor.isoformat()
-#            fila.append(valor)
-#        sheet.append_row(fila)
-#    except Exception as e:
-#        st.error(f"❌ Error al subir a Google Sheets: {e}")
-
-def subir_respuesta_a_drive(diccionario):
-    try:
-        # Conectarse de nuevo al sheet justo antes de escribir
-        sheet = gc.open_by_key("1ROjz7LKyaZZ8rgfWgvfzJL9dXDKUcMCL5k_3aen7lGw").sheet1
-        
-        fila = []
-        for valor in diccionario.values():
-            if hasattr(valor, "isoformat"):
-                valor = valor.isoformat()
-            fila.append(valor)
-        sheet.append_row(fila)
-    except Exception as e:
-        st.error(f"❌ Error al subir a Google Sheets: {e}")
-
-
 
 ##############################################
 
@@ -4767,7 +4726,7 @@ elif st.session_state.paso == 33:
     )
     df_actual = pd.DataFrame([st.session_state.respuestas])
     # Subir la respuesta actual a Google Sheets
-    subir_respuesta_a_drive(st.session_state.respuestas)
+    #subir_respuesta_a_drive(st.session_state.respuestas)
 
 
 
