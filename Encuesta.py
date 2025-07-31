@@ -718,7 +718,7 @@ if st.session_state.paso == 1:
         st.markdown("**MUNICIPIO**")
         municipio=st.text_input(
             "MUNICIPIO", 
-            value=st.session_state.municipio,
+            value=st.session_state.respuestas.get("municipio",""),
             label_visibility="collapsed", 
             key="municipio"
         )
@@ -728,12 +728,22 @@ if st.session_state.paso == 1:
     col1,col2 = st.columns([4, 2])
     with col1:
         st.markdown("**INSTITUCIÓN PRESTADORA DE SERVIVIOS DE SALUD**")
-        st.text_input("INSTITUCIÓN", "",placeholder="Digite nombre completo del prestador", label_visibility="collapsed",key="nombre_institucion")
-        guardar_respuesta("nombre_institucion", st.session_state.nombre_institucion)
+        nombre_institucion=st.text_input(
+            "INSTITUCIÓN", 
+            value=st.session_state.respuestas.get("nombre_institucion", ""),
+            placeholder="Digite nombre completo del prestador", 
+            label_visibility="collapsed",
+            key="nombre_institucion")
+        guardar_respuesta("nombre_institucion", nombre_institucion)
     with col2:
         st.markdown("**NIT**")
-        st.text_input("NIT", "", placeholder="Digite número-DV", label_visibility="collapsed",key="nombre_responsable")
-        guardar_respuesta("nit", st.session_state.nit)
+        nit = st.text_input(
+            "NIT",
+            value=st.session_state.respuestas.get("nit", ""),
+            placeholder="Digite número-DV", 
+            label_visibility="collapsed",
+            key="nombre_responsable")
+        guardar_respuesta("nit", nit)
     col1, col2, col3 = st.columns([3, 3, 3])
     with col1:
         st.markdown("**NATURALEZA JURÍDICA**")
