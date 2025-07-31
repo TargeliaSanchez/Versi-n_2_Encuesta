@@ -1079,10 +1079,10 @@ if st.session_state.paso == 1:
             "Trabajo Social",
             "Nutrición",
         ]
-        valor_guardado = st.session_state.respuestas.get(select_key, "")
+        valor_guardado = st.session_state.respuestas.get(select_key, "Seleccione")
         # Validar el valor guardado
         if valor_guardado not in opciones:
-            valor_guardado = ""
+            valor_guardado = "Seleccione"
         val = st.selectbox(
             "",
             options=opciones,
