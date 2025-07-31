@@ -1081,8 +1081,7 @@ if st.session_state.paso == 1:
                 "Trabajo Social",
                 "Nutrición",
             ],
-        value=st.session_state.respuestas.get(select_key, “Seleccione”),
-
+        value=st.session_state.respuestas.get(select_key, "Seleccione"),
             key=select_key,
         )
         guardar_respuesta(select_key, val)
