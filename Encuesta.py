@@ -1057,6 +1057,7 @@ if st.session_state.paso == 1:
 
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
 
+
     def select_and_number_input(select_key, number_key):
         st.markdown(
             """
@@ -1081,7 +1082,6 @@ if st.session_state.paso == 1:
                 "Trabajo Social",
                 "Nutrición",
             ],
-        value=st.session_state.respuestas.get(select_key, "Seleccione"),
             key=select_key,
         )
         guardar_respuesta(select_key, val)
@@ -1089,9 +1089,8 @@ if st.session_state.paso == 1:
             "",
             min_value=0,
             max_value=100,
+            value=0,
             step=1,
-            value=st.session_state.respuestas.get(number_key, 0),
-
             key=number_key,
         )
         guardar_respuesta(number_key, num)
