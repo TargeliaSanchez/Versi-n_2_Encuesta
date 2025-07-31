@@ -746,6 +746,7 @@ if st.session_state.paso == 1:
         guardar_respuesta("nit", nit)
     col1, col2, col3 = st.columns([3, 3, 3])
     with col1:
+        st.markdown("**NATURALEZA JURÍDICA**")
         opcionesNJ = [("Seleccione una opción...", 0), ("Pública", 1), ("Privada", 2), ("Mixta", 3)]
 
         # Obtener el valor guardado o el valor por defecto (0)
