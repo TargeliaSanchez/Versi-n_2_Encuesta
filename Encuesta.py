@@ -1081,6 +1081,7 @@ if st.session_state.paso == 1:
                 "Trabajo Social",
                 "Nutrición",
             ],
+            value=st.session_state.respuestas.get(select_key, "Seleccione"),
             key=select_key,
         )
         guardar_respuesta(select_key, val)
@@ -1090,6 +1091,7 @@ if st.session_state.paso == 1:
             max_value=100,
             value=0,
             step=1,
+            value=st.session_state.respuestas.get(number_key, "Seleccione"),
             key=number_key,
         )
         guardar_respuesta(number_key, num)
