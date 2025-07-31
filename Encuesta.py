@@ -1088,7 +1088,8 @@ if st.session_state.paso == 1:
             value=valor_guardado,
             key=select_key,
             )
-            guardar_respuesta(select_key, val)
+        guardar_respuesta(select_key, val)
+        
             num = st.number_input(
             "",
             min_value=0,
