@@ -1089,8 +1089,7 @@ if st.session_state.paso == 1:
             key=select_key,
             )
         guardar_respuesta(select_key, val)
-        
-            num = st.number_input(
+        num = st.number_input(
             "",
             min_value=0,
             max_value=100,
