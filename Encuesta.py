@@ -1078,7 +1078,7 @@ if st.session_state.paso == 1:
             "Psicología",
             "Trabajo Social",
             "Nutrición",
-            ],
+            ]
         valor_guardado=st.session_state.respuestas.get(select_key, "Seleccione")
         if valor_guardado not in opciones:
                 valor_guardado = "Seleccione"
