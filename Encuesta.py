@@ -74,7 +74,7 @@ def exportar_formulario_completo_con_tablas():
         "Días de atención": ["L", "M", "Mi", "J", "V", "S", "D"],
         "Áreas de atención": ["CE", "HO", "UR", "U", "UCI", "Otr"],
         "Modalidad": ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"],
-        "Tipo de prestador": ["P.REM", "P.REF"]
+        "Tipo de prestador": ["PREM", "PREF"]
     }
 
 # Aplanar todos los encabezados finales
@@ -127,7 +127,6 @@ def exportar_formulario_completo_con_tablas():
                 col += 1
     
         # Tipo de prestador
-            for pr in bloques["Tipo de prestador"]:
                 row[col].text = "X" if st.session_state.get(f"prestador_P_REM_{i}", False) else ""
                 col += 1
                 row[col].text = "X" if st.session_state.get(f"prestador_P_REF_{i}", False) else ""
