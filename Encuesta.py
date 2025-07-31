@@ -1058,57 +1058,61 @@ if st.session_state.paso == 1:
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
 
 
-    def select_and_number_input(select_key, number_key):
-        st.markdown(
-            """
-            <style>
-            .stSelectbox, .stNumberInput {
-                margin-bottom: -10px !important;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
+import streamlit as st
+
+# Inicializa respuestas en session_state si no existe
+if "respuestas" not in st.session_state:
+    st.session_state.respuestas = {}
+
+opciones = [
+    "Seleccione",
+    "Fisioterapia",
+    "Fonoaudiología",
+    "Terapia ocupacional",
+    "Terapia Respiratoria",
+    "Esp. medicina Física y Fehabilitación",
+    "Psicología",
+    "Trabajo Social",
+    "Nutrición",
+]
+
+# Para layout en 4 columnas
+cols = st.columns(4)
+pares = 8  # Número de pares selectbox/number_input
+
+for i in range(pares):
+    select_key = f"DesP_{i+1}"
+    number_key = f"numero_{i+1}"
+
+    col = cols[i % 4]  # Distribuye en columnas
+
+    with col:
+        # Recupera y valida valor guardado para selectbox
+        valor_guardado = st.session_state.respuestas.get(select_key, "Seleccione")
+        if valor_guardado not in opciones:
+            valor_guardado = "Seleccione"
         val = st.selectbox(
             "",
-            options=[
-                "Seleccione",
-                "Fisioterapia",
-                "Fonoaudiología",
-                "Terapia ocupacional",
-                "Terapia Respiratoria",
-                "Esp. medicina Física y Fehabilitación",
-                "Psicología",
-                "Trabajo Social",
-                "Nutrición",
-            ],
+            options=opciones,
+            index=opciones.index(valor_guardado),
             key=select_key,
         )
-        guardar_respuesta(select_key, val)
+        st.session_state.respuestas[select_key] = val
+
+        # Recupera valor guardado para number_input
+        num_valor_guardado = st.session_state.respuestas.get(number_key, 0)
         num = st.number_input(
             "",
             min_value=0,
             max_value=100,
-            value=0,
+            value=num_valor_guardado,
             step=1,
             key=number_key,
         )
-        guardar_respuesta(number_key, num)
+        st.session_state.respuestas[number_key] = num
+
 
     
-    with col1:
-        select_and_number_input("DesP_1", "numero_1")
-        select_and_number_input("DesP_2", "numero_2")
-    with col2:
-        select_and_number_input("DesP_3", "numero_3")
-        select_and_number_input("DesP_4", "numero_4")
-    with col3:
-        select_and_number_input("DesP_5", "numero_5")
-        select_and_number_input("DesP_6", "numero_6")
-    with col4:
-        select_and_number_input("DesP_7", "numero_7")
-        select_and_number_input("DesP_8", "numero_8")
-
     st.markdown("""
     <style>
     .titulo-caja {
