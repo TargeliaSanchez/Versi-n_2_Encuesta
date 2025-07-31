@@ -127,10 +127,10 @@ def exportar_formulario_completo_con_tablas():
                 col += 1
     
         # Tipo de prestador
-                row[col].text = "X" if st.session_state.get(f"prestador_P_REM_{i}", False) else ""
-                col += 1
-                row[col].text = "X" if st.session_state.get(f"prestador_P_REF_{i}", False) else ""
-                col += 1
+            row[col].text = "X" if st.session_state.get(f"prestador_P_REM_{i}", False) else ""
+            col += 1
+            row[col].text = "X" if st.session_state.get(f"prestador_P_REF_{i}", False) else ""
+            col += 1
                 
 
 
