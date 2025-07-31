@@ -707,9 +707,9 @@ if st.session_state.paso == 1:
     col1, col2 = st.columns([4,4])
     with col1:
         departamento = st.text_input(
-        "DEPARTAMENTO",
-        value=st.session_state.respuestas.get("departamento", ""),
-        key="departamento"
+            "DEPARTAMENTO",
+            value=st.session_state.respuestas.get("departamento", ""),
+            key="departamento"
         )
        guardar_respuesta("departamento", departamento)
         
