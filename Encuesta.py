@@ -1068,35 +1068,32 @@ if st.session_state.paso == 1:
             """,
             unsafe_allow_html=True,
         )
-        opciones = [
-            "Seleccione",
-            "Fisioterapia",
-            "Fonoaudiología",
-            "Terapia ocupacional",
-            "Terapia Respiratoria",
-            "Esp. medicina Física y Fehabilitación",
-            "Psicología",
-            "Trabajo Social",
-            "Nutrición",
-        ]
-        valor_guardado = st.session_state.respuestas.get(select_key, "Seleccione")
-        # Validar el valor guardado
-        if valor_guardado not in opciones:
-            valor_guardado = "Seleccione"
         val = st.selectbox(
             "",
-            options=opciones,
-            value=valor_guardado,
+            options=[
+                "Seleccione",
+                "Fisioterapia",
+                "Fonoaudiología",
+                "Terapia ocupacional",
+                "Terapia Respiratoria",
+                "Esp. medicina Física y Fehabilitación",
+                "Psicología",
+                "Trabajo Social",
+                "Nutrición",
+            ],
+        value=st.session_state.respuestas.get(f"select_key", “Seleccione”),
+
             key=select_key,
         )
         guardar_respuesta(select_key, val)
-        num_valor_guardado = st.session_state.respuestas.get(number_key, 0)
         num = st.number_input(
             "",
             min_value=0,
             max_value=100,
-            value=num_valor_guardado,
+            value=0,
             step=1,
+        value=st.session_state.respuestas.get(f"number_key", 0),
+
             key=number_key,
         )
         guardar_respuesta(number_key, num)
