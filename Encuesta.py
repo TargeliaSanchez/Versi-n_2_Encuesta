@@ -810,7 +810,7 @@ if st.session_state.paso == 1:
     with col_dias:
         st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
         st.markdown("marque con una X los días de atención")
-        col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+        col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1.2,1,1,1,1)
         with col1:
             st.markdown(f"**L**")
             dia_L_1 = st.checkbox("", key="L_1")
