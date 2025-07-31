@@ -127,10 +127,14 @@ def exportar_formulario_completo_con_tablas():
                 col += 1
     
         # Tipo de prestador
-            prestador = st.session_state.get(f"prestador_{i}")
-            row[col].text = "X" if prestador == "P.REM" else ""
-            col += 1
-            row[col].text = "X" if prestador == "P.REF" else ""
+            for pr in bloques["Tipo de prestador"]:
+                row[col].text = "X" if st.session_state.get(f"{pr}_{i}") else ""
+                col += 1
+                
+            #prestador = st.session_state.get(f"prestador_{i}")
+            #row[col].text = "X" if prestador == "P.REM" else ""
+            #col += 1
+            #row[col].text = "X" if prestador == "P.REF" else ""
 
 
     # III. RECURSO HUMANO EN TABLA
@@ -930,8 +934,10 @@ if st.session_state.paso == 1:
         with col_prestador:
             st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
             st.markdown("marque con una X el tipo de prestador")
-            prestador = st.radio("Tipo", ["P.REM", "P.REF"], key=f"prestador_{i}")
-            guardar_respuesta(f"prestador_{i}", prestador)
+            prestador_P_REM = st.checkbox("P.REM", key=f"prestador_P_REM_{i}")
+            guardar_respuesta(f"prestador_P_REM_{i}", prestador_P_REM)
+            prestador_P_REF = st.checkbox("P.REF", key=f"prestador_P_REF_{i}")
+            guardar_respuesta(f"prestador_P_REF_{i}", prestador_P_REM)
 
 ################################ Información recursos humanos
     
