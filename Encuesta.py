@@ -855,7 +855,7 @@ if st.session_state.paso == 1:
         with col_dias:
             st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
             st.markdown("Marque con una X los días de atención")
-            col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1.1,1,1,1,1])
+            col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1.2,1,1,1,1])
             dias = ["L", "M", "Mi", "J", "V", "S", "D"]
             cols = [col1, col2, col3, col4, col5, col6, col7]
             for col, dia in zip(cols, dias):
