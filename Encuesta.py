@@ -1082,10 +1082,16 @@ if st.session_state.paso == 1:
                 "Nutrición",
             ],
             value=st.session_state.respuestas.get(select_key, "Seleccione"),
-            key=select_key,
-        )
-        guardar_respuesta(select_key, val)
-        num = st.number_input(
+            if valor_guardado not in opciones:
+                valor_guardado = "Seleccione"
+            val = st.selectbox(
+                "",
+                options=opciones,
+                value=valor_guardado,
+                key=select_key,
+            )
+            guardar_respuesta(select_key, val)
+            num = st.number_input(
             "",
             min_value=0,
             max_value=100,
