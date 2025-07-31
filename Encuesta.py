@@ -883,7 +883,7 @@ if st.session_state.paso == 1:
                 st.markdown("**CE**")
                 area_CE = st.checkbox(
                     "",
-                    value = st.state.respuestas.get(f"CE_{i}",False),
+                    value = st.session_state.respuestas.get(f"CE_{i}",False),
                     key=f"CE_{i}")
                 guardar_respuesta(f"CE_{i}", area_CE)
             with col2:
