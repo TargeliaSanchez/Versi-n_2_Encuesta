@@ -820,7 +820,7 @@ if st.session_state.paso == 1:
             dia_M_1 = st.checkbox("", key="M_1")
             guardar_respuesta("dia_M_1", dia_M_1)
         with col3:
-            st.markdown(f"**X**")
+            st.markdown(f"**Mi**")
             dia_Mi_1 = st.checkbox("", key="Mi_1")
             guardar_respuesta("dia_Mi_1", dia_Mi_1)
         with col4:
@@ -946,7 +946,7 @@ if st.session_state.paso == 1:
             dia_M_2 = st.checkbox("", key="M_2")
             guardar_respuesta("dia_M_2", dia_M_2)
         with col3:
-            st.markdown(f"**X**")
+            st.markdown(f"**Mi**")
             dia_Mi_2 = st.checkbox("", key="Mi_2")
             guardar_respuesta("dia_Mi_2", dia_Mi_2)
         with col4:
@@ -1066,7 +1066,7 @@ if st.session_state.paso == 1:
             dia_M_3 = st.checkbox("", key="M_3")
             guardar_respuesta("dia_M_3", dia_M_3)
         with col3:
-            st.markdown(f"**X**")
+            st.markdown(f"**Mi**")
             dia_Mi_3 = st.checkbox("", key="Mi_3")
             guardar_respuesta("dia_Mi_3", dia_Mi_3)
         with col4:
@@ -1185,7 +1185,7 @@ if st.session_state.paso == 1:
             dia_M_4 = st.checkbox("", key="M_4")
             guardar_respuesta("dia_M_4", dia_M_4)
         with col3:
-            st.markdown(f"**X**")
+            st.markdown(f"**Mi**")
             dia_Mi_4 = st.checkbox("", key="Mi_4")
             guardar_respuesta("dia_Mi_4", dia_Mi_4)
         with col4:
@@ -1302,7 +1302,7 @@ if st.session_state.paso == 1:
             dia_M_5 = st.checkbox("", key="M_5")
             guardar_respuesta("dia_M_5", dia_M_5)
         with col3:
-            st.markdown(f"**X**")
+            st.markdown(f"**Mi**")
             dia_Mi_5 = st.checkbox("", key="Mi_5")
             guardar_respuesta("dia_Mi_5", dia_Mi_5)
         with col4:
@@ -1419,7 +1419,7 @@ if st.session_state.paso == 1:
             dia_M_6 = st.checkbox("", key="M_6")
             guardar_respuesta("dia_M_6", dia_M_6)
         with col3:
-            st.markdown(f"**X**")
+            st.markdown(f"**Mi**")
             dia_Mi_6 = st.checkbox("", key="Mi_6")
             guardar_respuesta("dia_Mi_6", dia_Mi_6)
         with col4:
@@ -1538,7 +1538,7 @@ if st.session_state.paso == 1:
             dia_M_7 = st.checkbox("", key="M_7")
             guardar_respuesta("dia_M_7", dia_M_7)
         with col3:
-            st.markdown(f"**X**")
+            st.markdown(f"**Mi**")
             dia_Mi_7 = st.checkbox("", key="Mi_7")
             guardar_respuesta("dia_Mi_7", dia_Mi_7)
         with col4:
