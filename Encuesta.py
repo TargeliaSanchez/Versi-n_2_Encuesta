@@ -74,7 +74,7 @@ def exportar_formulario_completo_con_tablas():
         "Días de atención": ["L", "M", "Mi", "J", "V", "S", "D"],
         "Áreas de atención": ["CE", "HO", "UR", "U", "UCI", "Otr"],
         "Modalidad": ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"],
-        "Tipo de prestador": ["PREM", "PREF"]
+        "Tipo de prestador": ["P.REM", "P.REF"]
     }
 
 # Aplanar todos los encabezados finales
@@ -933,7 +933,7 @@ if st.session_state.paso == 1:
             prestador_P_REM = st.checkbox("P.REM", key=f"prestador_P_REM_{i}")
             guardar_respuesta(f"prestador_P_REM_{i}", prestador_P_REM)
             prestador_P_REF = st.checkbox("P.REF", key=f"prestador_P_REF_{i}")
-            guardar_respuesta(f"prestador_P_REF_{i}", prestador_P_REM)
+            guardar_respuesta(f"prestador_P_REF_{i}", prestador_P_REF)
 
 ################################ Información recursos humanos
     
