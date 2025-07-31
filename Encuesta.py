@@ -746,19 +746,51 @@ if st.session_state.paso == 1:
         guardar_respuesta("nit", nit)
     col1, col2, col3 = st.columns([3, 3, 3])
     with col1:
-        st.markdown("**NATURALEZA JURÍDICA**")
-        st.selectbox("",[("Seleccione una opción...",0),("Pública",1),("Privada",2),("Mixta",3)], format_func=lambda x: x[0], key="naturaleza_juridica")
-        guardar_respuesta("naturaleza_juridica", st.session_state.naturaleza_juridica)
+        opcionesNJ = [("Seleccione una opción...", 0), ("Pública", 1), ("Privada", 2), ("Mixta", 3)]
+
+        # Obtener el valor guardado o el valor por defecto (0)
+        valor_guardado = st.session_state.respuestas.get("naturaleza_juridica", 0)
+
+        # Buscar el índice según el valor guardado
+        index = next((i for i, op in enumerate(opcionesNJ) if op[1] == valor_guardado), 0)
+
+        # Mostrar el selectbox, posicionando en la opción correcta
+        seleccion = st.selectbox(
+            "",
+            opcionesNJ,
+            format_func=lambda x: x[0],
+            index=index,
+            key="naturaleza_juridica"
+    )
+        guardar_respuesta("naturaleza_juridica", seleccion[1])
+        
     with col2:
         st.markdown("**EMPRESA SOCIAL DE ESTADO**")
-        st.selectbox("",[("Seleccione una opción...",0),("Si",1),("No",2)], format_func=lambda x: x[0], key="empresa_social_estado")
-        guardar_respuesta("empresa_social_estado", st.session_state.empresa_social_estado)
+        opciones_ese = [("Seleccione una opción...",0),("Si",1),("No",2)]
+        valor_guardado = st.session_state.respuestas.get("empresa_social_estado", 0)
+        index = next((i for i, op in enumerate(opciones_ese) if op[1] == valor_guardado), 0)
+        seleccion = st.selectbox(
+            "",
+            opciones_ese,
+            format_func=lambda x: x[0],
+            index=index,
+            key="empresa_social_estado"
+        )
+        guardar_respuesta("empresa_social_estado", seleccion[1])
+
     with col3:
         st.markdown("**NIVEL DE ATENCIÓN DEL PRESTADOR**")
-        st.selectbox("",[("Seleccione una opción...",0),("1",1),("2",2),("3",3)], format_func=lambda x: x[0], key="nivel_atencion_prestador")
-        guardar_respuesta("nivel_atencion_prestador", st.session_state.nivel_atencion_prestador)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
+        opciones_nivel = [("Seleccione una opción...",0),("1",1),("2",2),("3",3)]
+        valor_guardado = st.session_state.respuestas.get("nivel_atencion_prestador", 0)
+        index = next((i for i, op in enumerate(opciones_nivel) if op[1] == valor_guardado), 0)
+        seleccion = st.selectbox(
+            "",
+            opciones_nivel,
+            format_func=lambda x: x[0],
+            index=index,
+            key="nivel_atencion_prestador"
+        )
+        guardar_respuesta("nivel_atencion_prestador", seleccion[1]) 
 
 
 
