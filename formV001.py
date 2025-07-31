@@ -100,6 +100,67 @@ def exportar_formulario_completo_con_tablas():
     for i, h in enumerate(headers):
         table.rows[1].cells[i].text = h
 
+
+
+
+
+
+
+
+ import streamlit as st
+
+# Inicializa respuestas en session_state si no existe
+if "respuestas" not in st.session_state:
+    st.session_state.respuestas = {}
+
+opciones = [
+    "Seleccione",
+    "Fisioterapia",
+    "Fonoaudiología",
+    "Terapia ocupacional",
+    "Terapia Respiratoria",
+    "Esp. medicina Física y Fehabilitación",
+    "Psicología",
+    "Trabajo Social",
+    "Nutrición",
+]
+
+# Para layout en 4 columnas
+cols = st.columns(4)
+pares = 8  # Número de pares selectbox/number_input
+
+for i in range(pares):
+    select_key = f"DesP_{i+1}"
+    number_key = f"numero_{i+1}"
+
+    col = cols[i % 4]  # Distribuye en columnas
+
+    with col:
+        # Recupera y valida valor guardado para selectbox
+        valor_guardado = st.session_state.respuestas.get(select_key, "Seleccione")
+        if valor_guardado not in opciones:
+            valor_guardado = "Seleccione"
+        val = st.selectbox(
+            "",
+            options=opciones,
+            index=opciones.index(valor_guardado),
+            key=select_key,
+        )
+        st.session_state.respuestas[select_key] = val
+
+        # Recupera valor guardado para number_input
+        num_valor_guardado = st.session_state.respuestas.get(number_key, 0)
+        num = st.number_input(
+            "",
+            min_value=0,
+            max_value=100,
+            value=num_valor_guardado,
+            step=1,
+            key=number_key,
+        )
+        st.session_state.respuestas[number_key] = num
+   
+
 # Filas de datos (máximo 7 servicios)
     for i in range(1, 8):
         servicio = st.session_state.get(f"servicio_{i}")
