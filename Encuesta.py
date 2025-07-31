@@ -881,27 +881,50 @@ if st.session_state.paso == 1:
             col1, col2, col3, col4, col5, col6 = st.columns(6)
             with col1:
                 st.markdown("**CE**")
-                area_CE = st.checkbox("", key=f"CE_{i}")
+                area_CE = st.checkbox(
+                    "",
+                    value = st.state.respuestas.get(f"CE_{i}",False),
+                    key=f"CE_{i}")
                 guardar_respuesta(f"CE_{i}", area_CE)
             with col2:
                 st.markdown("**HO**")
-                area_HO = st.checkbox("", key=f"HO_{i}")
+                area_HO = st.checkbox(
+                    "",
+                    value=st.session_state.respuestas.get(f"HO_{i}", False),
+                    key=f"HO_{i}"
+                )
                 guardar_respuesta(f"HO_{i}", area_HO)
             with col3:
                 st.markdown("**UR**")
-                area_UR = st.checkbox("", key=f"UR_{i}")
+                area_UR = st.checkbox(
+                    "",
+                    value=st.session_state.respuestas.get(f"UR_{i}", False),
+                    key=f"UR_{i}"
+                )
                 guardar_respuesta(f"UR_{i}", area_UR)
             with col4:
                 st.markdown("**U**")
-                area_U = st.checkbox("", key=f"U_{i}")
+                    area_U = st.checkbox(
+                    "",
+                    value=st.session_state.respuestas.get(f"U_{i}", False),
+                    key=f"U_{i}"
+                )
                 guardar_respuesta(f"U_{i}", area_U)
             with col5:
                 st.markdown("**UCI**")
-                area_UCI = st.checkbox("", key=f"UCI_{i}")
+                area_UCI = st.checkbox(
+                    "",
+                    value=st.session_state.respuestas.get(f"UCI_{i}", False),
+                    key=f"UCI_{i}"
+                )
                 guardar_respuesta(f"UCI_{i}", area_UCI)
             with col6:
                 st.markdown("**Otr**")
-                area_Otr = st.checkbox("", key=f"Otr_{i}")
+                area_Otr = st.checkbox(
+                    "",
+                    value=st.session_state.respuestas.get(f"Otr_{i}", False),
+                    key=f"Otr_{i}"
+                )
                 guardar_respuesta(f"Otr_{i}", area_Otr)
         with sep2:
             st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
