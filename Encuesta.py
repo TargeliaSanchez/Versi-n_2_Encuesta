@@ -844,11 +844,9 @@ if st.session_state.paso == 1:
             "><b> {i}. SERVICIOS DE REHABILITACIÓN HABILITADOS 
             </div>
             """, unsafe_allow_html=True)
-        Lista_servicios = ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación", "Psicología", "Trabajo Social", "Nutrición"]
         servicio = st.selectbox(
-            f"Servicio {i}",
-            Lista_servicios,
-            index=Lista_servicios.index(st.session_state.respuestas.get(f"servicio_{i}", "Seleccione")),            
+            "",
+            options=["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación", "Psicología", "Trabajo Social", "Nutrición"],
             key=f"servicio_{i}"
         )   
         guardar_respuesta(f"servicio_{i}", servicio)
@@ -857,35 +855,18 @@ if st.session_state.paso == 1:
         with col_dias:
             st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
             st.markdown("Marque con una X los días de atención")
-            col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 1, 1.2, 1, 1, 1, 1])
-            with col1:
-                st.markdown(f"**L**")
-                dia_L = st.checkbox("", key=f"L_{i}")
-                guardar_respuesta(f"L_{i}", dia_L)
-            with col2:
-                st.markdown(f"**M**")
-                dia_M = st.checkbox("", key=f"M_{i}")
-                guardar_respuesta(f"M_{i}", dia_M)
-            with col3:
-                st.markdown(f"**Mi**")
-                dia_Mi = st.checkbox("", key=f"Mi_{i}")
-                guardar_respuesta(f"Mi_{i}", dia_Mi)
-            with col4:
-                st.markdown(f"**J**")
-                dia_J = st.checkbox("", key=f"J_{i}")
-                guardar_respuesta(f"J_{i}", dia_J)
-            with col5:
-                st.markdown(f"**V**")
-                dia_V = st.checkbox("", key=f"V_{i}")
-                guardar_respuesta(f"V_{i}", dia_V)
-            with col6:
-                st.markdown(f"**S**")
-                dia_S = st.checkbox("", key=f"S_{i}")
-                guardar_respuesta(f"S_{i}", dia_S)
-            with col7:
-                st.markdown(f"**D**")
-                dia_D = st.checkbox("", key=f"D_{i}")
-                guardar_respuesta(f"D_{i}", dia_D)
+            col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1.1,1,1,1,1])
+            dias = ["L", "M", "Mi", "J", "V", "S", "D"]
+            cols = [col1, col2, col3, col4, col5, col6, col7]
+            for col, dia in zip(cols, dias):
+                with col:
+                    st.markdown(f"**{dia}**")
+                    valor = st.checkbox(
+                        "",  # sin texto largo
+                        value=st.session_state.respuestas.get(f"{dia}_{i}", False),
+                        key=f"{dia}_{i}"
+                    )
+                    guardar_respuesta(f"{dia}_{i}", valor)
         with sep1:
             st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
         with col_areas:
