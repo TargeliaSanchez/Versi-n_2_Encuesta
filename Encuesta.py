@@ -831,6 +831,8 @@ if st.session_state.paso == 1:
 ########### esta es la parte de los servicios la acabo de modificar.
 ################## HASTA AQUÍ    
 
+    ############# CICLO BUCLE
+
     for i in range(1, 8):
         st.markdown(f"""
             <div style="
@@ -842,9 +844,11 @@ if st.session_state.paso == 1:
             "><b> {i}. SERVICIOS DE REHABILITACIÓN HABILITADOS 
             </div>
             """, unsafe_allow_html=True)
+        Lista_servicios = ["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación", "Psicología", "Trabajo Social", "Nutrición"]
         servicio = st.selectbox(
-            "",
-            options=["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación", "Psicología", "Trabajo Social", "Nutrición"],
+            f"Servicio {i}",
+            Lista_servicios,
+            index=Lista_servicios.index(st.session_state.respuestas.get(f"servicio_{i}", "Seleccione")),            
             key=f"servicio_{i}"
         )   
         guardar_respuesta(f"servicio_{i}", servicio)
