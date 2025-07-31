@@ -831,122 +831,122 @@ if st.session_state.paso == 1:
 ########### esta es la parte de los servicios la acabo de modificar.
 ################## HASTA AQUÍ    
 
-for i in range(1, 8):
-    st.markdown(f"""
-        <div style="
-        background-color: #e8f0fe ;
-        color: black;
-        padding: 4px 10px;
-        font-weight: normal;
-        border-radius: 0.5px;
-        "><b> {i}. SERVICIOS DE REHABILITACIÓN HABILITADOS 
-        </div>
-        """, unsafe_allow_html=True)
-    servicio = st.selectbox(
-        "",
-        options=["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación", "Psicología", "Trabajo Social", "Nutrición"],
-        key=f"servicio_{i}"
-    )   
-    guardar_respuesta(f"servicio_{i}", servicio)
-    col_dias, sep1, col_areas, sep2, col_modalidades, col_prestador = st.columns([1, 0.1, 1.3, 0.1, 1.8, 1])
+    for i in range(1, 8):
+        st.markdown(f"""
+            <div style="
+            background-color: #e8f0fe ;
+            color: black;
+            padding: 4px 10px;
+            font-weight: normal;
+            border-radius: 0.5px;
+            "><b> {i}. SERVICIOS DE REHABILITACIÓN HABILITADOS 
+            </div>
+            """, unsafe_allow_html=True)
+        servicio = st.selectbox(
+            "",
+            options=["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación", "Psicología", "Trabajo Social", "Nutrición"],
+            key=f"servicio_{i}"
+        )   
+        guardar_respuesta(f"servicio_{i}", servicio)
+        col_dias, sep1, col_areas, sep2, col_modalidades, col_prestador = st.columns([1, 0.1, 1.3, 0.1, 1.8, 1])
 
-    with col_dias:
-        st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
-        st.markdown("Marque con una X los días de atención")
-        col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 1, 1.2, 1, 1, 1, 1])
-        with col1:
-            st.markdown(f"**L**")
-            dia_L = st.checkbox("", key=f"L_{i}")
-            guardar_respuesta(f"L_{i}", dia_L)
-        with col2:
-            st.markdown(f"**M**")
-            dia_M = st.checkbox("", key=f"M_{i}")
-            guardar_respuesta(f"M_{i}", dia_M)
-        with col3:
-            st.markdown(f"**Mi**")
-            dia_Mi = st.checkbox("", key=f"Mi_{i}")
-            guardar_respuesta(f"Mi_{i}", dia_Mi)
-        with col4:
-            st.markdown(f"**J**")
-            dia_J = st.checkbox("", key=f"J_{i}")
-            guardar_respuesta(f"J_{i}", dia_J)
-        with col5:
-            st.markdown(f"**V**")
-            dia_V = st.checkbox("", key=f"V_{i}")
-            guardar_respuesta(f"V_{i}", dia_V)
-        with col6:
-            st.markdown(f"**S**")
-            dia_S = st.checkbox("", key=f"S_{i}")
-            guardar_respuesta(f"S_{i}", dia_S)
-        with col7:
-            st.markdown(f"**D**")
-            dia_D = st.checkbox("", key=f"D_{i}")
-            guardar_respuesta(f"D_{i}", dia_D)
-    with sep1:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
-    with col_areas:
-        st.markdown("<div style='text-align: center;'><b>Áreas asistenciales</b></div>", unsafe_allow_html=True)
-        st.markdown("Marque con X las áreas donde se prestan servicios de rehabilitación")
-        col1, col2, col3, col4, col5, col6 = st.columns(6)
-        with col1:
-            st.markdown("**CE**")
-            area_CE = st.checkbox("", key=f"CE_{i}")
-            guardar_respuesta(f"CE_{i}", area_CE)
-        with col2:
-            st.markdown("**HO**")
-            area_HO = st.checkbox("", key=f"HO_{i}")
-            guardar_respuesta(f"HO_{i}", area_HO)
-        with col3:
-            st.markdown("**UR**")
-            area_UR = st.checkbox("", key=f"UR_{i}")
-            guardar_respuesta(f"UR_{i}", area_UR)
-        with col4:
-            st.markdown("**U**")
-            area_U = st.checkbox("", key=f"U_{i}")
-            guardar_respuesta(f"U_{i}", area_U)
-        with col5:
-            st.markdown("**UCI**")
-            area_UCI = st.checkbox("", key=f"UCI_{i}")
-            guardar_respuesta(f"UCI_{i}", area_UCI)
-        with col6:
-            st.markdown("**Otr**")
-            area_Otr = st.checkbox("", key=f"Otr_{i}")
-            guardar_respuesta(f"Otr_{i}", area_Otr)
-    with sep2:
-        st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
-    with col_modalidades:
-        st.markdown("<div style='text-align: center;'><b>Modalidades de prestación</b></div>", unsafe_allow_html=True)
-        st.markdown("Marque con X  las modalidades habilitadas")
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.markdown("**Intramural**")
-            mod_AMB = st.checkbox("AMB", key=f"AMB_{i}")
-            guardar_respuesta(f"AMB_{i}", mod_AMB)
-            mod_HOS = st.checkbox("HOS", key=f"HOS_{i}")
-            guardar_respuesta(f"HOS_{i}", mod_HOS)
-        with col2:
-            st.markdown("**Extramural**")
-            mod_DOM = st.checkbox("DOM", key=f"DOM_{i}")
-            guardar_respuesta(f"DOM_{i}", mod_DOM)
-            mod_JORN = st.checkbox("JORN", key=f"JORN_{i}")
-            guardar_respuesta(f"JORN_{i}", mod_JORN)
-            mod_UNMOV = st.checkbox("UN.MOV", key=f"UNMOV_{i}")
-            guardar_respuesta(f"UNMOV_{i}", mod_UNMOV)
-        with col3:
-            st.markdown("**Telemedicina**")
-            mod_TMIA = st.checkbox("TM-IA", key=f"TMIA_{i}")
-            guardar_respuesta(f"TMIA_{i}", mod_TMIA)
-            mod_TMNIA = st.checkbox("TM-NIA", key=f"TMNIA_{i}")
-            guardar_respuesta(f"TMNIA_{i}", mod_TMNIA)
-            mod_TE = st.checkbox("TE", key=f"TE_{i}")
-            guardar_respuesta(f"TE_{i}", mod_TE)
-            mod_TMO = st.checkbox("TMO", key=f"TMO_{i}")
-            guardar_respuesta(f"TMO_{i}", mod_TMO)
-    with col_prestador:
-        st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
-        st.markdown("marque con una X el tipo de prestador")
-        prestador = st.radio("Tipo", ["P.REM", "P.REF"], key=f"prestador_{i}")
-        guardar_respuesta(f"prestador_{i}", prestador)
+        with col_dias:
+            st.markdown("<div style='text-align: center;'><b>Días de atención</b></div>", unsafe_allow_html=True)
+            st.markdown("Marque con una X los días de atención")
+            col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 1, 1.2, 1, 1, 1, 1])
+            with col1:
+                st.markdown(f"**L**")
+                dia_L = st.checkbox("", key=f"L_{i}")
+                guardar_respuesta(f"L_{i}", dia_L)
+            with col2:
+                st.markdown(f"**M**")
+                dia_M = st.checkbox("", key=f"M_{i}")
+                guardar_respuesta(f"M_{i}", dia_M)
+            with col3:
+                st.markdown(f"**Mi**")
+                dia_Mi = st.checkbox("", key=f"Mi_{i}")
+                guardar_respuesta(f"Mi_{i}", dia_Mi)
+            with col4:
+                st.markdown(f"**J**")
+                dia_J = st.checkbox("", key=f"J_{i}")
+                guardar_respuesta(f"J_{i}", dia_J)
+            with col5:
+                st.markdown(f"**V**")
+                dia_V = st.checkbox("", key=f"V_{i}")
+                guardar_respuesta(f"V_{i}", dia_V)
+            with col6:
+                st.markdown(f"**S**")
+                dia_S = st.checkbox("", key=f"S_{i}")
+                guardar_respuesta(f"S_{i}", dia_S)
+            with col7:
+                st.markdown(f"**D**")
+                dia_D = st.checkbox("", key=f"D_{i}")
+                guardar_respuesta(f"D_{i}", dia_D)
+        with sep1:
+            st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+        with col_areas:
+            st.markdown("<div style='text-align: center;'><b>Áreas asistenciales</b></div>", unsafe_allow_html=True)
+            st.markdown("Marque con X las áreas donde se prestan servicios de rehabilitación")
+            col1, col2, col3, col4, col5, col6 = st.columns(6)
+            with col1:
+                st.markdown("**CE**")
+                area_CE = st.checkbox("", key=f"CE_{i}")
+                guardar_respuesta(f"CE_{i}", area_CE)
+            with col2:
+                st.markdown("**HO**")
+                area_HO = st.checkbox("", key=f"HO_{i}")
+                guardar_respuesta(f"HO_{i}", area_HO)
+            with col3:
+                st.markdown("**UR**")
+                area_UR = st.checkbox("", key=f"UR_{i}")
+                guardar_respuesta(f"UR_{i}", area_UR)
+            with col4:
+                st.markdown("**U**")
+                area_U = st.checkbox("", key=f"U_{i}")
+                guardar_respuesta(f"U_{i}", area_U)
+            with col5:
+                st.markdown("**UCI**")
+                area_UCI = st.checkbox("", key=f"UCI_{i}")
+                guardar_respuesta(f"UCI_{i}", area_UCI)
+            with col6:
+                st.markdown("**Otr**")
+                area_Otr = st.checkbox("", key=f"Otr_{i}")
+                guardar_respuesta(f"Otr_{i}", area_Otr)
+        with sep2:
+            st.markdown("<div class='vertical-divider'></div>", unsafe_allow_html=True)
+        with col_modalidades:
+            st.markdown("<div style='text-align: center;'><b>Modalidades de prestación</b></div>", unsafe_allow_html=True)
+            st.markdown("Marque con X  las modalidades habilitadas")
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.markdown("**Intramural**")
+                mod_AMB = st.checkbox("AMB", key=f"AMB_{i}")
+                guardar_respuesta(f"AMB_{i}", mod_AMB)
+                mod_HOS = st.checkbox("HOS", key=f"HOS_{i}")
+                guardar_respuesta(f"HOS_{i}", mod_HOS)
+            with col2:
+                st.markdown("**Extramural**")
+                mod_DOM = st.checkbox("DOM", key=f"DOM_{i}")
+                guardar_respuesta(f"DOM_{i}", mod_DOM)
+                mod_JORN = st.checkbox("JORN", key=f"JORN_{i}")
+                guardar_respuesta(f"JORN_{i}", mod_JORN)
+                mod_UNMOV = st.checkbox("UN.MOV", key=f"UNMOV_{i}")
+                guardar_respuesta(f"UNMOV_{i}", mod_UNMOV)
+            with col3:
+                st.markdown("**Telemedicina**")
+                mod_TMIA = st.checkbox("TM-IA", key=f"TMIA_{i}")
+                guardar_respuesta(f"TMIA_{i}", mod_TMIA)
+                mod_TMNIA = st.checkbox("TM-NIA", key=f"TMNIA_{i}")
+                guardar_respuesta(f"TMNIA_{i}", mod_TMNIA)
+                mod_TE = st.checkbox("TE", key=f"TE_{i}")
+                guardar_respuesta(f"TE_{i}", mod_TE)
+                mod_TMO = st.checkbox("TMO", key=f"TMO_{i}")
+                guardar_respuesta(f"TMO_{i}", mod_TMO)
+        with col_prestador:
+            st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
+            st.markdown("marque con una X el tipo de prestador")
+            prestador = st.radio("Tipo", ["P.REM", "P.REF"], key=f"prestador_{i}")
+            guardar_respuesta(f"prestador_{i}", prestador)
 
 ################################ Información recursos humanos
     
