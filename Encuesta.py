@@ -993,7 +993,7 @@ if st.session_state.paso == 1:
             guardar_respuesta(f"prestador_P_REM_{i}", prestador_P_REM)
             prestador_P_REF = st.checkbox(
                 "P.REF", 
-                value=st.session_state.respuestas.get(f"prestador_P_REF_{i}",False)
+                value=st.session_state.respuestas.get(f"prestador_P_REF_{i}",False),
                 key=f"prestador_P_REF_{i}")
             guardar_respuesta(f"prestador_P_REF_{i}", prestador_P_REF)
 
