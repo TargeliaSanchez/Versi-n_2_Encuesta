@@ -131,10 +131,6 @@ def exportar_formulario_completo_con_tablas():
                 row[col].text = "X" if st.session_state.get(f"{pr}_{i}") else ""
                 col += 1
                 
-            #prestador = st.session_state.get(f"prestador_{i}")
-            #row[col].text = "X" if prestador == "P.REM" else ""
-            #col += 1
-            #row[col].text = "X" if prestador == "P.REF" else ""
 
 
     # III. RECURSO HUMANO EN TABLA
@@ -211,8 +207,8 @@ def exportar_primera_pagina():
             modalidades = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if st.session_state.get(f"{m}_{i}")]
             doc.add_paragraph("Modalidades de prestación: " + ", ".join(modalidades))
 
-            prestador = st.session_state.get(f"prestador_{i}")
-            if prestador: doc.add_paragraph(f"Tipo de prestador: {prestador}")
+            prestador = [pr for pr in ["P.PREM", "P.PREF"] if st.session_state.get(f"{pr}_{i}")
+            doc.add_paragraph("Tipo de prestador: " + ", ".join(prestador))
 
     # III. RECURSO HUMANO
     doc.add_heading("III. RECURSO HUMANO", level=2)
