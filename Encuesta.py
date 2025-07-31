@@ -1089,9 +1089,8 @@ if st.session_state.paso == 1:
             "",
             min_value=0,
             max_value=100,
-            value=0,
             step=1,
-        value=st.session_state.respuestas.get(number_key, 0),
+            value=st.session_state.respuestas.get(number_key, 0),
 
             key=number_key,
         )
