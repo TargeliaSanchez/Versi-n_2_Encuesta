@@ -1090,11 +1090,12 @@ if st.session_state.paso == 1:
             key=select_key,
         )
         guardar_respuesta(select_key, val)
+        num_valor_guardado = st.session_state.respuestas.get(number_key, 0)
         num = st.number_input(
             "",
             min_value=0,
             max_value=100,
-            value=st.session_state.respuestas.get(number_key, 0),
+            value=num_valor_guardado,
             step=1,
             key=number_key,
         )
