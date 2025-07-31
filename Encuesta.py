@@ -706,14 +706,22 @@ if st.session_state.paso == 1:
     
     col1, col2 = st.columns([4,4])
     with col1:
-        st.markdown("**DEPARTAMENTO**")
-        departamento=st.text_input(
-            "DEPARTAMENTO", 
-            value=st.session_state.respuestas.get("departamento", ""),
-            label_visibility="collapsed", 
-            key="departamento"
+        departamento = st.text_input(
+        "DEPARTAMENTO",
+        value=st.session_state.respuestas.get("departamento", ""),
+        key="departamento"
         )
-        guardar_respuesta("departamento", departamento)
+       guardar_respuesta("departamento", departamento)
+        
+        
+        #st.markdown("**DEPARTAMENTO**")
+        #departamento=st.text_input(
+        #    "DEPARTAMENTO", 
+        #    value=st.session_state.respuestas.get("departamento", ""),
+        #    label_visibility="collapsed", 
+        #    key="departamento"
+        #)
+        #guardar_respuesta("departamento", departamento)
     with col2:
         st.markdown("**MUNICIPIO**")
         municipio=st.text_input(
