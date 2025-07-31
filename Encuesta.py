@@ -207,7 +207,7 @@ def exportar_primera_pagina():
             modalidades = [m for m in ["AMB", "HOS", "DOM", "JORN", "UNMOV", "TMIA", "TMNIA", "TE", "TMO"] if st.session_state.get(f"{m}_{i}")]
             doc.add_paragraph("Modalidades de prestación: " + ", ".join(modalidades))
 
-            prestador = [pr for pr in ["P.PREM", "P.PREF"] if st.session_state.get(f"{pr}_{i}")
+            prestador = [pr for pr in ["PREM", "PREF"] if st.session_state.get(f"{pr}_{i}")
             doc.add_paragraph("Tipo de prestador: " + ", ".join(prestador))
 
     # III. RECURSO HUMANO
