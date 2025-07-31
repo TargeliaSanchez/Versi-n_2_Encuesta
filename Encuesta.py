@@ -934,34 +934,67 @@ if st.session_state.paso == 1:
             col1, col2, col3 = st.columns(3)
             with col1:
                 st.markdown("**Intramural**")
-                mod_AMB = st.checkbox("AMB", key=f"AMB_{i}")
+                mod_AMB = st.checkbox(
+                    "AMB",
+                    value=st.session_state.respuestas.get(f"AMB_{i}",False),
+                    key=f"AMB_{i}")
                 guardar_respuesta(f"AMB_{i}", mod_AMB)
-                mod_HOS = st.checkbox("HOS", key=f"HOS_{i}")
+                mod_HOS = st.checkbox(
+                    "HOS",
+                    value=st.session_state.respuestas.get(f"HOS_{i}",False),
+                    key=f"HOS_{i}")
                 guardar_respuesta(f"HOS_{i}", mod_HOS)
             with col2:
                 st.markdown("**Extramural**")
-                mod_DOM = st.checkbox("DOM", key=f"DOM_{i}")
+                mod_DOM = st.checkbox(
+                    "DOM",
+                    value=st.session_state.respuestas.get(f"DOM_{i}",False),
+                    key=f"DOM_{i}")
                 guardar_respuesta(f"DOM_{i}", mod_DOM)
-                mod_JORN = st.checkbox("JORN", key=f"JORN_{i}")
+                mod_JORN = st.checkbox(
+                    "JORN",
+                    value=st.session_state.respuestas.get(f"JORN_{i}",False),
+                    key=f"JORN_{i}")
                 guardar_respuesta(f"JORN_{i}", mod_JORN)
-                mod_UNMOV = st.checkbox("UN.MOV", key=f"UNMOV_{i}")
+                mod_UNMOV = st.checkbox(
+                    "UN.MOV",
+                    value=st.session_state.respuestas.get(f"UNMOV_{i}",False),
+                    key=f"UNMOV_{i}")
                 guardar_respuesta(f"UNMOV_{i}", mod_UNMOV)
             with col3:
                 st.markdown("**Telemedicina**")
-                mod_TMIA = st.checkbox("TM-IA", key=f"TMIA_{i}")
+                mod_TMIA = st.checkbox(
+                    "TM-IA",
+                    value=st.session_state.respuestas.get(f"TMIA_{i}",False),
+                    key=f"TMIA_{i}")
                 guardar_respuesta(f"TMIA_{i}", mod_TMIA)
-                mod_TMNIA = st.checkbox("TM-NIA", key=f"TMNIA_{i}")
+                mod_TMNIA = st.checkbox(
+                    "TM-NIA",
+                    value=st.session_state.respuestas.get(f"TMNIA_{i}",False),
+                    key=f"TMNIA_{i}")
                 guardar_respuesta(f"TMNIA_{i}", mod_TMNIA)
-                mod_TE = st.checkbox("TE", key=f"TE_{i}")
+                mod_TE = st.checkbox(
+                    "TE",
+                    value=st.session_state.respuestas.get(f"TE_{i}",False),
+                    key=f"TE_{i}")
                 guardar_respuesta(f"TE_{i}", mod_TE)
-                mod_TMO = st.checkbox("TMO", key=f"TMO_{i}")
+                mod_TMO = st.checkbox(
+                    "TMO",
+                    value=st.session_state.respuestas.get(f"TMO_{i}",False),
+                    key=f"TMO_{i}")
                 guardar_respuesta(f"TMO_{i}", mod_TMO)
         with col_prestador:
             st.markdown("<div style='text-align: center;'><b>Prestador telemedicina</b></div>", unsafe_allow_html=True)
             st.markdown("marque con una X el tipo de prestador")
-            prestador_P_REM = st.checkbox("P.REM", key=f"prestador_P_REM_{i}")
+            prestador_P_REM = st.checkbox(
+                "P.REM",
+                value=st.session_state.respuestas.get(f"prestador_P_REM_{i}",False),
+                key=f"prestador_P_REM_{i}")
             guardar_respuesta(f"prestador_P_REM_{i}", prestador_P_REM)
-            prestador_P_REF = st.checkbox("P.REF", key=f"prestador_P_REF_{i}")
+            prestador_P_REF = st.checkbox(
+                "P.REF", 
+                value=st.session_state.respuestas.get(f"prestador_P_REF_{i}",False)
+                key=f"prestador_P_REF_{i}")
             guardar_respuesta(f"prestador_P_REF_{i}", prestador_P_REF)
 
 ################################ Información recursos humanos
