@@ -851,25 +851,25 @@ if st.session_state.paso == 1:
             </div>
             """, unsafe_allow_html=True)
 ################
-            opciones_servicios = [
-                "Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional",
-                "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación",
-                "Psicología", "Trabajo Social", "Nutrición"]
+        opciones_servicios = [
+            "Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional",
+            "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación",
+            "Psicología", "Trabajo Social", "Nutrición"]
 
 # Usa st.session_state, y pon el valor por defecto en mayúscula
-            valor_guardado = st.session_state.respuestas.get(f"servicio_{i}", "Seleccione")
+        valor_guardado = st.session_state.respuestas.get(f"servicio_{i}", "Seleccione")
 
 # Busca el índice del valor guardado en la lista de opciones
-            index = opciones_servicios.index(valor_guardado) if valor_guardado in opciones_servicios else 0
+        index = opciones_servicios.index(valor_guardado) if valor_guardado in opciones_servicios else 0
 
-            servicio = st.selectbox(
-                "",
-                opciones_servicios,
-                index=index,
-                key=f"servicio_{i}"
-            )
+        servicio = st.selectbox(
+            "",
+            opciones_servicios,
+            index=index,
+            key=f"servicio_{i}"
+        )
 
-            guardar_respuesta(f"servicio_{i}", servicio)
+        guardar_respuesta(f"servicio_{i}", servicio)
 
 ###################
         
