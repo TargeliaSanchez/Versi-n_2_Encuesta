@@ -853,6 +853,7 @@ if st.session_state.paso == 1:
         servicio = st.selectbox(
             "",
             options=["Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional", "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación", "Psicología", "Trabajo Social", "Nutrición"],
+            value=st.session_state.respuestas.get(f"{servicio}_{i}", "Seleccione"),
             key=f"servicio_{i}"
         )   
         guardar_respuesta(f"servicio_{i}", servicio)
