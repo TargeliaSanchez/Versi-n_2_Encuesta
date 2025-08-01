@@ -855,11 +855,8 @@ if st.session_state.paso == 1:
             "Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional",
             "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación",
             "Psicología", "Trabajo Social", "Nutrición"]
-
-# Usa st.session_state, y pon el valor por defecto en mayúscula
+        
         valor_guardado = st.session_state.respuestas.get(f"servicio_{i}", "Seleccione")
-
-# Busca el índice del valor guardado en la lista de opciones
         index = opciones_servicios.index(valor_guardado) if valor_guardado in opciones_servicios else 0
 
         servicio = st.selectbox(
@@ -870,6 +867,7 @@ if st.session_state.paso == 1:
         )
 
         guardar_respuesta(f"servicio_{i}", servicio)
+        col_dias,sep1,col_areas, sep2,col_modalidades,col_prestador = st.columns([1,0.1,1.3,0.1,1.8,1])
 
 ###################
         
