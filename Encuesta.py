@@ -851,6 +851,8 @@ if st.session_state.paso == 1:
             </div>
             """, unsafe_allow_html=True)
 ################
+        if "respuestas" not in st.session_state:
+            st.session_state.respuestas = {}
         opciones_servicios = [
             "Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional",
             "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación",
