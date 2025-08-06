@@ -4068,8 +4068,7 @@ elif st.session_state.paso == 33:
     img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
 
 ################### para descargar la gráfica
-# Antes de mostrar la imagen o descargarla, puedes hacer:
-    img_buffer.seek(0)
+
     st.download_button(
         label="Descargar imagen",
         data=img_buffer,
@@ -4077,8 +4076,6 @@ elif st.session_state.paso == 33:
         mime="image/png"
     )
     img_buffer.seek(0)
-    img_base64 = base64.b64encode(img_buffer.read()).decode()
-    st.text_area("Imagen en base64 (para pegar en HTML):", value=f'data:image/png;base64,{img_base64}', height=100)
 
 #----------------------------------- DEFINIR SEPARADOR PARA LOS ARCHIVOS EN EXCEL----------------------------------------------# 
     separador = st.radio(
