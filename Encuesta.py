@@ -617,7 +617,7 @@ opciones = [
     ("1 - No cumple", 1),
     ("2 - Incipiente", 2),
     ("3 - Aceptable", 3),
-    ("4 - Satisfecho", 4),
+    ("4 - Satisfactorio", 4),
     ("5 - Óptimo", 5)
 ]
 
