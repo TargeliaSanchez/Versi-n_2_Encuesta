@@ -787,7 +787,7 @@ if st.session_state.paso == 1:
 
     with col3:
         st.markdown("**NIVEL DE ATENCIÓN DEL PRESTADOR**")
-        opciones_nivel = [("Seleccione una opción...",0),("1",1),("2",2),("3",3)]
+        opciones_nivel = [("Seleccione una opción...",0),("1",1),("2",2),("3",3),("No aplica",4)]
         valor_guardado = st.session_state.respuestas.get("nivel_atencion_prestador", 0)
         index = next((i for i, op in enumerate(opciones_nivel) if op[1] == valor_guardado), 0)
         seleccion = st.selectbox(
