@@ -1442,7 +1442,7 @@ elif st.session_state.paso == 3:
     faltan = [
         key for key in preguntas_obligatorias
         if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
-        ]
+    ]
     if faltan:
         st.warning("Responde todas las preguntas antes de continuar.")
 
@@ -1470,7 +1470,7 @@ elif st.session_state.paso == 3:
 # Botón Siguiente (solo si no es el último paso válido)
     with col2:
         if indice < len(pasos) - 1:
-            if st.button("Siguiente"):
+            if st.button("Siguiente", disabled=bool(faltan)):
                 st.session_state.paso = pasos[indice + 1]
                 st.rerun()
 
