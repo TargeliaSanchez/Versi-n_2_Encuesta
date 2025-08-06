@@ -1208,15 +1208,13 @@ if st.session_state.paso == 1:
     }
     </style>
     """, unsafe_allow_html=True)
-    if "respuestas" not in st.session_state:
-        st.session_state.respuestas = {}
     
     for i in range(1, 7):
         rep = st.text_input(
             label="",
-            value = st.session_state.respuestas.get(f"rep_inst{i}", ""),
             placeholder=f"{i}. Digite nombre completo [Cargo]",
             key=f"rep_inst_{i}",
+            value = st.session_state.respuestas.get(f"rep_inst{i}", ""),
         )
         st.session_state.respuestas[f"rep_inst_{i}"] = rep
         guardar_respuesta(f"rep_inst_{i}", rep)
@@ -1241,9 +1239,9 @@ if st.session_state.paso == 1:
     for i in range(1, 3):
         prof = st.text_input(
             label="",
-            value = st.session_state.respuestas.get(f"prof_verif_{i}", ""),
             placeholder=f"{i}. Digite nombre completo", 
-            key=f"prof_verif_{i}"
+            key=f"prof_verif_{i}",
+            value = st.session_state.respuestas.get(f"prof_verif_{i}", ""),
         )
         st.session_state.respuestas[f"prof_verif_{i}"] = prof
         guardar_respuesta(f"prof_verif_{i}", prof)
