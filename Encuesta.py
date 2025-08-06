@@ -4068,7 +4068,9 @@ elif st.session_state.paso == 33:
     img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
 
 ################### para descargar la gráfica
-
+# Antes de mostrar la imagen o descargarla, puedes hacer:
+    img_buffer.seek(0)
+    st.image(img_buffer, caption="Nivel de implementación", use_column_width=True)
     st.download_button(
         label="Descargar imagen",
         data=img_buffer,
