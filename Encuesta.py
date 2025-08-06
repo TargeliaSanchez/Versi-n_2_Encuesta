@@ -4060,6 +4060,17 @@ elif st.session_state.paso == 33:
         plt.close(fig)
         img_buffer.seek(0)
         return img_buffer
+        
+################### para descargar la gráfica
+
+    st.image(img_buffer, caption="Nivel de implementación", use_column_width=True)
+    st.download_button(
+        label="Descargar gráfica",
+        data=img_buffer,
+        file_name="grafica.png",
+        mime="image/png"
+    )
+    
 #-------------------------------------------------------------------------------------------------------------------------------#    
 #-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
 
