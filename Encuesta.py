@@ -1446,17 +1446,26 @@ elif st.session_state.paso == 3:
                     key=key
                     )
                 guardar_respuesta(key, val[1])
-                #val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
-                #guardar_respuesta(f"pD1_1_{i+1}", val[1])
+
 
     with st.container():
         col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("**Calificación D1.1:**")
-            val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D1_1")
-            guardar_respuesta("D1_1", val[1])
+            key = "D1_1"
+            valor_guardado = st.session_state.respuestas.get(key, 0)
+            index = next((j for j, op in enumerate(opciones2) if op[1] == valor_guardado), 0)
+
+            val = st.selectbox(
+                "",
+                opciones2,
+                format_func=lambda x: x[0],
+                index=index,
+                key=key
+                )
+            guardar_respuesta(key, val[1])
         with col2:
-            obs = st.text_area("Hallazgos", key="obsD1_1")
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD1_1", ""), key="obsD1_1")
             guardar_respuesta("obsD1_1", obs)
 ### página 3
     alcance = st.session_state.alcance_evaluacion
