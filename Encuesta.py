@@ -1214,7 +1214,7 @@ if st.session_state.paso == 1:
             label="",
             placeholder=f"{i}. Digite nombre completo [Cargo]",
             key=f"rep_inst_{i}",
-            value = st.session_state.respuestas.get(f"rep_inst{i}", ""),
+            value = st.session_state.respuestas.get(f"rep_inst_{i}", ""),
         )
         st.session_state.respuestas[f"rep_inst_{i}"] = rep
         guardar_respuesta(f"rep_inst_{i}", rep)
