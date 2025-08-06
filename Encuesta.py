@@ -1467,6 +1467,7 @@ elif st.session_state.paso == 3:
         with col2:
             obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD1_1", ""), key="obsD1_1")
             guardar_respuesta("obsD1_1", obs)
+             
 ### página 3
     alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
