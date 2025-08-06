@@ -1248,7 +1248,7 @@ if st.session_state.paso == 1:
     #    guardar_respuesta(f"prof_verif_{i}", prof)
 
     
-    for i in range(1, 3):
+    for i in range(1, 4):
         prof = st.text_input(
             label= "",
             placeholder=f"{i}. Digite nombre completo", 
