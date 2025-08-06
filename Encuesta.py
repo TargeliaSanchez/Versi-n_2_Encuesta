@@ -1511,10 +1511,10 @@ elif st.session_state.paso == 4:
             st.markdown(notas_d12[0])
 
     preguntas_d12 = [
-        "La institución cuenta con un equipo de rehabilitación multidisciplinario.",
-        "El equipo de rehabilitación está conformado por profesionales de diferentes disciplinas.",
-        "El equipo de rehabilitación participa en la planificación y ejecución de los tratamientos.",
-        "El equipo de rehabilitación realiza reuniones periódicas para evaluar el progreso de los pacientes.",
+        "Los servicios de rehabilitación habilitados cuentan continuamente con profesionales contratados o vinculados. ",
+        "La disponibilidad del talento humano de rehabilitación es adecuada a la capacidad instalada versus la demanda de los servicios.",
+        "La institución define el perfil del talento humano de rehabilitación según las necesidades de atención de los usuarios.",
+        "La institución designa un líder, coordinador o jefe de los servicios de rehabilitación.",
     ]
     for i, texto in enumerate(preguntas_d12):
         col1, col2 = st.columns([4, 1])
@@ -2813,6 +2813,18 @@ elif st.session_state.paso == 19:
     if notas_d28[0]:
         with st.expander("Nota"):
             st.markdown(notas_d28[0])
+
+    st.markdown("""
+                <div style="
+                background-color: #f5f5f5 ;
+                color: black;
+                padding: 4px 10px;
+                font-weight: normal;
+                border-radius: 0.5px;
+                "><b> El plan de atención de los usuarios incluye: 
+                </div>
+                """, unsafe_allow_html=True)
+    
     preguntas_d2_8 = [
         "Tratamiento médico: manejo farmacológico, procedimientos, ayudas técnicas, remisión a otros servicios [cuándo es necesario].",
         "Intervención terapéutica: terapias, psicología y otros servicios, modalidades de atención, intensidad y duración.",
