@@ -1089,6 +1089,7 @@ if st.session_state.paso == 1:
         "Psicología",
         "Trabajo Social",
         "Nutrición",
+        "Otros profesionales",
     ]
 
 # Para layout en 4 columnas
