@@ -1237,15 +1237,14 @@ if st.session_state.paso == 1:
 
 
     for i in range(1, 3):
-        key=f"prof_verif_{i}"
         prof = st.text_input(
-            "",
+            label= "",
             placeholder=f"{i}. Digite nombre completo", 
-            key=key,
-            value = st.session_state.respuestas.get(key, ""),
+            key=f"prof_verif_{i}",
+            value = st.session_state.respuestas.get(f"prof_verif_{i}", ""),
         )
-        st.session_state.respuestas[key] = prof
-        guardar_respuesta(key, prof)
+        st.session_state.respuestas[f"prof_verif_{i}"] = prof
+        guardar_respuesta(f"prof_verif_{i}", prof)
 
     #---------------------------------------------------
     #col1, col2 = st.columns([5, 1])
