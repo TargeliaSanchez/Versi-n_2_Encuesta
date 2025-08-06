@@ -1449,7 +1449,7 @@ elif st.session_state.paso == 3:
 
 
     with st.container():
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([2, 4])
         with col1:
             st.markdown("**Calificación D1.1:**")
             key = "D1_1"
