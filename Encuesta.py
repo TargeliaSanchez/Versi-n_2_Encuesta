@@ -1168,8 +1168,6 @@ if st.session_state.paso == 1:
     guardar_respuesta("aclaraciones", aclaraciones)
 
 
-    #st.markdown("<hr class='linea'>", unsafe_allow_html=True)
-
 
     st.markdown("""
                 <div style="
@@ -1215,7 +1213,8 @@ if st.session_state.paso == 1:
         rep = st.text_input(
             label="",
             placeholder=f"{i}. Digite nombre completo [Cargo]",
-            key=f"rep_inst_{i}"
+            key=f"rep_inst_{i}",
+            value = st.session_state.respuestas.get(f"rep_inst{i}", ""),
         )
         guardar_respuesta(f"rep_inst_{i}", rep)
 
