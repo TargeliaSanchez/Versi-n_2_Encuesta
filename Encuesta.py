@@ -1208,7 +1208,9 @@ if st.session_state.paso == 1:
     }
     </style>
     """, unsafe_allow_html=True)
-
+    if "respuestas" not in st.session_state:
+        st.session_state.respuestas = {}
+    
     for i in range(1, 7):
         rep = st.text_input(
             label="",
@@ -1216,6 +1218,7 @@ if st.session_state.paso == 1:
             key=f"rep_inst_{i}",
             value = st.session_state.respuestas.get(f"rep_inst{i}", ""),
         )
+        st.session_state.respuestas[f"rep_inst_{i}"] = rep
         guardar_respuesta(f"rep_inst_{i}", rep)
 
     #st.markdown("<hr class='linea'>", unsafe_allow_html=True)
