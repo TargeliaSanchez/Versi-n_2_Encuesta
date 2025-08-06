@@ -1437,14 +1437,6 @@ elif st.session_state.paso == 3:
             with col2:
                 val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
                 guardar_respuesta(f"pD1_1_{i+1}", val[1])
-##---------CONDICIÓN
-    preguntas_obligatorias = [f"pD1_1_{i+1}" for i in range(4)]
-    faltan = [
-        key for key in preguntas_obligatorias
-        if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
-    ]
-    if faltan:
-        st.warning("Responde todas las preguntas antes de continuar.")
 
     with st.container():
         col1, col2 = st.columns([1, 4])
@@ -1464,10 +1456,19 @@ elif st.session_state.paso == 3:
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
+    preguntas_obligatorias = [f"pD1_1_{i+1}" for i in range(4)]
+    faltan = [
+        key for key in preguntas_obligatorias
+        if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
+    ]
+
+    if faltan:
+        st.warning("Responde todas las preguntas antes de continuar.")
+    # st.write(f"Faltan: {faltan}")  # Útil para depuración
+
+    col1, col2 = st.columns([5, 1])
     with col1:
         st.button("◀️ Anterior", on_click=anterior)
-
-# Botón Siguiente (solo si no es el último paso válido)
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
