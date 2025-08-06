@@ -1437,6 +1437,14 @@ elif st.session_state.paso == 3:
             with col2:
                 val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
                 guardar_respuesta(f"pD1_1_{i+1}", val[1])
+##---------CONDICIÓN
+    preguntas_obligatorias = [f"pD1_1_{i+1}" for i in range(4)]
+    faltan = [
+        key for key in preguntas_obligatorias
+        if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
+        ]
+    if faltan:
+        st.warning("Responde todas las preguntas antes de continuar.")
 
     with st.container():
         col1, col2 = st.columns([1, 4])
