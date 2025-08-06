@@ -1156,13 +1156,17 @@ if st.session_state.paso == 1:
                 font-weight: normal;
                 border-radius: 0.5px;
                 ">
-                Registre <b>Registre aclaraciones pertinentes sobre la oferta de servicios de rehabilitación y el talento humano relacionado:</b> variaciones en la disponibilidad de los servicios, otras áreas donde se prestan servicios de rehabilitación. 
+                Registre <b>aclaraciones pertinentes sobre la oferta de servicios de rehabilitación y el talento humano relacionado:</b> variaciones en la disponibilidad de los servicios, otras áreas donde se prestan servicios de rehabilitación. 
                 </div>
                 """, unsafe_allow_html=True)
     
 
-    aclaraciones = st.text_area("", height=80, key="aclaraciones")
+    aclaraciones = st.text_area("",
+                                value = st.session_state.respuestas.get("aclaraciones", ""),
+                                height=80, 
+                                key="aclaraciones")
     guardar_respuesta("aclaraciones", aclaraciones)
+
 
     #st.markdown("<hr class='linea'>", unsafe_allow_html=True)
 
