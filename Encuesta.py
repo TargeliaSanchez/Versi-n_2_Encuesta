@@ -1435,8 +1435,19 @@ elif st.session_state.paso == 3:
             #st.markdown("------------------------------")
     
             with col2:
-                val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
-                guardar_respuesta(f"pD1_1_{i+1}", val[1])
+                key = f"pD1_1_{i+1}"
+                valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
+                index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
+                val = st.selectbox(
+                    "",
+                    opciones,
+                    format_func=lambda x: x[0],
+                    index=index,
+                    key=key
+                    )
+                guardar_respuesta(key, val[1])
+                #val = st.selectbox("",opciones,format_func=lambda x: x[0],key=f"pD1_1_{i+1}")
+                #guardar_respuesta(f"pD1_1_{i+1}", val[1])
 
     with st.container():
         col1, col2 = st.columns([1, 4])
