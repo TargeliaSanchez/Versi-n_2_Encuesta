@@ -4061,6 +4061,12 @@ elif st.session_state.paso == 33:
         img_buffer.seek(0)
         return img_buffer
         
+    
+#-------------------------------------------------------------------------------------------------------------------------------#    
+#-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
+
+    img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
+
 ################### para descargar la gráfica
 
     st.image(img_buffer, caption="Nivel de implementación", use_column_width=True)
@@ -4070,11 +4076,6 @@ elif st.session_state.paso == 33:
         file_name="grafica.png",
         mime="image/png"
     )
-    
-#-------------------------------------------------------------------------------------------------------------------------------#    
-#-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
-
-    img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
 
 #----------------------------------- DEFINIR SEPARADOR PARA LOS ARCHIVOS EN EXCEL----------------------------------------------# 
     separador = st.radio(
