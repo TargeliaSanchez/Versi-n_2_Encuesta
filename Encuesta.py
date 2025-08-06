@@ -4065,7 +4065,7 @@ elif st.session_state.paso == 33:
 #-------------------------------------------------------------------------------------------------------------------------------#    
 #-----------------------------Llamar esta función al final con el puntaje global como porcentaje--------------------------------#
 
-    img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
+   # img_buffer = graficar_nivel_implementacion(global_pct, show=True, figsize=(8,2))
 
 ################### para descargar la gráfica
 
