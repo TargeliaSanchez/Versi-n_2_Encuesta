@@ -4070,7 +4070,6 @@ elif st.session_state.paso == 33:
 ################### para descargar la gráfica
 # Antes de mostrar la imagen o descargarla, puedes hacer:
     img_buffer.seek(0)
-    st.image(img_buffer, caption="Nivel de implementación", use_column_width=True)
     st.download_button(
         label="Descargar imagen",
         data=img_buffer,
