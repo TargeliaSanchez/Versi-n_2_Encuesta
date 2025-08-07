@@ -1477,7 +1477,7 @@ elif st.session_state.paso == 3:
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
-    preguntas_obligatorias = [f"pD1_1_{i+1}","D1_1" for i in range(4)] + ["D1_1", "obsD1_1"]
+    preguntas_obligatorias = [f"pD1_1_{i+1}" for i in range(4)] + ["D1_1", "obsD1_1"]
     faltan = [
         key for key in preguntas_obligatorias
         if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
