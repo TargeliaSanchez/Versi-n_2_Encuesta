@@ -1905,7 +1905,7 @@ if st.session_state.paso == 7:
             #st.markdown("------------------------------")
     ### Nuevo ajuste
             with col2:
-                key = f"pD1_4_{i+1}"
+                key = f"pD1_5_{i+1}"
                 valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
                 index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
                 val = st.selectbox(
