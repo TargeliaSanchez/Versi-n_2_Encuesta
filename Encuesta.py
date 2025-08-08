@@ -2363,7 +2363,7 @@ elif st.session_state.paso == 11:
             st.markdown(texto)
     ### Nuevo ajuste
             with col2:
-                key = f"pD1_9_{i+1}"
+                key = f"pD2_1_{i+1}"
                 valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
                 index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
                 val = st.selectbox(
@@ -2379,8 +2379,8 @@ elif st.session_state.paso == 11:
     with st.container():
         col1, col2 = st.columns([2, 4])
         with col1:
-            st.markdown("**Calificación D1.9:**")
-            key = "D1_9"
+            st.markdown("**Calificación D2.1:**")
+            key = "D2_1"
             valor_guardado = st.session_state.respuestas.get(key, 0)
             index = next((j for j, op in enumerate(opciones2) if op[1] == valor_guardado), 0)
 
@@ -2393,8 +2393,8 @@ elif st.session_state.paso == 11:
                 )
             guardar_respuesta(key, val[1])
         with col2:
-            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD1_9", ""), key="obsD1_9")
-            guardar_respuesta("obsD1_9", obs)
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD2_1", ""), key="obsD2_1")
+            guardar_respuesta("obsD2_1", obs)
              
     
     ### página 3
@@ -2406,7 +2406,7 @@ elif st.session_state.paso == 11:
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
-    preguntas_obligatorias = [f"pD1_9_{i+1}" for i in range(4)] + ["D1_9", "obsD1_9"]
+    preguntas_obligatorias = [f"pD2_1_{i+1}" for i in range(4)] + ["D2_1", "obsD2_1"]
     faltan = [
         key for key in preguntas_obligatorias
         if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
