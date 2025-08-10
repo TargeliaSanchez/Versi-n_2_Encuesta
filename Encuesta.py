@@ -4552,38 +4552,67 @@ elif st.session_state.paso == 30:
         with col1:
             st.markdown(texto)
             #st.markdown("-----------------------")
-        with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_1_{i+1}")
-            guardar_respuesta(f"pD3_1_{i+1}", val[1])
+    ### Nuevo ajuste
+            with col2:
+                key = f"pD3_1_{i+1}"
+                valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
+                index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
+                val = st.selectbox(
+                    "",
+                    opciones,
+                    format_func=lambda x: x[0],
+                    index=index,
+                    key=key
+                    )
+                guardar_respuesta(key, val[1])
+
+
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 4])
         with col1:
             st.markdown("**Calificación D3.1:**")
-            val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_1")
-            guardar_respuesta("D3_1", val[1])
-        with col2:
-            obs = st.text_area("Hallazgos", key="obsD3_1")
-            guardar_respuesta("obsD3_1", obs)
+            key = "D3_1"
+            valor_guardado = st.session_state.respuestas.get(key, 0)
+            index = next((j for j, op in enumerate(opciones2) if op[1] == valor_guardado), 0)
 
+            val = st.selectbox(
+                "",
+                opciones2,
+                format_func=lambda x: x[0],
+                index=index,
+                key=key
+                )
+            guardar_respuesta(key, val[1])
+        with col2:
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD3_1", ""), key="obsD3_1")
+            guardar_respuesta("obsD3_1", obs)
+             
+    
+    ### página 3
     alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
-    # Obtener el índice del paso actual en la lista de pasos válidos
+# Obtener el índice del paso actual en la lista de pasos válidos
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
-    with col1:
-    # Botón Anterior (solo si no es el primer paso válido)
-        if indice > 0:
-            if st.button("Anterior"):
-                st.session_state.paso = pasos[indice - 1]
-                st.rerun()
+    preguntas_obligatorias = [f"pD3_1_{i+1}" for i in range(4)] + ["D3_1", "obsD3_1"]
+    faltan = [
+        key for key in preguntas_obligatorias
+        if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
+    ]
 
-    # Botón Siguiente (solo si no es el último paso válido)
+    if faltan:
+        st.warning("Responde todas las preguntas antes de continuar.")
+    # st.write(f"Faltan: {faltan}")  # Útil para depuración
+
+    col1, col2 = st.columns([5, 1])
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
         if indice < len(pasos) - 1:
-            if st.button("Siguiente"):
+            if st.button("Siguiente", disabled=bool(faltan)):
                 st.session_state.paso = pasos[indice + 1]
                 st.rerun()
 
@@ -4636,39 +4665,67 @@ elif st.session_state.paso == 31:
         with col1:
             st.markdown(texto)
             #st.markdown("-----------------------")
-        with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_2_{i+1}")
-            guardar_respuesta(f"pD3_2_{i+1}", val[1])
+    ### Nuevo ajuste
+            with col2:
+                key = f"pD3_2_{i+1}"
+                valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
+                index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
+                val = st.selectbox(
+                    "",
+                    opciones,
+                    format_func=lambda x: x[0],
+                    index=index,
+                    key=key
+                    )
+                guardar_respuesta(key, val[1])
+
+
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 4])
         with col1:
             st.markdown("**Calificación D3.2:**")
-            val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_2")
-            guardar_respuesta("D3_2", val[1])
-        with col2:
-            obs = st.text_area("Hallazgos", key="obsD3_2")
-            guardar_respuesta("obsD3_2", obs)
-    col1, col2= st.columns([5, 1])
+            key = "D3_2"
+            valor_guardado = st.session_state.respuestas.get(key, 0)
+            index = next((j for j, op in enumerate(opciones2) if op[1] == valor_guardado), 0)
 
+            val = st.selectbox(
+                "",
+                opciones2,
+                format_func=lambda x: x[0],
+                index=index,
+                key=key
+                )
+            guardar_respuesta(key, val[1])
+        with col2:
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD3_2", ""), key="obsD3_2")
+            guardar_respuesta("obsD3_2", obs)
+             
+    
+    ### página 3
     alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
-    # Obtener el índice del paso actual en la lista de pasos válidos
+# Obtener el índice del paso actual en la lista de pasos válidos
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
-    with col1:
-    # Botón Anterior (solo si no es el primer paso válido)
-        if indice > 0:
-            if st.button("Anterior"):
-                st.session_state.paso = pasos[indice - 1]
-                st.rerun()
+    preguntas_obligatorias = [f"pD3_2_{i+1}" for i in range(4)] + ["D3_2", "obsD3_2"]
+    faltan = [
+        key for key in preguntas_obligatorias
+        if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
+    ]
 
-    # Botón Siguiente (solo si no es el último paso válido)
+    if faltan:
+        st.warning("Responde todas las preguntas antes de continuar.")
+    # st.write(f"Faltan: {faltan}")  # Útil para depuración
+
+    col1, col2 = st.columns([5, 1])
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
         if indice < len(pasos) - 1:
-            if st.button("Siguiente"):
+            if st.button("Siguiente", disabled=bool(faltan)):
                 st.session_state.paso = pasos[indice + 1]
                 st.rerun()
 
@@ -4718,45 +4775,67 @@ elif st.session_state.paso == 32:
         with col1:
             st.markdown(texto)
             #st.markdown("-----------------------")
-        with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD3_3_{i+1}")
-            guardar_respuesta(f"pD3_3_{i+1}", val[1])
+    ### Nuevo ajuste
+            with col2:
+                key = f"pD3_3_{i+1}"
+                valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
+                index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
+                val = st.selectbox(
+                    "",
+                    opciones,
+                    format_func=lambda x: x[0],
+                    index=index,
+                    key=key
+                    )
+                guardar_respuesta(key, val[1])
+
+
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 4])
         with col1:
             st.markdown("**Calificación D3.3:**")
-            val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D3_3")
-            guardar_respuesta("D3_3", val[1])
+            key = "D3_3"
+            valor_guardado = st.session_state.respuestas.get(key, 0)
+            index = next((j for j, op in enumerate(opciones2) if op[1] == valor_guardado), 0)
+
+            val = st.selectbox(
+                "",
+                opciones2,
+                format_func=lambda x: x[0],
+                index=index,
+                key=key
+                )
+            guardar_respuesta(key, val[1])
         with col2:
-            obs = st.text_area("Hallazgos", key="obsD3_3")
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD3_3", ""), key="obsD3_3")
             guardar_respuesta("obsD3_3", obs)
-
+             
+    
+    ### página 3
     alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
-    # Obtener el índice del paso actual en la lista de pasos válidos
-    indice = pasos.index(paso_actual)
-
-    alcance = st.session_state.alcance_evaluacion
-    pasos = pasos_validos(alcance)
-    paso_actual = st.session_state.paso
-
-    # Obtener el índice del paso actual en la lista de pasos válidos
+# Obtener el índice del paso actual en la lista de pasos válidos
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
-    with col1:
-    # Botón Anterior (solo si no es el primer paso válido)
-        if indice > 0:
-            if st.button("Anterior"):
-                st.session_state.paso = pasos[indice - 1]
-                st.rerun()
+    preguntas_obligatorias = [f"pD3_3_{i+1}" for i in range(4)] + ["D3_3", "obsD3_3"]
+    faltan = [
+        key for key in preguntas_obligatorias
+        if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
+    ]
 
-    # Botón Siguiente (solo si no es el último paso válido)
+    if faltan:
+        st.warning("Responde todas las preguntas antes de continuar.")
+    # st.write(f"Faltan: {faltan}")  # Útil para depuración
+
+    col1, col2 = st.columns([5, 1])
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
         if indice < len(pasos) - 1:
-            if st.button("Siguiente"):
+            if st.button("Siguiente", disabled=bool(faltan)):
                 st.session_state.paso = pasos[indice + 1]
                 st.rerun()
 
