@@ -3794,7 +3794,7 @@ elif st.session_state.paso == 23:
                 )
             guardar_respuesta(key, val[1])
         with col2:
-            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD2_", ""), key="obsD2_12")
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD2_12", ""), key="obsD2_12")
             guardar_respuesta("obsD2_12", obs)
              
     
