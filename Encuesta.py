@@ -2363,7 +2363,7 @@ elif st.session_state.paso == 11:
             st.markdown(texto)
     ### Nuevo ajuste
             with col2:
-                key = f"pD2_1_{i+1}"
+                key = f"pD1_9_{i+1}"
                 valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
                 index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
                 val = st.selectbox(
@@ -2379,8 +2379,8 @@ elif st.session_state.paso == 11:
     with st.container():
         col1, col2 = st.columns([2, 4])
         with col1:
-            st.markdown("**Calificación D2.1:**")
-            key = "D2_1"
+            st.markdown("**Calificación D1.9:**")
+            key = "D1_9"
             valor_guardado = st.session_state.respuestas.get(key, 0)
             index = next((j for j, op in enumerate(opciones2) if op[1] == valor_guardado), 0)
 
@@ -2393,8 +2393,8 @@ elif st.session_state.paso == 11:
                 )
             guardar_respuesta(key, val[1])
         with col2:
-            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD2_1", ""), key="obsD2_1")
-            guardar_respuesta("obsD2_1", obs)
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD2_1", ""), key="obsD1_9")
+            guardar_respuesta("obsD1_9", obs)
              
     
     ### página 3
@@ -2406,7 +2406,7 @@ elif st.session_state.paso == 11:
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
-    preguntas_obligatorias = [f"pD2_1_{i+1}" for i in range(4)] + ["D2_1", "obsD2_1"]
+    preguntas_obligatorias = [f"pD1_9_{i+1}" for i in range(4)] + ["D1_9", "obsD1_9"]
     faltan = [
         key for key in preguntas_obligatorias
         if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
@@ -2475,42 +2475,69 @@ elif st.session_state.paso == 12:
         col1, col2 = st.columns([4, 1])
         with col1:
             st.markdown(texto)
-        with col2:
-            val = st.selectbox("", opciones, format_func=lambda x: x[0], key=f"pD2_1_{i+1}")
-            guardar_respuesta(f"pD2_1_{i+1}", val[1])
+    ### Nuevo ajuste
+            with col2:
+                key = f"pD2_1_{i+1}"
+                valor_guardado = st.session_state.respuestas.get(key, 0)  # El valor guardado, por defecto 0
+                index = next((j for j, op in enumerate(opciones) if op[1] == valor_guardado), 0)
+                val = st.selectbox(
+                    "",
+                    opciones,
+                    format_func=lambda x: x[0],
+                    index=index,
+                    key=key
+                    )
+                guardar_respuesta(key, val[1])
+
+
     with st.container():
-        col1, col2 = st.columns([1, 4])
+        col1, col2 = st.columns([2, 4])
         with col1:
             st.markdown("**Calificación D2.1:**")
-            val = st.selectbox("", opciones2, format_func=lambda x: x[0], key="D2_1")
-            guardar_respuesta("D2_1", val[1])
-        with col2:
-            obs = st.text_area("Hallazgos", key="obsD2_1")
-            guardar_respuesta("obsD2_1", obs)
+            key = "D2_1"
+            valor_guardado = st.session_state.respuestas.get(key, 0)
+            index = next((j for j, op in enumerate(opciones2) if op[1] == valor_guardado), 0)
 
+            val = st.selectbox(
+                "",
+                opciones2,
+                format_func=lambda x: x[0],
+                index=index,
+                key=key
+                )
+            guardar_respuesta(key, val[1])
+        with col2:
+            obs = st.text_area("Hallazgos", value=st.session_state.respuestas.get("obsD2_1", ""), key="obsD2_1")
+            guardar_respuesta("obsD2_1", obs)
+             
+    
+    ### página 3
     alcance = st.session_state.alcance_evaluacion
     pasos = pasos_validos(alcance)
     paso_actual = st.session_state.paso
 
-    # Obtener el índice del paso actual en la lista de pasos válidos
+# Obtener el índice del paso actual en la lista de pasos válidos
     indice = pasos.index(paso_actual)
 
     col1, col2= st.columns([5, 1])
-    with col1:
-    # Botón Anterior (solo si no es el primer paso válido)
-        if indice > 0:
-            if st.button("Anterior"):
-                st.session_state.paso = pasos[indice - 1]
-                st.rerun()
+    preguntas_obligatorias = [f"pD2_1_{i+1}" for i in range(4)] + ["D2_1", "obsD2_1"]
+    faltan = [
+        key for key in preguntas_obligatorias
+        if st.session_state.respuestas.get(key, None) in (None, "", "Seleccione", 0)
+    ]
 
-    # Botón Siguiente (solo si no es el último paso válido)
+    if faltan:
+        st.warning("Responde todas las preguntas antes de continuar.")
+    # st.write(f"Faltan: {faltan}")  # Útil para depuración
+
+    col1, col2 = st.columns([5, 1])
+    with col1:
+        st.button("◀️ Anterior", on_click=anterior)
     with col2:
         if indice < len(pasos) - 1:
-            if st.button("Siguiente"):
+            if st.button("Siguiente", disabled=bool(faltan)):
                 st.session_state.paso = pasos[indice + 1]
                 st.rerun()
-
-
 
 #################### Paso 11 - D2.2
 elif st.session_state.paso == 13:
