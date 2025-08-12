@@ -5044,7 +5044,7 @@ elif st.session_state.paso == 33:
         # 👇 BAJA la etiqueta lo más posible sin que se solape con la barra (ej. 0.15)
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
             ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
-        ax.plot(valor, 0, 'o', markersize=15, markeredgecolor='black', markerfacecolor='none')
+        #ax.plot(valor, 0, 'o', markersize=15, markeredgecolor='black', markerfacecolor='none')
         ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=8, weight='bold')
 
         ax.set_xlim(0, 100)
