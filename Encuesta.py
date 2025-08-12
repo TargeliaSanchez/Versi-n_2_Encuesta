@@ -1854,7 +1854,12 @@ elif st.session_state.paso == 6:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
