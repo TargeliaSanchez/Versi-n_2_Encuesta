@@ -5035,13 +5035,13 @@ elif st.session_state.paso == 33:
         rangos = list(range(0, 101, 10))
         colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
                    '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
-        #        etiquetas = [f"{i+1}-{i+10}" if i != 0 else "1-10" for i in rangos[:-1]]
+      
 
         fig, ax = plt.subplots(figsize=figsize, dpi=100)
         for i in range(len(colores)):
             left = rangos[i]
             width = 10
-            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white',height=0)
+            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white',height=5)
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
             ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
         #ax.plot(valor, 0, 'o', markersize=15, markeredgecolor='black', markerfacecolor='none')
