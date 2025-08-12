@@ -5035,20 +5035,36 @@ elif st.session_state.paso == 33:
         rangos = list(range(0, 101, 10))
         colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
                    '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
+        #a
+        etiquetas = [f"{i+1}-{i+10}" if i != 0 else "1-10" for i in rangos[:-1]]
 
         fig, ax = plt.subplots(figsize=figsize, dpi=100)
         for i in range(len(colores)):
             left = rangos[i]
             width = 10
-            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white')
-        # 👇 BAJA la etiqueta lo más posible sin que se solape con la barra (ej. 0.15)
+            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white',height=0)
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
             ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
         #ax.plot(valor, 0, 'o', markersize=15, markeredgecolor='black', markerfacecolor='none')
-        ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=7, weight='bold')
+        #ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=7, weight='bold')
+        
+        rango_idx = min(int(valor)//10, 9)  # 0 a 9
+        left = rangos[rango_idx]
+        right = left + 10
+        centro = left + 5
+
+    # 2. Dibuja un rectángulo debajo del número para destacarlo (opcional)
+        ax.add_patch(plt.Rectangle((left, -0.15), 10, 0.3, color='grey', alpha=0.2, zorder=2))
+
+    # 3. Escribe el número centrado en ese recuadro
+        ax.text(centro, 0, f"{valor:.0f}%", ha='center', va='center', fontsize=14, color='black', weight='bold', zorder=3)
+    
+    # Título debajo
+        ax.text(50, -0.65, "NIVEL DE IMPLEMENTACIÓN DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN", 
+                ha='center', va='top', fontsize=10, color='black')
+
 
         ax.set_xlim(0, 100)
-        #ax.set_xlim(0, 105)
         ax.set_ylim(-1.2, 1.2)  # 👈 Ajusta aquí para recortar el espacio arriba
         ax.axis('off')
 
