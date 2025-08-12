@@ -5046,7 +5046,7 @@ elif st.session_state.paso == 33:
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
             ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
         #ax.plot(valor, 0, 'o', markersize=15, markeredgecolor='black', markerfacecolor='none')
-        ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=7, weight='bold')
+        #ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=7, weight='bold')
 
         # 1. Determina en qué rango cae el valor
         rango_idx = min(int(valor)//10, 9)  # 0 a 9
