@@ -5048,7 +5048,7 @@ elif st.session_state.paso == 33:
         ax.text(valor, 0, f'{valor:.1f}', ha='center', va='center', fontsize=8, weight='bold')
 
         #ax.set_xlim(0, 100)
-        ax.set_xlim(-5, 105)
+        ax.set_xlim(0, 105)
         ax.set_ylim(-1.2, 1.2)  # 👈 Ajusta aquí para recortar el espacio arriba
         ax.axis('off')
 
