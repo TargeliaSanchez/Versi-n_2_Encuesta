@@ -847,7 +847,7 @@ if st.session_state.paso == 1:
             padding: 4px 10px;
             font-weight: normal;
             border-radius: 0.5px;
-            "><b> {i}. SERVICIOS DE REHABILITACIÓN HABILITADOS 
+            "><b> SERVICIOS DE REHABILITACIÓN HABILITADOS 
             </div>
             """, unsafe_allow_html=True)
 ################
