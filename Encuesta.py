@@ -5032,7 +5032,7 @@ elif st.session_state.paso == 33:
     def graficar_nivel_implementacion(valor, show=True, figsize=(4,1)):
         import matplotlib.pyplot as plt
         import io
-        rangos = list(range(0, 101, 10))
+        #rangos = list(range(0, 101, 10))
         colores = ['#7B002C', '#A11A2E', '#C63A2F', '#E76A32', '#F4A822',
                    '#FADA75', '#FCECB3', '#D6EDC7', '#A6D49F', '#4C7C2D']
         #a
