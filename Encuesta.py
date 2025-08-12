@@ -5042,7 +5042,7 @@ elif st.session_state.paso == 33:
         for i in range(len(colores)):
             left = rangos[i]
             width = 10
-            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white',height=1.5)
+            ax.barh(0, width=width, left=left, color=colores[i], edgecolor='white')
             label = f"{left+1}-{left+10}" if left != 0 else "1-10"
             ax.text(left + width/2, 0.6, label, ha='center', va='bottom', fontsize=9)
         #ax.plot(valor, 0, 'o', markersize=15, markeredgecolor='black', markerfacecolor='none')
