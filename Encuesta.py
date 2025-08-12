@@ -856,7 +856,7 @@ if st.session_state.paso == 1:
             st.session_state.respuestas = {}
         opciones_servicios = [
             "Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional",
-            "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación",
+            "Terapia Respiratoria", "Esp. medicina Física y Rehabilitación",
             "Psicología", "Trabajo Social", "Nutrición","Otros profesionales"]
         
         valor_guardado = st.session_state.respuestas.get(f"servicio_{i}", "Seleccione")
@@ -1609,7 +1609,12 @@ elif st.session_state.paso == 4:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -1725,7 +1730,12 @@ elif st.session_state.paso == 5:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -1961,7 +1971,12 @@ if st.session_state.paso == 7:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2077,7 +2092,12 @@ elif st.session_state.paso == 8:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2193,7 +2213,12 @@ elif st.session_state.paso == 9:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2306,7 +2331,12 @@ elif st.session_state.paso == 10:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2419,7 +2449,12 @@ elif st.session_state.paso == 11:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2533,7 +2568,12 @@ elif st.session_state.paso == 12:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2646,7 +2686,12 @@ elif st.session_state.paso == 13:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2760,7 +2805,12 @@ elif st.session_state.paso == 14:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2871,7 +2921,12 @@ elif st.session_state.paso == 15:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -2997,7 +3052,12 @@ elif st.session_state.paso == 16:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3112,7 +3172,12 @@ elif st.session_state.paso == 17:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3226,7 +3291,12 @@ elif st.session_state.paso == 18:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3351,7 +3421,12 @@ elif st.session_state.paso == 19:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3466,7 +3541,12 @@ elif st.session_state.paso == 20:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3580,7 +3660,12 @@ elif st.session_state.paso == 21:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3706,7 +3791,12 @@ elif st.session_state.paso == 22:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3820,7 +3910,12 @@ elif st.session_state.paso == 23:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -3932,7 +4027,12 @@ elif st.session_state.paso == 24:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4050,7 +4150,12 @@ elif st.session_state.paso == 25:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4161,7 +4266,12 @@ elif st.session_state.paso == 26:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4274,7 +4384,12 @@ elif st.session_state.paso == 27:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4385,7 +4500,12 @@ elif st.session_state.paso == 28:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4496,7 +4616,12 @@ elif st.session_state.paso == 29:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4610,7 +4735,12 @@ elif st.session_state.paso == 30:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4723,7 +4853,12 @@ elif st.session_state.paso == 31:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
@@ -4833,7 +4968,12 @@ elif st.session_state.paso == 32:
 
     col1, col2 = st.columns([5, 1])
     with col1:
-        st.button("◀️ Anterior", on_click=anterior)
+    # Botón Anterior (solo si no es el primer paso válido)
+        if indice > 0:
+            if st.button("Anterior"):
+                st.session_state.paso = pasos[indice - 1]
+                st.rerun()
+
     with col2:
         if indice < len(pasos) - 1:
             if st.button("Siguiente", disabled=bool(faltan)):
