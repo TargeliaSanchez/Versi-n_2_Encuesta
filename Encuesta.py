@@ -5055,7 +5055,7 @@ elif st.session_state.paso == 33:
         centro = left + 5
 
     # 2. Dibuja un rectángulo debajo del número para destacarlo (opcional)
-        ax.add_patch(plt.Rectangle((left, -0.15), 10, 0.3, alpha=0.2, zorder=2))
+        #ax.add_patch(plt.Rectangle((left, -0.15), 10, 0.3, alpha=0.2, zorder=2))
 
     # 3. Escribe el número centrado en ese recuadro
         ax.text(centro, 0, f"{valor:.0f}%", ha='center', va='center', fontsize=14, color='black', weight='bold', zorder=3)
