@@ -840,24 +840,24 @@ if st.session_state.paso == 1:
     ############# CICLO BUCLE
 
 
-st.markdown(f"""
-    <div style="
-    background-color: #e8f0fe ;
-    color: black;
-    padding: 4px 10px;
-    font-weight: normal;
-    border-radius: 0.5px;
-    "><b> SERVICIOS DE REHABILITACIÓN HABILITADOS 
-    </div>
-    """, unsafe_allow_html=True)
-for i in range(1, 8):
+    st.markdown(f"""
+        <div style="
+        background-color: #e8f0fe ;
+        color: black;
+        padding: 4px 10px;
+        font-weight: normal;
+        border-radius: 0.5px;
+        "><b> SERVICIOS DE REHABILITACIÓN HABILITADOS 
+        </div>
+        """, unsafe_allow_html=True)
+    for i in range(1, 8):
 ################
         if "respuestas" not in st.session_state:
             st.session_state.respuestas = {}
         opciones_servicios = [
             "Seleccione", "Fisioterapia", "Fonoaudiología", "Terapia ocupacional",
             "Terapia Respiratoria", "Esp. medicina Física y Fehabilitación",
-            "Psicología", "Trabajo Social", "Nutrición"]
+            "Psicología", "Trabajo Social", "Nutrición","Otros profesionales"]
         
         valor_guardado = st.session_state.respuestas.get(f"servicio_{i}", "Seleccione")
         index = opciones_servicios.index(valor_guardado) if valor_guardado in opciones_servicios else 0
