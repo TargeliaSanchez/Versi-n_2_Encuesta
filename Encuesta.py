@@ -5390,25 +5390,6 @@ elif st.session_state.paso == 33:
 
     
 
-    doc = Document()
-    exportar_tabla_por_dimensiones(
-        doc, dimensiones_actuales, nombres_dimensiones,
-        nombres_subdimensiones, preguntas_dict,
-        st.session_state.respuestas,
-        texto_valoracion, texto_valoracion_cond
-    )
-    word_buffer = io.BytesIO()
-    doc.save(word_buffer_)
-    word_buffer.seek(0)
-    st.download_button(
-        label="📥 Descargar tabla detallada",
-        data=word_buffer_,
-        file_name="tabla_valoracion_detallada.docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    )    
-
-    
-
 # Agregar salto de página y el gráfico
     doc.add_page_break()
     doc.add_heading("📈 Nivel de Implementación Global", level=2)
@@ -5489,6 +5470,23 @@ elif st.session_state.paso == 33:
     
         st.rerun()
 
+
+    doc = Document()
+    exportar_tabla_por_dimensiones(
+        doc, dimensiones_actuales, nombres_dimensiones,
+        nombres_subdimensiones, preguntas_dict,
+        st.session_state.respuestas,
+        texto_valoracion, texto_valoracion_cond
+    )
+    word_buffer = io.BytesIO()
+    doc.save(word_buffer_)
+    word_buffer.seek(0)
+    st.download_button(
+        label="📥 Descargar tabla detallada",
+        data=word_buffer_,
+        file_name="tabla_valoracion_detallada.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )    
 
 ##########---------------------------------------------#####################
 ############################################################################
