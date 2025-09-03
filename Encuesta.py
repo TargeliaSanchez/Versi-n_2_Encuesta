@@ -5434,6 +5434,15 @@ elif st.session_state.paso == 33:
     
         st.rerun()
 
+    if st.button("🏠 Volver al inicio", type="primary"):
+        guardar_respuesta_actual()
+
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
+    
+        st.rerun()
+
+
 ##########---------------------------------------------#####################
 ############################################################################
 
