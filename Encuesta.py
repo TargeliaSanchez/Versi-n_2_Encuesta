@@ -5348,14 +5348,17 @@ elif st.session_state.paso == 33:
         doc.add_paragraph("")  # Salto de línea entre tablas
 
     
-    # ... después de crear doc = Document() y antes de guardar en buffer:
-    # ... continúa con el resto de tu exportación Word
-    word_file_2 = tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st.session_state.respuestas)
+
+    doc = Document()
+    tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st.session_state.respuestas)
+    word_buffer = io.BytesIO()
+    doc.save(word_buffer)
+    word_buffer.seek(0)
     st.download_button(
-            label="📥 Descargar Word para toby",
-            data=word_file_2,
-            file_name="formulario_bps_tablas.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        label="📥 Descargar Word para toby",
+        data=word_buffer,
+        file_name="formulario_bps_tablas.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     )
 
 
