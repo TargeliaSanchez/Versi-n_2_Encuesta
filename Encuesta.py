@@ -5352,8 +5352,8 @@ elif st.session_state.paso == 33:
     # ... continúa con el resto de tu exportación Word
     word_file_2 = tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st.session_state.respuestas)
     st.download_button(
-            label="📥 Descargar Word",
-            data=word_file,
+            label="📥 Descargar Word para toby",
+            data=word_file_2,
             file_name="formulario_bps_tablas.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     )
