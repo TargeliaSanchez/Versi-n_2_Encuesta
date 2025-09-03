@@ -26,6 +26,90 @@ import io
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 ##############################################
+def set_cell_background(cell, rgb_color):
+    tc = cell._tc
+    tcPr = tc.get_or_add_tcPr()
+    shd = OxmlElement('w:shd')
+    shd.set(qn('w:fill'), rgb_color)
+    tcPr.append(shd)
+
+# Diccionario para los textos de valoración
+texto_valoracion = {
+    1: "1. No cumple",
+    2: "2. Incipiente",
+    3: "3. Aceptable",
+    4: "4. Satisfactorio",
+    5: "5. Óptimo"
+}
+
+texto_valoracion_cond = {
+    1: "1. Cumple de forma incipiente uno o dos criterios",
+    2: "2. Cumple de forma incipiente uno o dos criterios",
+    3: "3. Cumple de forma aceptable mínimo tres criterios",
+    4: "4. Cumple de forma satisfactoria mínimo tres criterios",
+    5: "5. Cumple de forma óptima todos los criterios"
+}
+##############################################
+def tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st_session_state):
+    # Recorre cada subdimensión (ejemplo: D1.1)
+    for subdim, variables in dimensiones.items():
+        if subdim not in nombres_subdimensiones:
+            continue
+
+        # Crea tabla: filas = 1 encabezado + 4 criterios + 1 total
+        table = doc.add_table(rows=1+4+1, cols=4)
+        table.style = 'Table Grid'
+        # Encabezados
+        hdr = ["CONDICIONES DE LOS SERVICIOS DE REHABILITACIÓN", "CRITERIOS", "VALORACIÓN DE CRITERIOS", "VALORACIÓN DE LA CONDICIÓN"]
+        for i, h in enumerate(hdr):
+            cell = table.rows[0].cells[i]
+            cell.text = h
+            for para in cell.paragraphs:
+                for run in para.runs:
+                    run.bold = True
+                    run.font.size = Pt(11)
+            if i == 0:
+                set_cell_background(cell, "FFF6D9")  # fondo amarillo claro
+            elif i == 3:
+                set_cell_background(cell, "000000")  # fondo negro
+
+        # Criterios y valoraciones
+        preguntas = [
+            "La institución presta servicio de psicología y/o trabajo social.",
+            "La institución presta servicios de fisioterapia, fonoaudiología y/o terapia ocupacional.",
+            "Los servicios de rehabilitación disponibles corresponden con el nivel de complejidad.",
+            "Los servicios de rehabilitación se organizan en un área específica de la institución.",
+        ]
+        # Para generalizar, usa tus textos reales de preguntas según subdimensión
+
+        for i in range(4):
+            row = table.rows[i+1]
+            if i == 0:
+                # Celda de condición con nombre largo
+                row.cells[0].text = nombres_subdimensiones[subdim]
+            else:
+                row.cells[0].text = ""
+            row.cells[1].text = preguntas[i]
+            # Valoración del criterio
+            val_key = f"p{subdim.replace('.', '_')}_{i+1}"
+            val = st_session_state.get(val_key, 0)
+            val_text = texto_valoracion.get(val, "")
+            row.cells[2].text = f"{val}. {val_text}" if val else ""
+            # Celda de condición vacía en criterios
+            row.cells[3].text = ""
+
+        # Última fila: valoración de la condición
+        row = table.rows[5]
+        row.cells[0].text = ""
+        row.cells[1].text = ""
+        row.cells[2].text = ""
+        cond_key = subdim.replace(".", "_")  # Ejemplo: D1.1 → D1_1
+        cond_val = st_session_state.get(cond_key, 0)
+        cond_text = texto_valoracion_cond.get(cond_val, "")
+        row.cells[3].text = f"{cond_val}. {cond_text}"
+        set_cell_background(row.cells[3], color_puntaje.get(cond_val, "FFFFFF"))
+
+        doc.add_paragraph("")
 
 ##############################################
 
@@ -5263,6 +5347,13 @@ elif st.session_state.paso == 33:
 
         doc.add_paragraph("")  # Salto de línea entre tablas
 
+    
+    # ... después de crear doc = Document() y antes de guardar en buffer:
+    tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st.session_state.respuestas)
+    # ... continúa con el resto de tu exportación Word
+    
+
+
 # Agregar salto de página y el gráfico
     doc.add_page_break()
     doc.add_heading("📈 Nivel de Implementación Global", level=2)
@@ -5335,16 +5426,5 @@ elif st.session_state.paso == 33:
     
         st.rerun()
 
-    if st.button("🏠 Volver al inicio", type="primary"):
-        guardar_respuesta_actual()
-
-        for key in list(st.session_state.keys()):
-            del st.session_state[key]
-    
-        st.rerun()
-
-
-
 ##########---------------------------------------------#####################
 ############################################################################
-
