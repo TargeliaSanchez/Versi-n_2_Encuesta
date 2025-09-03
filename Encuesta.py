@@ -26,131 +26,6 @@ import io
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 ##############################################
-def set_cell_background(cell, rgb_color):
-    tc = cell._tc
-    tcPr = tc.get_or_add_tcPr()
-    shd = OxmlElement('w:shd')
-    shd.set(qn('w:fill'), rgb_color)
-    tcPr.append(shd)
-
-# Diccionarios de textos y colores
-texto_valoracion = {
-    1: "1. No cumple",
-    2: "2. Incipiente",
-    3: "3. Aceptable",
-    4: "4. Satisfactorio",
-    5: "5. Óptimo"
-}
-texto_valoracion_cond = {
-    1: "1. Cumple de forma incipiente uno o dos criterios",
-    2: "2. Cumple de forma incipiente uno o dos criterios",
-    3: "3. Cumple de forma aceptable mínimo tres criterios",
-    4: "4. Cumple de forma satisfactoria mínimo tres criterios",
-    5: "5. Cumple de forma óptima todos los criterios"
-}
-color_puntaje = {
-    5: '92D050',  # Verde fuerte
-    4: 'C6E0B4',  # Verde medio
-    3: 'FFEB9C',  # Amarillo claro
-    2: 'FCE4D6',  # Naranja pálido
-    1: 'F8CBAD',  # Rojo claro
-}
-
-def exportar_tabla_por_dimensiones(
-    doc, dimensiones_actuales, nombres_dimensiones, nombres_subdimensiones, preguntas_dict, st_session_state, opciones_valoracion_criterio, opciones_valoracion_condicion
-):
-    for dim, subdim_list in dimensiones_actuales.items():
-        nombre_largo = nombres_dimensiones.get(dim, dim)
-        doc.add_paragraph("")  # Espacio antes de cada dimensión
-
-        # Título de la dimensión (puedes ponerlo como heading o celda combinada según tu preferencia)
-        table = doc.add_table(rows=1, cols=4)
-        table.style = "Table Grid"
-        titulo_row = table.rows[0]
-        cell_dim = titulo_row.cells[0]
-        cell_dim.merge(titulo_row.cells[1])
-        cell_dim.merge(titulo_row.cells[2])
-        cell_dim.merge(titulo_row.cells[3])
-        p = cell_dim.paragraphs[0]
-        run = p.add_run(nombre_largo)
-        run.bold = True
-        run.font.size = Pt(11)
-        run.font.color.rgb = RGBColor(255,255,255)
-        set_cell_background(cell_dim, "4F4F4F")  # Gris oscuro
-
-        # Encabezados
-        header = table.add_row().cells
-        header[0].text = "CONDICIONES DE LOS SERVICIOS DE REHABILITACIÓN"
-        header[1].text = "CRITERIOS"
-        header[2].text = "VALORACIÓN DE CRITERIOS"
-        header[3].text = "VALORACIÓN DE LA CONDICIÓN"
-        set_cell_background(header[0], "FFF6D9") # fondo amarillo claro
-        set_cell_background(header[3], "000000") # fondo negro
-
-        for cell in header:
-            for para in cell.paragraphs:
-                for run in para.runs:
-                    run.bold = True
-                    run.font.size = Pt(11)
-
-        # Para cada subdimensión
-        for subdim in subdim_list:
-            # Consigue preguntas para subdimensión (de tu diccionario preguntas_dict)
-            preguntas = preguntas_dict.get(subdim, [])
-            n_criterios = len(preguntas)
-            if n_criterios == 0:
-                continue
-            # Consigue hallazgos
-            obs_key = f"obs{subdim.replace('.', '_')}"
-            hallazgos = st_session_state.get(obs_key, "")
-
-            # Consigue puntaje global de la condición
-            cond_key = subdim.replace(".", "_")
-            cond_val = st_session_state.get(cond_key, 0)
-            cond_text = texto_valoracion_cond.get(cond_val, "")
-            cond_color = color_puntaje.get(cond_val, "FFFFFF")
-            nombre_subdim = nombres_subdimensiones.get(subdim, subdim)
-
-            # Agrega filas para cada criterio
-            for i, pregunta in enumerate(preguntas):
-                row = table.add_row().cells
-                # Columna 1: condición (solo en la primera fila, combinada verticalmente)
-                if i == 0:
-                    # Combina verticalmente tantas filas como criterios
-                    cell_cond = row[0]
-                    for merge_i in range(1, n_criterios):
-                        cell_cond.merge(table.add_row().cells[0])
-                    cell_cond.text = nombre_subdim
-                    set_cell_background(cell_cond, "FFF6D9")
-                # Si no, deja celda vacía
-                else:
-                    row[0].text = ""
-
-                # Columna 2: criterio
-                row[1].text = pregunta
-
-                # Columna 3: valoración del criterio
-                val_key = f"p{subdim.replace('.', '_')}_{i+1}"
-                val = st_session_state.get(val_key, 0)
-                val_text = texto_valoracion.get(val, "")
-                row[2].text = f"{val}. {val_text}" if val else ""
-
-                # Columna 4: puntaje global de la condición (solo en el último criterio)
-                if i == n_criterios - 1:
-                    row[3].text = f"{cond_val}. {cond_text}"
-                    set_cell_background(row[3], cond_color)
-                else:
-                    row[3].text = ""
-
-            # Fila hallazgos (celda combinada)
-            row_hallazgos = table.add_row().cells
-            cell_hall = row_hallazgos[0]
-            cell_hall.merge(row_hallazgos[1])
-            cell_hall.merge(row_hallazgos[2])
-            cell_hall.merge(row_hallazgos[3])
-            cell_hall.text = f"HALLAZGOS: {hallazgos}"
-
-        doc.add_paragraph("")  # Espacio entre subdimensiones
 
 ##############################################
 
@@ -5388,8 +5263,6 @@ elif st.session_state.paso == 33:
 
         doc.add_paragraph("")  # Salto de línea entre tablas
 
-    
-
 # Agregar salto de página y el gráfico
     doc.add_page_break()
     doc.add_heading("📈 Nivel de Implementación Global", level=2)
@@ -5474,5 +5347,4 @@ elif st.session_state.paso == 33:
 
 ##########---------------------------------------------#####################
 ############################################################################
-
 
