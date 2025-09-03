@@ -5397,13 +5397,12 @@ elif st.session_state.paso == 33:
         st.session_state.respuestas,
         texto_valoracion, texto_valoracion_cond
     )
-# ...luego guarda en buffer y exporta
     word_buffer = io.BytesIO()
-    doc.save(word_buffer)
+    doc.save(word_buffer_)
     word_buffer.seek(0)
     st.download_button(
         label="📥 Descargar tabla detallada",
-        data=word_buffer,
+        data=word_buffer_,
         file_name="tabla_valoracion_detallada.docx",
         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     )    
