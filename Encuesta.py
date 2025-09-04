@@ -5356,22 +5356,28 @@ elif st.session_state.paso == 33:
         doc.add_paragraph("")  # Salto de línea entre tablas
 
     
-# Dentro de tu Streamlit app:
-    if st.button("Generar y descargar tabla Word"):
-        doc = Document()
-    # Llama tu función para agregar la tabla al documento
-        tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st.session_state)
-    # Guarda el documento en memoria
-        word_buffer = io.BytesIO()
-        doc.save(word_buffer)
-        word_buffer.seek(0)
-        st.download_button(
-            label="📥 Descargar tabla de condiciones",
-            data=word_buffer,
-            file_name="tabla_condiciones.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        )
-
+# NUEVA VERSIÓN DE LAS TABLAS
+if st.button("Descargar tabla detallada en Word"):
+    doc = Document()
+    tabla_detalle_condiciones(
+        doc,
+        dimensiones,
+        nombres_subdimensiones,
+        st.session_state,
+        preguntas_texto,            # Diccionario: key -> texto pregunta
+        texto_valoracion,           # Diccionario: puntaje -> texto
+        texto_valoracion_cond,      # Diccionario: puntaje global -> texto
+        color_puntaje               # Diccionario: puntaje -> color
+    )
+    buffer = io.BytesIO()
+    doc.save(buffer)
+    buffer.seek(0)
+    st.download_button(
+        label="📥 Descargar tabla detallada",
+        data=buffer,
+        file_name="tabla_detallada.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
 
 # Agregar salto de página y el gráfico
     doc.add_page_break()
