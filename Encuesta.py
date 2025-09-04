@@ -5397,11 +5397,10 @@ elif st.session_state.paso == 33:
 
 # Construye el diccionario cruzado:
 preguntas_texto = {}
-
 for item, preguntas in preguntas_por_item.items():
-    keys = dimensiones[item][:len(preguntas)]  # Solo los keys de preguntas, no el puntaje ni observación
+    keys = dimensiones[item][:4]  # Solo los keys de criterios
     for k, texto in zip(keys, preguntas):
-         preguntas_texto[k] = texto
+        preguntas_texto[k] = texto
     
 # NUEVA VERSIÓN DE LAS TABLAS
 if st.button("Descargar tabla detallada en Word"):
