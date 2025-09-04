@@ -83,7 +83,7 @@ preguntas_por_item = {
     "D3.2": preguntas_d3_2,
     "D3.3": preguntas_d3_3
 }
-}
+
 
 # Construye el diccionario cruzado:
 preguntas_texto = {}
