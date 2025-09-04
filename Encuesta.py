@@ -91,6 +91,7 @@ preguntas_texto = {}
 for item, preguntas in preguntas_por_item.items():
     keys = dimensiones[item][:len(preguntas)]  # Solo los keys de preguntas, no el puntaje ni observación
     for k, texto in zip(keys, preguntas):
+         preguntas_texto[k] = texto
 
 
 ##############################################
