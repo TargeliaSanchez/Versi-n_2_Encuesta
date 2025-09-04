@@ -5398,14 +5398,14 @@ elif st.session_state.paso == 33:
                 "Hallazgos": hallazgos
             })
 
-    df_resumen = pd.DataFrame(resumen)
-    csv_resumen = df_resumen.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
-    st.download_button(
-            label="📥 Descargar resumen (CSV)",
-            data=csv_resumen,
-            file_name="valoracion_por_subdimension.csv",
-            mime="text/csv"
-            )
+#    df_resumen = pd.DataFrame(resumen)
+#    csv_resumen = df_resumen.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
+#    st.download_button(
+#            label="📥 Descargar resumen (CSV)",
+#            data=csv_resumen,
+#            file_name="valoracion_por_subdimension.csv",
+#            mime="text/csv"
+#            )
 
 
 
