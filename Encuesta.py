@@ -51,65 +51,92 @@ texto_valoracion_cond = {
 }
 ##############################################
 def tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st_session_state):
-    # Recorre cada subdimensión (ejemplo: D1.1)
-    for subdim, variables in dimensiones.items():
-        if subdim not in nombres_subdimensiones:
-            continue
+# Agrupa por dimensión
+    from collections import defaultdict
+    subdims_por_dim = defaultdict(list)
+    for sub in dimensiones.keys():
+        dim = sub.split(".")[0]  # "D1", "D2", etc.
+        subdims_por_dim[dim].append(sub)
 
-        # Crea tabla: filas = 1 encabezado + 4 criterios + 1 total
-        table = doc.add_table(rows=1+4+1, cols=4)
+    from collections import defaultdict
+
+# Agrupa subdimensiones por dimensión (D1, D2, D3)
+    subdims_por_dim = defaultdict(list)
+    for sub in dimensiones.keys():
+        dim = sub.split(".")[0]
+        subdims_por_dim[dim].append(sub)
+
+    if alcance == "Básico":
+        dimensiones_actuales = {
+            "D1": ["D1.1", "D1.2", "D1.4", "D1.5", "D1.6", "D1.7"],
+            "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.15", "D2.17"]
+        }
+    elif alcance == "Completo":
+        dimensiones_actuales = {
+            "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
+            "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
+            "D3": ["D3.1", "D3.2", "D3.3"]
+        }    
+    else:
+        dimensiones_actuales = {
+            "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
+            "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
+            "D3": ["D3.1", "D3.2", "D3.3"]
+        }
+
+
+    for dim, subdim_list in dimensiones_actuales.items():
+        nombre_largo = nombres_dimensiones.get(dim, dim)
+        table = doc.add_table(rows=2, cols=2)
         table.style = 'Table Grid'
-        # Encabezados
-        hdr = ["CONDICIONES DE LOS SERVICIOS DE REHABILITACIÓN", "CRITERIOS", "VALORACIÓN DE CRITERIOS", "VALORACIÓN DE LA CONDICIÓN"]
-        for i, h in enumerate(hdr):
-            cell = table.rows[0].cells[i]
-            cell.text = h
+    
+
+    # Fila 0: nombre largo en celda combinada y fondo gris oscuro
+        titulo_row = table.rows[0]
+        titulo_cell = titulo_row.cells[0]
+        titulo_cell.merge(titulo_row.cells[1])
+        p = titulo_cell.paragraphs[0]
+        run = p.add_run(nombre_largo)
+        run.bold = True
+        run.font.size = Pt(11)
+        run.font.color.rgb = RGBColor(255,255,255)
+        set_cell_background(titulo_cell, '4F4F4F')  # Gris oscuro
+
+    # Fila 1: encabezados
+        hdr_cells = table.rows[1].cells
+        hdr_cells[0].text = 'CONDICIONES'
+        hdr_cells[1].text = 'CALIFICACIÓN'
+        for cell in hdr_cells:
             for para in cell.paragraphs:
                 for run in para.runs:
                     run.bold = True
-                    run.font.size = Pt(11)
-            if i == 0:
-                set_cell_background(cell, "FFF6D9")  # fondo amarillo claro
-            elif i == 3:
-                set_cell_background(cell, "000000")  # fondo negro
 
-        # Criterios y valoraciones
-        preguntas = [
-            "La institución presta servicio de psicología y/o trabajo social.",
-            "La institución presta servicios de fisioterapia, fonoaudiología y/o terapia ocupacional.",
-            "Los servicios de rehabilitación disponibles corresponden con el nivel de complejidad.",
-            "Los servicios de rehabilitación se organizan en un área específica de la institución.",
-        ]
-        # Para generalizar, usa tus textos reales de preguntas según subdimensión
 
-        for i in range(4):
-            row = table.rows[i+1]
-            if i == 0:
-                # Celda de condición con nombre largo
-                row.cells[0].text = nombres_subdimensiones[subdim]
-            else:
-                row.cells[0].text = ""
-            row.cells[1].text = preguntas[i]
-            # Valoración del criterio
-            val_key = f"p{subdim.replace('.', '_')}_{i+1}"
-            val = st_session_state.get(val_key, 0)
-            val_text = texto_valoracion.get(val, "")
-            row.cells[2].text = f"{val}. {val_text}" if val else ""
-            # Celda de condición vacía en criterios
-            row.cells[3].text = ""
+    
+        for sub in subdim_list:
+            mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
+            if not mask.any():
+                continue
+            row = df_resumen[mask].iloc[0]
+            val = int(row["Valoración"])
+            row1 = table.add_row().cells
+            row1[0].text = row["Condición"]
+            row1[1].text = str(val)
+            set_cell_background(row1[1], color_puntaje.get(val, 'FFFFFF'))
+            row2 = table.add_row().cells
+            merged = row2[0].merge(row2[1])
+            merged.text = f"Hallazgos: {row['Hallazgos']}"
 
-        # Última fila: valoración de la condición
-        row = table.rows[5]
-        row.cells[0].text = ""
-        row.cells[1].text = ""
-        row.cells[2].text = ""
-        cond_key = subdim.replace(".", "_")  # Ejemplo: D1.1 → D1_1
-        cond_val = st_session_state.get(cond_key, 0)
-        cond_text = texto_valoracion_cond.get(cond_val, "")
-        row.cells[3].text = f"{cond_val}. {cond_text}"
-        set_cell_background(row.cells[3], color_puntaje.get(cond_val, "FFFFFF"))
+    # Total de la dimensión
+        row_total = table.add_row().cells
+        cell_dim = row_total[0]
+        cell_puntaje = row_total[1]
+        run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
+        run_dim.bold = True
+        run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
+        run_puntaje.bold = True
 
-        doc.add_paragraph("")
+        doc.add_paragraph("")  # Salto de línea entre tablas
 
 ##############################################
 
