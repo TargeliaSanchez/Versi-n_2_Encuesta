@@ -234,7 +234,7 @@ preguntas_d3_3 = [
     ]
 
 # Junta todas tus listas de preguntas en un diccionario
-    preguntas_por_item = {
+preguntas_por_item = {
         "D1.1": preguntas_d11,
         "D1.2": preguntas_d12,
         "D1.3": preguntas_d13,
