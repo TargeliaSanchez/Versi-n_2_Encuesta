@@ -51,187 +51,221 @@ texto_valoracion_cond = {
 }
 
 #BLOQUE PARA SUB PREGUNTAS DE LOS ÍTEMS
-    preguntas_d11 = [
+preguntas_d11 = [
             "La institución presta servicio de psicología y/o trabajo social.",
             "La institución presta servicios de fisioterapia, fonoaudiología y/o terapia ocupacional.",
             "Los servicios de rehabilitación disponibles corresponden con el nivel de complejidad.\*",
             "Los servicios de rehabilitación se organizan en un área específica de la institución.",
         ]
-    preguntas_d12 = [
+preguntas_d12 = [
         "Los servicios de rehabilitación habilitados cuentan continuamente con profesionales contratados o vinculados. ",
         "La disponibilidad del talento humano de rehabilitación es adecuada a la capacidad instalada versus la demanda de los servicios.",
         "La institución define el perfil del talento humano de rehabilitación según las necesidades de atención de los usuarios.",
         "La institución designa un líder, coordinador o jefe de los servicios de rehabilitación.",
     ]
-    preguntas_d13 = [
+preguntas_d13 = [
         "Se prestan servicios de rehabilitación en modalidad ambulatoria y/o hospitalaria [si aplica esta modalidad].",
         "Se prestan servicios de rehabilitación en modalidad domiciliaria [u otras modalidades extramurales], y están definidos los criterios para la atención en esta[s] modalidad[es].",
         "Se prestan servicios de rehabilitación en la modalidad de telemedicina.",
         "La oferta de servicios en la modalidad de telemedicina incluye una o más especialidades médicas relacionadas con rehabilitación.",
     ]
-    preguntas_d14 = [
+preguntas_d14 = [
         "La institución cuenta con historia clínica electrónica que incluye la información del usuario en las diferentes fases de la atención.", 
         "La historia clínica incluye la atención y procedimientos de los usuarios de rehabilitación, y esta información esta disponible para los profesionales.",
         "La historia clínica está disponible en los servicios de rehabilitación para el registro simultaneo o inmediato de la atención.",
         "La historia clínica incluye contenido y/o formatos específicos para los servicios de rehabilitación.",
         ]
 
-    preguntas_d15 = [
+preguntas_d15 = [
         "Se documentan los servicios de terapias y se describen: modalidades de prestación, actividades, talento humano, infraestructura, dotación, riesgos e indicadores.",
         "Se documenta la atención por rehabilitación como un proceso continuo con un tiempo de duración definido. ",
         "La documentación del proceso de rehabilitación describe los diferentes servicios que intervienen desde la entrada hasta el egreso del usuario. ",
         "El documento del proceso de rehabilitación se encuentra actualizado y disponible en el sistema de gestión de calidad.",
     ]
-    preguntas_d16 = [
+preguntas_d16 = [
         "En el proceso de rehabilitación se describen los mecanismos de entrada o ingreso del usuario. ",
         "El proceso de rehabilitación se estructura por etapas o fases que orientan la atención:  1. Evaluación inicial;  2. Plan de atención; 3. Intervención y 4. Evaluación final. ",
         "En cada etapa o fase se describe el alcance y las acciones a realizar para el logro de objetivos o metas de rehabilitación.",
         "El proceso de rehabilitación se divulga al personal asistencial de la institución.",
     ]
-    preguntas_d17 = [
+preguntas_d17 = [
         "En los servicios de rehabilitación se encuentran disponibles los protocolos de atención.",
         "La institución cuenta con una o más guías de práctica clínica (GPC) específicas para rehabilitación o GPC que integran recomendaciones para rehabilitación.",
         "La institución cuenta con un procedimiento que establece la metodología para la elaboración de protocolos y GPC [metodologías: adopción, adaptación o creación].",
         "Los protocolos y/o GPC de los servicios de rehabilitación se encuentran actualizados e implementados.",
     ]
-    preguntas_d18 = [   
+preguntas_d18 = [   
         "La inducción de nuevos profesionales incluye información sobre el proceso de atención con enfoque biopsicosocial.",
         "La institución realiza capacitaciones periódicas sobre la atención con enfoque biopsicosocial.",
         "Las capacitaciones sobre atención con enfoque biopsicosocial están dirigidas al personal asistencial y administrativo. [jefes, coordinadores, personal de mercadeo; RRHH].",
         "Se implementan acciones para evaluar el conocimiento del personal sobre la atención con enfoque biopsicosocial.",
     ]
-    preguntas_d19 = [
+preguntas_d19 = [
         "Los servicios de rehabilitación cuentan con equipos e insumos adecuados a las necesidades de la población atendida y su condición de salud.",
         "La institución realiza mantenimiento periódico y reparación oportuna de áreas, equipos e insumos de rehabilitación.",
         "Los servicios de rehabilitación disponen de tecnología que favorecen el acceso, la eficiencia y/o personalización de la atención.",
         "La institución cuenta con ambientes especializados para favorecer la autonomía, independencia y el desempeño de roles.",
     ]
-    preguntas_d2_1 = [
+preguntas_d2_1 = [
         "La valoración médica de los usuarios de rehabilitación se encuentra disponible en la historia clínica.",
         "La valoración médica del usuario aborda integralmente la condición de salud para establecer el diagnóstico [diagnóstico principal y dianósticos relacionados]",
         "La información de la valoración médica es pertinente y suficiente para definir los objetivos y el plan de atención por rehabilitación.",
         "La institución cuenta con un formato estandarizado para la valoración médica de los usuarios de rehabilitación.",
     ]
-    preguntas_d2_2 = [
+preguntas_d2_2 = [
         "Los profesionales de rehabilitación registran en la historia clínica el uso de pruebas y/o instrumentos de evaluación.",
         "La institución define criterios para la selección y el uso de pruebas o instrumentos de evaluación de los usuarios de rehabilitación.",
         "La institución cuenta con un método desarrollado o adaptado para la evaluación de los usuarios de rehabilitación.",
         "Los profesionales hacen uso de  las pruebas o instrumentos disponibles según las caracteristicas y necesidades de los usuarios. [la disponibilidad hace referencia a fácil acceso durante la atención. Ej. en historia clínica].",
     ]
-    preguntas_d2_3 = [
+preguntas_d2_3 = [
         "La valoración del estado funcional incluye diferentes dominios o áreas del funcionamiento de los usuarios.",
         "La valoración del estado funcional se basa en parámetros medibles y los resultados se expresan en datos numéricos y/o categóricos.",
         "La valoración del estado funcional concluye con el perfil de funcionamiento o el diagnóstico funcional del usuario.",
         "La valoración del estado funcional involucra un equipo multidisciplinario\*\* que interviene en el proceso de rehabilitación.",
     ]
-    preguntas_d2_4 = [
+preguntas_d2_4 = [
         "En la evaluación se registra la ocupación o rol que desempeña el usuario en su entorno [Ej., hogar, trabajo, vida escolar].",
         "Se identifican las dificultades que presenta el usuario para el desempeño de actividades en su entorno.",
         "Se registran las expectativas del usuario y/o familia con relación a su ocupación o en el desempeño de actividades.",
         "La evaluación del usuario incluye pruebas o instrumentos para valorar la realización de actividades en su entorno.",
     ]
-    preguntas_d2_5 = [
+preguntas_d2_5 = [
         "Acceso a servicios de salud según complejidad del diagnóstico o condición del usuario.",
         "Ayudas técnicas: disponibilidad, entrenamiento y adaptación, adecuación al entorno.",
         "Ajustes razonables en el entorno.",
         "Redes de apoyo.",
     ]
-    preguntas_d2_6 = [
+preguntas_d2_6 = [
         "La historia clínica incluye un ítem para el registro de las expectativas del usuario, la familia o cuidador.",
         "Se registran las expectativas del usuario con relación al proceso de rehabilitación.",
         "Se registran las expectativas de la familia o cuidador, especialmente en usuarios pediátricos, con compromiso cognitivo o dependencia severa.",
         "Se implementan estrategias de acompañamiento a usuarios y/o familias con expectativas no realistas frente al proceso de rehabilitación.",
     ]
-    preguntas_d2_7 = [
+preguntas_d2_7 = [
         "El plan de atención de los usuarios de rehabilitación hace parte de la historia clínica.",
         "El plan de atención tiene una estructura predeterminada que incluye los objetivos o metas de rehabilitación.",
         "En el plan de atención se describen las intervenciones a realizar por los profesionales o el equipo de rehabilitación.",
         "El plan de atención es individualizado y se basa en la condición de salud, el estado funcional, las necesidades y expectativas del usuario.",
     ]
-    preguntas_d2_8 = [
+preguntas_d2_8 = [
         "Tratamiento médico: manejo farmacológico, procedimientos, ayudas técnicas, remisión a otros servicios [cuándo es necesario].",
         "Intervención terapéutica: terapias, psicología y otros servicios, modalidades de atención, intensidad y duración.",
         "Actividades de orientación y educación pertinentes para el usuario, la familia y/o cuidador.",
         "Actividades de canalización del usuario a servicios y/o para la gestión de apoyos que contribuyan a su participación.",
     ]
-    preguntas_d2_9 = [
+preguntas_d2_9 = [
         "Los profesionales registran en la historia clínica los objetivos o metas de rehabilitación.",
         "Los objetivos y/o metas de rehabilitación están orientados a mejorar y/o potenciar la autonomía e independencia del usuario.",
         "Los profesionales involucran al usuario, la familia y/o cuidador en la definición de objetivos y/o metas de rehabilitación.",
         "Los objetivos y/o metas de rehabilitación se definen de manera concertada entre el equipo multidisciplinario,\*\* el usuario, la familia y/o cuidador.",
     ]
-    preguntas_d2_10 = [
+preguntas_d2_10 = [
         "Los objetivos y/o metas de rehabilitación se basan en actividades funcionales alcanzables y relevantes para el usuario y/o la familia.",
         "Los objetivos y/o metas de rehabilitación son medibles y permiten determinar objetivamente los logros o resultados.",
         "En los objetivos y/o metas de rehabilitación se define un plazo o tiempo para alcanzar los logros o resultados esperados.",
         "Los objetivos y/o metas de rehabilitacion consideran la secuencialidad y progresión del proceso de rehabilitación.",
     ]
-    preguntas_d2_11 = [
+preguntas_d2_11 = [
             "Se registran intervenciones de rehabilitación orientadas a mejorar la realización de actividades de la vida diaria y el desempeño del usuario en su entorno.",
             "Las intervenciones de rehabilitación registradas son coherentes con los objetivos y/o metas de rehabilitación.",
             "Se registra el uso de enfoques terapéuticos, intervenciones y/o técnicas con respaldo en la evidencia.",
             "La intervención de los usuarios es realizada por el equipo multidisciplinario** e incorpora dispositivos de asistencia y tecnología.",
         ]
-    preguntas_d2_12 = [
+preguntas_d2_12 = [
         "Dos o más profesionales de rehabilitación de la institución intervienen al usuario de manera independiente con objetivos comunes.",
         "Los profesionales de rehabilitación realizan intervenciones disciplinares con objetivos comunes, y disponen de espacios para comunicarse y coordinar la atención.",
         "Los profesionales de rehabilitación realizan intervenciones coordinadas y complementarias con objetivos comunes, y comparten el espacio de atención.",
         "El equipo multidisciplinario\*\* dispone de espacios formales para la evaluación, seguimiento y toma de decisiones para la atención de  usuarios de mayor complejidad.",
     ]
-    preguntas_d2_13 = [
+preguntas_d2_13 = [
         "La institución dispone de ajustes razonables para facilitar el acceso y autonomía de los usuarios con discapacidad.",
         "En la institución se cuenta con herramientas, dispositivos tecnológicos u otros mecanismos para facilitar la comunicación y participación en la toma de decisiones de los usuarios.",
         "En la institución se realizan capacitaciones al personal para brindar atención diferencial a los usuarios según su edad, género, discapacidad, etnia, orientación sexual e identidad de género.",
         "En la institución se implementan acciones diferenciadas para la atención de los usuarios según su edad, género, discapacidad, etnia, orientación sexual e identidad de género.",
     ]
-    preguntas_d2_14 = [
+preguntas_d2_14 = [
         "Durante la atención, los profesionales de rehabilitación brindan información al usuario y la familia sobre su rol en el proceso de rehabilitación.",
         "Los profesionales de rehabilitación entregan al usuario, la familia y/o cuidador planes de ejercicios y/o actividades para realizar en casa o en otros entornos [colegio, trabajo].",
         "En los servicios de rehabilitación se cuenta con recursos audiovisuales para informar y brindar contenido educativo a los usuarios, la familia y/o cuidador.",
         "En los servicios de rehabilitación, los profesionales disponen y hacen uso de dispositivos tecnológicos para el seguimiento o monitoreo remoto de los usuarios.",
     ]
-    preguntas_d2_15 = [
+preguntas_d2_15 = [
         "Los profesionales realizan **monitoreo** continuo de signos y/o síntomas relacionados con la condición del usuario.",
         "Los profesionales registran cambios o logros en el estado funcional del paciente.",
         "Los profesionales realizan seguimiento a los objetivos de rehabilitación y hacen ajustes a la intervención cuando es necesario.",
         "La institución [o servicio] preestablece los tiempos de reevaluación de los usuarios haciendo uso de pruebas estandarizadas o instrumentos.",
     ]
-    preguntas_d2_16 = [
+preguntas_d2_16 = [
         "Los profesionales de rehabilitación orientan al usuario, la familia y/o cuidador sobre servicios o programas disponibles que contribuyen a la participación.",
         "Los profesionales derivan al usuario, la familia y/o cuidador a servicios o programas específicos para promover la participación del usuario. ",
         "Los servicios de rehabilitación cuentan con estrategias para la canalización del usuario y su familia a instituciones o servicios que contribuyen a la participación. ",
         "Los servicios de rehabilitación realizan trabajo en red con otras instituciones y servicios para incrementar las oportunidades de participación de los usuarios.",
     ]
-    preguntas_d2_17 = [
+preguntas_d2_17 = [
         "El proceso de rehabilitación de los usuarios termina con la evaluación final.",
         "Se identifican los logros o resultados según los objetivos y/o metas de rehabilitación.",
         "Con los resultados de la evaluación final, se define el egreso del usuario o la continuidad del proceso de rehabilitación.",
         "Se entregan indicaciones y recomendaciones al usuario como estrategias de mantenimiento, control médico y/o participación.",
     ]
-    preguntas_d2_18 = [
+preguntas_d2_18 = [
         "En los servicios de rehabilitación se identifican los usuarios de larga permanencia.",
         "La institución cuenta con criterios definidos para la admisión y reingreso de los usuarios de larga permanencia.",
         "En los servicios de rehabilitación se implementan medidas específicas para la atención de los usuarios de larga permanencia.",
         "La institución establece acuerdos formales con las aseguradoras para la atención de los usuarios de larga permanencia.",
     ]
-    preguntas_d3_1 = [
+preguntas_d3_1 = [
         "Los instrumentos de evaluación de los usuarios de rehabilitación se encuentran validados. [priorizar instrumentos de evaluación funcional o de condiciones más frecuentes]",
         "Los requisitos o condiciones de aplicación de los instrumentos [Ej., tiempo, equipos] son viables para su uso en los servicios de rehabilitación.",
         "El uso de instrumentos de evaluación cumple con las normas de licenciamiento o derechos de autor.",
         "Los profesionales de rehabilitación reciben capacitación o entrenamiento en el uso de instrumentos de evaluación.",
     ]
-    preguntas_d3_2 = [
+preguntas_d3_2 = [
         "El estado funcional de los usuarios se evalúa al inicio y al final del proceso de rehabilitación.",
         "En la evaluación inicial y final del estado funcional de los usuarios se usa un método o instrumento validado.",
         "Los resultados de la evaluación inicial y final del estado funcional de los usuarios se consolidan y se analizan por la institución.",
         "La institución define indicadores de resultado relacionados con el estado funcional de los usuarios de rehabilitación.",
     ]
-    preguntas_d3_3 = [
+preguntas_d3_3 = [
         "Al finalizar el proceso de rehabilitación se mide la satisfacción de los usuarios.",
         "La medición de la satisfacción de los usuarios es estandarizada y los resultados se expresan en datos numéricos y/o categorías.",
         "La evaluación de la satisfacción verifica la percepción de los usuarios sobre la oportunidad, seguridad, pertinencia y resultados de la atención.",
         "Los resultados de la satisfacción de los usuarios se consolidan, analizan y los resultados dan lugar a acciones de mejora.",
     ]
+
+# Junta todas tus listas de preguntas en un diccionario
+    preguntas_por_item = {
+        "D1.1": preguntas_d11,
+        "D1.2": preguntas_d12,
+        "D1.3": preguntas_d13,
+        "D1.4": preguntas_d14,
+        "D1.5": preguntas_d15,
+        "D1.6": preguntas_d16,
+        "D1.7": preguntas_d17,
+        "D1.8": preguntas_d18,
+        "D1.9": preguntas_d19,
+        "D2.1": preguntas_d2_1,
+        "D2.2": preguntas_d2_2,
+        "D2.3": preguntas_d2_3,
+        "D2.4": preguntas_d2_4,
+        "D2.5": preguntas_d2_5,
+        "D2.6": preguntas_d2_6,
+        "D2.7": preguntas_d2_7,
+        "D2.8": preguntas_d2_8,
+        "D2.9": preguntas_d2_9,
+        "D2.10": preguntas_d2_10,
+        "D2.11": preguntas_d2_11,
+        "D2.12": preguntas_d2_12,
+        "D2.13": preguntas_d2_13,
+        "D2.14": preguntas_d2_14,
+        "D2.15": preguntas_d2_15,
+        "D2.16": preguntas_d2_16,
+        "D2.17": preguntas_d2_17,
+        "D2.18": preguntas_d2_18,
+        "D3.1": preguntas_d3_1,
+        "D3.2": preguntas_d3_2,
+        "D3.3": preguntas_d3_3
+    }
 
 
 
@@ -5398,14 +5432,14 @@ elif st.session_state.paso == 33:
                 "Hallazgos": hallazgos
             })
 
-#    df_resumen = pd.DataFrame(resumen)
-#    csv_resumen = df_resumen.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
-#    st.download_button(
-#            label="📥 Descargar resumen (CSV)",
-#            data=csv_resumen,
-#            file_name="valoracion_por_subdimension.csv",
-#            mime="text/csv"
-#            )
+    df_resumen = pd.DataFrame(resumen)
+    csv_resumen = df_resumen.to_csv(index=False, sep=separador, encoding="utf-8-sig").encode("utf-8-sig")
+    st.download_button(
+            label="📥 Descargar resumen (CSV)",
+            data=csv_resumen,
+            file_name="valoracion_por_subdimension.csv",
+            mime="text/csv"
+            )
 
 
 
@@ -5541,41 +5575,6 @@ elif st.session_state.paso == 33:
         run_puntaje.bold = True
 
         doc.add_paragraph("")  # Salto de línea entre tablas
-
-
-# Junta todas tus listas de preguntas en un diccionario
-    preguntas_por_item = {
-        "D1.1": preguntas_d11,
-        "D1.2": preguntas_d12,
-        "D1.3": preguntas_d13,
-        "D1.4": preguntas_d14,
-        "D1.5": preguntas_d15,
-        "D1.6": preguntas_d16,
-        "D1.7": preguntas_d17,
-        "D1.8": preguntas_d18,
-        "D1.9": preguntas_d19,
-        "D2.1": preguntas_d2_1,
-        "D2.2": preguntas_d2_2,
-        "D2.3": preguntas_d2_3,
-        "D2.4": preguntas_d2_4,
-        "D2.5": preguntas_d2_5,
-        "D2.6": preguntas_d2_6,
-        "D2.7": preguntas_d2_7,
-        "D2.8": preguntas_d2_8,
-        "D2.9": preguntas_d2_9,
-        "D2.10": preguntas_d2_10,
-        "D2.11": preguntas_d2_11,
-        "D2.12": preguntas_d2_12,
-        "D2.13": preguntas_d2_13,
-        "D2.14": preguntas_d2_14,
-        "D2.15": preguntas_d2_15,
-        "D2.16": preguntas_d2_16,
-        "D2.17": preguntas_d2_17,
-        "D2.18": preguntas_d2_18,
-        "D3.1": preguntas_d3_1,
-        "D3.2": preguntas_d3_2,
-        "D3.3": preguntas_d3_3
-    }
 
 
 # Construye el diccionario cruzado:
