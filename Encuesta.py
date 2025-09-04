@@ -49,6 +49,50 @@ texto_valoracion_cond = {
     4: "4. Cumple de forma satisfactoria mínimo tres criterios",
     5: "5. Cumple de forma óptima todos los criterios"
 }
+
+# Junta todas tus listas de preguntas en un diccionario
+preguntas_por_item = {
+    "D1.1": preguntas_d11,
+    "D1.2": preguntas_d12,
+    "D1.3": preguntas_d13,
+    "D1.4": preguntas_d14,
+    "D1.5": preguntas_d15,
+    "D1.6": preguntas_d16,
+    "D1.7": preguntas_d17,
+    "D1.8": preguntas_d18,
+    "D1.9": preguntas_d19,
+    "D2.1": preguntas_d2_1,
+    "D2.2": preguntas_d2_2,
+    "D2.3": preguntas_d2_3,
+    "D2.4": preguntas_d2_4,
+    "D2.5": preguntas_d2_5,
+    "D2.6": preguntas_d2_6,
+    "D2.7": preguntas_d2_7,
+    "D2.8": preguntas_d2_8,
+    "D2.9": preguntas_d2_9,
+    "D2.10": preguntas_d2_10,
+    "D2.11": preguntas_d2_11,
+    "D2.12": preguntas_d2_12,
+    "D2.13": preguntas_d2_13,
+    "D2.14": preguntas_d2_14,
+    "D2.15": preguntas_d2_15,
+    "D2.16": preguntas_d2_16,
+    "D2.17": preguntas_d2_17,
+    "D2.18": preguntas_d2_18,
+    "D3.1": preguntas_d3_1,
+    "D3.2": preguntas_d3_2,
+    "D3.3": preguntas_d3_3
+}
+}
+
+# Construye el diccionario cruzado:
+preguntas_texto = {}
+
+for item, preguntas in preguntas_por_item.items():
+    keys = dimensiones[item][:len(preguntas)]  # Solo los keys de preguntas, no el puntaje ni observación
+    for k, texto in zip(keys, preguntas):
+
+
 ##############################################
 def set_cell_background(cell, rgb_color):
     tc = cell._tc
