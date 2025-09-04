@@ -50,91 +50,74 @@ texto_valoracion_cond = {
     5: "5. Cumple de forma óptima todos los criterios"
 }
 ##############################################
-def tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st_session_state):
-# Agrupa por dimensión
+def set_cell_background(cell, rgb_color):
+    tc = cell._tc
+    tcPr = tc.get_or_add_tcPr()
+    shd = OxmlElement('w:shd')
+    shd.set(qn('w:fill'), rgb_color)
+    tcPr.append(shd)
+
+def tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st_session_state, preguntas_texto, texto_valoracion, texto_valoracion_cond, color_puntaje):
+    # Agrupa subdimensiones por dimensión
     from collections import defaultdict
     subdims_por_dim = defaultdict(list)
     for sub in dimensiones.keys():
         dim = sub.split(".")[0]  # "D1", "D2", etc.
         subdims_por_dim[dim].append(sub)
 
-    from collections import defaultdict
+    for dim, subdim_list in subdims_por_dim.items():
+        # Título de la dimensión
+        doc.add_paragraph(f"{dim}", style="Heading 2")
 
-# Agrupa subdimensiones por dimensión (D1, D2, D3)
-    subdims_por_dim = defaultdict(list)
-    for sub in dimensiones.keys():
-        dim = sub.split(".")[0]
-        subdims_por_dim[dim].append(sub)
-
-    if alcance == "Básico":
-        dimensiones_actuales = {
-            "D1": ["D1.1", "D1.2", "D1.4", "D1.5", "D1.6", "D1.7"],
-            "D2": ["D2.2", "D2.3", "D2.6", "D2.7", "D2.9", "D2.15", "D2.17"]
-        }
-    elif alcance == "Completo":
-        dimensiones_actuales = {
-            "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
-            "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
-            "D3": ["D3.1", "D3.2", "D3.3"]
-        }    
-    else:
-        dimensiones_actuales = {
-            "D1": ["D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6", "D1.7","D1.8","D1.9"],
-            "D2": ["D2.1", "D2.2", "D2.3","D2.4", "D2.5", "D2.6", "D2.7","D2.8", "D2.9","D2.10", "D2.11", "D2.12", "D2.13", "D2.14", "D2.15", "D2.16", "D2.17", "D2.18"],
-            "D3": ["D3.1", "D3.2", "D3.3"]
-        }
-
-
-    for dim, subdim_list in dimensiones_actuales.items():
-        nombre_largo = nombres_dimensiones.get(dim, dim)
-        table = doc.add_table(rows=2, cols=2)
-        table.style = 'Table Grid'
-    
-
-    # Fila 0: nombre largo en celda combinada y fondo gris oscuro
-        titulo_row = table.rows[0]
-        titulo_cell = titulo_row.cells[0]
-        titulo_cell.merge(titulo_row.cells[1])
-        p = titulo_cell.paragraphs[0]
-        run = p.add_run(nombre_largo)
-        run.bold = True
-        run.font.size = Pt(11)
-        run.font.color.rgb = RGBColor(255,255,255)
-        set_cell_background(titulo_cell, '4F4F4F')  # Gris oscuro
-
-    # Fila 1: encabezados
-        hdr_cells = table.rows[1].cells
-        hdr_cells[0].text = 'CONDICIONES'
-        hdr_cells[1].text = 'CALIFICACIÓN'
-        for cell in hdr_cells:
-            for para in cell.paragraphs:
-                for run in para.runs:
-                    run.bold = True
-    
         for sub in subdim_list:
-            mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
-            if not mask.any():
-                continue
-            row = df_resumen[mask].iloc[0]
-            val = int(row["Valoración"])
-            row1 = table.add_row().cells
-            row1[0].text = row["Condición"]
-            row1[1].text = str(val)
-            set_cell_background(row1[1], color_puntaje.get(val, 'FFFFFF'))
-            row2 = table.add_row().cells
-            merged = row2[0].merge(row2[1])
-            merged.text = f"Hallazgos: {row['Hallazgos']}"
+            keys = dimensiones[sub]
+            pregunta_keys = keys[:4]    # los keys de cada criterio
+            puntaje_key = keys[4]       # key del puntaje global de la condición
+            obs_key = keys[5]           # key de observaciones
 
-    # Total de la dimensión
-        row_total = table.add_row().cells
-        cell_dim = row_total[0]
-        cell_puntaje = row_total[1]
-        run_dim = cell_dim.paragraphs[0].add_run(f"TOTAL")
-        run_dim.bold = True
-        run_puntaje = cell_puntaje.paragraphs[0].add_run(f"{puntajes[dim]}")
-        run_puntaje.bold = True
+            table = doc.add_table(rows=1, cols=4)
+            table.style = "Table Grid"
+            hdr_cells = table.rows[0].cells
+            hdr_cells[0].text = nombres_subdimensiones.get(sub, sub)   # Nombre largo subdimensión
+            hdr_cells[1].text = "Criterio"
+            hdr_cells[2].text = "Puntaje"
+            hdr_cells[3].text = "Puntaje global condición"
+            set_cell_background(hdr_cells[0], "FFF6D9")
+            set_cell_background(hdr_cells[3], "4F4F4F")
+            for cell in hdr_cells:
+                for para in cell.paragraphs:
+                    for run in para.runs:
+                        run.bold = True
 
-        doc.add_paragraph("")  # Salto de línea entre tablas
+            # Agrega filas para cada criterio
+            for i, pk in enumerate(pregunta_keys):
+                row = table.add_row().cells
+                # Columna 1: Solo en la primera fila, combinada verticalmente si lo deseas (opcional)
+                row[0].text = nombres_subdimensiones.get(sub, sub) if i==0 else ""
+                # Columna 2: Texto del criterio
+                row[1].text = preguntas_texto.get(pk, pk)
+                # Columna 3: Puntaje del criterio
+                puntaje = st_session_state.get(pk, 0)
+                row[2].text = f"{puntaje}. {texto_valoracion.get(puntaje,'')}" if puntaje else ""
+                set_cell_background(row[2], color_puntaje.get(puntaje, 'FFFFFF'))
+                # Columna 4: Puntaje global de la condición (solo en última fila)
+                if i == len(pregunta_keys)-1:
+                    puntaje_global = st_session_state.get(puntaje_key, 0)
+                    row[3].text = f"{puntaje_global}. {texto_valoracion_cond.get(puntaje_global,'')}" if puntaje_global else ""
+                    set_cell_background(row[3], color_puntaje.get(puntaje_global, 'FFFFFF'))
+                else:
+                    row[3].text = ""
+
+            # Fila hallazgos
+            row_obs = table.add_row().cells
+            cell_obs = row_obs[0]
+            cell_obs.merge(row_obs[1])
+            cell_obs.merge(row_obs[2])
+            cell_obs.merge(row_obs[3])
+            observacion = st_session_state.get(obs_key, "")
+            cell_obs.text = f"HALLAZGOS: {observacion}"
+
+        doc.add_paragraph("")  # Espacio entre subdimensiones
 
 ##############################################
 
