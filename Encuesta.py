@@ -110,8 +110,6 @@ def tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st_sessi
             for para in cell.paragraphs:
                 for run in para.runs:
                     run.bold = True
-
-
     
         for sub in subdim_list:
             mask = df_resumen["Condición"].str.contains(nombres_subdimensiones[sub], case=False, regex=False)
@@ -5375,10 +5373,21 @@ elif st.session_state.paso == 33:
         doc.add_paragraph("")  # Salto de línea entre tablas
 
     
-    # ... después de crear doc = Document() y antes de guardar en buffer:
-    tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st.session_state.respuestas)
-    # ... continúa con el resto de tu exportación Word
-    
+# Dentro de tu Streamlit app:
+    if st.button("Generar y descargar tabla Word"):
+        doc = Document()
+    # Llama tu función para agregar la tabla al documento
+        tabla_detalle_condiciones(doc, dimensiones, nombres_subdimensiones, st.session_state)
+    # Guarda el documento en memoria
+        word_buffer = io.BytesIO()
+        doc.save(word_buffer)
+        word_buffer.seek(0)
+        st.download_button(
+            label="📥 Descargar tabla de condiciones",
+            data=word_buffer,
+            file_name="tabla_condiciones.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
 
 
 # Agregar salto de página y el gráfico
