@@ -965,7 +965,7 @@ st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 
 #st.markdown("""
 #    <style>
-#        .block-container { padding-top: 0.1rem !important; }
+#        .block-container { padding-top: 0.05rem !important; }
 #    </style>
 #""", unsafe_allow_html=True)
 
