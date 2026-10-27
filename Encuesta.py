@@ -963,14 +963,6 @@ st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 
 ####################### título y encabezado #######################
 
-#st.markdown("""
-#    <style>
-#        .block-container { padding-top: 0.05rem !important; }
-#    </style>
-#""", unsafe_allow_html=True)
-
-#st.image("EVALUAR_BPS_R.jpg")
-
 st.markdown("""
     <style>
         .block-container {
@@ -985,7 +977,7 @@ st.markdown("""
 
         div[data-testid="stImage"] img {
             display: block;
-            width: 100%;
+            width: 80%;
             height: auto;
             object-fit: contain;
             margin: 0 auto;
