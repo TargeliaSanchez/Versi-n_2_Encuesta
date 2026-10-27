@@ -977,7 +977,7 @@ st.markdown("""
 
         div[data-testid="stImage"] img {
             display: block;
-            width: 80%;
+            width: 50%;
             height: auto;
             object-fit: contain;
             margin: 0 auto;
