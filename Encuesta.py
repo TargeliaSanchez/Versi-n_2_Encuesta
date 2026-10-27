@@ -962,13 +962,33 @@ if "uuid_respuesta" not in st.session_state:
 st.session_state.respuestas["uuid"] = st.session_state.uuid_respuesta
 
 ####################### título y encabezado #######################
+
+#st.markdown("""
+#    <style>
+#        .block-container { padding-top: 0.1rem !important; }
+#    </style>
+#""", unsafe_allow_html=True)
+
+#st.image("EVALUAR_BPS_R.jpg")
+
 st.markdown("""
     <style>
-        .block-container { padding-top: 0.1rem !important; }
+        .block-container {
+            padding-top: 0rem !important;
+            padding-bottom: 0rem !important;
+        }
+        .stImage > img {
+            display: block;
+            margin-top: 0;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
     </style>
 """, unsafe_allow_html=True)
 
-st.image("EVALUAR_BPS_R.jpg")
+st.image("EVALUAR_BPS_R.jpg", use_container_width=True)
+
 
 #st.title("EVALUAR – BPS \n  **EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN**")
 st.markdown("""
