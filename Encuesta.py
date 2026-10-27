@@ -985,7 +985,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.image("EVALUAR_BPS_R.jpg", use_container_width=True)
+st.image("EVALUAR_BPS_R.jpg",# use_container_width=True
+        width=850)
 
 #st.title("EVALUAR – BPS \n  **EVALUACIÓN DE CONDICIONES ESENCIALES DEL ENFOQUE BIOPSICOSOCIAL EN SERVICIOS DE REHABILITACIÓN**")
 st.markdown("""
